@@ -5,7 +5,9 @@
     "dev:komdes": "pnpm -F komdes dev",
     "build:komdes": "pnpm -F komdes build",
     "dev:docs": "pnpm -F docs dev",
+    "build":"pnpm -F docs build && pnpm -F komdes build",
     "build:docs": "pnpm -F docs build",
+    "list-packages":"pnpm m ls --json --depth -1",
     "docs": "pnpm -F komdes docs",
     "validate": "pnpm format && pnpm lint:check && pnpm build:komdes && pnpm build:docs",
     "typecheck": "pnpm -F komdes typecheck",
@@ -15,7 +17,6 @@
     "format": "biome check --write",
     "format:check": "biome check",
     "lint:check": "biome lint .",
-    "prepare": "husky",
     "changelog:mdx": "node scripts/generate-mdx-changelog.mjs"
   },
   "devDependencies": {
@@ -31,13 +32,19 @@
     "overrides": {
       "@types/react": "^19.0.0",
       "@types/react-dom": "^19.0.0"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "msw"
+    ]
+    
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "biome check --write"
     ]
   },
+  
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-popover": "^1.1.15",

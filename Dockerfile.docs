@@ -1,0 +1,49 @@
+# syntax=docker/dockerfile:1.7
+
+FROM node:22-alpine AS builder
+
+RUN corepack enable
+
+WORKDIR /app
+
+# Copy metadata dulu
+COPY package.json .
+COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
+
+COPY packages/package.json ./packages/package.json
+COPY docs/package.json ./docs/package.json
+
+# Install dependency dengan cache
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install 
+
+# Copy source
+COPY . .
+
+# Build package internal
+RUN pnpm -F packages build
+
+# Build docs SSR
+RUN pnpm -F docs build
+
+
+
+# =========================
+# Production runtime image
+# =========================
+
+FROM node:22-alpine
+
+RUN corepack enable
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+# Copy hasil build
+COPY --from=builder /app .
+
+EXPOSE 3000
+
+CMD ["pnpm", "-F", "docs", "preview", "--host", "0.0.0.0"]
