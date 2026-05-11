@@ -1,8 +1,11 @@
-import { createRouter as createTanStackRouter } from '@tanstack/react-router';
+import { createRouter as createTanStackRouter, notFound } from '@tanstack/react-router';
+import { GeneralError } from './error/general-error';
 import { routeTree } from './routeTree.gen';
 
 export function getRouter() {
   const router = createTanStackRouter({
+    defaultErrorComponent: () => <GeneralError />,
+    defaultNotFoundComponent: () => notFound,
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
     routeTree,

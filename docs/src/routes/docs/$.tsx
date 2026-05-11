@@ -22,6 +22,9 @@ export const Route = createFileRoute('/docs/$')({
   head: ({ loaderData }) => {
     const title = loaderData?.title ? `${loaderData.title} | Komdes` : 'Komdes Documentation';
     return {
+      links: [
+        { rel: 'icon', href: 'https://storage.googleapis.com/komerce/assets/logo/logo-only/Logo-komerce.svg' },
+      ],
       meta: [
         { title },
         { name: 'description', content: loaderData?.description },

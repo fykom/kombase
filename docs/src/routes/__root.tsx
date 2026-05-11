@@ -9,9 +9,9 @@ import { GeneralError } from '@/error/general-error';
 // import { GoeyToaster } from '@/components/goey-toaster';
 
 export const Route = createRootRoute({
-  component: RootComponent,
   errorComponent: GeneralError,
   notFoundComponent: () => <Navigate to="/404" />,
+  shellComponent: RootComponent,
 });
 
 function RootComponent() {
