@@ -164,7 +164,6 @@ export function Feedback({
           <form className="flex flex-col gap-3" onSubmit={submit}>
             <Textarea
               autoFocus
-              className="border rounded-lg bg-fd-secondary text-fd-secondary-foreground p-3 resize-none focus-visible:outline-none placeholder:text-fd-muted-foreground"
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={(e) => {
                 if (!e.shiftKey && e.key === 'Enter') {
