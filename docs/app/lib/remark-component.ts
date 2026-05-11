@@ -21,7 +21,7 @@ export function remarkComponent() {
           const componentName = nameAttr.value;
 
           // Resolve the path to the example file
-          const srcDir = path.resolve(process.cwd(), 'src/examples');
+          const srcDir = path.resolve(process.cwd(), 'app/examples');
           let filePath = path.join(srcDir, `${componentName}.tsx`);
           if (!fs.existsSync(filePath)) {
             filePath = path.join(srcDir, componentName, 'index.tsx');

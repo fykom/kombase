@@ -1,8 +1,8 @@
-import { useRouter } from '@tanstack/react-router';
+import { useNavigate } from 'react-router';
 import { Button } from '@/components/ui/button';
 
 export function NotFoundError() {
-  const { history } = useRouter();
+  const navigate = useNavigate();
 
   return (
     <div className="h-svh">
@@ -14,7 +14,7 @@ export function NotFoundError() {
           does not exist or might have been removed.
         </p>
         <div className="mt-6 flex gap-4">
-          <Button onClick={() => history.go(-1)} variant="outline">
+          <Button onClick={() => navigate(-1)} variant="outline">
             Go Back
           </Button>
         </div>

@@ -1,17 +1,9 @@
-import {
-  // type RemarkFeedbackBlockOptions,
-  rehypeCode,
-  // remarkFeedbackBlock,
-} from 'fumadocs-core/mdx-plugins';
+import { rehypeCode } from 'fumadocs-core/mdx-plugins';
 import { pageSchema } from 'fumadocs-core/source/schema';
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { remarkAutoTypeTable } from 'fumadocs-typescript';
 import z from 'zod';
-import { remarkComponent } from './src/lib/remark-component';
-
-// const feedbackOptions: RemarkFeedbackBlockOptions = {
-//   // other options:
-// };
+import { remarkComponent } from './app/lib/remark-component';
 
 export default defineConfig({
   mdxOptions: {
@@ -19,9 +11,7 @@ export default defineConfig({
       [
         rehypeCode,
         {
-          // Optional: enable inline code highlighting
           inline: 'tailing-curly-colon',
-          // Options for syntax highlighting
           themes: {
             dark: 'github-dark',
             light: 'github-light',
@@ -29,43 +19,12 @@ export default defineConfig({
         },
       ],
     ],
-    remarkPlugins: [
-      remarkComponent,
-      // [remarkFeedbackBlock, feedbackOptions],
-      [remarkAutoTypeTable],
-    ],
-    // rehypeCodeOptions: {
-    //   theme: "github-light",
-
-    // },
-    // rehypePlugins: (plugins) => {
-    //   plugins.shift();
-    //   plugins.push(rehypeSlug, rehypeComponent, [
-    //     rehypePrettyCode,
-    //     {
-    //       theme: {
-    //         dark: "github-dark",
-    //         light: "github-light",
-    //       },
-    //     },
-    //   ]);
-    //   return plugins;
-    // },
-    // remarkPlugins: (plugins) => {
-    //   plugins.push(
-    //     codeImport,
-    //     remarkGfm,
-    //     remarkMath,
-    //     [remarkNpm, { persist: { id: "package-manager" } }],
-    //     [remarkDocGen, { generators: [fileGenerator()] }],
-    //   );
-    //   return plugins;
-    // },
+    remarkPlugins: [remarkComponent, [remarkAutoTypeTable]],
   },
 });
 
 export const docs = defineDocs({
-  dir: 'src/content',
+  dir: 'app/content',
   docs: {
     postprocess: {
       includeProcessedMarkdown: true,

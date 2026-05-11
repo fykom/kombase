@@ -1,10 +1,10 @@
-import { Link } from '@tanstack/react-router';
 import { Pre } from 'fumadocs-ui/components/codeblock';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import { lazy, Suspense } from 'react';
+import { Link } from 'react-router';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { FeedbackBlock } from './feedback/client';

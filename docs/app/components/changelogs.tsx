@@ -1,5 +1,5 @@
-import { Link } from '@tanstack/react-router';
 import defaultComponents from 'fumadocs-ui/mdx';
+import { Link } from 'react-router';
 import { Separator } from '@/components/ui/separator';
 import { getChangelogPages } from '@/lib/changelog';
 

@@ -1,29 +1,23 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
     "jsx": "react-jsx",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-
-    /* Bundler mode */
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ES2022",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./app/*"],
       "@/components/ui/*": ["../packages/src/components/ui/*"],
       "collections/*": ["./.source/*"]
     },
-
-    /* Linting */
+    "resolveJsonModule": true,
+    "rootDirs": [".", "./.react-router/types"],
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022",
-    "types": ["vite/client"],
+    "types": ["node", "vite/client"],
     "verbatimModuleSyntax": true
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"]
 }
