@@ -6,6 +6,7 @@ import type { MDXComponents } from 'mdx/types';
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router';
 import { Skeleton } from '@/components/ui/skeleton';
+
 import { cn } from '@/lib/utils';
 import { FeedbackBlock } from './feedback/client';
 import { PropsTable } from './props-table';
@@ -44,7 +45,17 @@ export function getMDXComponents(components?: MDXComponents) {
       </Suspense>
     ),
     FeedbackBlock: ({ children, ...rest }) => (
-      <FeedbackBlock {...rest} onSendAction={() => ''}>
+      <FeedbackBlock
+        {...rest}
+        onSendAction={async (feedback) => {
+          const res = await fetch('/api/feedback', {
+            body: JSON.stringify({ feedback, type: 'block' }),
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+          });
+          return await res.json();
+        }}
+      >
         {children}
       </FeedbackBlock>
     ),

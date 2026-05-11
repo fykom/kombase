@@ -2,7 +2,9 @@ import browserCollections from 'collections/browser';
 import { useFumadocsLoader } from 'fumadocs-core/source/client';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
+import { Feedback } from '@/components/feedback/client';
 import { getMDXComponents } from '@/components/mdx';
+
 import { docsOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
 import type { Route } from './+types/docs';
@@ -34,6 +36,17 @@ const clientLoader = browserCollections.docs.createClientLoader({
         <DocsBody>
           <Mdx components={getMDXComponents()} />
         </DocsBody>
+
+        <Feedback
+          onSendAction={async (feedback) => {
+            const res = await fetch('/api/feedback', {
+              body: JSON.stringify({ feedback, type: 'page' }),
+              headers: { 'Content-Type': 'application/json' },
+              method: 'POST',
+            });
+            return await res.json();
+          }}
+        />
       </DocsPage>
     );
   },
