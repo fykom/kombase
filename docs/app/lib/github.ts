@@ -1,25 +1,27 @@
-import { App, type Octokit } from 'octokit';
+import { App, type Octokit } from "octokit";
 import {
   type ActionResponse,
   type BlockFeedback,
   blockFeedback,
   type PageFeedback,
   pageFeedback,
-} from '@/components/feedback/schema';
+} from "@/components/feedback/schema";
 
-export const repo = 'komdes';
-export const owner = 'akhfasarrofi';
-export const DocsCategory = 'Ideas';
+export const repo = "komdes";
+export const owner = "fycom";
+export const DocsCategory = "Ideas";
 
 let instance: Octokit | undefined;
 
 async function getOctokit(): Promise<Octokit> {
   if (instance) return instance;
-  const appId = process.env.GITHUB_APP_ID;
-  const privateKey = process.env.GITHUB_APP_PRIVATE_KEY;
+  const appId = process.env.APP_ID;
+  const privateKey = process.env.PRIVATE_KEY;
 
   if (!appId || !privateKey) {
-    throw new Error('No GitHub keys provided for Github app, docs feedback feature will not work.');
+    throw new Error(
+      "No GitHub keys provided for Github app, docs feedback feature will not work.",
+    );
   }
 
   const app = new App({
@@ -27,13 +29,16 @@ async function getOctokit(): Promise<Octokit> {
     privateKey,
   });
 
-  const { data } = await app.octokit.request('GET /repos/{owner}/{repo}/installation', {
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28',
+  const { data } = await app.octokit.request(
+    "GET /repos/{owner}/{repo}/installation",
+    {
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+      owner,
+      repo,
     },
-    owner,
-    repo,
-  });
+  );
 
   instance = await app.getInstallationOctokit(data.id);
   return instance;
@@ -73,8 +78,10 @@ async function getFeedbackDestination() {
   return (cachedDestination = repository);
 }
 
-export async function onPageFeedbackAction(feedback: PageFeedback): Promise<ActionResponse> {
-  'use server';
+export async function onPageFeedbackAction(
+  feedback: PageFeedback,
+): Promise<ActionResponse> {
+  "use server";
   feedback = pageFeedback.parse(feedback);
   return createDiscussionThread(
     feedback.url,
@@ -82,8 +89,10 @@ export async function onPageFeedbackAction(feedback: PageFeedback): Promise<Acti
   );
 }
 
-export async function onBlockFeedbackAction(feedback: BlockFeedback): Promise<ActionResponse> {
-  'use server';
+export async function onBlockFeedbackAction(
+  feedback: BlockFeedback,
+): Promise<ActionResponse> {
+  "use server";
   feedback = blockFeedback.parse(feedback);
   return createDiscussionThread(
     feedback.url,
@@ -98,7 +107,10 @@ async function createDiscussionThread(pageId: string, body: string) {
     (category) => category.name === DocsCategory,
   );
 
-  if (!category) throw new Error(`Please create a "${DocsCategory}" category in GitHub Discussion`);
+  if (!category)
+    throw new Error(
+      `Please create a "${DocsCategory}" category in GitHub Discussion`,
+    );
 
   const title = `Feedback for ${pageId}`;
   const {
