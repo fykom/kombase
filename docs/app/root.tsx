@@ -9,6 +9,7 @@ import {
 } from 'react-router';
 import type { Route } from './+types/root';
 import './styles/global.css';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -21,8 +22,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <RootProvider>{children}</RootProvider>
-
+        <RootProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </RootProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
