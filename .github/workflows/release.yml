@@ -1,50 +1,92 @@
-name: Release
+name: Release & Deploy
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
+  push:
+    tags:
+      - "v*"
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: production-Deploy
+  cancel-in-progress: true
 
 jobs:
-  release:
-    name: Release
+  docker-build:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+    
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
+
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build Packages & Docs
+      - name: Debug Deploy
         run: |
-          pnpm build:komdes
-          pnpm build:docs
+          echo "VERSION=${{ needs.docker-build.outputs.version }}"
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+    
+      - name: Get Version from tag
+        id: version
+        run: | 
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Publish to NPM
-        run: pnpm -F komdes publish --access public --no-git-checks
-
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Login to GHCR 
+        uses: docker/login-action@v3
         with:
-          publish: pnpm release
-          version: pnpm version-packages
-          commit: "chore(release): version packages"
-          title: "chore(release): version packages"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build & Push Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: | 
+            ghcr.io/${{ github.repository }}/docs:${{ steps.version.outputs.version }}
+            ghcr.io/${{ github.repository }}/docs:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+  deploy:
+    needs: docker-build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            VERSION="${{ needs.docker-build.outputs.version }}"
+
+            IMAGE=ghcr.io/${{ github.repository }}/docs:${{ needs.docker-build.outputs.version }}
+
+            echo "Deploying $IMAGE"
+
+            docker login ghcr.io \
+              -u ${{ github.actor }} \
+              -p ${{ secrets.TOKEN_GITHUB }}
+
+            docker pull $IMAGE
+
+            docker stop komdes-docs || true
+            docker rm komdes-docs || true
+
+            docker run -d \
+              --name komdes-docs \
+              --restart unless-stopped \
+              -p 3000:3000 \
+              $IMAGE
+
+
+      

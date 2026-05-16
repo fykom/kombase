@@ -1,42 +1,41 @@
-name: CI Pipeline
+# name: CI Pipeline
 
-on:
-  push:
-    branches:
-      - development
-    tags:
-      - 'v*'
-  pull_request:
-    branches:
-      - development
-    tags:
-      - 'v*'
+# on:
+#   push:
+#     branches:
+#       - development
+#     tags:
+#       - 'v*'
+#   pull_request:
+#     branches:
+#       - development
+#     tags:
+#       - 'v*'
 
-jobs:
-  build-docs:
-    name: Build Docs & Packages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+# jobs:
+#   build-docs:
+#     name: Build Docs & Packages
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Repo
+#         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
+#       - name: Setup pnpm
+#         uses: pnpm/action-setup@v3
+#         with:
+#           version: 9
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'pnpm'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+#           cache: 'pnpm'
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+#       - name: Install Dependencies
+#         run: pnpm install --frozen-lockfile
 
-      - name: Build Komdes Package
-        run: pnpm build:komdes
+#       - name: Build Komdes Package
+#         run: pnpm build:komdes
 
-      - name: Build Docs
-        run: pnpm build:docs
-
+#       - name: Build Docs
+#         run: pnpm build:docs
