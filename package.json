@@ -5,9 +5,9 @@
     "dev:komdes": "pnpm -F komdes dev",
     "build:komdes": "pnpm -F komdes build",
     "dev:docs": "pnpm -F docs dev",
-    "build":"pnpm -F docs build && pnpm -F komdes build",
+    "build": "pnpm -F docs build && pnpm -F komdes build",
     "build:docs": "pnpm -F docs build",
-    "list-packages":"pnpm m ls --json --depth -1",
+    "list-packages": "pnpm m ls --json --depth -1",
     "docs": "pnpm -F komdes docs",
     "validate": "pnpm format && pnpm lint:check && pnpm build:komdes && pnpm build:docs",
     "typecheck": "pnpm -F komdes typecheck",
@@ -29,31 +29,23 @@
     "typescript": "^5.4.5"
   },
   "pnpm": {
-    "overrides": {
-      "@types/react": "^19.0.0",
-      "@types/react-dom": "^19.0.0"
-    },
     "ignoredBuiltDependencies": [
       "esbuild",
       "msw"
     ]
-    
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "biome check --write"
     ]
   },
-  
-  "dependencies": {
-    "@radix-ui/react-collapsible": "^1.1.12",
-    "@radix-ui/react-popover": "^1.1.15",
-    "class-variance-authority": "^0.7.1",
-    "fumadocs-core": "latest",
-    "fumadocs-ui": "latest",
-    "lucide-react": "^1.11.0",
-    "react": "latest",
-    "tailwind-merge": "^3.5.0",
-    "zod": "^4.3.6"
-  }
+  "dependencies": {},
+  "overrides": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "workspaces": [
+    "packages",
+    "docs"
+  ]
 }
