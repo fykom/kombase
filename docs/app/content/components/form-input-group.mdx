@@ -1,0 +1,43 @@
+---
+title: FormInputGroup
+description: renders an input equipped with an **optional right-side addon** (text, currency, unit, or icon).
+preview: false
+---
+
+## FormInputGroup
+
+<ComponentTabs name="form-input-group-demo" align="start" className="p-4" />
+
+### FormInputGroupProps
+
+<AutoTypeTable
+  path="../types/form-input-group.types.ts"
+  name="FormInputGroupProps"
+/>
+
+### Addon Examples
+
+**Text Addon:**
+
+```tsx
+<FormInputGroup
+  control={form.control}
+  name="price"
+  addon="USD"
+  inputGroupProps={{ type: "number" }}
+/>
+```
+
+**Compound Addon:**
+
+```tsx
+<FormInputGroup
+  control={form.control}
+  name="short_url"
+  addon={
+    <>
+      <GlobeIcon className="w-4 h-4 mr-2" /> ifx.li/
+    </>
+  }
+/>
+```
