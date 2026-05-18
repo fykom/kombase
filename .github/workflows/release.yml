@@ -94,7 +94,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # Wajib untuk otentikasi NPM OIDC tanpa token
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -117,10 +116,7 @@ jobs:
       - name: Build Package
         run: pnpm build:kombase
 
-      - name: Upgrade npm
-        run: npm install -g npm@latest
-
       - name: Publish to NPM
-        # Mem-publish package 'kombase' menggunakan otentikasi OIDC
-        working-directory: ./packages
-        run: npm publish --access public --provenance
+        run: pnpm -F kombase publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
