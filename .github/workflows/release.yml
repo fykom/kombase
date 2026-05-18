@@ -119,5 +119,3 @@ jobs:
       - name: Publish to NPM
         # Mem-publish package 'kombase' menggunakan otentikasi OIDC
         run: pnpm -F kombase publish --access public --no-git-checks --provenance
-        env:
-          NODE_AUTH_TOKEN: ''
