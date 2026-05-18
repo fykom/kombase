@@ -1,6 +1,6 @@
-# Contributing to Komdes
+# Contributing to Kombase
 
-Thank you for your interest in contributing to Komdes! To maintain high code quality and automated workflows, we follow a standardized contribution process.
+Thank you for your interest in contributing to Kombase! To maintain high code quality and automated workflows, we follow a standardized contribution process.
 
 ## Development Workflow
 
@@ -17,6 +17,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org/) to automate 
 ```
 
 **Common Types:**
+
 - `feat`: A new feature (Minor version bump)
 - `fix`: A bug fix (Patch version bump)
 - `docs`: Documentation changes
@@ -31,6 +32,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org/) to automate 
 We use [Changesets](https://github.com/changesets/changesets) to manage versions and changelogs in our monorepo.
 
 #### Creating a Changeset
+
 Before submitting a Pull Request, you **must** create a changeset if your changes affect the public API or behavior of any package.
 
 ```bash
@@ -45,10 +47,10 @@ A new file will be created in the `.changeset` directory. Commit this file with 
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/zakariaakhfas/komdes.git`
+1. Clone the repository: `git clone https://github.com/fykom/kombase.git`
 2. Install dependencies: `pnpm install`
 3. Start development:
-   - For components: `pnpm dev:komdes`
+   - For components: `pnpm dev:kombase`
    - For documentation: `pnpm dev:docs`
 
 ## Documentation

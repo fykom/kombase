@@ -1,4 +1,4 @@
-import { LongText } from 'komdes';
+import { LongText } from 'kombase';
 
 export default function ExamplePage() {
   return (

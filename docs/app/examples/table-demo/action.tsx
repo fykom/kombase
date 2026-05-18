@@ -5,7 +5,7 @@ import {
   ActionBarItem,
   ActionBarSelection,
   ActionBarSeparator,
-} from 'komdes';
+} from 'kombase';
 import { Copy, Trash2, X } from 'lucide-react';
 import * as React from 'react';
 import { Checkbox } from '@/components/ui/checkbox';

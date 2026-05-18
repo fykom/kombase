@@ -1,5 +1,5 @@
 import type { Table } from '@tanstack/react-table';
-import { ConfirmDialog } from 'komdes';
+import { ConfirmDialog } from 'kombase';
 import { AlertTriangle } from 'lucide-react';
 import { useState } from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';

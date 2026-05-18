@@ -1,5 +1,5 @@
 # 🦋 Keep a Changelog
 
-All notable changes to `komdes` will be documented here.
+All notable changes to `kombase` will be documented here.
 
 ## Unreleased

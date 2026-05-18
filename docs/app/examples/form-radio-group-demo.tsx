@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormRadioGroup } from 'komdes';
+import { FormRadioGroup } from 'kombase';
 import { SparklesIcon, ZapIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';

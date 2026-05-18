@@ -5,7 +5,7 @@ import {
   ActionBarItem,
   ActionBarSelection,
   ActionBarSeparator,
-} from 'komdes';
+} from 'kombase';
 import { Edit, Share, Trash, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';

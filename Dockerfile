@@ -16,7 +16,7 @@ COPY . .
 
 RUN pnpm install --frozen-lockfile
 
-RUN pnpm build:komdes
+RUN pnpm build:kombase
 RUN pnpm build:docs
 
 RUN pnpm deploy --filter docs --prod /prod

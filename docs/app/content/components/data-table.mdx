@@ -35,7 +35,7 @@ import {
   DataTableAdvancedToolbar,
   DataTableFilterList,
   useDataTable
-} from "komdes";
+} from "kombase";
 
 const { table } = useDataTable({
   data,
@@ -66,7 +66,7 @@ const { table } = useDataTable({
 
     ```tsx
     import { Text, CalendarIcon, DollarSign } from "lucide-react";
-    import { DataTableColumnHeader } from "komdes";
+    import { DataTableColumnHeader } from "kombase";
 
     const columns = React.useMemo(() => [
       {
@@ -96,7 +96,7 @@ const { table } = useDataTable({
     Initialize the table state using the `useDataTable` hook:
 
     ```tsx
-    import { useDataTable } from "komdes";
+    import { useDataTable } from "kombase";
 
     function TableDemo() {
       const { table } = useDataTable({
@@ -124,7 +124,7 @@ const { table } = useDataTable({
     Pass the table instance to the `DataTable`, and `DataTableToolbar` components:
 
     ```tsx
-    import { DataTable, DataTableToolbar, DataTableSortList } from "komdes";
+    import { DataTable, DataTableToolbar, DataTableSortList } from "kombase";
 
     function DataTableDemo() {
       return (
@@ -196,7 +196,7 @@ The `useDataTable` hook acts as an intelligent wrapper around `useReactTable` fr
 ### Import
 
 ```ts
-import { useDataTable } from "komdes";
+import { useDataTable } from "kombase";
 ```
 
 ### Usage
@@ -207,7 +207,7 @@ First, define your columns. Use the `meta` property to configure filter behavior
 
 ```tsx
 import { useMemo, useState } from "react";
-import { useDataTable, DataTable, DataTableColumnHeader } from "komdes";
+import { useDataTable, DataTable, DataTableColumnHeader } from "kombase";
 import type { ColumnDef } from "@tanstack/react-table";
 
 function useInvoiceColumns(): ColumnDef<Invoice>[] {
@@ -338,7 +338,7 @@ meta: {
 #### Skeleton Usage
 
 ```tsx
-import { DataTableSkeleton } from "komdes";
+import { DataTableSkeleton } from "kombase";
 
 function MyTableSkeleton() {
   return (
@@ -358,7 +358,7 @@ The recommended pattern when using frameworks like Next.js or React Router v7 wi
 
 ```tsx
 import { Suspense } from "react";
-import { DataTableSkeleton } from "komdes";
+import { DataTableSkeleton } from "kombase";
 
 function Page() {
   return (

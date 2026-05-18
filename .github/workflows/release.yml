@@ -79,11 +79,11 @@ jobs:
 
             docker pull $IMAGE
 
-            docker stop komdes-docs || true
-            docker rm komdes-docs || true
+            docker stop kombase-docs || true
+            docker rm kombase-docs || true
 
             docker run -d \
-              --name komdes-docs \
+              --name kombase-docs \
               --restart unless-stopped \
               -p 3000:3000 \
               $IMAGE

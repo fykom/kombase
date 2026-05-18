@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
-import { FormDatePicker } from 'komdes';
+import { FormDatePicker } from 'kombase';
 import { useState } from 'react';
 import type { DateRange } from 'react-day-picker';
 import { useForm } from 'react-hook-form';

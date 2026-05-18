@@ -1,12 +1,12 @@
-# 🚀 Komdes Documentation Site
+# 🚀 Kombase Documentation Site
 
-Hello everyone! 👋 Welcome to the **Komdes** documentation repository — a magical place where all our UI components are documented so our lives as developers can be a little more peaceful and drama-free. 🧘‍♂️✨
+Hello everyone! 👋 Welcome to the **Kombase** documentation repository — a magical place where all our UI components are documented so our lives as developers can be a little more peaceful and drama-free. 🧘‍♂️✨
 
-## 🧐 What is Komdes?
+## 🧐 What is Kombase?
 
-Komdes is an awesome monorepo that contains:
+Kombase is an awesome monorepo that contains:
 
-1. **`@komdes` (Component Workspace)**: Our go-to UI component library built with love, sweat, and sleepless nights.
+1. **`@kombase` (Component Workspace)**: Our go-to UI component library built with love, sweat, and sleepless nights.
 2. **`docs` (Documentation)**: The interactive documentation site you're reading right now.
 
 This isn't just any ordinary documentation. We built it with an advanced system so you'll want to stay and read the _docs_ all day! 💅
@@ -48,4 +48,4 @@ If you find a bug, a messed-up layout, or have a brilliant idea, don't hesitate 
 
 ---
 
-_Built with ❤️, lots of water, and prayers by the Komdes team._
+_Built with ❤️, lots of water, and prayers by the Kombase team._

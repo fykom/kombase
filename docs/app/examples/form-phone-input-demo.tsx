@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormPhoneInput, type PhoneInputProps } from 'komdes';
+import { FormPhoneInput, type PhoneInputProps } from 'kombase';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';

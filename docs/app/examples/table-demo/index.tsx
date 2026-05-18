@@ -7,7 +7,7 @@ import {
   DataTableToolbar,
   LongText,
   useDataTable,
-} from 'komdes';
+} from 'kombase';
 import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';

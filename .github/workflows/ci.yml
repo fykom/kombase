@@ -34,8 +34,8 @@
 #       - name: Install Dependencies
 #         run: pnpm install --frozen-lockfile
 
-#       - name: Build Komdes Package
-#         run: pnpm build:komdes
+#       - name: Build Kombase Package
+#         run: pnpm build:kombase
 
 #       - name: Build Docs
 #         run: pnpm build:docs

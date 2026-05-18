@@ -1,4 +1,4 @@
-import { ConfirmDialog } from 'komdes';
+import { ConfirmDialog } from 'kombase';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 

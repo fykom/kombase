@@ -1,5 +1,5 @@
 import type { Table } from '@tanstack/react-table';
-import { DataTableBulkActions as BulkActionsToolbar } from 'komdes';
+import { DataTableBulkActions as BulkActionsToolbar } from 'kombase';
 import { Mail, Trash2, UserCheck, UserX } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
