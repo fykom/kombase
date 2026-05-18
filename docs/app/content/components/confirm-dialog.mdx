@@ -1,0 +1,136 @@
+---
+title: ConfirmDialog
+description: Confirmation dialog component built on top of AlertDialog.
+preview: false
+---
+
+## Overview
+
+`ConfirmDialog` is a reusable confirmation modal built using `AlertDialog`.
+
+It supports:
+
+- Confirmation actions
+- Destructive actions
+- Form submission
+- Loading states
+- Custom content
+
+Useful for:
+
+- Delete confirmation
+- Submit confirmation
+- Approve / reject actions
+- Form confirmation flows
+
+---
+
+## Examples
+
+### Basic Usage
+
+<ComponentTabs name="confirm-dialog-demo" />
+
+---
+
+## Usage
+
+### Action Confirmation
+
+```tsx
+import { useState } from "react";
+import { ConfirmDialog } from "@/components/confirm-dialog";
+import { Button } from "@/components/ui/button";
+
+export function Example() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Delete Product</Button>
+
+      <ConfirmDialog
+        open={open}
+        onOpenChange={setOpen}
+        title="Delete Product"
+        desc="Are you sure you want to delete this product?"
+        destructive
+        confirmText="Delete"
+        handleConfirm={() => {
+          console.log("Deleted");
+          setOpen(false);
+        }}
+      />
+    </>
+  );
+}
+```
+
+---
+
+### With Form Submission
+
+```tsx
+<ConfirmDialog
+  open={open}
+  onOpenChange={setOpen}
+  title="Create User"
+  desc="Please confirm before submitting."
+  form="create-user-form"
+  confirmText="Submit"
+>
+  <form
+    id="create-user-form"
+    onSubmit={(e) => {
+      e.preventDefault();
+
+      console.log("Submitted");
+    }}
+  >
+    <input placeholder="Name" />
+  </form>
+</ConfirmDialog>
+```
+
+---
+
+### Loading State
+
+```tsx
+<ConfirmDialog
+  open={open}
+  onOpenChange={setOpen}
+  title="Saving Changes"
+  desc="Please wait while saving your data."
+  isLoading
+  handleConfirm={() => {}}
+/>
+```
+
+---
+
+## API
+
+### ConfirmDialog
+
+<AutoTypeTable path="../types/confirm-dialog.types.ts" name="ConfirmDialog" />
+
+---
+
+## Form vs Action Mode
+
+`ConfirmDialog` supports two mutually exclusive modes:
+
+| Mode            | Required Prop   |
+| --------------- | --------------- |
+| Action callback | `handleConfirm` |
+| Form submission | `form`          |
+
+---
+
+## Notes
+
+- When `form` is provided, the confirm button automatically becomes `type="submit"`.
+- When `handleConfirm` is used, the confirm button acts as a normal button.
+- `destructive` changes the confirm button variant to destructive styling.
+- `isLoading` disables both cancel and confirm actions.
