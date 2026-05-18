@@ -89,4 +89,37 @@ jobs:
               $IMAGE
 
 
-      
+  
+  publish-npm:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Wajib untuk otentikasi NPM OIDC tanpa token
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Package
+        run: pnpm build:kombase
+
+      - name: Publish to NPM
+        # Mem-publish package 'kombase' menggunakan otentikasi OIDC
+        run: pnpm -F kombase publish --access public --no-git-checks
+~                                                                                                                                     
+~                                                                            
