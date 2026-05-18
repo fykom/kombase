@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
 import React from 'react';
-import type { DateRange } from 'react-day-picker';
+import type { DateRange, PropsMulti, PropsRange, PropsSingle } from 'react-day-picker';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { Calendar } from '@/components/ui/calendar';
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
@@ -23,8 +23,10 @@ type BaseProps<TFieldValues extends FieldValues> = {
   }>;
 };
 
+type CalendarProps = PropsSingle | PropsRange | PropsMulti;
+
 type DatePickerProps<TFieldValues extends FieldValues> = BaseProps<TFieldValues> & {
-  datePickerProps: React.ComponentProps<typeof Calendar>;
+  datePickerProps: CalendarProps;
 };
 
 type FormDatePickerProps<TFieldValues extends FieldValues> = DatePickerProps<TFieldValues>;
@@ -102,13 +104,7 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                     })}
                   </PopoverTrigger>
                   <PopoverContent>
-                    <Calendar
-                      id={field.name}
-                      mode={datePickerProps?.mode}
-                      onSelect={field.onChange}
-                      selected={field.value}
-                      {...datePickerProps}
-                    />
+                    <Calendar id={field.name} {...datePickerProps} {...field} />
                   </PopoverContent>
                 </Popover>
               </FormControl>
