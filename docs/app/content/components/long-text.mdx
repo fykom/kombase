@@ -1,0 +1,106 @@
+---
+title: LongText
+description: Utility component for truncating long text with tooltip and popover support.
+preview: false
+---
+
+## Overview
+
+`LongText` automatically truncates overflowing text using CSS `truncate`.
+
+When the content overflows:
+
+- Desktop → shows the full content inside a `Tooltip`
+- Mobile → shows the full content inside a `Popover`
+
+Useful for:
+
+- Tables
+- Cards
+- Lists
+- Descriptions
+- Any layout with limited width
+
+---
+
+## Examples
+
+### Basic Usage
+
+<ComponentTabs name="long-text-demo" />
+
+---
+
+## Usage
+
+```tsx
+import { LongText } from "@/components/long-text";
+
+export function Example() {
+  return (
+    <div className="max-w-[200px]">
+      <LongText>
+        This is a very long text that will automatically truncate.
+      </LongText>
+    </div>
+  );
+}
+```
+
+---
+
+## Custom Styling
+
+```tsx
+<LongText
+  className="text-sm text-muted-foreground"
+  contentClassName="max-w-xs break-words"
+>
+  Very long content goes here...
+</LongText>
+```
+
+---
+
+## Table Example
+
+```tsx
+<table>
+  <tbody>
+    <tr>
+      <td className="w-[250px]">
+        <LongText>
+          This is a very long description inside a table cell.
+        </LongText>
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+---
+
+## Props
+
+| Prop               | Type              | Description                                                    |
+| ------------------ | ----------------- | -------------------------------------------------------------- |
+| `children`         | `React.ReactNode` | Text or content to render inside the component.                |
+| `className`        | `string`          | Additional class names applied to the truncated container.     |
+| `contentClassName` | `string`          | Additional class names applied to the tooltip/popover content. |
+
+---
+
+## Behavior
+
+| Screen Size              | Interaction                        |
+| ------------------------ | ---------------------------------- |
+| Desktop (`sm` and above) | Displays full text using `Tooltip` |
+| Mobile (`< sm`)          | Displays full text using `Popover` |
+
+---
+
+## Notes
+
+- The component only enables tooltip/popover when the content is actually overflowing.
+- Overflow detection is based on element `scrollWidth` / `offsetWidth`.
+- Works best when the parent container has a constrained width.
