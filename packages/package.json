@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/kombase.git",
+    "url": "https://github.com/fykom/kombase.git",
     "directory": "packages"
   },
-  "homepage": "https://github.com/your-org/kombase#readme",
+  "homepage": "https://github.com/fykom/kombase#readme",
   "bugs": {
-    "url": "https://github.com/your-org/kombase/issues"
+    "url": "https://github.com/fykom/kombase/issues"
   },
   "keywords": [
     "react",
