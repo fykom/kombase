@@ -109,6 +109,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -118,4 +119,5 @@ jobs:
 
       - name: Publish to NPM
         # Mem-publish package 'kombase' menggunakan otentikasi OIDC
-        run: pnpm -F kombase publish --access public --no-git-checks --provenance
+        working-directory: ./packages
+        run: npm publish --access public --provenance
