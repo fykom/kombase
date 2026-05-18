@@ -117,6 +117,9 @@ jobs:
       - name: Build Package
         run: pnpm build:kombase
 
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
       - name: Publish to NPM
         # Mem-publish package 'kombase' menggunakan otentikasi OIDC
         working-directory: ./packages
