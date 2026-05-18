@@ -1,56 +1,36 @@
-# =========================
-# Base image
-# =========================
-FROM node:22-alpine AS base
+FROM node:20-alpine AS base
 
-RUN corepack enable
 WORKDIR /app
 
-# =========================
-# Dependencies (IMPORTANT FIX HERE)
-# =========================
-FROM base AS deps
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 
-# copy workspace definition FIRST
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+FROM base AS builder
 
-# copy ALL workspace packages (INI YANG KAMU LUPA SEBELUMNYA)
-COPY docs ./docs
-COPY packages ./packages
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY docs/package.json ./docs/package.json
+COPY packages/package.json ./packages/package.json
 
-# install deps with strict lockfile
-RUN pnpm install --frozen-lockfile
+RUN pnpm fetch
 
-# =========================
-# Build stage
-# =========================
-FROM base AS build
-
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN pnpm -F docs build
+RUN pnpm install --frozen-lockfile
 
-# =========================
-# Runtime (vite preview server)
-# =========================
-FROM node:22-alpine AS runner
+RUN pnpm build:komdes
+RUN pnpm build:docs
+
+RUN pnpm deploy --filter docs --prod /prod
+
+FROM node:20-alpine AS production
 
 WORKDIR /app
 
-RUN corepack enable
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 
-ENV NODE_ENV=production
+COPY --from=builder /prod .
 
-# copy only needed output
-COPY --from=build /app/docs ./docs
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/package.json ./package.json
-COPY --from=build /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=builder /app/docs/build ./build
 
-WORKDIR /app/docs
+EXPOSE 3000
 
-EXPOSE 4173
-
-# production preview server
-CMD ["pnpm", "preview", "--host", "0.0.0.0", "--port", "4173"]
+CMD ["pnpm", "start"]

@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: Shared UI components for consistent, scalable multi-repo frontend development.
+description: Customizable Shadcn component and wrapper form validation with RHF and zod
 ---
 
 ## Overview
@@ -14,6 +14,7 @@ description: Shared UI components for consistent, scalable multi-repo frontend d
 ### Install shadcn/ui
 
 Ensure you have installed and configured [shadcn/ui](https://ui.shadcn.com/docs/installation) in your project. `komdes` relies on the shadcn component architecture for UI consistency.
+
 </Step>
 
 <Step>
@@ -21,28 +22,9 @@ Ensure you have installed and configured [shadcn/ui](https://ui.shadcn.com/docs/
 
 Run the following command using your preferred package manager:
 
-```bash
-pnpm add komdes
+```package-install
+komdes
 ```
+
 </Step>
 </Steps>
-
-## Setup Tailwind v4
-
-Import the theme in your global CSS file:
-
-```css title="src/styles.css"
-@import "tailwindcss";
-
-/* Scan Tailwind classes from the library */
-@source "../../node_modules/komdes";
-```
-
-## Components
-
-| Category       | Export                                                                     |
-| -------------- | -------------------------------------------------------------------------- |
-| **Form**       | `FormInput`, `FormInputGroup`, `FormRadioGroup`, `FormSwitch`, `DataTable` |
-| **Data Table** | `DataTable`, `DataTableToolbar`, `DataTablePagination`, and more           |
-| **Hooks**      | `useDataTable`, `useDebouncedCallback`                                     |
-| **Primitives** | `Input`, `Label`, `Form`, and all shadcn base components                   |

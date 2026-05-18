@@ -1,7 +1,7 @@
 {
   "name": "komdes",
   "version": "1.0.0",
-  "description": "Shared UI components and theme for Komdes ecosystem",
+  "description": "Shadcn UI components for React, built with Tailwind CSS and designed for form handling and design systems.",
   "main": "./dist/index.cjs",
   "type": "module",
   "module": "./dist/index.js",

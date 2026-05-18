@@ -22,3 +22,4 @@ export * from './components/form/form-textarea';
 export * from './components/hooks/use-data-table';
 export * from './components/long-text';
 export * from './components/long-text';
+export * from './components/long-text';

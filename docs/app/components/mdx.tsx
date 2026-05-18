@@ -1,4 +1,10 @@
-import { Pre } from 'fumadocs-ui/components/codeblock';
+import {
+  CodeBlockTab,
+  CodeBlockTabs,
+  CodeBlockTabsList,
+  CodeBlockTabsTrigger,
+  Pre,
+} from 'fumadocs-ui/components/codeblock';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { TypeTable } from 'fumadocs-ui/components/type-table';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
@@ -39,6 +45,10 @@ export function getMDXComponents(components?: MDXComponents) {
         <Changelogs />
       </Suspense>
     ),
+    CodeBlockTab,
+    CodeBlockTabs,
+    CodeBlockTabsList,
+    CodeBlockTabsTrigger,
     ComponentTabs: ({ ...props }: React.ComponentProps<typeof ComponentTabs>) => (
       <Suspense fallback={<Skeleton className="h-105 w-full rounded-xl" />}>
         <ComponentTabs {...props} />
