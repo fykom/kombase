@@ -4,4 +4,10 @@
 
 ### Minor Changes
 
+- 25b80a3: feat: introduce new FormDatePicker, LongText, PhoneInput, ConfirmDialog, FormSearchSelect and other UI components, alongside massive type safety improvements for forms
+
+## 1.1.0
+
+### Minor Changes
+
 - Initial release of the Kombase UI library. This version includes a core set of React components built with Radix UI, TanStack Table, and Tailwind CSS v4. It also features a centralized documentation system with automated changelog generation and standardized development workflows using Changesets.

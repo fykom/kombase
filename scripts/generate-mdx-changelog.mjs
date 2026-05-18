@@ -1,13 +1,7 @@
 import fs from 'node:fs';
-import path from 'node:path';
 
-/**
- * A simple script to convert standard CHANGELOG.md entries to Fumadocs MDX format.
- * This is a starting point for automation.
- */
-
-const PACKAGE_CHANGELOG = './packages/CHANGELOG.md'; // Adjust path if needed
-const OUTPUT_DIR = './docs/src/content/changelog';
+const PACKAGE_CHANGELOG = './packages/CHANGELOG.md';
+const OUTPUT_FILE = './docs/app/content/changelog.mdx';
 
 if (!fs.existsSync(PACKAGE_CHANGELOG)) {
   console.error('CHANGELOG.md not found at', PACKAGE_CHANGELOG);
@@ -16,33 +10,44 @@ if (!fs.existsSync(PACKAGE_CHANGELOG)) {
 
 const content = fs.readFileSync(PACKAGE_CHANGELOG, 'utf-8');
 
-// Regex to find the latest version block
-// Assumes format: ## [1.2.3] - 2024-01-01
-const versionRegex = /## \[([\d.]+)\] - (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## \[|$)/g;
+// Regex to find the latest version block from Changesets
+const versionRegex = /## ([\d.]+)([\s\S]*?)(?=## [\d.]|$)/;
 const match = versionRegex.exec(content);
 
 if (match) {
   const version = match[1];
-  const date = match[2];
-  const body = match[3].trim();
+  const body = match[2].trim();
+  const date = new Date().toISOString().split('T')[0];
 
-  const title = `Release v${version}`;
-  const description = `Update for version ${version} shipped on ${date}.`;
+  const newEntry = `\n## [v${version}] - ${date}\n\n${body}\n\n---\n`;
 
-  const mdxContent = `---
-title: ${title}
-description: ${description}
-date: ${date}
----
+  if (!fs.existsSync(OUTPUT_FILE)) {
+    console.error('Output file not found:', OUTPUT_FILE);
+    process.exit(1);
+  }
 
-${body}
-`;
+  let mdxContent = fs.readFileSync(OUTPUT_FILE, 'utf-8');
+  
+  // Prevent duplicate insertion
+  if (mdxContent.includes(`## [v${version}]`)) {
+    console.info(`Version v${version} already exists in changelog.mdx. Skipping.`);
+    process.exit(0);
+  }
 
-  const fileName = `${date}-v${version.replace(/\./g, '-')}.mdx`;
-  const outputPath = path.join(OUTPUT_DIR, fileName);
+  // Insert right after the frontmatter
+  // Frontmatter ends with the second '---'
+  const frontmatterEnd = mdxContent.indexOf('---', 4) + 3;
+  
+  const before = mdxContent.slice(0, frontmatterEnd);
+  const after = mdxContent.slice(frontmatterEnd);
 
-  fs.writeFileSync(outputPath, mdxContent);
-  console.info(`Generated MDX changelog: ${outputPath}`);
+  // Update the date in frontmatter to today
+  const updatedBefore = before.replace(/date: .*/, `date: ${date}`);
+
+  const updatedContent = `${updatedBefore}\n${newEntry}${after}`;
+  fs.writeFileSync(OUTPUT_FILE, updatedContent);
+
+  console.info(`Successfully added v${version} to ${OUTPUT_FILE}`);
 } else {
   console.info('No version entries found in CHANGELOG.md');
 }

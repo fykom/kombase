@@ -1,6 +1,6 @@
 {
   "name": "kombase",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shadcn UI components for React, built with Tailwind CSS and designed for form handling and design systems.",
   "main": "./dist/index.cjs",
   "type": "module",
