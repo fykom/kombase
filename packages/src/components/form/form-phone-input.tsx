@@ -9,9 +9,9 @@ import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/f
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
-type FormPhoneInputProps<T extends FieldValues> = {
-  control: Control<T>;
-  name: FieldPath<T>;
+type FormPhoneInputProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
   label?: string;
   phoneInputProps?: Omit<
     React.ComponentProps<typeof PhoneInput>,
@@ -24,7 +24,7 @@ type FormPhoneInputProps<T extends FieldValues> = {
   isVisibleCountrySelect?: boolean;
 };
 
-export function FormPhoneInput<T extends FieldValues>({
+export function FormPhoneInput<TFieldValues extends FieldValues>({
   control,
   name,
   label,
@@ -34,7 +34,7 @@ export function FormPhoneInput<T extends FieldValues>({
   className,
   labelClassName,
   isVisibleCountrySelect = true,
-}: FormPhoneInputProps<T>) {
+}: FormPhoneInputProps<TFieldValues>) {
   return (
     <FormField
       control={control}

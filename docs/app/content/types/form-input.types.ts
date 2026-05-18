@@ -1,20 +1,20 @@
-import type { Control } from 'react-hook-form';
+import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import type { Input } from '@/components/ui/input';
 
 /**
  * Props accepted by the `FormInput` component.
  */
-export interface FormInputProps {
+export interface FormInput<TFieldValues extends FieldValues> {
   /**
    * The React Hook Form `control` object returned by `useForm`.
    */
-  control: Control;
+  control: Control<TFieldValues>;
 
   /**
    * Dot-notation path to the field inside the form schema.
    * Fully type-safe — TypeScript will error if the path does not exist.
    */
-  name: string;
+  name: FieldPath<TFieldValues>;
 
   /**
    * Optional label rendered above the input using a `<Label>` element.

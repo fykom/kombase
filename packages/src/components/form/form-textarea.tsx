@@ -5,9 +5,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
-type FormTextareaProps<T extends FieldValues> = {
-  control: Control<T>;
-  name: FieldPath<T>;
+type FormTextareaProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
   label?: string;
   showCharacterCount?: boolean;
   maxLength?: number;
@@ -17,7 +17,7 @@ type FormTextareaProps<T extends FieldValues> = {
   labelClassName?: string;
 };
 
-export function FormTextarea<T extends FieldValues>({
+export function FormTextarea<TFieldValues extends FieldValues>({
   control,
   name,
   label,
@@ -27,7 +27,7 @@ export function FormTextarea<T extends FieldValues>({
   layout = 'vertical',
   className,
   labelClassName,
-}: FormTextareaProps<T>) {
+}: FormTextareaProps<TFieldValues>) {
   return (
     <FormField
       control={control}

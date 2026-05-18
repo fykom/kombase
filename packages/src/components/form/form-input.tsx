@@ -5,9 +5,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
-type FormInputProps<T extends FieldValues> = {
-  control: Control<T>;
-  name: FieldPath<T>;
+type FormInputProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
   label?: string;
   inputProps?: React.ComponentProps<typeof Input>;
   layout?: 'vertical' | 'horizontal';
@@ -15,7 +15,7 @@ type FormInputProps<T extends FieldValues> = {
   labelClassName?: string;
 };
 
-export function FormInput<T extends FieldValues>({
+export function FormInput<TFieldValues extends FieldValues>({
   control,
   name,
   label,
@@ -23,7 +23,7 @@ export function FormInput<T extends FieldValues>({
   layout = 'vertical',
   className,
   labelClassName,
-}: FormInputProps<T>) {
+}: FormInputProps<TFieldValues>) {
   return (
     <FormField
       control={control}

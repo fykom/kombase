@@ -4,9 +4,9 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/comp
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
 
-type FormSwitchProps<T extends FieldValues> = {
-  control: Control<T>;
-  name: FieldPath<T>;
+type FormSwitchProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
   label?: string;
   description?: string;
   layout?: 'default' | 'inline';
@@ -15,7 +15,7 @@ type FormSwitchProps<T extends FieldValues> = {
   switchProps?: Omit<React.ComponentProps<typeof Switch>, 'checked' | 'onCheckedChange'>;
 };
 
-export function FormSwitch<T extends FieldValues>({
+export function FormSwitch<TFieldValues extends FieldValues>({
   control,
   name,
   label,
@@ -24,7 +24,7 @@ export function FormSwitch<T extends FieldValues>({
   className,
   labelClassName,
   switchProps,
-}: FormSwitchProps<T>) {
+}: FormSwitchProps<TFieldValues>) {
   return (
     <FormField
       control={control}

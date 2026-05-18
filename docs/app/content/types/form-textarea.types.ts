@@ -1,20 +1,20 @@
-import type { Control } from 'react-hook-form';
+import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import type { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props accepted by the `FormTextarea` component.
  */
-export interface FormTextareaProps {
+export interface FormTextarea<TFieldValues extends FieldValues> {
   /**
    * The React Hook Form `control` object returned by `useForm`.
    */
-  control: Control;
+  control: Control<TFieldValues>;
 
   /**
    * Dot-notation path to the field inside the form schema.
    * Fully type-safe — TypeScript will error if the path does not exist.
    */
-  name: string;
+  name: FieldPath<TFieldValues>;
 
   /**
    * Optional label rendered above the textarea using a `<Label>` element.

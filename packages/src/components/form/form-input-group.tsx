@@ -9,9 +9,9 @@ import {
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
-type FormInputGroupProps<T extends FieldValues> = {
-  control: Control<T>;
-  name: FieldPath<T>;
+type FormInputGroupProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
   label?: string;
   addon?: React.ReactNode;
   inputGroupProps?: React.ComponentProps<typeof InputGroupInput>;
@@ -20,7 +20,7 @@ type FormInputGroupProps<T extends FieldValues> = {
   labelClassName?: string;
 };
 
-export function FormInputGroup<T extends FieldValues>({
+export function FormInputGroup<TFieldValues extends FieldValues>({
   control,
   name,
   label,
@@ -29,7 +29,7 @@ export function FormInputGroup<T extends FieldValues>({
   layout = 'vertical',
   className,
   labelClassName,
-}: FormInputGroupProps<T>) {
+}: FormInputGroupProps<TFieldValues>) {
   return (
     <FormField
       control={control}

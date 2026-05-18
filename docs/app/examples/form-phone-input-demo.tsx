@@ -1,9 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormPhoneInput } from 'komdes';
+import { FormPhoneInput, type PhoneInputProps } from 'komdes';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
-import type { PhoneInputProps } from '@/components/dynamic/phone-input';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 
@@ -20,7 +19,7 @@ const NORTH_AMERICAN_COUNTRIES: PhoneInputProps['countries'] = [
   { code: 'BR', dialCode: '+55', flag: '🇧🇷', name: 'Brazil' },
 ];
 
-export default function FormInputDemo() {
+export default function FormPhoneInputDemo() {
   const [formLayout, setFormLayout] = useState<'vertical' | 'horizontal'>('vertical');
 
   const form = useForm<FormData>({

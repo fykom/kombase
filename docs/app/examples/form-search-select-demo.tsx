@@ -1,7 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSearchSelect } from 'komdes';
-import { GlobeIcon } from 'lucide-react';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 import { Button } from '@/components/ui/button';
@@ -9,19 +7,15 @@ import {
   ComboboxChip,
   ComboboxChips,
   ComboboxChipsInput,
-  ComboboxCollection,
   ComboboxContent,
   ComboboxEmpty,
-  ComboboxGroup,
   ComboboxInput,
   ComboboxItem,
-  ComboboxLabel,
   ComboboxList,
   ComboboxTrigger,
   ComboboxValue,
 } from '@/components/ui/combobox';
 import { Form } from '@/components/ui/form';
-import { InputGroupAddon } from '@/components/ui/input-group';
 
 const FRAMEWORKS = ['Next.js', 'SvelteKit', 'Nuxt.js', 'Remix', 'Astro'] as const;
 
@@ -78,42 +72,6 @@ const COUNTRIES = [
   },
 ];
 
-const TIMEZONES = [
-  {
-    items: [
-      '(GMT-5) New York',
-      '(GMT-8) Los Angeles',
-      '(GMT-6) Chicago',
-      '(GMT-5) Toronto',
-      '(GMT-8) Vancouver',
-      '(GMT-3) São Paulo',
-    ],
-    value: 'Americas',
-  },
-  {
-    items: [
-      '(GMT+0) London',
-      '(GMT+1) Paris',
-      '(GMT+1) Berlin',
-      '(GMT+1) Rome',
-      '(GMT+1) Madrid',
-      '(GMT+1) Amsterdam',
-    ],
-    value: 'Europe',
-  },
-  {
-    items: [
-      '(GMT+9) Tokyo',
-      '(GMT+8) Shanghai',
-      '(GMT+8) Singapore',
-      '(GMT+4) Dubai',
-      '(GMT+11) Sydney',
-      '(GMT+9) Seoul',
-    ],
-    value: 'Asia/Pacific',
-  },
-] as const;
-
 const formSchema = z.object({
   basic: z.string().min(1, 'Please select one'),
   inputGroup: z.string({
@@ -136,8 +94,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function FormSearchSelectDemo() {
-  const [formLayout, setFormLayout] = useState<'vertical' | 'horizontal'>('vertical');
-
   const form = useForm<FormData>({
     defaultValues: {
       basic: '',
@@ -153,31 +109,6 @@ export default function FormSearchSelectDemo() {
 
   return (
     <div className="flex flex-col items-center w-full max-w-2xl space-y-6 mx-auto">
-      <div className="flex items-center space-x-1 bg-secondary/60 p-1 rounded-lg w-full">
-        <button
-          className={`flex-1 px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
-            formLayout === 'vertical'
-              ? 'bg-background shadow-sm text-foreground'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-          onClick={() => setFormLayout('vertical')}
-          type="button"
-        >
-          Vertical Layout
-        </button>
-        <button
-          className={`flex-1 px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
-            formLayout === 'horizontal'
-              ? 'bg-background shadow-sm text-foreground'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
-          onClick={() => setFormLayout('horizontal')}
-          type="button"
-        >
-          Horizontal Layout
-        </button>
-      </div>
-
       <Form {...form}>
         <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit)}>
           <FormSearchSelect
@@ -185,7 +116,7 @@ export default function FormSearchSelectDemo() {
             control={form.control}
             label="Basic"
             labelClassName="sm:w-[140px]"
-            layout={formLayout}
+            layout="vertical"
             name="basic"
             render={() => (
               <>
@@ -209,7 +140,7 @@ export default function FormSearchSelectDemo() {
             control={form.control}
             label="Search select multiple"
             labelClassName="sm:w-[200px]"
-            layout={formLayout}
+            layout="vertical"
             multiple
             name="multiple"
             render={({ anchor }) => (
@@ -247,7 +178,7 @@ export default function FormSearchSelectDemo() {
             control={form.control}
             label="With search box"
             labelClassName="sm:w-[140px]"
-            layout={formLayout}
+            layout="vertical"
             name="searchbox"
             render={() => (
               <>
@@ -266,41 +197,6 @@ export default function FormSearchSelectDemo() {
                       <ComboboxItem key={item.code} value={item}>
                         {item.label}
                       </ComboboxItem>
-                    )}
-                  </ComboboxList>
-                </ComboboxContent>
-              </>
-            )}
-          />
-
-          <FormSearchSelect
-            comboboxProps={{ items: TIMEZONES }}
-            control={form.control}
-            label="Search input group"
-            labelClassName="sm:w-[200px]"
-            layout={formLayout}
-            name="inputGroup"
-            render={() => (
-              <>
-                <ComboboxInput placeholder="Select a timezone">
-                  <InputGroupAddon>
-                    <GlobeIcon />
-                  </InputGroupAddon>
-                </ComboboxInput>
-                <ComboboxContent alignOffset={-28} className="w-60">
-                  <ComboboxEmpty>No timezones found.</ComboboxEmpty>
-                  <ComboboxList>
-                    {(group) => (
-                      <ComboboxGroup items={group.items} key={group.value}>
-                        <ComboboxLabel>{group.value}</ComboboxLabel>
-                        <ComboboxCollection>
-                          {(item) => (
-                            <ComboboxItem key={item} value={item}>
-                              {item}
-                            </ComboboxItem>
-                          )}
-                        </ComboboxCollection>
-                      </ComboboxGroup>
                     )}
                   </ComboboxList>
                 </ComboboxContent>

@@ -180,183 +180,6 @@ const { table } = useDataTable({
   </Step>
 </Steps>
 
-## API Reference
-
-### Column Definitions
-
-The column definitions are used to define the columns of the data table.
-
-```tsx
-const columns = React.useMemo<ColumnDef<Project>[]>(
-  () => [
-    {
-      // Required: Unique identifier for the column
-      id: "title", // [!code highlight]
-      // Required: Key to access the data, `accessorFn` can also be used
-      accessorKey: "title", // [!code highlight]
-      // Optional: Custom header component
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Title" />
-      ),
-      // Optional: Custom cell component
-      cell: ({ row }) => <div>{row.getValue("title")}</div>,
-      // Optional: Meta options for filtering, sorting, and view options
-      meta: {
-        label: "Title",
-        placeholder: "Search titles...",
-        variant: "text",
-        icon: Text,
-      },
-      // By default, the column will not be filtered. Set to `true` to enable filtering.
-      enableColumnFilter: true, // [!code highlight]
-    },
-    {
-      id: "status",
-      // Access nested data using `accessorFn`
-      accessorFn: (row) => row.lineItem.status,
-      header: "Status",
-      meta: {
-        label: "Status",
-        variant: "select",
-        options: [
-          { label: "Active", value: "active" },
-          { label: "Inactive", value: "inactive" },
-        ],
-      },
-      enableColumnFilter: true,
-    },
-  ],
-  [],
-);
-```
-
-#### Properties
-
-Core configuration options for defining columns.
-
-<PropsTable
-  data={[
-    {
-      title: "id",
-      description: "Required: Unique identifier for the column",
-    },
-    {
-      title: "accessorKey",
-      description: "Required: Key to access the data from the row",
-    },
-    {
-      title: "accessorFn",
-      description: "Optional: Custom accessor function to access data",
-    },
-    {
-      title: "header",
-      description: "Optional: Custom header component with column props",
-    },
-    {
-      title: "cell",
-      description: "Optional: Custom cell component with row props",
-    },
-    {
-      title: "meta",
-      description: "Optional: Meta options for accessing column metadata",
-    },
-    {
-      title: "enableColumnFilter",
-      description:
-        "By default, the column will not be filtered. Set to `true` to enable filtering",
-    },
-    {
-      title: "enableSorting",
-      description: "Enable sorting for this column",
-    },
-    {
-      title: "enableHiding",
-      description: "Enable column visibility toggle",
-    },
-  ]}
-/>
-
-#### Column Meta
-
-Column meta options for filtering, sorting, and view options.
-
-<PropsTable
-  data={[
-    {
-      title: "label",
-      description: "The display name for the column",
-    },
-    {
-      title: "placeholder",
-      description: "The placeholder text for filter inputs",
-    },
-    {
-      title: "variant",
-      description:
-        "The type of filter to use (`text`, `number`, `select`, etc.)",
-    },
-    {
-      title: "options",
-      description:
-        "For select/multi-select filters, an array of options with `label`, `value`, and optional `count` and `icon`",
-    },
-    {
-      title: "range",
-      description: "For range filters, a tuple of `[min, max]` values",
-    },
-    {
-      title: "unit",
-      description: "For numeric filters, the unit to display (e.g., 'hr', '$')",
-    },
-    {
-      title: "icon",
-      description: "The react component to use as an icon for the column",
-    },
-  ]}
-/>
-
-#### Filter Variants
-
-Available filter variants for [column meta](#column-meta).
-
-<PropsTable
-  variant="title"
-  data={[
-    {
-      title: "text",
-      description: "Text search with contains, equals, etc.",
-    },
-    {
-      title: "number",
-      description: "Numeric filters with equals, greater than, less than, etc.",
-    },
-    {
-      title: "range",
-      description: "Range filters with minimum and maximum values",
-    },
-    {
-      title: "date",
-      description: "Date filters with equals, before, after, etc.",
-    },
-    {
-      title: "dateRange",
-      description: "Date range filters with start and end dates",
-    },
-    {
-      title: "boolean",
-      description: "Boolean filters with true/false values",
-    },
-    {
-      title: "select",
-      description: "Single-select filters with predefined options",
-    },
-    {
-      title: "multiSelect",
-      description: "Multi-select filters with predefined options",
-    },
-  ]}
-/>
-
 ## useDataTable
 
 A hook for initializing the data table with state management.
@@ -560,3 +383,180 @@ function Page() {
 | `withPagination`  | `boolean`  | `true`     | Whether to render the skeleton for the bottom pagination controls.                    |
 | `shrinkZero`      | `boolean`  | `false`    | If `true`, columns will possess a `min-width` matching their respective `cellWidths`. |
 | `className`       | `string`   | —          | Custom CSS class for the main container.                                              |
+
+## API Reference
+
+### Column Definitions
+
+The column definitions are used to define the columns of the data table.
+
+```tsx
+const columns = React.useMemo<ColumnDef<Project>[]>(
+  () => [
+    {
+      // Required: Unique identifier for the column
+      id: "title", // [!code highlight]
+      // Required: Key to access the data, `accessorFn` can also be used
+      accessorKey: "title", // [!code highlight]
+      // Optional: Custom header component
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Title" />
+      ),
+      // Optional: Custom cell component
+      cell: ({ row }) => <div>{row.getValue("title")}</div>,
+      // Optional: Meta options for filtering, sorting, and view options
+      meta: {
+        label: "Title",
+        placeholder: "Search titles...",
+        variant: "text",
+        icon: Text,
+      },
+      // By default, the column will not be filtered. Set to `true` to enable filtering.
+      enableColumnFilter: true, // [!code highlight]
+    },
+    {
+      id: "status",
+      // Access nested data using `accessorFn`
+      accessorFn: (row) => row.lineItem.status,
+      header: "Status",
+      meta: {
+        label: "Status",
+        variant: "select",
+        options: [
+          { label: "Active", value: "active" },
+          { label: "Inactive", value: "inactive" },
+        ],
+      },
+      enableColumnFilter: true,
+    },
+  ],
+  [],
+);
+```
+
+#### Properties
+
+Core configuration options for defining columns.
+
+<PropsTable
+  data={[
+    {
+      title: "id",
+      description: "Required: Unique identifier for the column",
+    },
+    {
+      title: "accessorKey",
+      description: "Required: Key to access the data from the row",
+    },
+    {
+      title: "accessorFn",
+      description: "Optional: Custom accessor function to access data",
+    },
+    {
+      title: "header",
+      description: "Optional: Custom header component with column props",
+    },
+    {
+      title: "cell",
+      description: "Optional: Custom cell component with row props",
+    },
+    {
+      title: "meta",
+      description: "Optional: Meta options for accessing column metadata",
+    },
+    {
+      title: "enableColumnFilter",
+      description:
+        "By default, the column will not be filtered. Set to `true` to enable filtering",
+    },
+    {
+      title: "enableSorting",
+      description: "Enable sorting for this column",
+    },
+    {
+      title: "enableHiding",
+      description: "Enable column visibility toggle",
+    },
+  ]}
+/>
+
+#### Column Meta
+
+Column meta options for filtering, sorting, and view options.
+
+<PropsTable
+  data={[
+    {
+      title: "label",
+      description: "The display name for the column",
+    },
+    {
+      title: "placeholder",
+      description: "The placeholder text for filter inputs",
+    },
+    {
+      title: "variant",
+      description:
+        "The type of filter to use (`text`, `number`, `select`, etc.)",
+    },
+    {
+      title: "options",
+      description:
+        "For select/multi-select filters, an array of options with `label`, `value`, and optional `count` and `icon`",
+    },
+    {
+      title: "range",
+      description: "For range filters, a tuple of `[min, max]` values",
+    },
+    {
+      title: "unit",
+      description: "For numeric filters, the unit to display (e.g., 'hr', '$')",
+    },
+    {
+      title: "icon",
+      description: "The react component to use as an icon for the column",
+    },
+  ]}
+/>
+
+#### Filter Variants
+
+Available filter variants for [column meta](#column-meta).
+
+<PropsTable
+  variant="title"
+  data={[
+    {
+      title: "text",
+      description: "Text search with contains, equals, etc.",
+    },
+    {
+      title: "number",
+      description: "Numeric filters with equals, greater than, less than, etc.",
+    },
+    {
+      title: "range",
+      description: "Range filters with minimum and maximum values",
+    },
+    {
+      title: "date",
+      description: "Date filters with equals, before, after, etc.",
+    },
+    {
+      title: "dateRange",
+      description: "Date range filters with start and end dates",
+    },
+    {
+      title: "boolean",
+      description: "Boolean filters with true/false values",
+    },
+    {
+      title: "select",
+      description: "Single-select filters with predefined options",
+    },
+    {
+      title: "multiSelect",
+      description: "Multi-select filters with predefined options",
+    },
+  ]}
+/>

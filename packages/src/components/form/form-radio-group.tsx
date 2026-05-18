@@ -13,21 +13,18 @@ type RadioOption<TValue extends string = string> = {
   icon?: React.ElementType;
 };
 
-type FormRadioGroupProps<
-  TFieldValues extends FieldValues,
-  TName extends FieldPath<TFieldValues>,
-> = {
+type FormRadioGroupProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
-  name: TName;
-  options?: readonly RadioOption<FieldPathValue<TFieldValues, TName> & string>[];
+  name: FieldPath<TFieldValues>;
+  options?: readonly RadioOption<FieldPathValue<TFieldValues, FieldPath<TFieldValues>> & string>[];
   label?: string;
   className?: string;
   radioGroupProps?: Omit<ComponentProps<typeof RadioGroup>, 'value' | 'onValueChange'>;
   renderOption?: (
-    option: Readonly<RadioOption<FieldPathValue<TFieldValues, TName> & string>>,
+    option: Readonly<RadioOption<FieldPathValue<TFieldValues, FieldPath<TFieldValues>> & string>>,
     isSelected: boolean,
   ) => React.ReactNode;
-  onValueChange?: (value: FieldPathValue<TFieldValues, TName>) => void;
+  onValueChange?: (value: FieldPathValue<TFieldValues, FieldPath<TFieldValues>>) => void;
   layout?: 'vertical' | 'horizontal';
   labelClassName?: string;
 };
@@ -46,7 +43,7 @@ export function FormRadioGroup<
   onValueChange,
   layout = 'vertical',
   labelClassName,
-}: FormRadioGroupProps<TFieldValues, TName>) {
+}: FormRadioGroupProps<TFieldValues>) {
   return (
     <FormField
       control={control}

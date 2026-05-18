@@ -5,9 +5,9 @@ import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/f
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
-type FormSearchSelectProps<T extends FieldValues> = {
-  control: Control<T>;
-  name: FieldPath<T>;
+type FormSearchSelectProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
   multiple?: boolean;
   label?: string;
   comboboxProps?: Omit<
@@ -20,7 +20,7 @@ type FormSearchSelectProps<T extends FieldValues> = {
   labelClassName?: string;
 };
 
-export function FormSearchSelect<T extends FieldValues>({
+export function FormSearchSelect<TFieldValues extends FieldValues>({
   control,
   name,
   render,
@@ -30,7 +30,7 @@ export function FormSearchSelect<T extends FieldValues>({
   className,
   labelClassName,
   multiple = false,
-}: FormSearchSelectProps<T>) {
+}: FormSearchSelectProps<TFieldValues>) {
   const anchor = useComboboxAnchor();
 
   return (

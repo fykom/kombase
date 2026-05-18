@@ -1,24 +1,20 @@
 import type { ComponentProps } from 'react';
-
-/**
- * Type stub for React Hook Form's Control object.
- */
-export type Control = object;
+import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 
 /**
  * Props accepted by the `FormSwitch` component.
  */
-export interface FormSwitchProps {
+export interface FormSwitch<TFieldValues extends FieldValues> {
   /**
    * The React Hook Form `control` object returned by `useForm`.
    */
-  control: Control;
+  control: Control<TFieldValues>;
 
   /**
    * Dot-notation path to the boolean field inside the form schema.
    * Fully type-safe — TypeScript will error if the path does not exist.
    */
-  name: string;
+  name: FieldPath<TFieldValues>;
 
   /**
    * Primary label shown next to the switch.
