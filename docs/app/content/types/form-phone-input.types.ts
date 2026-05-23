@@ -1,6 +1,6 @@
-import type { PhoneInput as PI } from "kombase";
-import type { Control } from "react-hook-form";
-import type { Popover, PopoverTrigger } from "@/components/ui/popover";
+import type { PhoneInput as PI } from 'kombase';
+import type { Control } from 'react-hook-form';
+import type { Popover, PopoverTrigger } from '@/components/ui/popover';
 
 /**
  * Props for the `PhoneInput` component.
@@ -92,12 +92,8 @@ export interface PhoneInput {
  * trigger behavior and styling.
  */
 export interface PhoneInputCountrySelect
-  extends
-    React.ComponentProps<typeof Popover>,
-    Pick<
-      React.ComponentProps<typeof PopoverTrigger>,
-      "disabled" | "className"
-    > {}
+  extends React.ComponentProps<typeof Popover>,
+    Pick<React.ComponentProps<typeof PopoverTrigger>, 'disabled' | 'className'> {}
 
 /**
  * Props accepted by the `FormPhoneInput` component.
@@ -127,10 +123,7 @@ export interface FormPhoneInput {
    * configuration like `defaultCountry`, `countries`, `placeholder`,
    * `disabled`, `readOnly`, `required`, `invalid`, `showFlag`, etc.
    */
-  phoneInputProps?: Omit<
-    React.ComponentProps<typeof PI>,
-    keyof React.ComponentProps<"div">
-  >;
+  phoneInputProps?: Omit<React.ComponentProps<typeof PI>, keyof React.ComponentProps<'div'>>;
 
   /**
    * Layout orientation of the form item.
@@ -139,7 +132,7 @@ export interface FormPhoneInput {
    *
    * @default "vertical"
    */
-  layout?: "vertical" | "horizontal";
+  layout?: 'vertical' | 'horizontal';
 
   /**
    * Additional class names applied to the outermost `FormItem` wrapper.
