@@ -1,15 +1,9 @@
 import { RootProvider } from 'fumadocs-ui/provider/react-router';
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from 'react-router';
-import type { Route } from './+types/root';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useNavigate } from 'react-router';
 import './styles/global.css';
+import { Button } from '@/components/ui/button';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { GoeyToaster } from './components/goey-toaster';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,6 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <RootProvider>
           <TooltipProvider>{children}</TooltipProvider>
         </RootProvider>
+        <GoeyToaster duration={5000} position="bottom-right" />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -36,29 +31,24 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404 ? 'The requested page could not be found.' : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
+export function ErrorBoundary() {
+  const navigate = useNavigate();
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <div className="h-svh">
+      <div className="m-auto flex h-full w-full flex-col items-center justify-center gap-2">
+        <h1 className="text-[7rem] leading-tight font-bold">404</h1>
+        <span className="font-medium">Oops! Page Not Found!</span>
+        <p className="text-center text-muted-foreground">
+          It seems like the page you're looking for <br />
+          does not exist or might have been removed.
+        </p>
+        <div className="mt-6 flex gap-4">
+          <Button onClick={() => navigate(-1)} variant="outline">
+            Go Back
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
