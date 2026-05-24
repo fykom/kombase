@@ -1,8 +1,28 @@
 ---
 title: Changelog
 description: Latest updates, improvements, and announcements.
-date: 2026-05-18
+date: 2026-05-24
 ---
+
+## [v1.2.0] - 2026-05-24
+
+### Minor Changes
+
+- **Tour Component**: Added a highly interactive and flexible step-by-step onboarding tour component (`Tour`, `TourStep`, `TourSpotlight`, `TourClose`, `TourNext`, etc.) built on top of `@floating-ui/react-dom`.
+- **Avatar Group Component**: Added a new component to display collections of avatars with support for truncation, overflow counters, RTL layouts, and custom icons.
+- **Rating Component**: Added a customizable star-rating component featuring controlled state management, custom themes, and seamless form integration.
+- **Timeline Component**: Added a chronological timeline component supporting alternate positioning, horizontal layouts, custom dot indicators, and RTL options.
+- **Stepper Component**: Added a progress steps component for multi-step flows, complete with vertical layout options and form validation examples.
+- **Status Component**: Added a status badge/indicator component for clear visual feedback.
+- **Goey Toaster Component**: Added an animated, liquid-like gooey toast notification component integrated directly into the core layout.
+- **Form Components Directory Restructuring**: Moved all form-related MDX documentation files (`form-input`, `form-textarea`, `form-switch`, etc.) into a dedicated `content/form/` subdirectory.
+- **Hooks Relocation**: Moved the `useLazyRef` hook to `packages/src/components/hooks/use-lazy-ref.ts` for a cleaner package architecture and optimized reference management.
+- **Biome Linter**: Updated the Biome schema version and optimized formatting configurations.
+- **Shared Types**: Added global shared type definitions (e.g., `EmptyProps`) in `docs/app/types.ts`.
+- **Dependency Upgrades**: Cleaned up and updated package dependencies, and regenerated lockfile configurations.
+
+---
+
 
 ## [v1.1.0] - 2026-05-18
 
