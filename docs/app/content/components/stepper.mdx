@@ -1,0 +1,87 @@
+---
+title: Stepper
+description: A flexible multi-step process indicator component supporting custom orientations, step validation, content switching, and state management.
+preview: false
+---
+
+## Examples
+
+### Vertical Orientation
+
+Position the list and items vertically for layouts such as tracking orders or timelines.
+
+<ComponentTabs name="stepper-vertical-demo" scalePreview />
+
+### Form Wizard with Validation
+
+Validate inputs at each step dynamically before letting users navigate forward.
+
+<ComponentTabs name="stepper-form-demo" scalePreview />
+
+## API
+
+### Stepper
+
+The wrapper component that holds the global state, validation handlers, and coordinates active steps.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="Stepper" />
+
+### StepperList
+
+A layout container that holds and manages keyboard tab focus between step triggers.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperList" />
+
+### StepperItem
+
+A wrapper for an individual step trigger and its subsequent separator.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperItem" />
+
+### StepperTrigger
+
+An interactive trigger (button) used to navigate to a specific step.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperTrigger" />
+
+### StepperIndicator
+
+A visual indicator displaying the step number or a completed checkmark. Can be customized with a callback.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperIndicator" />
+
+### StepperSeparator
+
+A visual line divider connecting adjacent step indicators.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperSeparator" />
+
+### StepperTitle
+
+Text wrapper for the name/title of a step.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperTitle" />
+
+### StepperDescription
+
+Text wrapper for secondary status/subtext explaining a step.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperDescription" />
+
+### StepperContent
+
+The container representing the active step's panel. Displays only when its value matches the current active step.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperContent" />
+
+### StepperPrev
+
+A convenience button to transition to the previous step in the sequence.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperPrev" />
+
+### StepperNext
+
+A convenience button to transition to the next step in the sequence, running step validation if defined.
+
+<AutoTypeTable path="../types/stepper.types.ts" name="StepperNext" />
