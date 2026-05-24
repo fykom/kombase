@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { format } from 'date-fns';
+import dayjs from 'dayjs';
+import { goeyToast } from 'goey-toast';
 import { FormDatePicker } from 'kombase';
 import { useState } from 'react';
 import type { DateRange } from 'react-day-picker';
@@ -33,7 +34,22 @@ export default function FormDatePickerDemo() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (_data: FormData) => {};
+  const onSubmit = (_data: FormData) => {
+    goeyToast.success('Form submitted successfully!', {
+      description: (
+        <div className="space-y-1">
+          <p>
+            <strong>Selected Date:</strong> {dayjs(_data.date).format('PPP')}
+          </p>
+
+          <p>
+            <strong>Selected Date Range:</strong>{' '}
+            {`${dayjs(_data.dateRange.from).format('PPP')} - ${dayjs(_data.dateRange.to).format('PPP')}`}
+          </p>
+        </div>
+      ),
+    });
+  };
 
   const bookedDates = Array.from(
     { length: 15 },
@@ -81,7 +97,7 @@ export default function FormDatePickerDemo() {
                 modifiersClassNames: { booked: '[&>button]:line-through opacity-100' },
               }}
               formatLabel={(value) =>
-                value instanceof Date ? format(value, 'PPP') : 'Pick a date'
+                value instanceof Date ? dayjs(value).format('PPP') : 'Pick a date'
               }
               label="Date"
               layout={formLayout}
@@ -111,10 +127,10 @@ export default function FormDatePickerDemo() {
                 }
 
                 if (!range.to) {
-                  return format(range.from, 'PPP');
+                  return dayjs(range.from).format('PPP');
                 }
 
-                return `${format(range.from, 'PPP')} - ${format(range.to, 'PPP')}`;
+                return `${dayjs(range.from).format('PPP')} - ${dayjs(range.to).format('PPP')}`;
               }}
               label="Date Range"
               layout={formLayout}

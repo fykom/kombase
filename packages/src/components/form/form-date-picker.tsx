@@ -1,7 +1,7 @@
-import { format } from 'date-fns';
+import dayjs from 'dayjs';
 import { CalendarIcon } from 'lucide-react';
 import React from 'react';
-import type { DateRange, PropsMulti, PropsRange, PropsSingle } from 'react-day-picker';
+import type { DateRange } from 'react-day-picker';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { Calendar } from '@/components/ui/calendar';
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
@@ -23,7 +23,7 @@ type BaseProps<TFieldValues extends FieldValues> = {
   }>;
 };
 
-type CalendarProps = PropsSingle | PropsRange | PropsMulti;
+type CalendarProps = React.ComponentProps<typeof Calendar>;
 
 type DatePickerProps<TFieldValues extends FieldValues> = BaseProps<TFieldValues> & {
   datePickerProps: CalendarProps;
@@ -58,11 +58,11 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
         const defaultLabel = isRange
           ? rangeValue?.from
             ? rangeValue.to
-              ? `${format(rangeValue.from, 'PPP')} - ${format(rangeValue.to, 'PPP')}`
-              : format(rangeValue.from, 'PPP')
+              ? `${dayjs(rangeValue.from).format('PPP')} - ${dayjs(rangeValue.to).format('PPP')}`
+              : dayjs(rangeValue.from).format('PPP')
             : 'Pick a date range'
           : singleValue
-            ? format(singleValue, 'PPP')
+            ? dayjs(singleValue).format('PPP')
             : 'Pick a date';
 
         const text = formatLabel?.(field.value) ?? defaultLabel;
@@ -104,7 +104,14 @@ export function FormDatePicker<TFieldValues extends FieldValues>({
                     })}
                   </PopoverTrigger>
                   <PopoverContent>
-                    <Calendar id={field.name} {...datePickerProps} {...field} />
+                    <Calendar
+                      {...({
+                        id: field.name,
+                        ...datePickerProps,
+                        onSelect: field.onChange,
+                        selected: field.value,
+                      } as any)}
+                    />
                   </PopoverContent>
                 </Popover>
               </FormControl>

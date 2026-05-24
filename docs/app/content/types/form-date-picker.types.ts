@@ -1,4 +1,4 @@
-import type { DateRange, PropsMulti, PropsRange, PropsSingle } from 'react-day-picker';
+import type { DateRange, DayPickerProps } from 'react-day-picker';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 
 /**
@@ -81,7 +81,7 @@ type BaseProps<TFieldValues extends FieldValues> = {
  * - `PropsRange` → Date range selection
  * - `PropsMulti` → Multiple date selection
  */
-type CalendarProps = PropsSingle | PropsRange | PropsMulti;
+type CalendarProps = DayPickerProps;
 
 /**
  * Props for the internal date picker configuration.
