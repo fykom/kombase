@@ -11,4 +11,7 @@ export default defineConfig({
     'fsevents',
   ],
   format: ['cjs', 'esm'],
+  minify: true,
+  splitting: true,
+  treeshake: true,
 });
