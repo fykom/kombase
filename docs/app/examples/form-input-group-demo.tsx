@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { goeyToast } from 'goey-toast';
 import { FormInputGroup } from 'kombase';
 import { Link2Icon } from 'lucide-react';
 import { useState } from 'react';
@@ -24,9 +25,11 @@ export default function FormDemo() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = () => {};
-
-  const onError = () => {};
+  const onSubmit = (_data: FormData) => {
+    goeyToast.success('Form submitted successfully!', {
+      description: `Website: ${_data.website || 'N/A'}`,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm space-y-6 mx-auto">
@@ -56,7 +59,7 @@ export default function FormDemo() {
       </div>
 
       <Form {...form}>
-        <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit, onError)}>
+        <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit)}>
           <FormInputGroup
             addon={<Link2Icon className="w-4 h-4 text-muted-foreground" />}
             control={form.control}

@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { goeyToast } from 'goey-toast';
 import { FormRadioGroup } from 'kombase';
 import { SparklesIcon, ZapIcon } from 'lucide-react';
 import { useState } from 'react';
@@ -29,9 +30,11 @@ export default function FormDemo() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = () => {};
-
-  const onError = () => {};
+  const onSubmit = (_data: FormData) => {
+    goeyToast.success('Form submitted successfully!', {
+      description: `Selected Plan: ${_data.plan}`,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm space-y-6 mx-auto">
@@ -61,7 +64,7 @@ export default function FormDemo() {
       </div>
 
       <Form {...form}>
-        <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit, onError)}>
+        <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit)}>
           <FormRadioGroup
             control={form.control}
             label="Subscription Plan"

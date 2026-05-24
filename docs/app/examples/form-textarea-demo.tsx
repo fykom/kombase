@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { goeyToast } from 'goey-toast';
 import { FormTextarea } from 'kombase';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -27,7 +28,15 @@ export default function FormTextareaDemo() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (_data: FormData) => {};
+  const onSubmit = (_data: FormData) => {
+    goeyToast.success('Form submitted successfully!', {
+      description: `
+        Bio: ${_data.bio}
+        Description: ${_data.description}
+        Comment: ${_data.comment || 'N/A'}
+      `,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full max-w-2xl space-y-6 mx-auto">

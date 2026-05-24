@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { goeyToast } from 'goey-toast';
 import { FormInput } from 'kombase';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -23,9 +24,11 @@ export default function FormInputDemo() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = () => {};
-
-  const onError = () => {};
+  const onSubmit = (_data: FormData) => {
+    goeyToast.success('Form submitted successfully!', {
+      description: `Username: ${_data.username}`,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm space-y-6 mx-auto">
@@ -55,7 +58,7 @@ export default function FormInputDemo() {
       </div>
 
       <Form {...form}>
-        <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit, onError)}>
+        <form className="space-y-6 w-full" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-4">
             <FormInput
               control={form.control}

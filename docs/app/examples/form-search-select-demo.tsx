@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { goeyToast } from 'goey-toast';
 import { FormSearchSelect } from 'kombase';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
@@ -105,7 +106,16 @@ export default function FormSearchSelectDemo() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (_data: FormData) => {};
+  const onSubmit = (_data: FormData) => {
+    goeyToast.success('Form submitted successfully!', {
+      description: `
+        Basic: ${_data.basic}
+        Input Group: ${_data.inputGroup}
+        Multiple: ${_data.multiple.join(', ')}
+        Search Box: ${_data.searchbox?.label || 'N/A'}
+      `,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center w-full max-w-2xl space-y-6 mx-auto">
