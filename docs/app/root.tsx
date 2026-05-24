@@ -19,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <RootProvider>
           <TooltipProvider>{children}</TooltipProvider>
         </RootProvider>
-        <GoeyToaster duration={5000} position="bottom-right" />
+        <GoeyToaster duration={3000} position="bottom-right" />
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -2,6 +2,7 @@
   "name": "kombase-workspace",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "dev:kombase": "pnpm -F kombase dev",
     "build:kombase": "pnpm -F kombase build",
     "dev:docs": "pnpm -F docs dev",
