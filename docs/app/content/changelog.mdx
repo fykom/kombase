@@ -4,6 +4,20 @@ description: Latest updates, improvements, and announcements.
 date: 2026-05-24
 ---
 
+## [v1.2.1] - 2026-05-24
+
+### Patch Changes
+
+- - **fix(datepicker)**: Fixed selected date reactivity in `FormDatePicker` by correctly passing binding props (`selected`, `onSelect`) to the form control. Updated grid styling to support `react-day-picker` v10.
+  - **feat(date-utility)**: Replaced `date-fns` with `dayjs` for lighter and more consistent date handling across components.
+  - **feat(build)**: Shifted `react-hook-form`, `react-day-picker`, and `@tanstack/react-table` to `peerDependencies` to avoid duplicate bundling in consuming projects.
+  - **feat(build)**: Enhanced compilation output by enabling minification, code-splitting, and tree-shaking in `tsup` configuration.
+  - **feat(demo)**: Integrated `goey-toast` notifications upon successful form submission across demo forms (inputs, radios, selects, switches, and textareas).
+  - **docs**: Refined and clarified introductory content and installation instructions.
+
+---
+
+
 ## [v1.2.0] - 2026-05-24
 
 ### Minor Changes
