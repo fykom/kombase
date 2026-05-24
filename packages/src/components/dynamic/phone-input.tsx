@@ -3,6 +3,7 @@ import { Slot as SlotPrimitive } from 'radix-ui';
 import * as React from 'react';
 import { useAsRef } from '@/components/hooks/use-as-ref';
 import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';
+import { useLazyRef } from '@/components/hooks/use-lazy-ref';
 import {
   Command,
   CommandEmpty,
@@ -13,7 +14,6 @@ import {
 } from '@/components/ui/command';
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { useLazyRef } from '@/hooks/use-lazy-ref';
 import { useComposedRefs } from '@/lib/component-refs';
 import { cn } from '@/lib/utils';
 import { VisuallyHiddenInput } from '../visually-hidden-input';
