@@ -26,8 +26,8 @@ if (match) {
     process.exit(1);
   }
 
-  let mdxContent = fs.readFileSync(OUTPUT_FILE, 'utf-8');
-  
+  const mdxContent = fs.readFileSync(OUTPUT_FILE, 'utf-8');
+
   // Prevent duplicate insertion
   if (mdxContent.includes(`## [v${version}]`)) {
     console.info(`Version v${version} already exists in changelog.mdx. Skipping.`);
@@ -37,7 +37,7 @@ if (match) {
   // Insert right after the frontmatter
   // Frontmatter ends with the second '---'
   const frontmatterEnd = mdxContent.indexOf('---', 4) + 3;
-  
+
   const before = mdxContent.slice(0, frontmatterEnd);
   const after = mdxContent.slice(frontmatterEnd);
 
