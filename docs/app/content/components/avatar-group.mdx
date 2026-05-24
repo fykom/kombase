@@ -1,0 +1,39 @@
+---
+title: AvatarGroup
+description: A container component for grouping overlapping avatars or custom icons with built-in truncation and stacking order control.
+preview: false
+---
+
+## Examples
+
+### Truncation
+
+Limit the maximum number of avatars to render before displaying an overflow indicator.
+
+<ComponentTabs name="avatar-truncate-demo" scalePreview />
+
+### Custom Overflow
+
+Customize the look and feel of the overflow counter badge using the `renderOverflow` prop.
+
+<ComponentTabs name="avatar-overflow-demo" scalePreview />
+
+### Icon Group
+
+`AvatarGroup` can also stack custom elements or icons instead of traditional images.
+
+<ComponentTabs name="avatar-icon-demo" scalePreview />
+
+### RTL (Right-to-Left)
+
+Control layout flow and stacking mask shape direction using the `dir` and `reverse` props.
+
+<ComponentTabs name="avatar-rtl-demo" scalePreview />
+
+## API
+
+### AvatarGroup
+
+The wrapper component that renders the children and manages the layout, overlapping margins, visual mask shapes, and overflow behavior.
+
+<AutoTypeTable path="../types/avatar-group.types.ts" name="AvatarGroup" />

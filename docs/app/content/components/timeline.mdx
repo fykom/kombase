@@ -1,0 +1,113 @@
+---
+title: Timeline
+description: A customizable, visual timeline component for presenting events, steps, or chronological tasks.
+preview: false
+---
+
+## Components Layout
+
+```tsx
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDescription,
+  TimelineDot,
+  TimelineHeader,
+  TimelineItem,
+  TimelineTime,
+  TimelineTitle,
+} from "kombase";
+
+export default function TimelineDemo() {
+  return (
+    <Timeline activeIndex={1}>
+      <TimelineItem>
+        <TimelineDot />
+        <TimelineConnector />
+        <TimelineContent>
+          <TimelineHeader>
+            <TimelineTitle>Step Title</TimelineTitle>
+            <TimelineTime dateTime="2025-01-01">January 1, 2025</TimelineTime>
+          </TimelineHeader>
+          <TimelineDescription>Detailed step description.</TimelineDescription>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+  );
+}
+```
+
+## Examples
+
+### Alternate
+
+<ComponentTabs name="timeline-alternate-demo" scalePreview />
+
+### Custom Dots
+
+<ComponentTabs name="timeline-custom-dots-demo" scalePreview />
+
+### Horizontal
+
+<ComponentTabs name="timeline-horizontal-demo" scalePreview />
+
+### RTL (Right-to-Left)
+
+<ComponentTabs name="timeline-rtl-demo" scalePreview />
+
+## API
+
+### Timeline
+
+The root wrapper component for the timeline. It acts as the context provider for coordination between steps.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="Timeline" />
+
+### TimelineItem
+
+A container component representing a single event or step in the timeline.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineItem" />
+
+### TimelineConnector
+
+Renders the connecting line between timeline items. It dynamically changes style (e.g. active color) depending on step progression.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineConnector" />
+
+### TimelineDot
+
+The circular visual marker or dot for the step. Can accept custom icons/children.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineDot" />
+
+### TimelineContent
+
+Layout container for placing the content, titles, dates, and description inside the item.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineContent" />
+
+### TimelineHeader
+
+Layout wrapper for the header section of the step (typically grouping title and time).
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineHeader" />
+
+### TimelineTitle
+
+Text component for the title of the timeline event.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineTitle" />
+
+### TimelineDescription
+
+Text component for the secondary descriptive text of the event.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineDescription" />
+
+### TimelineTime
+
+A component that renders a formatted date/time stamp using the HTML `<time>` element.
+
+<AutoTypeTable path="../types/timeline.types.ts" name="TimelineTime" />
