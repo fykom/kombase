@@ -1,0 +1,136 @@
+---
+title: Tour
+description: A flexible step-by-step product tour component to guide users through your application
+preview: false
+---
+
+## Components Layout
+
+```tsx
+import {
+  Tour,
+  TourArrow,
+  TourClose,
+  TourDescription,
+  TourFooter,
+  TourHeader,
+  TourNext,
+  TourPortal,
+  TourPrev,
+  TourSkip,
+  TourSpotlight,
+  TourSpotlightRing,
+  TourStep,
+  TourStepCounter,
+  TourTitle,
+} from "kombase";
+
+export default function TourDemo() {
+  return (
+    <Tour>
+      <TourPortal>
+        <TourSpotlight />
+        <TourSpotlightRing />
+        <TourStep>
+          <TourArrow />
+          <TourClose />
+          <TourHeader>
+            <TourTitle />
+            <TourDescription />
+          </TourHeader>
+          <TourFooter>
+            <TourStepCounter />
+            <TourPrev />
+            <TourNext />
+            <TourSkip />
+          </TourFooter>
+        </TourStep>
+      </TourPortal>
+    </Tour>
+  );
+}
+```
+
+## Examples
+
+### Control
+
+<ComponentTabs name="tour-control-demo" />
+
+## API
+
+### Tour
+
+The root provider component that coordinates the entire tour state.
+
+<AutoTypeTable path="../types/tour.types.ts" name="Tour" />
+
+### TourPortal
+
+Portals the tour steps and spotlights into the body or custom container.
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourPortal" />
+
+### TourSpotlight
+
+Renders a backdrop overlay with a clipped spotlight shape to highlight the target element of the active step.
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourSpotlight" />
+
+### TourSpotlightRing
+
+Renders an animated border ring around the spotlight-highlighted target element to draw attention.
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourSpotlightRing" />
+
+### TourStep
+
+The popover container that holds the content of the current step, positioned relative to the target element.
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourStep" />
+
+### TourClose
+
+A button component to close/dismiss the tour.
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourClose" />
+
+### TourHeader
+
+A layout container for the step header. Inherits from HTML `div` element.
+
+### TourTitle
+
+A text component for the step's title. Inherits from HTML `div` element.
+
+### TourDescription
+
+A text component for the step's description. Inherits from HTML `div` element.
+
+### TourFooter
+
+A layout container for the step footer. Inherits from HTML `div` element.
+
+### TourStepCounter
+
+Renders the current step counter (e.g. `Step 1 of 5`).
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourStepCounter" />
+
+### TourPrev
+
+A button component to navigate to the previous step. Inherits from HTML `button` element.
+
+### TourNext
+
+A button component to navigate to the next step. Inherits from HTML `button` element.
+
+### TourSkip
+
+A button component to skip the remaining steps and exit the tour. Inherits from HTML `button` element.
+
+### TourArrow
+
+An optional arrow pointer attached to the step popover card pointing towards the target element.
+
+<AutoTypeTable path="../types/tour.types.ts" name="TourArrow" />
