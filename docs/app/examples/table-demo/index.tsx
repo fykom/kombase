@@ -1,5 +1,5 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { format } from 'date-fns';
+import dayjs from 'dayjs';
 import {
   DataTable,
   DataTableColumnHeader,
@@ -157,7 +157,7 @@ export default function TableDemo() {
     },
     {
       accessorFn: (row) => row.createdAt,
-      cell: ({ cell }) => format(cell.getValue<string>(), 'dd LLL y'),
+      cell: ({ cell }) => dayjs(cell.getValue<string>()).format('dd LLL y'),
       enableColumnFilter: true,
       enableHiding: false,
       enableSorting: false,

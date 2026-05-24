@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import dayjs from 'dayjs';
 import type { DateRange } from 'react-day-picker';
 
 export function getTimezone() {
@@ -33,8 +33,8 @@ export const mapDateRangeToParams = (
   if (!range) return {};
 
   return {
-    end_date: range.to ? format(range.to, formatStr) : undefined,
-    start_date: range.from ? format(range.from, formatStr) : undefined,
+    end_date: range.to ? dayjs(range.to).format(formatStr) : undefined,
+    start_date: range.from ? dayjs(range.from).format(formatStr) : undefined,
   };
 };
 
