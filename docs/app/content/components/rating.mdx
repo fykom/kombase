@@ -1,0 +1,57 @@
+---
+title: Rating
+description: A customizable rating component with support for custom sizes, values, step increments, and custom icons.
+preview: false
+---
+
+## Components Layout
+
+```tsx
+import { Rating, RatingItem } from "kombase";
+
+export default function RatingDemo() {
+  return (
+    <Rating defaultValue={3}>
+      <RatingItem />
+      <RatingItem />
+      <RatingItem />
+      <RatingItem />
+      <RatingItem />
+    </Rating>
+  );
+}
+```
+
+## Examples
+
+### Themes
+
+Custom icons, colors, and ratings grouped using a flex row container.
+
+<ComponentTabs name="rating-themes-demo" scalePreview />
+
+### Controlled State
+
+Manage the rating state externally using standard React state hook.
+
+<ComponentTabs name="rating-controlled-demo" scalePreview />
+
+### Form Integration
+
+Integrating the Rating component with React Hook Form, Zod schema validation, and Sonner toast notifications.
+
+<ComponentTabs name="rating-form-demo" scalePreview />
+
+## API
+
+### Rating
+
+The main container for the rating component. It coordinates keyboard navigation, hover states, and controlled/uncontrolled selection values.
+
+<AutoTypeTable path="../types/rating.types.ts" name="Rating" />
+
+### RatingItem
+
+An individual rating unit (typically represented by a star). Renders an interactive option with full keyboard accessibility.
+
+<AutoTypeTable path="../types/rating.types.ts" name="RatingItem" />
