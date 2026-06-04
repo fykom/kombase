@@ -2,6 +2,7 @@ import browserCollections from 'collections/browser';
 import { useFumadocsLoader } from 'fumadocs-core/source/client';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
+import { goeyToast } from 'goey-toast';
 import { Feedback } from '@/components/feedback/client';
 import { getMDXComponents } from '@/components/mdx';
 
@@ -39,12 +40,23 @@ const clientLoader = browserCollections.docs.createClientLoader({
 
         <Feedback
           onSendAction={async (feedback) => {
-            const res = await fetch('/api/feedback', {
-              body: JSON.stringify({ feedback, type: 'page' }),
-              headers: { 'Content-Type': 'application/json' },
-              method: 'POST',
-            });
-            return await res.json();
+            try {
+              const res = await fetch('/api/feedback', {
+                body: JSON.stringify({ feedback, type: 'page' }),
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST',
+              });
+              const data = await res.json();
+              if (!res.ok || data.error) {
+                throw new Error(data.error || 'Failed to send feedback');
+              }
+              return data;
+            } catch (err: any) {
+              goeyToast.error('Feedback failed to send', {
+                description: err.message || 'An error occurred while submitting feedback.',
+              });
+              throw err;
+            }
           }}
         />
       </DocsPage>

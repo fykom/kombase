@@ -2,11 +2,10 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   description:
-    "Kombase is a design system and component library built with Tanstack's technologies, including React, Router, and Query. It provides a collection of reusable UI components and design guidelines to help developers create consistent and efficient user interfaces.",
+    'A lightweight, highly customizable UI component library with out-of-the-box form validation and data table integrations.',
   links: {
-    github: 'https://github.com/kombase',
+    github: 'https://github.com/fykom/kombase',
   },
   name: 'Kombase',
-  ogImage: 'https://kombase.dev/opengraph-image.png',
-  url: 'https://kombase.dev',
+  url: 'https://kombase.komerce.id',
 };

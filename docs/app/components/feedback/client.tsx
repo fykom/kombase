@@ -1,6 +1,7 @@
 import { cva } from 'class-variance-authority';
 import { usePathname } from 'fumadocs-core/framework';
 import type * as Remark from 'fumadocs-core/mdx-plugins/remark-feedback-block';
+import { goeyToast } from 'goey-toast';
 import { CornerDownRightIcon, MessageSquare, ThumbsDown, ThumbsUp, X } from 'lucide-react';
 import {
   type ReactNode,
@@ -72,13 +73,19 @@ export function Feedback({
         url,
       };
 
-      const response = await onSendAction(feedback);
-      setPrevious({
-        response,
-        ...feedback,
-      });
-      setMessage('');
-      setOpinion(null);
+      try {
+        const response = await onSendAction(feedback);
+        setPrevious({
+          response,
+          ...feedback,
+        });
+        setMessage('');
+        setOpinion(null);
+      } catch (err: any) {
+        goeyToast.error('Feedback failed to send', {
+          description: err.message || 'An error occurred while submitting feedback.',
+        });
+      }
     });
 
     e?.preventDefault();
@@ -263,12 +270,18 @@ function FeedbackBlockContent({ id, body, onSendAction }: FeedbackBlockProps) {
         url,
       };
 
-      const response = await onSendAction(feedback);
-      setPrevious({
-        response,
-        ...feedback,
-      });
-      setMessage('');
+      try {
+        const response = await onSendAction(feedback);
+        setPrevious({
+          response,
+          ...feedback,
+        });
+        setMessage('');
+      } catch (err: any) {
+        goeyToast.error('Feedback failed to send', {
+          description: err.message || 'An error occurred while submitting feedback.',
+        });
+      }
     });
 
     e?.preventDefault();

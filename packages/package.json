@@ -1,16 +1,21 @@
 {
   "name": "kombase",
   "version": "1.2.1",
-  "description": "Shadcn UI components for React, built with Tailwind CSS and designed for form handling and design systems.",
+  "description": "A lightweight, highly customizable UI component library with out-of-the-box form validation and data table integrations.",
   "main": "./dist/index.cjs",
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
+    "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": [

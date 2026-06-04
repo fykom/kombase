@@ -8,7 +8,7 @@ import {
 } from '@/components/feedback/schema';
 
 export const repo = 'kombase';
-export const owner = 'fycom';
+export const owner = 'fykom';
 export const DocsCategory = 'Ideas';
 
 let instance: Octokit | undefined;
