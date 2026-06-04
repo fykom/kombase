@@ -1,12 +1,12 @@
 {
   "name": "kombase",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A lightweight, highly customizable UI component library with out-of-the-box form validation and data table integrations.",
   "main": "./dist/index.cjs",
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-    "exports": {
+  "exports": {
     ".": {
       "import": {
         "types": "./dist/index.d.ts",

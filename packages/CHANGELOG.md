@@ -1,5 +1,11 @@
 # Kombase
 
+## 1.2.2
+
+### Patch Changes
+
+- fix: resolve package types resolution for ESM/CJS consumers under node16/nodenext module resolution
+
 ## 1.2.1
 
 ### Patch Changes
