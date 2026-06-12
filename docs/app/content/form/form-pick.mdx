@@ -1,0 +1,43 @@
+---
+title: FormPick
+description: renders selectable options as **clickable cards**. It natively supports `as const` arrays and custom rendering.
+preview: false
+---
+
+## Examples
+
+### FormPick
+
+<ComponentTabs name="form-pick-demo" />
+
+## API
+
+### FormPick
+
+<AutoTypeTable
+  path="../types/form-pick.types.ts"
+  name="FormPick"
+/>
+
+### `PickOption` Type
+
+<AutoTypeTable path="../types/form-pick.types.ts" name="PickOption" />
+
+### Custom Render Slot
+
+Override the default card using `renderOption`:
+
+```tsx
+<FormPick
+  control={form.control}
+  name="gateway"
+  options={GATEWAYS}
+  renderOption={(opt, isSelected) => (
+    <div
+      className={cn("p-4 border rounded-lg", isSelected && "border-primary")}
+    >
+      {opt.label}
+    </div>
+  )}
+/>
+```
