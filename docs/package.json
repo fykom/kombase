@@ -29,7 +29,6 @@
     "kombase": "workspace:*",
     "lucide-react": "^0.545.0",
     "octokit": "^5.0.5",
-    "radix-ui": "^1.4.3",
     "react": "^19.2.6",
     "react-day-picker": "^9.14.0",
     "react-dom": "^19.2.6",
