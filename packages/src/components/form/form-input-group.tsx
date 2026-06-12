@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 type FormInputGroupProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
-  label?: string;
+  label?: string | React.ReactNode;
   addon?: React.ReactNode;
   inputGroupProps?: React.ComponentProps<typeof InputGroupInput>;
   layout?: 'vertical' | 'horizontal';

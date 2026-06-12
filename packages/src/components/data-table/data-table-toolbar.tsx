@@ -26,7 +26,7 @@ export function DataTableToolbar<TData>({
 
   const columns = React.useMemo(
     () => table.getAllColumns().filter((column) => column.getCanFilter()),
-    [table],
+    [table, table.options.columns],
   );
 
   const onReset = React.useCallback(() => {
@@ -123,6 +123,7 @@ function DataTableToolbarFilter<TData>({ column }: DataTableToolbarFilterProps<T
           return (
             <DataTableFacetedFilter
               column={column}
+              loading={columnMeta.loading}
               multiple={columnMeta.variant === 'multiSelect'}
               options={columnMeta.options ?? []}
               title={columnMeta.label ?? column.id}

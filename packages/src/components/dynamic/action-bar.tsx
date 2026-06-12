@@ -1,4 +1,7 @@
-import { Direction as DirectionPrimitive, Slot as SlotPrimitive } from 'radix-ui';
+'use client';
+
+import * as DirectionPrimitive from '@radix-ui/react-direction';
+import * as SlotPrimitive from '@radix-ui/react-slot';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from '@/components/ui/button';

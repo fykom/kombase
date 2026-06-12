@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { DateRange, DayPickerProps } from 'react-day-picker';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 
@@ -20,7 +21,7 @@ type BaseProps<TFieldValues extends FieldValues> = {
   /**
    * Optional label rendered above or beside the date picker trigger.
    */
-  label?: string;
+  label?: string | ReactNode;
 
   /**
    * Layout orientation of the form item.

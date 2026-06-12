@@ -1,5 +1,5 @@
 import type { Column } from '@tanstack/react-table';
-import { Check, PlusCircle, XCircle } from 'lucide-react';
+import { Check, Loader, PlusCircle, XCircle } from 'lucide-react';
 import * as React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -22,6 +22,7 @@ interface DataTableFacetedFilterProps<TData, TValue> {
   title?: string;
   options: Option[];
   multiple?: boolean;
+  loading?: boolean;
 }
 
 export function DataTableFacetedFilter<TData, TValue>({
@@ -29,6 +30,7 @@ export function DataTableFacetedFilter<TData, TValue>({
   title,
   options,
   multiple,
+  loading = false,
 }: DataTableFacetedFilterProps<TData, TValue>) {
   const [open, setOpen] = React.useState(false);
 
@@ -119,38 +121,53 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Command>
           <CommandInput placeholder={title} />
           <CommandList className="max-h-full">
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup className="max-h-72 scroll-py-1 overflow-y-auto overflow-x-hidden">
-              {options.map((option) => {
-                const isSelected = selectedValues.has(option.value);
-
-                return (
-                  <CommandItem key={option.value} onSelect={() => onItemSelect(option, isSelected)}>
-                    <div
-                      className={cn(
-                        'flex size-4 items-center justify-center rounded-sm border border-primary',
-                        isSelected ? 'bg-primary' : 'opacity-50 [&_svg]:invisible',
-                      )}
-                    >
-                      <Check />
-                    </div>
-                    {option.icon && <option.icon />}
-                    <span className="truncate">{option.label}</span>
-                    {option.count && (
-                      <span className="ml-auto font-mono text-xs">{option.count}</span>
-                    )}
-                  </CommandItem>
-                );
-              })}
-            </CommandGroup>
-            {selectedValues.size > 0 && (
+            {loading ? (
+              <div className="flex items-center justify-center gap-2 py-6 text-muted-foreground text-sm">
+                <Loader className="size-4 animate-spin" />
+                Loading...
+              </div>
+            ) : (
               <>
-                <CommandSeparator />
-                <CommandGroup>
-                  <CommandItem className="justify-center text-center" onSelect={() => onReset()}>
-                    Clear filters
-                  </CommandItem>
+                <CommandEmpty>No results found.</CommandEmpty>
+                <CommandGroup className="max-h-72 scroll-py-1 overflow-y-auto overflow-x-hidden">
+                  {options.map((option) => {
+                    const isSelected = selectedValues.has(option.value);
+
+                    return (
+                      <CommandItem
+                        key={option.value}
+                        onSelect={() => onItemSelect(option, isSelected)}
+                      >
+                        <div
+                          className={cn(
+                            'flex size-4 items-center justify-center rounded-sm border border-primary',
+                            isSelected ? 'bg-primary' : 'opacity-50 [&_svg]:invisible',
+                          )}
+                        >
+                          <Check />
+                        </div>
+                        {option.icon && <option.icon />}
+                        <span className="truncate">{option.label}</span>
+                        {option.count && (
+                          <span className="ml-auto font-mono text-xs">{option.count}</span>
+                        )}
+                      </CommandItem>
+                    );
+                  })}
                 </CommandGroup>
+                {selectedValues.size > 0 && (
+                  <>
+                    <CommandSeparator />
+                    <CommandGroup>
+                      <CommandItem
+                        className="justify-center text-center"
+                        onSelect={() => onReset()}
+                      >
+                        Clear filters
+                      </CommandItem>
+                    </CommandGroup>
+                  </>
+                )}
               </>
             )}
           </CommandList>

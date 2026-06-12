@@ -9,7 +9,7 @@ import { PasswordInput } from '../password-input';
 type FormInputPasswordProps<T extends FieldValues> = {
   control: Control<T>;
   name: FieldPath<T>;
-  label?: string;
+  label?: string | React.ReactNode;
   inputProps?: React.ComponentProps<typeof Input>;
   layout?: 'vertical' | 'horizontal';
   className?: string;

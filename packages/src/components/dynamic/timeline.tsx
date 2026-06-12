@@ -1,5 +1,8 @@
+'use client';
+
+import * as DirectionPrimitive from '@radix-ui/react-direction';
+import * as SlotPrimitive from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
-import { Direction as DirectionPrimitive, Slot as SlotPrimitive } from 'radix-ui';
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';
 import { useLazyRef } from '@/components/hooks/use-lazy-ref';

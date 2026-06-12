@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import type { Input } from '@/components/ui/input';
 
@@ -20,7 +21,7 @@ export interface FormInput<TFieldValues extends FieldValues> {
    * Optional label rendered above the input using a `<Label>` element.
    * Omit to render the field without a visible label.
    */
-  label?: string;
+  label?: string | ReactNode;
 
   /**
    * Props forwarded directly to the underlying `<Input>` element.

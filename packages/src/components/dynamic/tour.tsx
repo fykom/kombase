@@ -10,8 +10,9 @@ import {
   shift,
   useFloating,
 } from '@floating-ui/react-dom';
+import * as DirectionPrimitive from '@radix-ui/react-direction';
+import * as SlotPrimitive from '@radix-ui/react-slot';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { Direction as DirectionPrimitive, Slot as SlotPrimitive } from 'radix-ui';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useAsRef } from '@/components/hooks/use-as-ref';

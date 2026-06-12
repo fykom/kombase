@@ -23,7 +23,7 @@ import { UsersProvider } from './user-providers';
 
 export default function TableDemo() {
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(4);
 
   const columns: ColumnDef<User>[] = [
     {

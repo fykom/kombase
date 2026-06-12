@@ -1,4 +1,5 @@
 import type { PhoneInput as PI } from 'kombase';
+import type { ReactNode } from 'react';
 import type { Control } from 'react-hook-form';
 import type { Popover, PopoverTrigger } from '@/components/ui/popover';
 
@@ -114,7 +115,7 @@ export interface FormPhoneInput {
    * Optional label rendered above the input using a `<Label>` element.
    * Omit to render the field without a visible label.
    */
-  label?: string;
+  label?: string | ReactNode;
 
   /**
    * Props forwarded directly to the underlying `<PhoneInput>` component.

@@ -21,7 +21,7 @@ export interface FormInputGroup<TFieldValues extends FieldValues> {
    * Optional label rendered above the input group using a `<Label>` element.
    * Omit to render the field without a visible label.
    */
-  label?: string;
+  label?: string | ReactNode;
 
   /**
    * Content rendered inside the right-side addon of the input group.

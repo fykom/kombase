@@ -8,11 +8,13 @@ import { cn } from '@/lib/utils';
 type FormInputProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
-  label?: string;
+  label?: string | React.ReactNode;
   inputProps?: React.ComponentProps<typeof Input>;
   layout?: 'vertical' | 'horizontal';
   className?: string;
   labelClassName?: string;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 };
 
 export function FormInput<TFieldValues extends FieldValues>({
@@ -23,6 +25,8 @@ export function FormInput<TFieldValues extends FieldValues>({
   layout = 'vertical',
   className,
   labelClassName,
+  prefix,
+  suffix,
 }: FormInputProps<TFieldValues>) {
   return (
     <FormField
@@ -47,7 +51,22 @@ export function FormInput<TFieldValues extends FieldValues>({
           )}
           <div className="flex-1 w-full space-y-1.5">
             <FormControl>
-              <Input id={field.name} {...field} {...inputProps} />
+              <div className="flex w-full overflow-hidden rounded-md border border-input bg-background">
+                {prefix && (
+                  <div className="flex items-center border-r text-muted-foreground">{prefix}</div>
+                )}
+
+                <Input
+                  id={field.name}
+                  {...field}
+                  {...inputProps}
+                  className={cn('border-0 shadow-none focus-visible:ring-0', inputProps?.className)}
+                />
+
+                {suffix && (
+                  <div className="flex items-center border-l text-muted-foreground">{suffix}</div>
+                )}
+              </div>
             </FormControl>
             <FormMessage />
           </div>

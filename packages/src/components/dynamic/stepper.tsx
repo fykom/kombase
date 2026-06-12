@@ -1,7 +1,8 @@
 'use client';
 
+import * as DirectionPrimitive from '@radix-ui/react-direction';
+import * as SlotPrimitive from '@radix-ui/react-slot';
 import { Check } from 'lucide-react';
-import { Direction as DirectionPrimitive, Slot as SlotPrimitive } from 'radix-ui';
 import * as React from 'react';
 import { useAsRef } from '@/components/hooks/use-as-ref';
 import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';

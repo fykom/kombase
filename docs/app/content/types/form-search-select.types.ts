@@ -44,7 +44,7 @@ export interface FormSearchSelect<TFieldValues extends FieldValues> {
    * Optional label rendered above the combobox using a `<Label>` element.
    * Omit to render the field without a visible label.
    */
-  label?: string;
+  label?: string | ReactNode;
 
   /**
    * Additional props forwarded to the underlying `Combobox` component.

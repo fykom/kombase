@@ -9,7 +9,7 @@ type FormSearchSelectProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
   multiple?: boolean;
-  label?: string;
+  label?: string | React.ReactNode;
   comboboxProps?: Omit<
     React.ComponentProps<typeof Combobox>,
     'value' | 'onValueChange' | 'multiple' | 'defaultValue'

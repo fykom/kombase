@@ -13,6 +13,11 @@ export type ConfirmDialog = {
   onOpenChange: (open: boolean) => void;
 
   /**
+   * Callback triggered when dialog is closed.
+   */
+  onClose?: () => void;
+
+  /**
    * Dialog title content.
    */
   title: React.ReactNode;
@@ -63,8 +68,36 @@ export type ConfirmDialog = {
    * Additional content rendered inside the dialog body.
    */
   children?: React.ReactNode;
+
+  /**
+   * Shows a close button at the top right of the dialog.
+   *
+   * @default false
+   */
+  showCloseButton?: boolean;
 } & (
   | {
+      /**
+       * Custom footer content. If `null`, AlertDialogFooter is hidden.
+       */
+      footer: React.ReactNode | null;
+
+      /**
+       * Not allowed when using custom `footer`.
+       */
+      form?: undefined;
+
+      /**
+       * Not allowed when using custom `footer`.
+       */
+      handleConfirm?: undefined;
+    }
+  | {
+      /**
+       * Not using custom footer.
+       */
+      footer?: undefined;
+
       /**
        * HTML form ID used for submit-based confirmation.
        */
@@ -76,6 +109,11 @@ export type ConfirmDialog = {
       handleConfirm?: undefined;
     }
   | {
+      /**
+       * Not using custom footer.
+       */
+      footer?: undefined;
+
       /**
        * Form mode is disabled.
        */

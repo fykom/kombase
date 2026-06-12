@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import type { Textarea } from '@/components/ui/textarea';
 
@@ -20,7 +21,7 @@ export interface FormTextarea<TFieldValues extends FieldValues> {
    * Optional label rendered above the textarea using a `<Label>` element.
    * Omit to render the field without a visible label.
    */
-  label?: string;
+  label?: string | ReactNode;
 
   /**
    * When `true`, displays a character count below the textarea.

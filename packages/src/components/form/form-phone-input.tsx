@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 type FormPhoneInputProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
-  label?: string;
+  label?: string | React.ReactNode;
   phoneInputProps?: Omit<
     React.ComponentProps<typeof PhoneInput>,
     keyof React.ComponentProps<'div'>

@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 type BaseProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
-  label?: string;
+  label?: string | React.ReactNode;
   layout?: 'vertical' | 'horizontal';
   formatLabel: (value?: Date | DateRange) => string;
   className?: string;

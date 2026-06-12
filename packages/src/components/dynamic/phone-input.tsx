@@ -1,5 +1,7 @@
+'use client';
+
+import * as SlotPrimitive from '@radix-ui/react-slot';
 import { Check, ChevronDown } from 'lucide-react';
-import { Slot as SlotPrimitive } from 'radix-ui';
 import * as React from 'react';
 import { useAsRef } from '@/components/hooks/use-as-ref';
 import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';

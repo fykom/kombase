@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 type FormTextareaProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>;
   name: FieldPath<TFieldValues>;
-  label?: string;
+  label?: string | React.ReactNode;
   showCharacterCount?: boolean;
   maxLength?: number;
   textareaProps?: Omit<React.ComponentProps<typeof Textarea>, 'value' | 'onChange'>;
