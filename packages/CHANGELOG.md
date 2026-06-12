@@ -1,5 +1,16 @@
 # Kombase
 
+## 1.3.0
+
+### Minor Changes
+
+- Refactored component exports, package dependencies, and added Tailwind CSS v4 support:
+  - Added new `FormPick` and `FormRadio` components (replacing `FormRadioGroup`).
+  - Removed deprecated `FormSwitch`, `FormRadioGroup`, and `Status` components.
+  - Migrated from monolithic `radix-ui` dependency to granular `@radix-ui/*` package dependencies.
+  - Configured Tailwind CSS v4 source scanning support via `@import "kombase/styles"`.
+  - Updated peer dependencies for React 18/19, `@tanstack/react-table`, and `react-day-picker`.
+
 ## 1.2.2
 
 ### Patch Changes
