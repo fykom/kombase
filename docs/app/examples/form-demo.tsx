@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormInput, FormInputGroup, FormInputPassword, FormRadioGroup, FormSwitch } from 'kombase';
+import { FormInput, FormInputGroup, FormInputPassword, FormPick } from 'kombase';
 import { Link2Icon, SparklesIcon, ZapIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 
 const formSchema = z.object({
-  notifications: z.boolean(),
   password: z.string().min(10),
   plan: z.enum(['free', 'pro']),
   username: z.string().min(3, 'Username must be at least 3 characters long'),
@@ -27,7 +26,6 @@ export default function FormDemo() {
 
   const form = useForm<FormData>({
     defaultValues: {
-      notifications: true,
       password: '',
       plan: 'free',
       username: '',
@@ -99,7 +97,7 @@ export default function FormDemo() {
             />
           </div>
 
-          <FormRadioGroup
+          <FormPick
             control={form.control}
             label="Subscription Plan"
             labelClassName="sm:w-[120px]"
@@ -107,14 +105,6 @@ export default function FormDemo() {
             name="plan"
             options={PLANS}
             radioGroupProps={{ className: 'grid grid-cols-2 gap-4' }}
-          />
-
-          <FormSwitch
-            control={form.control}
-            description="Receive updates and alerts about your account"
-            label="Enable notifications"
-            layout={formLayout === 'horizontal' ? 'inline' : 'default'}
-            name="notifications"
           />
 
           <Button className="w-full" type="submit">
