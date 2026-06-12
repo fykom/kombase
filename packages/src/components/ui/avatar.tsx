@@ -1,56 +1,60 @@
-import { Avatar as AvatarPrimitive } from 'radix-ui';
-import type * as React from 'react';
+'use client';
+
+import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-function Avatar({
-  className,
-  size = 'default',
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root> & {
-  size?: 'default' | 'sm' | 'lg';
-}) {
-  return (
-    <AvatarPrimitive.Root
-      className={cn(
-        'group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6',
-        className,
-      )}
-      data-size={size}
-      data-slot="avatar"
-      {...props}
-    />
-  );
-}
+const Avatar = React.forwardRef<
+  React.ComponentRef<typeof AvatarPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & {
+    size?: 'default' | 'sm' | 'lg';
+  }
+>(({ className, size = 'default', ...props }, ref) => (
+  <AvatarPrimitive.Root
+    className={cn(
+      'group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6',
+      className,
+    )}
+    data-size={size}
+    data-slot="avatar"
+    ref={ref}
+    {...props}
+  />
+));
+Avatar.displayName = AvatarPrimitive.Root.displayName;
 
-function AvatarImage({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Image>) {
-  return (
-    <AvatarPrimitive.Image
-      className={cn('aspect-square size-full', className)}
-      data-slot="avatar-image"
-      {...props}
-    />
-  );
-}
+const AvatarImage = React.forwardRef<
+  React.ComponentRef<typeof AvatarPrimitive.Image>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Image
+    className={cn('aspect-square size-full', className)}
+    data-slot="avatar-image"
+    ref={ref}
+    {...props}
+  />
+));
+AvatarImage.displayName = AvatarPrimitive.Image.displayName;
 
-function AvatarFallback({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
-  return (
-    <AvatarPrimitive.Fallback
-      className={cn(
-        'flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs',
-        className,
-      )}
-      data-slot="avatar-fallback"
-      {...props}
-    />
-  );
-}
+const AvatarFallback = React.forwardRef<
+  React.ComponentRef<typeof AvatarPrimitive.Fallback>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Fallback
+    className={cn(
+      'flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs',
+      className,
+    )}
+    data-slot="avatar-fallback"
+    ref={ref}
+    {...props}
+  />
+));
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
-function AvatarBadge({ className, ...props }: React.ComponentProps<'span'>) {
-  return (
+const AvatarBadge = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<'span'>>(
+  ({ className, ...props }, ref) => (
     <span
       className={cn(
         'absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground ring-2 ring-background select-none',
@@ -60,35 +64,41 @@ function AvatarBadge({ className, ...props }: React.ComponentProps<'span'>) {
         className,
       )}
       data-slot="avatar-badge"
+      ref={ref}
       {...props}
     />
-  );
-}
+  ),
+);
+AvatarBadge.displayName = 'AvatarBadge';
 
-function AvatarGroup({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
+const AvatarGroup = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => (
     <div
       className={cn(
         'group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background',
         className,
       )}
       data-slot="avatar-group"
+      ref={ref}
       {...props}
     />
-  );
-}
+  ),
+);
+AvatarGroup.displayName = 'AvatarGroup';
 
-function AvatarGroupCount({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
+const AvatarGroupCount = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => (
     <div
       className={cn(
         'relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3',
         className,
       )}
       data-slot="avatar-group-count"
+      ref={ref}
       {...props}
     />
-  );
-}
+  ),
+);
+AvatarGroupCount.displayName = 'AvatarGroupCount';
 
 export { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage };

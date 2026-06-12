@@ -1,5 +1,6 @@
-import type { Label as LabelPrimitive } from 'radix-ui';
-import { Slot } from 'radix-ui';
+'use client';
+
+import * as Slot from '@radix-ui/react-slot';
 import * as React from 'react';
 import {
   Controller,
@@ -66,17 +67,23 @@ type FormItemContextValue = {
 
 const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue);
 
-function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
-  const id = React.useId();
+const FormItem = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => {
+    const id = React.useId();
 
-  return (
-    <FormItemContext.Provider value={{ id }}>
-      <div className={cn('grid gap-2', className)} data-slot="form-item" {...props} />
-    </FormItemContext.Provider>
-  );
-}
+    return (
+      <FormItemContext.Provider value={{ id }}>
+        <div className={cn('grid gap-2', className)} data-slot="form-item" ref={ref} {...props} />
+      </FormItemContext.Provider>
+    );
+  },
+);
+FormItem.displayName = 'FormItem';
 
-function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) {
+const FormLabel = React.forwardRef<
+  React.ComponentRef<typeof Label>,
+  React.ComponentPropsWithoutRef<typeof Label>
+>(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -85,12 +92,17 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPri
       data-error={!!error}
       data-slot="form-label"
       htmlFor={formItemId}
+      ref={ref}
       {...props}
     />
   );
-}
+});
+FormLabel.displayName = 'FormLabel';
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
+const FormControl = React.forwardRef<
+  React.ComponentRef<typeof Slot.Root>,
+  React.ComponentPropsWithoutRef<typeof Slot.Root>
+>((props, ref) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
 
   return (
@@ -99,43 +111,53 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot.Root>) {
       aria-invalid={!!error}
       data-slot="form-control"
       id={formItemId}
+      ref={ref}
       {...props}
     />
   );
-}
+});
+FormControl.displayName = 'FormControl';
 
-function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
-  const { formDescriptionId } = useFormField();
+const FormDescription = React.forwardRef<HTMLParagraphElement, React.ComponentPropsWithoutRef<'p'>>(
+  ({ className, ...props }, ref) => {
+    const { formDescriptionId } = useFormField();
 
-  return (
-    <p
-      className={cn('text-muted-foreground text-sm', className)}
-      data-slot="form-description"
-      id={formDescriptionId}
-      {...props}
-    />
-  );
-}
+    return (
+      <p
+        className={cn('text-muted-foreground text-sm', className)}
+        data-slot="form-description"
+        id={formDescriptionId}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+FormDescription.displayName = 'FormDescription';
 
-function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
-  const { error, formMessageId } = useFormField();
-  const body = error ? String(error?.message ?? '') : props.children;
+const FormMessage = React.forwardRef<HTMLParagraphElement, React.ComponentPropsWithoutRef<'p'>>(
+  ({ className, ...props }, ref) => {
+    const { error, formMessageId } = useFormField();
+    const body = error ? String(error?.message ?? '') : props.children;
 
-  if (!body) {
-    return null;
-  }
+    if (!body) {
+      return null;
+    }
 
-  return (
-    <p
-      className={cn('text-destructive text-sm', className)}
-      data-slot="form-message"
-      id={formMessageId}
-      {...props}
-    >
-      {body}
-    </p>
-  );
-}
+    return (
+      <p
+        className={cn('text-destructive text-sm', className)}
+        data-slot="form-message"
+        id={formMessageId}
+        ref={ref}
+        {...props}
+      >
+        {body}
+      </p>
+    );
+  },
+);
+FormMessage.displayName = 'FormMessage';
 
 export {
   Form,

@@ -1,15 +1,13 @@
-import { Slider as SliderPrimitive } from 'radix-ui';
+'use client';
+
+import * as SliderPrimitive from '@radix-ui/react-slider';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-function Slider({
-  className,
-  defaultValue,
-  value,
-  min = 0,
-  max = 100,
-  ...props
-}: React.ComponentProps<typeof SliderPrimitive.Root>) {
+const Slider = React.forwardRef<
+  React.ComponentRef<typeof SliderPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ className, defaultValue, value, min = 0, max = 100, ...props }, ref) => {
   const _values = React.useMemo(
     () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
     [value, defaultValue, min, max],
@@ -25,6 +23,7 @@ function Slider({
       defaultValue={defaultValue}
       max={max}
       min={min}
+      ref={ref}
       value={value}
       {...props}
     >
@@ -50,6 +49,7 @@ function Slider({
       ))}
     </SliderPrimitive.Root>
   );
-}
+});
+Slider.displayName = SliderPrimitive.Root.displayName;
 
 export { Slider };

@@ -1,5 +1,7 @@
+'use client';
+
 import { cva, type VariantProps } from 'class-variance-authority';
-import type * as React from 'react';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -19,55 +21,60 @@ const alertVariants = cva(
   },
 );
 
-function Alert({
-  className,
-  variant,
-  ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof alertVariants>) {
-  return (
-    <div
-      className={cn(alertVariants({ variant }), className)}
-      data-slot="alert"
-      role="alert"
-      {...props}
-    />
-  );
-}
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<'div'> & VariantProps<typeof alertVariants>
+>(({ className, variant, ...props }, ref) => (
+  <div
+    className={cn(alertVariants({ variant }), className)}
+    data-slot="alert"
+    ref={ref}
+    role="alert"
+    {...props}
+  />
+));
+Alert.displayName = 'Alert';
 
-function AlertTitle({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
+const AlertTitle = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => (
     <div
       className={cn(
         'text-sm font-semibold group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground',
         className,
       )}
       data-slot="alert-title"
+      ref={ref}
       {...props}
     />
-  );
-}
+  ),
+);
+AlertTitle.displayName = 'AlertTitle';
 
-function AlertDescription({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
+const AlertDescription = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => (
     <div
       className={cn(
         'text-sm text-balance text-muted-foreground md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4',
         className,
       )}
       data-slot="alert-description"
+      ref={ref}
       {...props}
     />
-  );
-}
+  ),
+);
+AlertDescription.displayName = 'AlertDescription';
 
-function AlertAction({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
+const AlertAction = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...props }, ref) => (
     <div
       className={cn('absolute top-2.5 right-3', className)}
       data-slot="alert-action"
+      ref={ref}
       {...props}
     />
-  );
-}
+  ),
+);
+AlertAction.displayName = 'AlertAction';
 
 export { Alert, AlertAction, AlertDescription, AlertTitle };

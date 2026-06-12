@@ -1,15 +1,16 @@
-import { Switch as SwitchPrimitive } from 'radix-ui';
-import type * as React from 'react';
+'use client';
+
+import * as SwitchPrimitive from '@radix-ui/react-switch';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-function Switch({
-  className,
-  size = 'default',
-  ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root> & {
-  size?: 'sm' | 'default';
-}) {
+const Switch = React.forwardRef<
+  React.ComponentRef<typeof SwitchPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> & {
+    size?: 'sm' | 'default';
+  }
+>(({ className, size = 'default', ...props }, ref) => {
   return (
     <SwitchPrimitive.Root
       className={cn(
@@ -18,6 +19,7 @@ function Switch({
       )}
       data-size={size}
       data-slot="switch"
+      ref={ref}
       {...props}
     >
       <SwitchPrimitive.Thumb
@@ -28,6 +30,7 @@ function Switch({
       />
     </SwitchPrimitive.Root>
   );
-}
+});
+Switch.displayName = SwitchPrimitive.Root.displayName;
 
 export { Switch };
