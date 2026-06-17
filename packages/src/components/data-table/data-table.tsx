@@ -1,5 +1,5 @@
 import { flexRender, type Table as TanstackTable } from '@tanstack/react-table';
-import type * as React from 'react';
+import * as React from 'react';
 import {
   Table,
   TableBody,
@@ -15,6 +15,11 @@ interface DataTableProps<TData> extends React.ComponentProps<'div'> {
   table: TanstackTable<TData>;
   actionBar?: React.ReactNode;
   wrapperClassname?: string;
+  emptyState?: React.ReactNode;
+  stickyHeader?: boolean;
+  onEndReached?: () => void;
+  isLoading?: boolean;
+  endReachedThreshold?: number;
 }
 
 export function DataTable<TData>({
@@ -23,8 +28,41 @@ export function DataTable<TData>({
   children,
   className,
   wrapperClassname,
+  emptyState,
+  stickyHeader,
+  onEndReached,
+  isLoading,
+  endReachedThreshold = 100,
   ...props
 }: DataTableProps<TData>) {
+  const tableRef = React.useRef<HTMLTableElement>(null);
+
+  React.useEffect(() => {
+    if (!onEndReached) return;
+
+    const scrollContainer = tableRef.current?.parentElement;
+    if (!scrollContainer) return;
+
+    let isFetchingLocal = false;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+      if (scrollHeight - scrollTop - clientHeight < endReachedThreshold) {
+        if (!isFetchingLocal && !isLoading) {
+          isFetchingLocal = true;
+          onEndReached();
+        }
+      } else {
+        isFetchingLocal = false;
+      }
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll);
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+    };
+  }, [onEndReached, endReachedThreshold, isLoading]);
+
   return (
     <div
       className={cn(
@@ -35,7 +73,10 @@ export function DataTable<TData>({
     >
       {children}
       <div className="overflow-hidden rounded-md border">
-        <Table wrapperClassname={wrapperClassname}>
+        <Table
+          ref={tableRef}
+          wrapperClassname={cn(stickyHeader && 'max-h-[600px] overflow-y-auto', wrapperClassname)}
+        >
           <TableHeader className="sticky top-0 z-10 bg-background">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -44,7 +85,11 @@ export function DataTable<TData>({
                     colSpan={header.colSpan}
                     key={header.id}
                     style={{
-                      ...getCommonPinningStyles({ column: header.column }),
+                      ...getCommonPinningStyles({
+                        column: header.column,
+                        isHeader: true,
+                        stickyHeader,
+                      }),
                     }}
                   >
                     {header.isPlaceholder
@@ -74,7 +119,7 @@ export function DataTable<TData>({
             ) : (
               <TableRow>
                 <TableCell className="h-24 text-center" colSpan={table.getAllColumns().length}>
-                  No results.
+                  {emptyState ?? 'No results.'}
                 </TableCell>
               </TableRow>
             )}

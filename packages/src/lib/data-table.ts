@@ -9,16 +9,22 @@ import type {
 export function getCommonPinningStyles<TData>({
   column,
   withBorder = false,
+  isHeader = false,
+  stickyHeader = false,
 }: {
   column: Column<TData>;
   withBorder?: boolean;
+  isHeader?: boolean;
+  stickyHeader?: boolean;
 }): React.CSSProperties {
   const isPinned = column.getIsPinned();
   const isLastLeftPinnedColumn = isPinned === 'left' && column.getIsLastColumn('left');
   const isFirstRightPinnedColumn = isPinned === 'right' && column.getIsFirstColumn('right');
 
+  const isSticky = isPinned || (isHeader && stickyHeader);
+
   return {
-    background: isPinned ? 'var(--background)' : 'var(--background)',
+    background: 'var(--background)',
     boxShadow: withBorder
       ? isLastLeftPinnedColumn
         ? '-4px 0 4px -4px var(--border) inset'
@@ -28,10 +34,17 @@ export function getCommonPinningStyles<TData>({
       : undefined,
     left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
     opacity: isPinned ? 0.97 : 1,
-    position: isPinned ? 'sticky' : 'relative',
+    position: isSticky ? 'sticky' : 'relative',
     right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
+    top: isHeader && stickyHeader ? 0 : undefined,
     width: column.getSize(),
-    zIndex: isPinned ? 1 : undefined,
+    zIndex: isPinned
+      ? isHeader && stickyHeader
+        ? 30
+        : 10
+      : isHeader && stickyHeader
+        ? 20
+        : undefined,
   };
 }
 

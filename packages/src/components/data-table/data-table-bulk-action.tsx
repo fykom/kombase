@@ -9,8 +9,9 @@ import { cn } from '@/lib/utils';
 
 type DataTableBulkActionsProps<TData> = {
   table: Table<TData>;
-  entityName: string;
+  entityName?: string;
   children: React.ReactNode;
+  className?: string;
 };
 
 /**
@@ -21,12 +22,14 @@ type DataTableBulkActionsProps<TData> = {
  * @param {Table<TData>} props.table The react-table instance.
  * @param {string} props.entityName The name of the entity being acted upon (e.g., "task", "user").
  * @param {React.ReactNode} props.children The action buttons to be rendered inside the toolbar.
+ * @param {string} [props.className] Optional custom CSS class for positioning and styling.
  * @returns {React.ReactNode | null} The rendered component or null if no rows are selected.
  */
 export function DataTableBulkActions<TData>({
   table,
   entityName,
   children,
+  className,
 }: DataTableBulkActionsProps<TData>): React.ReactNode | null {
   const selectedRows = table.getFilteredSelectedRowModel().rows;
   const selectedCount = selectedRows.length;
@@ -36,7 +39,7 @@ export function DataTableBulkActions<TData>({
   // Announce selection changes to screen readers
   useEffect(() => {
     if (selectedCount > 0) {
-      const message = `${selectedCount} ${entityName}${selectedCount > 1 ? 's' : ''} selected. Bulk actions toolbar is available.`;
+      const message = `${selectedCount} ${entityName || 'item'}${selectedCount > 1 ? 's' : ''} selected. Bulk actions toolbar is available.`;
 
       // Use queueMicrotask to defer state update and avoid cascading renders
       queueMicrotask(() => {
@@ -125,11 +128,12 @@ export function DataTableBulkActions<TData>({
 
       <div
         aria-describedby="bulk-actions-description"
-        aria-label={`Bulk actions for ${selectedCount} selected ${entityName}${selectedCount > 1 ? 's' : ''}`}
+        aria-label={`Bulk actions for ${selectedCount} selected ${entityName || 'item'}${selectedCount > 1 ? 's' : ''}`}
         className={cn(
-          'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl',
+          'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl w-max',
           'transition-all delay-100 duration-300 ease-out hover:scale-105',
           'focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none',
+          className,
         )}
         onKeyDown={handleKeyDown}
         ref={toolbarRef}
@@ -165,20 +169,18 @@ export function DataTableBulkActions<TData>({
 
           <Separator aria-hidden="true" className="h-5" orientation="vertical" />
 
-          <div className="flex items-center gap-x-1 text-sm" id="bulk-actions-description">
-            <Badge
-              aria-label={`${selectedCount} selected`}
-              className="min-w-8 rounded-lg"
-              variant="default"
-            >
-              {selectedCount}
-            </Badge>{' '}
-            <span className="hidden sm:inline">
-              {entityName}
-              {selectedCount > 1 ? 's' : ''}
-            </span>{' '}
-            selected
-          </div>
+          {selectedCount > 0 && (
+            <div className="flex items-center gap-x-1 text-sm" id="bulk-actions-description">
+              <Badge
+                aria-label={`${selectedCount} selected`}
+                className="min-w-8 rounded-lg"
+                variant="default"
+              >
+                {selectedCount}
+              </Badge>
+              {entityName && <span className="hidden sm:inline">{entityName}</span>}
+            </div>
+          )}
 
           <Separator aria-hidden="true" className="h-5" orientation="vertical" />
 

@@ -15,6 +15,8 @@ interface DataTablePaginationProps<TData> extends React.ComponentProps<'div'> {
   table: Table<TData>;
   pageSizeOptions?: number[];
   showPageNumbers?: boolean;
+  rowsPerPageText?: React.ReactNode | null;
+  pageText?: ((page: number, total: number) => React.ReactNode) | null;
 }
 
 export function DataTablePagination<TData>({
@@ -22,6 +24,8 @@ export function DataTablePagination<TData>({
   pageSizeOptions = [10, 20, 30, 40, 50],
   className,
   showPageNumbers = true,
+  rowsPerPageText = 'Rows per page',
+  pageText,
   ...props
 }: DataTablePaginationProps<TData>) {
   const currentPage = table.getState().pagination.pageIndex + 1;
@@ -54,12 +58,14 @@ export function DataTablePagination<TData>({
             ))}
           </SelectContent>
         </Select>
-        {showPageNumbers && <p className="whitespace-nowrap font-medium text-sm">Rows per page</p>}
+        {showPageNumbers && rowsPerPageText !== null && (
+          <p className="whitespace-nowrap font-medium text-sm">{rowsPerPageText}</p>
+        )}
       </div>
       <div className="flex flex-col-reverse items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8">
-        {showPageNumbers && (
+        {showPageNumbers && pageText !== null && (
           <div className="flex items-center justify-center font-medium text-sm">
-            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+            {pageText ? pageText(currentPage, totalPages) : `Page ${currentPage} of ${totalPages}`}
           </div>
         )}
         <div className="flex items-center space-x-2">

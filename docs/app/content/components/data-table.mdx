@@ -288,6 +288,56 @@ const { table, filterValues, page, perPage } = useDataTable({
   pageCount,
   // Internal state management is active since no controlled props are passed
 });
+#### Infinite Scroll (Load More on Scroll)
+
+For tables where you want the user to scroll vertically to load more records instead of using paginated buttons:
+
+```tsx
+import * as React from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { DataTable, useDataTable } from "kombase";
+
+function InfiniteScrollTable() {
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+  } = useInfiniteQuery({
+    queryKey: ["items"],
+    queryFn: ({ pageParam = 1 }) => fetchItems({ page: pageParam }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => lastPage.nextPage ?? undefined,
+  });
+
+  // Flatten the pages from TanStack Query into a single 1D array
+  const flatData = React.useMemo(
+    () => data?.pages.flatMap((page) => page.data) ?? [],
+    [data]
+  );
+
+  const columns = useItemColumns();
+
+  const { table } = useDataTable({
+    columns,
+    data: flatData,
+    pageCount: -1, // pageCount is not needed for infinite scroll
+  });
+
+  return (
+    <DataTable
+      table={table}
+      stickyHeader
+      onEndReached={() => {
+        if (hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      }}
+      isLoading={isLoading || isFetchingNextPage}
+    />
+  );
+}
 ```
 
 ### Column Filtering
@@ -385,6 +435,33 @@ function Page() {
 | `className`       | `string`   | —          | Custom CSS class for the main container.                                              |
 
 ## API Reference
+
+### DataTable Props
+
+Props for the main `<DataTable />` component:
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `table` | `Table<TData>` | — | **Required**. The table instance returned by `useDataTable`. |
+| `actionBar` | `React.ReactNode` | — | Optional action bar component to display when rows are selected. |
+| `wrapperClassname` | `string` | — | Custom className for the table's scrollable wrapper container. |
+| `emptyState` | `React.ReactNode` | `'No results.'` | Custom content (string or ReactNode) to show when the table has no records. |
+| `stickyHeader` | `boolean` | `false` | If `true`, the table header will stick to the top of the container during vertical scroll. |
+| `onEndReached` | `() => void` | — | Callback function triggered when scrolling near the bottom of the table wrapper (infinite scroll). |
+| `isLoading` | `boolean` | `false` | Used with `onEndReached` to prevent duplicate load requests when already fetching data. |
+| `endReachedThreshold`| `number` | `100` | The distance (in pixels) from the bottom of the container to trigger the `onEndReached` callback. |
+
+### DataTablePagination Props
+
+Props for the `<DataTablePagination />` component:
+
+| Prop | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `table` | `Table<TData>` | — | **Required**. The table instance returned by `useDataTable`. |
+| `pageSizeOptions` | `number[]` | `[10, 20, 30, 40, 50]` | Options for the page size select dropdown. |
+| `showPageNumbers` | `boolean` | `true` | Whether to show the "Rows per page" text and the current page info. |
+| `rowsPerPageText` | `React.ReactNode` | `'Rows per page'` | Custom text or ReactNode to display next to the page size select dropdown. |
+| `pageText` | `(page: number, total: number) => React.ReactNode` | — | Custom formatting function to render the current page status text (e.g. "Page X of Y"). |
 
 ### Column Definitions
 
