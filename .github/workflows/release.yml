@@ -75,7 +75,7 @@ jobs:
 
             docker login ghcr.io \
               -u ${{ github.actor }} \
-              -p ${{ secrets.TOKEN_GITHUB }}
+              -p ${{ secrets.GITHUB_TOKEN }}
 
             docker pull $IMAGE
 
