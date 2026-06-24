@@ -165,6 +165,29 @@ export default function TableDemo() {
       id: 'createdAt',
       meta: {
         label: 'Created At',
+        presets: [
+          {
+            label: 'Today',
+            value: {
+              from: dayjs().startOf('day').toDate(),
+              to: dayjs().endOf('day').toDate(),
+            },
+          },
+          {
+            label: 'This Week',
+            value: {
+              from: dayjs().startOf('week').toDate(),
+              to: dayjs().endOf('week').toDate(),
+            },
+          },
+          {
+            label: 'Last 14 Days',
+            value: () => ({
+              from: dayjs().subtract(13, 'day').startOf('day').toDate(),
+              to: dayjs().endOf('day').toDate(),
+            }),
+          },
+        ],
         variant: 'dateRange',
       },
       size: 100,

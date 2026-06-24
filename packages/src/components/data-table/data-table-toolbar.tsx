@@ -114,6 +114,7 @@ function DataTableToolbarFilter<TData>({ column }: DataTableToolbarFilterProps<T
             <DataTableDateFilter
               column={column}
               multiple={columnMeta.variant === 'dateRange'}
+              presets={columnMeta.presets}
               title={columnMeta.label ?? column.id}
             />
           );

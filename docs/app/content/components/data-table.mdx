@@ -448,7 +448,9 @@ Props for the main `<DataTable />` component:
 | `emptyState` | `React.ReactNode` | `'No results.'` | Custom content (string or ReactNode) to show when the table has no records. |
 | `stickyHeader` | `boolean` | `false` | If `true`, the table header will stick to the top of the container during vertical scroll. |
 | `onEndReached` | `() => void` | — | Callback function triggered when scrolling near the bottom of the table wrapper (infinite scroll). |
-| `isLoading` | `boolean` | `false` | Used with `onEndReached` to prevent duplicate load requests when already fetching data. |
+| `isLoadingMore` | `boolean` | `false` | Used with `onEndReached` to prevent duplicate load requests when fetching more data. |
+| `loading` | `boolean \| React.ReactNode` | `false` | Display a blur overlay and spinner in the center of the table (initial load). |
+| `isLoading` | `boolean` | `false` | *Deprecated*. Use `isLoadingMore` instead. |
 | `endReachedThreshold`| `number` | `100` | The distance (in pixels) from the bottom of the container to trigger the `onEndReached` callback. |
 
 ### DataTablePagination Props
@@ -597,6 +599,11 @@ Column meta options for filtering, sorting, and view options.
     {
       title: "icon",
       description: "The react component to use as an icon for the column",
+    },
+    {
+      title: "presets",
+      description:
+        "For `dateRange` filters, a boolean to enable the default quick selection presets panel or an array of custom `DatePreset` objects",
     },
   ]}
 />

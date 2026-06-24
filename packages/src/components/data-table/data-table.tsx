@@ -1,4 +1,5 @@
 import { flexRender, type Table as TanstackTable } from '@tanstack/react-table';
+import { Loader } from 'lucide-react';
 import * as React from 'react';
 import {
   Table,
@@ -18,7 +19,8 @@ interface DataTableProps<TData> extends React.ComponentProps<'div'> {
   emptyState?: React.ReactNode;
   stickyHeader?: boolean;
   onEndReached?: () => void;
-  isLoading?: boolean;
+  isLoadingMore?: boolean;
+  loading?: boolean | React.ReactNode;
   endReachedThreshold?: number;
 }
 
@@ -31,11 +33,14 @@ export function DataTable<TData>({
   emptyState,
   stickyHeader,
   onEndReached,
-  isLoading,
+  isLoadingMore,
+  loading,
   endReachedThreshold = 100,
   ...props
 }: DataTableProps<TData>) {
   const tableRef = React.useRef<HTMLTableElement>(null);
+
+  const isFetchingMore = isLoadingMore;
 
   React.useEffect(() => {
     if (!onEndReached) return;
@@ -48,7 +53,7 @@ export function DataTable<TData>({
     const handleScroll = () => {
       const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
       if (scrollHeight - scrollTop - clientHeight < endReachedThreshold) {
-        if (!isFetchingLocal && !isLoading) {
+        if (!isFetchingLocal && !isFetchingMore && !loading) {
           isFetchingLocal = true;
           onEndReached();
         }
@@ -61,7 +66,7 @@ export function DataTable<TData>({
     return () => {
       scrollContainer.removeEventListener('scroll', handleScroll);
     };
-  }, [onEndReached, endReachedThreshold, isLoading]);
+  }, [onEndReached, endReachedThreshold, isFetchingMore, loading]);
 
   return (
     <div
@@ -101,7 +106,19 @@ export function DataTable<TData>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel()?.rows?.length ? (
+            {loading ? (
+              <TableRow>
+                <TableCell className="h-24 text-center" colSpan={table.getAllColumns().length}>
+                  <div className="flex items-center justify-center">
+                    {typeof loading === 'boolean' ? (
+                      <Loader className="h-8 w-8 animate-spin text-primary" />
+                    ) : (
+                      loading
+                    )}
+                  </div>
+                </TableCell>
+              </TableRow>
+            ) : table.getRowModel()?.rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow data-state={row.getIsSelected() && 'selected'} key={row.id}>
                   {row.getVisibleCells().map((cell) => (

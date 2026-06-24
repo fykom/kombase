@@ -1,4 +1,5 @@
 import type { Column } from '@tanstack/react-table';
+import dayjs from 'dayjs';
 import { CalendarDays, XCircle } from 'lucide-react';
 import * as React from 'react';
 import type { DateRange } from 'react-day-picker';
@@ -8,6 +9,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
 import { formatDateFilterTable } from '@/lib/date';
+import type { DatePreset } from './types';
 
 type DateSelection = Date[] | DateRange;
 
@@ -47,14 +49,87 @@ interface DataTableDateFilterProps<TData> {
   column: Column<TData, unknown>;
   title?: string;
   multiple?: boolean;
+  presets?: boolean | DatePreset[];
 }
+
+const DEFAULT_PRESETS: DatePreset[] = [
+  {
+    label: 'Today',
+    value: () => {
+      const now = new Date();
+      return {
+        from: dayjs(now).startOf('day').toDate(),
+        to: dayjs(now).endOf('day').toDate(),
+      };
+    },
+  },
+  {
+    label: 'Yesterday',
+    value: () => {
+      const yesterday = dayjs().subtract(1, 'day');
+      return {
+        from: yesterday.startOf('day').toDate(),
+        to: yesterday.endOf('day').toDate(),
+      };
+    },
+  },
+  {
+    label: 'Last 7 Days',
+    value: () => {
+      return {
+        from: dayjs().subtract(6, 'day').startOf('day').toDate(),
+        to: dayjs().endOf('day').toDate(),
+      };
+    },
+  },
+  {
+    label: 'Last 30 Days',
+    value: () => {
+      return {
+        from: dayjs().subtract(29, 'day').startOf('day').toDate(),
+        to: dayjs().endOf('day').toDate(),
+      };
+    },
+  },
+  {
+    label: 'This Month',
+    value: () => {
+      return {
+        from: dayjs().startOf('month').toDate(),
+        to: dayjs().endOf('month').toDate(),
+      };
+    },
+  },
+  {
+    label: 'Last Month',
+    value: () => {
+      const lastMonth = dayjs().subtract(1, 'month');
+      return {
+        from: lastMonth.startOf('month').toDate(),
+        to: lastMonth.endOf('month').toDate(),
+      };
+    },
+  },
+];
 
 export function DataTableDateFilter<TData>({
   column,
   title,
   multiple,
+  presets,
 }: DataTableDateFilterProps<TData>) {
+  const [open, setOpen] = React.useState(false);
   const columnFilterValue = column.getFilterValue();
+
+  const serializedFilterValue = React.useMemo(() => {
+    if (columnFilterValue === undefined || columnFilterValue === null) {
+      return '';
+    }
+    if (Array.isArray(columnFilterValue)) {
+      return columnFilterValue.join(',');
+    }
+    return String(columnFilterValue);
+  }, [columnFilterValue]);
 
   const selectedDates = React.useMemo<DateSelection>(() => {
     if (!columnFilterValue) {
@@ -72,7 +147,8 @@ export function DataTableDateFilter<TData>({
     const timestamps = parseColumnFilterValue(columnFilterValue);
     const date = parseAsDate(timestamps[0]);
     return date ? [date] : [];
-  }, [columnFilterValue, multiple]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [serializedFilterValue, multiple]);
 
   const onSelect = React.useCallback(
     (date: Date | DateRange | undefined) => {
@@ -87,6 +163,7 @@ export function DataTableDateFilter<TData>({
         column.setFilterValue(from || to ? [from, to] : undefined);
       } else if (!multiple && 'getTime' in date) {
         column.setFilterValue(date.getTime());
+        setOpen(false);
       }
     },
     [column, multiple],
@@ -96,6 +173,7 @@ export function DataTableDateFilter<TData>({
     (event: React.MouseEvent) => {
       event.stopPropagation();
       column.setFilterValue(undefined);
+      setOpen(false);
     },
     [column],
   );
@@ -158,8 +236,61 @@ export function DataTableDateFilter<TData>({
     );
   }, [selectedDates, multiple, formatDateRange, title]);
 
+  const disabled = column.columnDef.meta?.disabled;
+
+  const hasPresets = multiple && presets !== undefined && presets !== false;
+  const resolvedPresets = React.useMemo<DatePreset[]>(() => {
+    if (!hasPresets) return [];
+    return Array.isArray(presets) ? presets : DEFAULT_PRESETS;
+  }, [hasPresets, presets]);
+
+  const isPresetActive = React.useCallback(
+    (presetValue: DateRange | [Date, Date] | (() => DateRange | [Date, Date])) => {
+      let resolvedValue: DateRange;
+      const val = typeof presetValue === 'function' ? presetValue() : presetValue;
+      if (Array.isArray(val)) {
+        resolvedValue = { from: val[0], to: val[1] };
+      } else {
+        resolvedValue = val;
+      }
+
+      const current = selectedDates;
+      if (!getIsDateRange(current)) return false;
+
+      if (!resolvedValue.from && !current.from && !resolvedValue.to && !current.to) return true;
+      if (!resolvedValue.from || !current.from) return false;
+
+      const sameFrom = dayjs(resolvedValue.from).isSame(current.from, 'day');
+      const sameTo =
+        resolvedValue.to && current.to
+          ? dayjs(resolvedValue.to).isSame(current.to, 'day')
+          : !resolvedValue.to && !current.to;
+
+      return sameFrom && sameTo;
+    },
+    [selectedDates],
+  );
+
+  const handlePresetClick = React.useCallback(
+    (presetValue: DateRange | [Date, Date] | (() => DateRange | [Date, Date])) => {
+      let resolvedValue: DateRange;
+      const val = typeof presetValue === 'function' ? presetValue() : presetValue;
+      if (Array.isArray(val)) {
+        resolvedValue = { from: val[0], to: val[1] };
+      } else {
+        resolvedValue = val;
+      }
+
+      const from = resolvedValue.from?.getTime();
+      const to = resolvedValue.to?.getTime();
+      column.setFilterValue(from || to ? [from, to] : undefined);
+      setOpen(false);
+    },
+    [column],
+  );
+
   return (
-    <Popover>
+    <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
         <Button className="border-dashed font-normal" size="sm" variant="outline">
           {hasValue ? (
@@ -179,25 +310,48 @@ export function DataTableDateFilter<TData>({
           {label}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-auto p-0">
-        {multiple ? (
-          <Calendar
-            autoFocus
-            captionLayout="dropdown"
-            mode="range"
-            onSelect={onSelect}
-            selected={
-              getIsDateRange(selectedDates) ? selectedDates : { from: undefined, to: undefined }
-            }
-          />
-        ) : (
-          <Calendar
-            captionLayout="dropdown"
-            mode="single"
-            onSelect={onSelect}
-            selected={!getIsDateRange(selectedDates) ? selectedDates[0] : undefined}
-          />
+      <PopoverContent
+        align="start"
+        className="flex w-auto p-0 divide-x divide-border bg-background text-foreground"
+        style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}
+      >
+        {hasPresets && (
+          <div className="hidden sm:flex flex-col gap-1 p-2.5 min-w-[140px]">
+            {resolvedPresets.map((preset) => (
+              <Button
+                className="justify-start font-normal text-xs h-8 px-3.5 w-full rounded-md"
+                key={preset.label}
+                onClick={() => handlePresetClick(preset.value)}
+                size="sm"
+                variant={isPresetActive(preset.value) ? 'default' : 'ghost'}
+              >
+                {preset.label}
+              </Button>
+            ))}
+          </div>
         )}
+        <div className="flex flex-col">
+          {multiple ? (
+            <Calendar
+              autoFocus
+              captionLayout="dropdown"
+              disabled={disabled}
+              mode="range"
+              onSelect={onSelect}
+              selected={
+                getIsDateRange(selectedDates) ? selectedDates : { from: undefined, to: undefined }
+              }
+            />
+          ) : (
+            <Calendar
+              captionLayout="dropdown"
+              disabled={disabled}
+              mode="single"
+              onSelect={onSelect}
+              selected={!getIsDateRange(selectedDates) ? selectedDates[0] : undefined}
+            />
+          )}
+        </div>
       </PopoverContent>
     </Popover>
   );

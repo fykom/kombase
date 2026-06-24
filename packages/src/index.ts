@@ -4,6 +4,7 @@ export * from './components/data-table/data-table-column-header';
 export * from './components/data-table/data-table-pagination';
 export * from './components/data-table/data-table-skeleton';
 export * from './components/data-table/data-table-toolbar';
+export * from './components/data-table/types';
 export * from './components/dynamic/action-bar';
 export * from './components/dynamic/avatar-group';
 export * from './components/dynamic/confirm-dialog';
