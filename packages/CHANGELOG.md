@@ -1,5 +1,11 @@
 # Kombase
 
+## 1.3.2
+
+### Patch Changes
+
+- feat(data-table): enhance date filtering with presets and improve loading states
+
 ## 1.3.1
 
 ### Patch Changes
