@@ -1,5 +1,11 @@
 # Kombase
 
+## 1.3.3
+
+### Patch Changes
+
+- fix: add alignment and custom class support to DataTable and register improve skill
+
 ## 1.3.2
 
 ### Patch Changes
