@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.ComponentProps<typeof DropdownMenuTrigger> {
   column: Column<TData, TValue>;
-  label: string;
+  label: React.ReactNode;
 }
 
 export function DataTableColumnHeader<TData, TValue>({
@@ -21,8 +21,21 @@ export function DataTableColumnHeader<TData, TValue>({
   className,
   ...props
 }: DataTableColumnHeaderProps<TData, TValue>) {
+  const align = column.columnDef.meta?.align;
+
   if (!column.getCanSort() && !column.getCanHide()) {
-    return <div className={cn(className)}>{label}</div>;
+    return (
+      <div
+        className={cn(
+          align === 'center' && 'text-center flex justify-center w-full',
+          align === 'right' && 'text-right flex justify-end w-full',
+          align === 'left' && 'text-left flex justify-start w-full',
+          className,
+        )}
+      >
+        {label}
+      </div>
+    );
   }
 
   return (
@@ -30,6 +43,8 @@ export function DataTableColumnHeader<TData, TValue>({
       <DropdownMenuTrigger
         className={cn(
           '-ml-1.5 flex h-8 items-center gap-1.5 rounded-md px-2 py-1.5 hover:bg-accent focus:outline-none focus:ring-1 focus:ring-ring data-[state=open]:bg-accent [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground',
+          align === 'center' && 'mx-auto justify-center',
+          align === 'right' && 'ml-auto justify-end',
           className,
         )}
         {...props}

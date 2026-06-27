@@ -87,6 +87,12 @@ export function DataTable<TData>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead
+                    className={cn(
+                      header.column.columnDef.meta?.thClass,
+                      header.column.columnDef.meta?.align === 'center' && 'text-center',
+                      header.column.columnDef.meta?.align === 'right' && 'text-right',
+                      header.column.columnDef.meta?.align === 'left' && 'text-left',
+                    )}
                     colSpan={header.colSpan}
                     key={header.id}
                     style={{
@@ -123,6 +129,12 @@ export function DataTable<TData>({
                 <TableRow data-state={row.getIsSelected() && 'selected'} key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
+                      className={cn(
+                        cell.column.columnDef.meta?.cellClass,
+                        cell.column.columnDef.meta?.align === 'center' && 'text-center',
+                        cell.column.columnDef.meta?.align === 'right' && 'text-right',
+                        cell.column.columnDef.meta?.align === 'left' && 'text-left',
+                      )}
                       key={cell.id}
                       style={{
                         ...getCommonPinningStyles({ column: cell.column }),

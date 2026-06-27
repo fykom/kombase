@@ -15,6 +15,9 @@ export interface DatePreset {
 export interface BaseColumnMeta {
   label?: string;
   icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  align?: 'left' | 'center' | 'right';
+  thClass?: string;
+  cellClass?: string;
 }
 
 export type ColumnFilterMeta =
@@ -78,6 +81,9 @@ declare module '@tanstack/react-table' {
     loading?: boolean;
     disabled?: import('react-day-picker').Matcher | import('react-day-picker').Matcher[];
     presets?: boolean | DatePreset[];
+    align?: 'left' | 'center' | 'right';
+    thClass?: string;
+    cellClass?: string;
   }
 }
 
