@@ -2,9 +2,11 @@ import type { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
 import {
   DataTable,
+  DataTableAdvanceFilter,
   DataTableColumnHeader,
   DataTablePagination,
   DataTableToolbar,
+  idIDTranslations,
   LongText,
   useDataTable,
 } from 'kombase';
@@ -21,9 +23,15 @@ import type { User } from './data/schema';
 import { DataTableRowActions } from './row-actions';
 import { UsersProvider } from './user-providers';
 
-export default function TableDemo() {
+export default function TableDemo({
+  initialAdvanceFilter = false,
+  initialIndonesian = false,
+}: {
+  initialAdvanceFilter?: boolean;
+  initialIndonesian?: boolean;
+} = {}) {
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(4);
+  const [perPage, setPerPage] = useState(10);
 
   const columns: ColumnDef<User>[] = [
     {
@@ -198,12 +206,16 @@ export default function TableDemo() {
     },
   ];
 
+  const [isAdvanceFilter, setIsAdvanceFilter] = useState(initialAdvanceFilter);
+  const [useIndonesian, setUseIndonesian] = useState(initialIndonesian);
+
   const pageCount = Math.ceil(users.length / perPage);
 
   const { table } = useDataTable({
     columns,
     data: users as User[],
     getRowId: (row) => row.id,
+    isAdvanceFilter,
     onPageChange: setPage,
     onPerPageChange: (newPerPage) => {
       setPerPage(newPerPage);
@@ -217,11 +229,47 @@ export default function TableDemo() {
   return (
     <UsersProvider>
       <div className="@7xl/content:mx-auto @7xl/content:w-full @7xl/content:max-w-7xl  flex grow flex-col overflow-hidden px-4 py-6  flex-1  gap-4 sm:gap-6">
+        <div className="flex flex-wrap items-center gap-4 bg-muted/40 p-3 rounded-lg border border-border">
+          <div className="flex items-center gap-2">
+            <Checkbox
+              checked={isAdvanceFilter}
+              id="toggle-advanced-filter"
+              onCheckedChange={(checked) => setIsAdvanceFilter(!!checked)}
+            />
+            <label className="text-xs font-medium cursor-pointer" htmlFor="toggle-advanced-filter">
+              Use Advanced Filter
+            </label>
+          </div>
+          {isAdvanceFilter && (
+            <div className="flex items-center gap-2">
+              <Checkbox
+                checked={useIndonesian}
+                id="toggle-indonesian"
+                onCheckedChange={(checked) => setUseIndonesian(!!checked)}
+              />
+              <label className="text-xs font-medium cursor-pointer" htmlFor="toggle-indonesian">
+                Translate to Bahasa Indonesia
+              </label>
+            </div>
+          )}
+        </div>
         <DataTable table={table}>
-          <DataTableToolbar table={table}>
-            <Button size="icon" variant="outline">
-              <RefreshCw />
-            </Button>
+          <DataTableToolbar
+            actions={
+              <Button size="icon" variant="outline">
+                <RefreshCw />
+              </Button>
+            }
+            hideFilter={isAdvanceFilter}
+            table={table}
+            viewOptions={false}
+          >
+            {isAdvanceFilter && (
+              <DataTableAdvanceFilter
+                table={table}
+                translations={useIndonesian ? idIDTranslations : undefined}
+              />
+            )}
           </DataTableToolbar>
         </DataTable>
         <DataTablePagination className="mt-auto" table={table} />

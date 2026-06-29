@@ -32,8 +32,7 @@ Import all components and combine them:
 import {
   DataTable,
   DataTableToolbar,
-  DataTableAdvancedToolbar,
-  DataTableFilterList,
+  DataTableAdvanceFilter,
   useDataTable
 } from "kombase";
 
@@ -45,16 +44,26 @@ const { table } = useDataTable({
 
 // With standard toolbar
 <DataTable table={table}>
-  <DataTableToolbar table={table}>
+  <DataTableToolbar table={table} />
 </DataTable>
 
-// Add extra children for custom node
+// With advanced filter toolbar
 <DataTable table={table}>
-  <DataTableToolbar table={table}>
-    <Button size="icon" variant="outline">
-      <RefreshCw />
-    </Button>
+  <DataTableToolbar hideFilter table={table}>
+    <DataTableAdvanceFilter table={table} />
   </DataTableToolbar>
+</DataTable>
+
+// Add custom actions on the right side of the toolbar
+<DataTable table={table}>
+  <DataTableToolbar
+    table={table}
+    actions={
+      <Button size="icon" variant="outline">
+        <RefreshCw />
+      </Button>
+    }
+  />
 </DataTable>
 ```
 
@@ -124,16 +133,19 @@ const { table } = useDataTable({
     Pass the table instance to the `DataTable`, and `DataTableToolbar` components:
 
     ```tsx
-    import { DataTable, DataTableToolbar, DataTableSortList } from "kombase";
+    import { DataTable, DataTableToolbar } from "kombase";
 
     function DataTableDemo() {
       return (
         <DataTable table={table}>
-          <DataTableToolbar table={table}>
-            <Button size="icon" variant="outline">
-              <RefreshCw />
-            </Button>
-          </DataTableToolbar>
+          <DataTableToolbar
+            table={table}
+            actions={
+              <Button size="icon" variant="outline">
+                <RefreshCw />
+              </Button>
+            }
+          />
         </DataTable>
       );
     }
