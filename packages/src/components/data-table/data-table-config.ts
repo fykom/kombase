@@ -80,3 +80,33 @@ export const dataTableConfig = {
     { label: 'Is not empty', value: 'isNotEmpty' as const },
   ],
 };
+
+export const idIDTranslations = {
+  addFilter: 'Tambah filter',
+  and: 'dan',
+  enterValue: 'Masukkan nilai...',
+  filters: 'Filter',
+  noFiltersApplied: 'Tidak ada filter yang diterapkan',
+  operators: {
+    eq: 'adalah',
+    gt: 'lebih dari',
+    gte: 'lebih dari atau sama dengan',
+    iLike: 'mengandung',
+    inArray: 'salah satu dari',
+    isBetween: 'di antara',
+    isEmpty: 'kosong',
+    isNotEmpty: 'tidak kosong',
+    isRelativeToToday: 'relatif terhadap hari ini',
+    lt: 'kurang dari',
+    lte: 'kurang dari atau sama dengan',
+    ne: 'bukan',
+    notILike: 'tidak mengandung',
+    notInArray: 'bukan salah satu dari',
+  },
+  or: 'atau',
+  pickADate: 'Pilih tanggal',
+  resetFilters: 'Hapus filter',
+  searchFields: 'Cari kolom...',
+  selectField: 'Pilih kolom',
+  where: 'Di mana',
+};

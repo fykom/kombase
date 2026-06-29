@@ -118,3 +118,33 @@ export interface DataTableRowAction<TData> {
   row: Row<TData>;
   variant: 'update' | 'delete';
 }
+
+export interface DataTableTranslations {
+  where?: string;
+  and?: string;
+  or?: string;
+  addFilter?: string;
+  resetFilters?: string;
+  filters?: string;
+  noFiltersApplied?: string;
+  selectField?: string;
+  searchFields?: string;
+  pickADate?: string;
+  enterValue?: string;
+  operators?: {
+    eq?: string;
+    ne?: string;
+    iLike?: string;
+    notILike?: string;
+    lt?: string;
+    lte?: string;
+    gt?: string;
+    gte?: string;
+    isEmpty?: string;
+    isNotEmpty?: string;
+    isBetween?: string;
+    inArray?: string;
+    notInArray?: string;
+    isRelativeToToday?: string;
+  };
+}
