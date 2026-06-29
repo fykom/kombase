@@ -1,5 +1,14 @@
 # Kombase
 
+## 1.3.4
+
+### Patch Changes
+
+- - Fixed a TypeScript type mismatch error in `DataTableRangeFilter` under `"noUncheckedIndexedAccess": true` by typing the values array as a fixed `[string, string]` tuple.
+  - Resolved a bug in `DataTableToolbar` where children were duplicated on both the left and right sides. Added a new `actions` prop for custom right-side buttons/actions and updated the layout/docs examples.
+  - Simplified manual filtering assignment in `useDataTable` hook to resolve a Biome lint warning.
+  - Implement advanced data table filtering with custom operators and debounced input components
+
 ## 1.3.3
 
 ### Patch Changes
