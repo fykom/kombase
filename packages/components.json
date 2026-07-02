@@ -10,7 +10,9 @@
   "iconLibrary": "lucide",
   "menuAccent": "subtle",
   "menuColor": "default",
-  "registries": {},
+  "registries": {
+    "@diceui": "https://diceui.com/r/{style}/{name}.json"
+  },
   "rsc": false,
   "rtl": false,
   "style": "new-york",

@@ -6,6 +6,12 @@
       "source": "wshobson/agents",
       "sourceType": "github"
     },
+    "improve": {
+      "computedHash": "39a9358732dcff385e9e4d3e60b4547856f834e54a58b35e455aa9bd49928c13",
+      "skillPath": "skills/improve/SKILL.md",
+      "source": "shadcn/improve",
+      "sourceType": "github"
+    },
     "sql-optimization": {
       "computedHash": "47c930907f25d67454ac8c2d155785eae3dce72242960d0c0e9ebf2ced9cd231",
       "skillPath": "skills/sql-optimization/SKILL.md",
