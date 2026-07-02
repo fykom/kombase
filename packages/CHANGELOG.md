@@ -1,5 +1,44 @@
 # Kombase
 
+## 2.0.0
+
+### Major Changes
+
+- A summary of features, optimizations, and refactorings implemented across the codebase.
+
+  ***
+
+  Introduced a highly modular, headless/styled file upload system with React/Radix and React Hook Form support.
+  - **Interactive Area**: Support for drag-and-drop, click-to-trigger, paste events, and keyboard interactions.
+  - **File Validation**: Integrated size validation, accepted MIME-type check, maximum files threshold, and custom validation callbacks (`onFileValidate`).
+  - **Upload Progress & Cache**: Asynchronous upload handler (`onUpload`) with progress reporting per-file, success/error status management, and memory-safe URL object cleanup.
+  - **Form Hook Integration**: Created `FormUpload` component wrapping `FileUpload` with full `react-hook-form` controller compatibility.
+  - **Demos & Docs**:
+    - Added complete markdown guides (`file-upload.mdx`, `form-upload.mdx`).
+    - Created 5 copy-pasteable demos under `docs/app/examples/` (Chat Input, Circular Progress, Direct Upload, Fill Progress, Form Integration).
+
+  ***
+
+  Major refactoring of the filtering hook and calendar inputs to enable controlled filters and custom backend serializations.
+  - **Filter Parameter Serializer (`filter-helper.ts`)**:
+    - Implemented `resolveFiltersToFlatParams` supporting multiple serialization styles for backends: `flat`, `suffix`, `django`, `nested`, `prefix`, and `postgrest` (e.g. `status=eq.active`).
+    - Implemented `mapDateFilterToParams` to serialize single date operators (`eq`, `lt`, `lte`, `gt`, `gte`), ranges (`isBetween`), and relative today dates into clean parameters.
+  - **Controlled Filter State (`use-data-table.ts`)**:
+    - Refactored `useDataTable` to support fully controlled external filters via `filterValues` and `onFilterValuesChange`, eliminating synchronization issues.
+  - **Date Preset Support**:
+    - Date filter calendars in both standard and advanced filters now dynamically render sidebar presets configured via column metadata.
+  - **Calendar UI Cleanup (`calendar.tsx`)**:
+    - Replaced Tailwind grid widths with flexible custom property spacing (`--cell-size` and `--cell-radius`).
+    - Added RTL flip support for navigation chevrons and refactored modifiers styling.
+  - **Toolbar Additions (`data-table-toolbar.tsx`)**:
+    - Added support for `boolean` filter variant.
+    - Added layout alignment property (`align: 'start' | 'center' | 'end'`).
+    - Prevented manual "Reset" button showing when advanced filters side sheet is active.
+  - **DebouncedInput Optimization**:
+    - Wrapped `onChange` prop in a mutable ref to prevent resetting timer intervals when parent callbacks are re-created.
+  - **Translations**:
+    - Added Indonesian translation `selected: "terpilih"` to the core translations bundle.
+
 ## 1.3.4
 
 ### Patch Changes
