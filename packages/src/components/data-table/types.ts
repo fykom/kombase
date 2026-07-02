@@ -46,6 +46,7 @@ export type ColumnFilterMeta =
     }
   | {
       variant: 'boolean';
+      options?: Option[];
     }
   | {
       variant: 'select';
@@ -95,7 +96,7 @@ export interface FilterItemSchema {
   filterId: string;
   id: string;
   operator: FilterOperator;
-  value: string | string[];
+  value: any;
   variant: FilterVariant;
 }
 
@@ -131,6 +132,7 @@ export interface DataTableTranslations {
   searchFields?: string;
   pickADate?: string;
   enterValue?: string;
+  selected?: string;
   operators?: {
     eq?: string;
     ne?: string;

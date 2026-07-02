@@ -107,6 +107,7 @@ export const idIDTranslations = {
   pickADate: 'Pilih tanggal',
   resetFilters: 'Hapus filter',
   searchFields: 'Cari kolom...',
+  selected: 'terpilih',
   selectField: 'Pilih kolom',
   where: 'Di mana',
 };

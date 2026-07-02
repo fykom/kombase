@@ -2,7 +2,12 @@ import type { Column, ColumnMeta, Table } from '@tanstack/react-table';
 import dayjs from 'dayjs';
 import { Calendar as CalendarIcon, Check, ChevronsUpDown, ListFilter, Trash2 } from 'lucide-react';
 import * as React from 'react';
-import { getDefaultFilterOperator, getFilterOperators } from '../../lib/data-table';
+import type { DateRange } from 'react-day-picker';
+import {
+  getDefaultFilterOperator,
+  getFilterOperators,
+  getValidFilters,
+} from '../../lib/data-table';
 import { cn } from '../../lib/utils';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -26,9 +31,11 @@ import {
   SelectValue,
 } from '../ui/select';
 import { dataTableConfig } from './data-table-config';
+import { getIsDateRange, parseAsDate, parseColumnFilterValue } from './data-table-date-filter';
 import { DataTableRangeFilter } from './data-table-range-filter';
 import type {
   DataTableTranslations,
+  DatePreset,
   ExtendedColumnFilter,
   FilterOperator,
   JoinOperator,
@@ -63,6 +70,7 @@ const DEFAULT_TRANSLATIONS = {
   pickADate: 'Pick a date',
   resetFilters: 'Reset filters',
   searchFields: 'Search fields...',
+  selected: 'selected',
   selectField: 'Select field',
   where: 'Where',
 };
@@ -86,6 +94,7 @@ export function DataTableAdvanceFilter<TData>({
   shallow,
   throttleMs,
   disabled,
+  align = 'center',
   ...props
 }: DataTableAdvanceFilterProps<TData>) {
   const labelId = React.useId();
@@ -113,7 +122,7 @@ export function DataTableAdvanceFilter<TData>({
           column.id !== 'select' &&
           column.id !== 'actions',
       );
-  }, [table]);
+  }, [table, table.options.columns]);
 
   // Read/write state from table meta
   const metaFilters = (table.options.meta as any)?.filters as
@@ -131,11 +140,29 @@ export function DataTableAdvanceFilter<TData>({
   const [localFilters, setLocalFilters] = React.useState<ExtendedColumnFilter<TData>[]>([]);
   const [localJoinOperator, setLocalJoinOperator] = React.useState<JoinOperator>('and');
 
-  const filters = metaFilters !== undefined ? metaFilters : localFilters;
+  // Sync local filters with controlled filters when popover is closed
+  React.useEffect(() => {
+    if (metaFilters !== undefined && !open) {
+      setLocalFilters(metaFilters);
+    }
+  }, [open, metaFilters]);
+
+  // Sync local joinOperator with controlled joinOperator when popover is closed
+  React.useEffect(() => {
+    if (metaJoinOperator !== undefined && !open) {
+      setLocalJoinOperator(metaJoinOperator);
+    }
+  }, [open, metaJoinOperator]);
+
+  const filters = localFilters;
   const setFilters = React.useCallback(
     (value: any) => {
       if (metaSetFilters) {
-        metaSetFilters(value);
+        setLocalFilters((prev) => {
+          const next = typeof value === 'function' ? value(prev) : value;
+          metaSetFilters(getValidFilters(next));
+          return next;
+        });
       } else {
         setLocalFilters(value);
       }
@@ -143,11 +170,15 @@ export function DataTableAdvanceFilter<TData>({
     [metaSetFilters],
   );
 
-  const joinOperator = metaJoinOperator !== undefined ? metaJoinOperator : localJoinOperator;
+  const joinOperator = localJoinOperator;
   const setJoinOperator = React.useCallback(
-    (value: JoinOperator) => {
+    (value: any) => {
       if (metaSetJoinOperator) {
-        metaSetJoinOperator(value);
+        setLocalJoinOperator((prev) => {
+          const next = typeof value === 'function' ? value(prev) : value;
+          metaSetJoinOperator(next);
+          return next;
+        });
       } else {
         setLocalJoinOperator(value);
       }
@@ -206,7 +237,7 @@ export function DataTableAdvanceFilter<TData>({
   return (
     <Popover onOpenChange={setOpen} open={open}>
       <PopoverTrigger asChild>
-        <Button className="font-normal h-8 text-xs gap-1.5" disabled={disabled} variant="outline">
+        <Button disabled={disabled} variant="outline">
           <ListFilter className="size-3.5 text-muted-foreground" />
           {translations.filters}
           {filters.length > 0 && (
@@ -220,6 +251,7 @@ export function DataTableAdvanceFilter<TData>({
         </Button>
       </PopoverTrigger>
       <PopoverContent
+        align={align}
         aria-describedby={descriptionId}
         aria-labelledby={labelId}
         className="flex w-full max-w-(--radix-popover-content-available-width) flex-col gap-3.5 p-4 sm:min-w-[380px]"
@@ -360,7 +392,7 @@ function DataTableFilterItem<TData>({
             <ChevronsUpDown className="size-4 opacity-50 shrink-0" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="start" className="w-40 p-0">
+        <PopoverContent align="start" className="w-40 p-0" style={{ zIndex: 100 }}>
           <Command>
             <CommandInput className="h-8" placeholder={translations.searchFields} />
             <CommandList>
@@ -369,7 +401,7 @@ function DataTableFilterItem<TData>({
                 {columns.map((col) => (
                   <CommandItem
                     key={col.id}
-                    onSelect={(value) => {
+                    onSelect={(value: string) => {
                       onFilterUpdate(filter.filterId, {
                         id: value as Extract<keyof TData, string>,
                         operator: getDefaultFilterOperator(col.columnDef.meta?.variant ?? 'text'),
@@ -515,6 +547,13 @@ function onFilterInputRender<TData>({
     }
 
     case 'boolean': {
+      const options = columnMeta?.options ?? [
+        { label: 'True', value: 'true' },
+        { label: 'False', value: 'false' },
+      ];
+      const selectedOption = options.find((opt) => String(opt.value) === String(filter.value));
+      const displayLabel = selectedOption?.label ?? (filter.value === 'true' ? 'True' : 'False');
+
       return (
         <Select
           onValueChange={(val) =>
@@ -525,16 +564,15 @@ function onFilterInputRender<TData>({
           value={String(filter.value)}
         >
           <SelectTrigger className="w-full rounded h-8 text-xs" id={inputId}>
-            <SelectValue placeholder={filter.value ? 'True' : 'False'} />
+            <SelectValue placeholder={displayLabel} />
           </SelectTrigger>
           <SelectContent position="popper" style={{ zIndex: 100 }}>
             <SelectGroup>
-              <SelectItem className="text-xs" value="true">
-                True
-              </SelectItem>
-              <SelectItem className="text-xs" value="false">
-                False
-              </SelectItem>
+              {options.map((opt) => (
+                <SelectItem className="text-xs" key={String(opt.value)} value={String(opt.value)}>
+                  {opt.label}
+                </SelectItem>
+              ))}
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -564,13 +602,17 @@ function onFilterInputRender<TData>({
     case 'dateRange': {
       return (
         <DateFilterInput
+          disabled={columnMeta?.disabled}
+          label={columnMeta?.label}
           onChange={(val) => {
             onFilterUpdate(filter.filterId, {
               value: val,
+              ...(Array.isArray(val) ? { operator: 'isBetween' } : {}),
             });
           }}
           operator={filter.operator}
           placeholder={columnMeta?.placeholder}
+          presets={columnMeta?.presets ?? (columnMeta as any)?.preset}
           translations={translations}
           value={filter.value}
         />
@@ -635,13 +677,13 @@ function FacetedFilter({
             {selectedValues.size === 0
               ? (placeholder ?? translations.selectField)
               : multiple
-                ? `${selectedValues.size} selected`
+                ? `${selectedValues.size} ${translations.selected || 'selected'}`
                 : getLabel(Array.from(selectedValues)[0] ?? '')}
           </span>
           <ChevronsUpDown className="size-4 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-[200px] p-0">
+      <PopoverContent align="start" className="w-[200px] p-0" style={{ zIndex: 100 }}>
         <Command>
           <CommandInput className="h-8" placeholder={translations.searchFields} />
           <CommandList>
@@ -690,24 +732,39 @@ function DateFilterInput({
   operator,
   placeholder,
   translations,
+  disabled,
+  presets,
+  label,
 }: {
-  value: string | string[];
-  onChange: (value: string | string[]) => void;
+  value: any;
+  onChange: (value: any) => void;
   operator: string;
   placeholder?: string;
   translations: any;
+  disabled?: import('react-day-picker').Matcher | import('react-day-picker').Matcher[];
+  presets?: boolean | DatePreset[];
+  label?: string;
 }) {
-  const [open, setOpen] = React.useState(false);
-
-  const dateValue = React.useMemo(() => {
-    if (Array.isArray(value)) {
-      return value.filter(Boolean).map((v) => new Date(Number(v)));
+  const selectedDates = React.useMemo<DateRange | Date[]>(() => {
+    if (!value) {
+      return operator === 'isBetween' ? { from: undefined, to: undefined } : [];
     }
-    return value ? [new Date(Number(value))] : [];
-  }, [value]);
 
-  const startDate = dateValue[0];
-  const endDate = dateValue[1];
+    if (operator === 'isBetween') {
+      const timestamps = parseColumnFilterValue(value);
+      return {
+        from: parseAsDate(timestamps[0]),
+        to: parseAsDate(timestamps[1]),
+      };
+    }
+
+    const timestamps = parseColumnFilterValue(value);
+    const date = parseAsDate(timestamps[0]);
+    return date ? [date] : [];
+  }, [value, operator]);
+
+  const startDate = getIsDateRange(selectedDates) ? selectedDates.from : selectedDates[0];
+  const endDate = getIsDateRange(selectedDates) ? selectedDates.to : undefined;
 
   const displayValue = React.useMemo(() => {
     if (operator === 'isBetween' && startDate && endDate) {
@@ -718,8 +775,54 @@ function DateFilterInput({
       : (placeholder ?? translations.pickADate);
   }, [startDate, endDate, operator, placeholder, translations]);
 
+  const hasPresets = Array.isArray(presets) && presets.length > 0;
+  const resolvedPresets = React.useMemo<DatePreset[]>(() => {
+    return hasPresets ? (presets as DatePreset[]) : [];
+  }, [hasPresets, presets]);
+
+  const isPresetActive = React.useCallback(
+    (presetValue: DateRange | [Date, Date] | (() => DateRange | [Date, Date])) => {
+      let resolvedValue: DateRange;
+      const val = typeof presetValue === 'function' ? presetValue() : presetValue;
+      if (Array.isArray(val)) {
+        resolvedValue = { from: val[0], to: val[1] };
+      } else {
+        resolvedValue = val;
+      }
+
+      if (!resolvedValue.from && !startDate && !resolvedValue.to && !endDate) return true;
+      if (!resolvedValue.from || !startDate) return false;
+
+      const sameFrom = dayjs(resolvedValue.from).isSame(startDate, 'day');
+      const sameTo =
+        resolvedValue.to && endDate
+          ? dayjs(resolvedValue.to).isSame(endDate, 'day')
+          : !resolvedValue.to && !endDate;
+
+      return sameFrom && sameTo;
+    },
+    [startDate, endDate],
+  );
+
+  const handlePresetClick = React.useCallback(
+    (presetValue: DateRange | [Date, Date] | (() => DateRange | [Date, Date])) => {
+      let resolvedValue: DateRange;
+      const val = typeof presetValue === 'function' ? presetValue() : presetValue;
+      if (Array.isArray(val)) {
+        resolvedValue = { from: val[0], to: val[1] };
+      } else {
+        resolvedValue = val;
+      }
+
+      const from = resolvedValue.from?.getTime();
+      const to = resolvedValue.to?.getTime();
+      onChange(from || to ? [from ? from.toString() : '', to ? to.toString() : ''] : undefined);
+    },
+    [onChange],
+  );
+
   return (
-    <Popover onOpenChange={setOpen} open={open}>
+    <Popover>
       <PopoverTrigger asChild>
         <Button
           className={cn(
@@ -732,31 +835,60 @@ function DateFilterInput({
           <span className="truncate">{displayValue}</span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-auto p-0">
-        {operator === 'isBetween' ? (
-          <Calendar
-            mode="range"
-            onSelect={(range) => {
-              if (range?.from || range?.to) {
-                const fromTime = range.from ? String(range.from.getTime()) : '';
-                const toTime = range.to ? String(range.to.getTime()) : '';
-                onChange([fromTime, toTime]);
-              }
-            }}
-            selected={startDate && endDate ? { from: startDate, to: endDate } : undefined}
-          />
-        ) : (
-          <Calendar
-            mode="single"
-            onSelect={(date) => {
-              if (date) {
-                onChange(String(date.getTime()));
-                setOpen(false);
-              }
-            }}
-            selected={startDate}
-          />
+      <PopoverContent
+        align="start"
+        className="flex w-auto p-0 divide-x divide-border bg-background text-foreground"
+        style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)', zIndex: 100 }}
+      >
+        {hasPresets && (
+          <div className="hidden sm:flex flex-col gap-1 p-2.5 min-w-[140px]">
+            {resolvedPresets.map((preset) => (
+              <Button
+                className="justify-start font-normal text-xs h-8 px-3.5 w-full rounded-md"
+                key={preset.label}
+                onClick={() => handlePresetClick(preset.value)}
+                size="sm"
+                variant={isPresetActive(preset.value) ? 'default' : 'ghost'}
+              >
+                {preset.label}
+              </Button>
+            ))}
+          </div>
         )}
+        <div className="flex flex-col">
+          {operator === 'isBetween' ? (
+            <Calendar
+              aria-label={`Select ${label ?? 'date'} data`}
+              autoFocus
+              captionLayout="label"
+              disabled={disabled}
+              mode="range"
+              onSelect={(range) => {
+                if (range?.from || range?.to) {
+                  const from = range.from?.getTime();
+                  const to = range.to?.getTime();
+                  onChange(
+                    from || to ? [from ? from.toString() : '', to ? to.toString() : ''] : undefined,
+                  );
+                }
+              }}
+              selected={startDate ? { from: startDate, to: endDate } : undefined}
+            />
+          ) : (
+            <Calendar
+              aria-label={`Select ${label} date`}
+              captionLayout="label"
+              disabled={disabled}
+              mode="single"
+              onSelect={(date) => {
+                if (date) {
+                  onChange(date.getTime().toString());
+                }
+              }}
+              selected={startDate}
+            />
+          )}
+        </div>
       </PopoverContent>
     </Popover>
   );

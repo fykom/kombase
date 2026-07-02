@@ -13,18 +13,18 @@ import type { DatePreset } from './types';
 
 type DateSelection = Date[] | DateRange;
 
-function getIsDateRange(value: DateSelection): value is DateRange {
+export function getIsDateRange(value: DateSelection): value is DateRange {
   return value && typeof value === 'object' && !Array.isArray(value);
 }
 
-function parseAsDate(timestamp: number | string | undefined): Date | undefined {
+export function parseAsDate(timestamp: number | string | undefined): Date | undefined {
   if (!timestamp) return undefined;
   const numericTimestamp = typeof timestamp === 'string' ? Number(timestamp) : timestamp;
   const date = new Date(numericTimestamp);
   return !Number.isNaN(date.getTime()) ? date : undefined;
 }
 
-function parseColumnFilterValue(value: unknown) {
+export function parseColumnFilterValue(value: unknown) {
   if (value === null || value === undefined) {
     return [];
   }
@@ -51,66 +51,6 @@ interface DataTableDateFilterProps<TData> {
   multiple?: boolean;
   presets?: boolean | DatePreset[];
 }
-
-const DEFAULT_PRESETS: DatePreset[] = [
-  {
-    label: 'Today',
-    value: () => {
-      const now = new Date();
-      return {
-        from: dayjs(now).startOf('day').toDate(),
-        to: dayjs(now).endOf('day').toDate(),
-      };
-    },
-  },
-  {
-    label: 'Yesterday',
-    value: () => {
-      const yesterday = dayjs().subtract(1, 'day');
-      return {
-        from: yesterday.startOf('day').toDate(),
-        to: yesterday.endOf('day').toDate(),
-      };
-    },
-  },
-  {
-    label: 'Last 7 Days',
-    value: () => {
-      return {
-        from: dayjs().subtract(6, 'day').startOf('day').toDate(),
-        to: dayjs().endOf('day').toDate(),
-      };
-    },
-  },
-  {
-    label: 'Last 30 Days',
-    value: () => {
-      return {
-        from: dayjs().subtract(29, 'day').startOf('day').toDate(),
-        to: dayjs().endOf('day').toDate(),
-      };
-    },
-  },
-  {
-    label: 'This Month',
-    value: () => {
-      return {
-        from: dayjs().startOf('month').toDate(),
-        to: dayjs().endOf('month').toDate(),
-      };
-    },
-  },
-  {
-    label: 'Last Month',
-    value: () => {
-      const lastMonth = dayjs().subtract(1, 'month');
-      return {
-        from: lastMonth.startOf('month').toDate(),
-        to: lastMonth.endOf('month').toDate(),
-      };
-    },
-  },
-];
 
 export function DataTableDateFilter<TData>({
   column,
@@ -238,11 +178,13 @@ export function DataTableDateFilter<TData>({
 
   const disabled = column.columnDef.meta?.disabled;
 
-  const hasPresets = multiple && presets !== undefined && presets !== false;
+  const resolvedPresetsOption =
+    presets ?? column.columnDef.meta?.presets ?? (column.columnDef.meta as any)?.preset;
+  const hasPresets =
+    multiple && Array.isArray(resolvedPresetsOption) && resolvedPresetsOption.length > 0;
   const resolvedPresets = React.useMemo<DatePreset[]>(() => {
-    if (!hasPresets) return [];
-    return Array.isArray(presets) ? presets : DEFAULT_PRESETS;
-  }, [hasPresets, presets]);
+    return hasPresets ? (resolvedPresetsOption as DatePreset[]) : [];
+  }, [hasPresets, resolvedPresetsOption]);
 
   const isPresetActive = React.useCallback(
     (presetValue: DateRange | [Date, Date] | (() => DateRange | [Date, Date])) => {
@@ -334,7 +276,7 @@ export function DataTableDateFilter<TData>({
           {multiple ? (
             <Calendar
               autoFocus
-              captionLayout="dropdown"
+              captionLayout="label"
               disabled={disabled}
               mode="range"
               onSelect={onSelect}
@@ -344,7 +286,7 @@ export function DataTableDateFilter<TData>({
             />
           ) : (
             <Calendar
-              captionLayout="dropdown"
+              captionLayout="label"
               disabled={disabled}
               mode="single"
               onSelect={onSelect}

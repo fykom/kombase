@@ -16,17 +16,22 @@ export function DebouncedInput({
 }: DebouncedInputProps) {
   const [value, setValue] = React.useState(initialValue);
 
+  const onChangeRef = React.useRef(onChange);
+  React.useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
+
   React.useEffect(() => {
     setValue(initialValue);
   }, [initialValue]);
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      onChange(value);
+      onChangeRef.current(value);
     }, debounce);
 
     return () => clearTimeout(timeout);
-  }, [value, debounce, onChange]);
+  }, [value, debounce]);
 
   return <Input {...props} onChange={(e) => setValue(e.target.value)} value={value} />;
 }

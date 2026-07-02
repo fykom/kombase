@@ -64,6 +64,9 @@ export function getFilterOperators(filterVariant: FilterVariant) {
 }
 
 export function getDefaultFilterOperator(filterVariant: FilterVariant) {
+  if (filterVariant === 'dateRange' || filterVariant === 'range') {
+    return 'isBetween';
+  }
   const operators = getFilterOperators(filterVariant);
 
   return operators[0]?.value ?? (filterVariant === 'text' ? 'iLike' : 'eq');

@@ -23,7 +23,6 @@ import type {
   ExtendedColumnSort,
   JoinOperator,
 } from '@/components/data-table/types';
-import { useDebouncedCallback } from '@/components/hooks/use-debounced-callback';
 import { getValidFilters } from '@/lib/data-table';
 
 const DEBOUNCE_MS = 300;
@@ -54,6 +53,8 @@ interface UseDataTableProps<TData>
   setFilters?: React.Dispatch<React.SetStateAction<ExtendedColumnFilter<TData>[]>>;
   joinOperator?: JoinOperator;
   setJoinOperator?: React.Dispatch<React.SetStateAction<JoinOperator>>;
+  filterValues?: Record<string, any>;
+  onFilterValuesChange?: (updates: Record<string, any>) => void;
 }
 
 export function useDataTable<TData>(props: UseDataTableProps<TData>) {
@@ -162,60 +163,52 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
     [sorting],
   );
 
-  const filterableColumns = React.useMemo(() => {
-    if (isAdvanced) return [];
-    return columns.filter((column) => column.enableColumnFilter);
-  }, [columns, isAdvanced]);
-
-  const [filterValues, setFilterValuesRef] = React.useState<
-    Record<string, string | string[] | null>
-  >({});
-
-  const setFilterValues = React.useCallback((updates: Record<string, string | string[] | null>) => {
-    setFilterValuesRef((prev) => ({ ...prev, ...updates }));
-  }, []);
-
-  const debouncedSetFilterValues = useDebouncedCallback(
-    (values: Record<string, string | string[] | null>) => {
-      if (controlledPage === undefined) setInternalPage(1);
-      onPageChange?.(1);
-      setFilterValues(values);
-    },
-    debounceMs,
-  );
-
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+  const [localColumnFilters, setLocalColumnFilters] = React.useState<ColumnFiltersState>(
     initialState?.columnFilters ?? [],
   );
+
+  const isControlled = props.filterValues !== undefined;
+
+  const columnFilters = React.useMemo(() => {
+    if (isControlled) {
+      return Object.entries(props.filterValues || {})
+        .map(([id, value]) => ({ id, value }))
+        .filter(
+          (f) =>
+            f.value !== null &&
+            f.value !== undefined &&
+            f.value !== '' &&
+            (Array.isArray(f.value) ? f.value.length > 0 : true),
+        ) as ColumnFiltersState;
+    }
+    return localColumnFilters;
+  }, [isControlled, props.filterValues, localColumnFilters]);
 
   const onColumnFiltersChange = React.useCallback(
     (updaterOrValue: Updater<ColumnFiltersState>) => {
       if (isAdvanced) return;
 
-      setColumnFilters((prev) => {
-        const next = typeof updaterOrValue === 'function' ? updaterOrValue(prev) : updaterOrValue;
+      const next =
+        typeof updaterOrValue === 'function' ? updaterOrValue(columnFilters) : updaterOrValue;
 
-        const filterUpdates = next.reduce<Record<string, string | string[] | null>>(
-          (acc, filter) => {
-            if (filterableColumns.find((column) => column.id === filter.id)) {
-              acc[filter.id] = filter.value as string | string[];
-            }
-            return acc;
-          },
-          {},
-        );
+      if (isControlled && props.onFilterValuesChange) {
+        const updates: Record<string, any> = {};
+        next.forEach((f) => {
+          updates[f.id] = f.value;
+        });
 
-        for (const prevFilter of prev) {
-          if (!next.some((filter) => filter.id === prevFilter.id)) {
-            filterUpdates[prevFilter.id] = null;
+        columnFilters.forEach((prevF) => {
+          if (!next.some((f) => f.id === prevF.id)) {
+            updates[prevF.id] = null;
           }
-        }
+        });
 
-        debouncedSetFilterValues(filterUpdates);
-        return next;
-      });
+        props.onFilterValuesChange(updates);
+      } else {
+        setLocalColumnFilters(next);
+      }
     },
-    [debouncedSetFilterValues, filterableColumns, isAdvanced],
+    [columnFilters, isControlled, props.onFilterValuesChange, isAdvanced],
   );
 
   const table = useReactTable({
@@ -270,14 +263,6 @@ export function useDataTable<TData>(props: UseDataTableProps<TData>) {
   });
 
   return {
-    filters,
-    filterValues,
-    joinOperator,
-    page,
-    perPage,
-    setFilters,
-    setJoinOperator,
-    sorting,
     table,
   };
 }

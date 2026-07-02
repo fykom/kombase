@@ -15,6 +15,7 @@ interface DataTableToolbarProps<TData> extends React.ComponentProps<'div'> {
   viewOptions?: boolean;
   hideFilter?: boolean;
   actions?: React.ReactNode;
+  align?: 'start' | 'center' | 'end';
 }
 
 export function DataTableToolbar<TData>({
@@ -24,6 +25,7 @@ export function DataTableToolbar<TData>({
   className,
   viewOptions = true,
   hideFilter = false,
+  align = 'start',
   ...props
 }: DataTableToolbarProps<TData>) {
   const advancedFilters = (table.options.meta as any)?.filters as any[] | undefined;
@@ -56,13 +58,20 @@ export function DataTableToolbar<TData>({
       role="toolbar"
       {...props}
     >
-      <div className="flex flex-1 flex-wrap items-center gap-2">
+      <div
+        className={cn(
+          'flex flex-1 flex-wrap items-center gap-2',
+          align === 'center' && 'justify-center',
+          align === 'end' && 'justify-end',
+          align === 'start' && 'justify-start',
+        )}
+      >
         {!hideFilter &&
           columns.map((column) => (
             <DataTableToolbarFilter column={column} key={column.id} table={table} />
           ))}
         {children}
-        {isFiltered && (
+        {isFiltered && !isAdvancedActive && (
           <Button
             aria-label="Reset filters"
             className="border-dashed h-8 text-xs gap-1.5"
@@ -136,7 +145,23 @@ function DataTableToolbarFilter<TData>({ column, table }: DataTableToolbarFilter
             <DataTableDateFilter
               column={column}
               multiple={columnMeta.variant === 'dateRange'}
-              presets={columnMeta.presets}
+              presets={columnMeta.presets ?? (columnMeta as any).preset}
+              title={columnMeta.label ?? column.id}
+            />
+          );
+
+        case 'boolean':
+          return (
+            <DataTableFacetedFilter
+              column={column}
+              loading={columnMeta.loading}
+              multiple={false}
+              options={
+                columnMeta.options ?? [
+                  { label: 'True', value: 'true' },
+                  { label: 'False', value: 'false' },
+                ]
+              }
               title={columnMeta.label ?? column.id}
             />
           );

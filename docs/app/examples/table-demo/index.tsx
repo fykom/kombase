@@ -266,6 +266,7 @@ export default function TableDemo({
           >
             {isAdvanceFilter && (
               <DataTableAdvanceFilter
+                align="end"
                 table={table}
                 translations={useIndonesian ? idIDTranslations : undefined}
               />

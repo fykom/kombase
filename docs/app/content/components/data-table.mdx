@@ -270,7 +270,7 @@ function InvoiceTable() {
 
   const columns = useInvoiceColumns();
 
-  const { table, filterValues } = useDataTable({
+  const { table } = useDataTable({
     columns,
     data: data?.data ?? [],
     getRowId: (row) => row.invoice_id,
@@ -292,17 +292,6 @@ function InvoiceTable() {
 #### Uncontrolled Pagination
 
 If you don't provide `page`, `perPage`, or `onPageChange`, the hook will manage the state internally.
-
-```tsx
-const { table, filterValues, page, perPage } = useDataTable({
-  columns,
-  data,
-  pageCount,
-  // Internal state management is active since no controlled props are passed
-});
-#### Infinite Scroll (Load More on Scroll)
-
-For tables where you want the user to scroll vertically to load more records instead of using paginated buttons:
 
 ```tsx
 import * as React from "react";
@@ -354,17 +343,291 @@ function InfiniteScrollTable() {
 
 ### Column Filtering
 
-Column filtering is enabled by setting `enableColumnFilter: true` in your column definitions. The `filterValues` returned by the hook contains the active filter key-value pairs that can be sent directly to your API:
+Column filtering is enabled by setting `enableColumnFilter: true` in your column definitions. You can configure column filtering in three different modes:
+
+#### 1. Controlled Column Filtering (Standard SSR / Server-Side Filtering)
+
+In standard server-side filtering (SSR), each column filter maps to its own direct URL query parameter (e.g. `?search=xyz&status=paid,pending`). 
+
+By passing `filterValues` and `onFilterValuesChange` to `useDataTable`, the table becomes a fully controlled component synced with your URL parameters. When a user types in a text filter or checks a faceted filter:
+1. The table automatically triggers `onColumnFiltersChange` (with built-in debounce for text inputs).
+2. It calls `onFilterValuesChange` with the updated keys and values.
+3. You write the updates back to the URL search params, which triggers a reload/fetch.
+
+Here is a complete step-by-step walkthrough for React Router v7 / Remix:
+
+##### Step-by-Step Implementation
+
+1. **Read URL Params**: Read the active parameters using `useSearchParams`.
+2. **Configure `useDataTable`**: Pass the parsed values to `filterValues` and handle state updates in `onFilterValuesChange`.
+3. **Reset Page on Filter Change**: Always reset the `page` parameter to `1` when filters are modified to prevent displaying empty pages.
+4. **Fetch Data**: Pass the active URL parameters directly to your backend API fetching hook.
+
+##### Code Example
 
 ```tsx
-const { table, filterValues } = useDataTable({ ... });
+import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { DataTable, DataTableToolbar, DataTablePagination, useDataTable } from "kombase";
 
-// filterValues contains: { invoice_id: 'INV-001', status: ['paid', 'pending'] }
-// Utilize this object as API query parameters
-useEffect(() => {
-  refetch({ ...filterValues });
-}, [filterValues]);
+function InvoicesTable() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  // 1. Read parameters from URL
+  const page = Number(searchParams.get("page")) || 1;
+  const perPage = Number(searchParams.get("per_page")) || 10;
+  const search = searchParams.get("search") || "";
+  const status = searchParams.get("status") || "";
+
+  // 2. Fetch data from API using URL params
+  const { data, isLoading } = useQuery({
+    queryKey: ["invoices", { page, perPage, search, status }],
+    queryFn: () => fetchInvoices({ page, per_page: perPage, search, status }),
+  });
+
+  // 3. Define the controlled table state
+  const { table } = useDataTable({
+    columns,
+    data: data?.items ?? [],
+    pageCount: data?.meta?.last_page ?? 1,
+    page,
+    perPage,
+    manualFiltering: true, // Tell TanStack Table we are filtering server-side
+    manualPagination: true,
+    
+    // Pass active filters from URL to the table UI
+    filterValues: {
+      search,
+      status: status ? status.split(",") : [],
+    },
+    
+    // Sync table UI updates back to the URL
+    onFilterValuesChange: (updates) => {
+      const newParams = new URLSearchParams(searchParams);
+      
+      // Reset page to 1 whenever filters change
+      newParams.set("page", "1");
+
+      if ("search" in updates) {
+        if (updates.search) {
+          newParams.set("search", updates.search);
+        } else {
+          newParams.delete("search");
+        }
+      }
+
+      if ("status" in updates) {
+        const statusVal = updates.status;
+        if (Array.isArray(statusVal) && statusVal.length > 0) {
+          newParams.set("status", statusVal.join(","));
+        } else {
+          newParams.delete("status");
+        }
+      }
+
+      setSearchParams(newParams, { replace: true });
+    },
+    
+    // Sync pagination changes to the URL
+    onPageChange: (newPage) => {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("page", String(newPage));
+      setSearchParams(newParams);
+    },
+    onPerPageChange: (newPerPage) => {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("per_page", String(newPerPage));
+      newParams.set("page", "1"); // Reset page when changing page size
+      setSearchParams(newParams);
+    }
+  });
+
+  return (
+    <>
+      <DataTable table={table} loading={isLoading}>
+        <DataTableToolbar table={table} />
+      </DataTable>
+      <DataTablePagination table={table} />
+    </>
+  );
+}
 ```
+
+#### 2. Client-Side Column Filtering (Without URL parameters)
+
+If you just want local in-memory filtering in the browser without query parameters:
+
+1. Fetch all data from the database at once.
+2. Set `manualFiltering: false`.
+3. Do not pass `filterValues` or `onFilterValuesChange`.
+
+```tsx
+const { table } = useDataTable({
+  columns,
+  data: allItems,
+  manualFiltering: false, // Filtered locally in the browser by TanStack Table
+  pageCount: 1,
+});
+```
+
+#### 3. API Parameter Helper: `resolveFiltersToFlatParams`
+
+When integrating with server-side processing, frontend filter states (like TanStack Column Filters) need to be serialized into query parameters matching your backend API specification. 
+
+Instead of writing manual mapper functions for every column, the built-in `resolveFiltersToFlatParams` utility automatically converts an array of `ExtendedColumnFilter` objects into a flat key-value query object. It supports various backend filter styles (Nested, Django, PostgREST, MongoDB, etc.), range decomposition, and customizable array formatting out of the box.
+
+##### Import
+
+```ts
+import { resolveFiltersToFlatParams, mapDateFilterToParams } from "kombase";
+```
+
+##### Configuration Options
+
+The helper accepts a second argument config of type `FilterResolutionConfig`:
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `style` | `'flat' \| 'suffix' \| 'django' \| 'nested' \| 'prefix' \| 'postgrest' \| 'custom'` | Naming/structure convention for query keys. Default is `'flat'`. |
+| `operatorMap` | `Partial<Record<FilterOperator, string>>` | Custom mapping of operators to backend representation (e.g., `{ inArray: 'in' }`). |
+| `arrayFormat` | `'comma' \| 'repeat' \| 'brackets'` | Formats multi-select array values (e.g., `comma` -> `a,b`, `repeat` -> `[a, b]`, `brackets` -> `status[]=[a,b]`). Default is `'comma'`. |
+| `dateFormat` | `string` | Custom date formatting string (dayjs). Default is `'YYYY-MM-DD'`. |
+| `flatRangeSuffix` | `[string, string]` | Suffixes for start/end in range queries when style is `flat`. Default is `['_min', '_max']` for numbers and `['_start', '_end']` for dates. |
+| `formatFilter` | `Function` | Custom hook to manually format any parameter key-value pair. |
+| `joinParamName` | `string` | Parameter key to represent the logical join operator (e.g. `_join` -> `?_join=or`). |
+| `joinOperator` | `'and' \| 'or'` | Active logical join operator. |
+| `columnOptionsMap` | `Record<string, string[]>` | Valid options for computing complement arrays (for `ne` / `notInArray`) on flat APIs. |
+| `paramNameMap` | `Record<string, string>` | Rename parameter keys (e.g. `{ ticket_status: "status" }`). |
+| `customMappers` | `Partial<Record<keyof TData, (value: any, operator: FilterOperator) => Partial<TParams>>>` | Per-column custom serializer overrides. |
+
+---
+
+##### Guide: Backend Query Styles
+
+Let's assume we have a filter on the column `age` with a value of `18` and the operator is `gte` (Greater than or equal). Here is how each `style` configuration formats the query parameter:
+
+| Style Name | Parameter Structure | Output Example | Typical Backend / Target Framework |
+| :--- | :--- | :--- | :--- |
+| `flat` | `key=value` | `?age=18` | Express, Laravel (Simple query mapping) |
+| `suffix` | `key_operator=value` | `?age_gte=18` | Custom REST APIs, Django (legacy / flat) |
+| `django` | `key__operator=value` | `?age__gte=18` | Django ORM / Django Filter |
+| `nested` | `key[operator]=value` | `?age[gte]=18` | Ruby on Rails, NestJS (TypeORM), Strapi, Koa |
+| `prefix` | `key[$operator]=value` | `?age[$gte]=18` | FeathersJS, MongoDB Query Syntax |
+| `postgrest` | `key=operator.value` | `?age=gte.18` | PostgREST, Supabase REST API |
+
+> [!TIP]
+> If `style` is `'flat'` (default), operators are omitted in the keys (except for `isEmpty`/`isNotEmpty` which generates `key_is_empty=true/false`). 
+> For other styles, operators are automatically mapped and embedded.
+
+---
+
+##### Guide: Range Filters Decomposition (`isBetween`)
+
+When a developer uses a **numeric range** (like a slider) or a **date range** picker, the table filter outputs an operator `isBetween` with an array value: `[minValue, maxValue]`.
+
+`resolveFiltersToFlatParams` handles this intelligently based on the chosen `style`:
+
+1. **For Flat Style (`style: 'flat'`)**:
+   - Numeric Range: Decomposes into `_min` and `_max` keys.
+     `{ price: [10, 50] }` $\rightarrow$ `?price_min=10&price_max=50`
+   - Date Range: Decomposes into `_start` and `_end` keys.
+     `{ createdAt: ['2023-01-01', '2023-01-31'] }` $\rightarrow$ `?createdAt_start=2023-01-01&createdAt_end=2023-01-31`
+   - You can customize these suffixes globally using `flatRangeSuffix: ['_min_suffix', '_max_suffix']`.
+
+2. **For Non-Flat Styles (e.g. `nested`, `suffix`, `postgrest`)**:
+   - The helper automatically decomposes `isBetween` into two separate operations: `gte` (start) and `lte` (end), then formats them according to the style rules:
+     - `style: 'nested'` $\rightarrow$ `?price[gte]=10&price[lte]=50`
+     - `style: 'suffix'` $\rightarrow$ `?price_gte=10&price_lte=50`
+     - `style: 'postgrest'` $\rightarrow$ `{ price: ['gte.10', 'lte.50'] }` (which gets parsed as `?price=gte.10&price=lte.50`)
+
+---
+
+##### Guide: Array Formatting for Multi-Select (`arrayFormat`)
+
+For columns that support selecting multiple values (e.g., status: `['active', 'inactive']`), you can configure how the array values are sent to your API using `arrayFormat`:
+
+- **`comma` (Default)**: Combines elements into a single comma-separated string.
+  - Output: `?status=active,inactive`
+- **`repeat`**: Generates a standard JavaScript array value, which standard query-string serializers repeat.
+  - Output: `?status=active&status=inactive`
+- **`brackets`**: Appends `[]` to the key name.
+  - Output: `?status[]=active&status[]=inactive`
+---
+
+##### Guide: Negation Filtering & `columnOptionsMap`
+
+When a developer uses a **negation filter** (such as "Is not" or "Has none of"), the helper resolves it differently depending on your API structure:
+
+1. **For Flat Style (`style: 'flat'`)**:
+   - Flat APIs typically do not understand operators like `ne` or `notIn`.
+   - To support these, you **must** provide the list of all available options for that column via `columnOptionsMap`. 
+   - The helper will compute the **options complement** at frontend-level (e.g. if status options are `['A', 'B', 'C']` and you exclude `'A'`, the helper sends `?status=B,C`).
+   
+2. **For Non-Flat Styles (e.g. `nested`, `suffix`, `postgrest`)**:
+   - Standard backends support negation natively (e.g., `status[ne]=pending` or `status=neq.pending`).
+   - Therefore, you **do not need `columnOptionsMap`** for these styles. You can safely omit it, and the helper will map the negative operator directly into the query key/value.
+
+---
+
+##### Usage Examples
+
+###### 1. Rails / NestJS (Nested Brackets style)
+```tsx
+const apiParams = useMemo(() => {
+  return {
+    ...resolveFiltersToFlatParams(filters, {
+      style: "nested",
+      arrayFormat: "brackets", // generates: status[in][]=active&status[in][]=inactive
+      dateFormat: "YYYY-MM-DD",
+    }),
+    page,
+    perPage,
+  };
+}, [filters, page, perPage]);
+```
+
+###### 2. Django style API
+```tsx
+const apiParams = useMemo(() => {
+  return {
+    ...resolveFiltersToFlatParams(filters, {
+      style: "django",
+      operatorMap: {
+        inArray: "in",
+        notInArray: "notin",
+      },
+    }),
+    page,
+  };
+}, [filters, page]);
+```
+
+###### 3. PostgREST / Supabase API
+```tsx
+const apiParams = useMemo(() => {
+  return {
+    ...resolveFiltersToFlatParams(filters, {
+      style: "postgrest",
+    }),
+    page,
+  };
+}, [filters, page]);
+```
+
+###### 4. Fully Custom Hook Override
+If your backend requires a very unique format, you can intercept the format logic:
+```tsx
+const apiParams = useMemo(() => {
+  return resolveFiltersToFlatParams(filters, {
+    formatFilter: (paramName, operator, value, backendOp) => {
+      // Return custom flat key-value pairs
+      return { [`api_filter_${paramName}_${backendOp}`]: value };
+    },
+  });
+}, [filters]);
+```
+
+
 
 ### Props
 
