@@ -1,5 +1,11 @@
 # Kombase
 
+## 2.0.1
+
+### Patch Changes
+
+- style: update popover component to use semantic color tokens
+
 ## 2.0.0
 
 ### Major Changes
