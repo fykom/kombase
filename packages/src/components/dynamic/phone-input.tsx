@@ -3,9 +3,9 @@
 import * as SlotPrimitive from '@radix-ui/react-slot';
 import { Check, ChevronDown } from 'lucide-react';
 import * as React from 'react';
-import { useAsRef } from '@/components/hooks/use-as-ref';
-import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';
-import { useLazyRef } from '@/components/hooks/use-lazy-ref';
+import { useAsRef } from '@/hooks/use-as-ref';
+import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect';
+import { useLazyRef } from '@/hooks/use-lazy-ref';
 import {
   Command,
   CommandEmpty,
@@ -18,7 +18,7 @@ import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { useComposedRefs } from '@/lib/component-refs';
 import { cn } from '@/lib/utils';
-import { VisuallyHiddenInput } from '../visually-hidden-input';
+import { VisuallyHiddenInput } from '@/components/visually-hidden-input';
 
 const ROOT_NAME = 'PhoneInput';
 const COUNTRY_SELECT_NAME = 'PhoneInputCountrySelect';

@@ -3,7 +3,7 @@ import type {
   ExtendedColumnFilter,
   FilterOperator,
   JoinOperator,
-} from '../components/data-table/types';
+} from '@/components/data-table/types';
 
 const DEFAULT_OPERATORS: Record<FilterOperator, string> = {
   eq: 'eq',

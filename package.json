@@ -8,6 +8,7 @@
     "dev:docs": "pnpm -F docs dev",
     "build": "pnpm -F docs build && pnpm -F kombase build",
     "build:docs": "pnpm -F docs build",
+    "build:registry": "npx shadcn@latest build -o docs/public/r",
     "list-packages": "pnpm m ls --json --depth -1",
     "docs": "pnpm -F kombase docs",
     "validate": "pnpm format && pnpm lint:check && pnpm build:kombase && pnpm build:docs",

@@ -7,11 +7,11 @@ import {
   getDefaultFilterOperator,
   getFilterOperators,
   getValidFilters,
-} from '../../lib/data-table';
-import { cn } from '../../lib/utils';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
-import { Calendar } from '../ui/calendar';
+} from '@/lib/data-table';
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Command,
   CommandEmpty,
@@ -19,9 +19,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '../ui/command';
-import { DebouncedInput } from '../ui/debounced-input';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+} from '@/components/ui/command';
+import { DebouncedInput } from '@/components/ui/debounced-input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Select,
   SelectContent,
@@ -29,7 +29,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
+} from '@/components/ui/select';
 import { dataTableConfig } from './data-table-config';
 import { getIsDateRange, parseAsDate, parseColumnFilterValue } from './data-table-date-filter';
 import { DataTableRangeFilter } from './data-table-range-filter';

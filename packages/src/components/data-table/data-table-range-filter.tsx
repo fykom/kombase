@@ -1,7 +1,7 @@
 import type { Column } from '@tanstack/react-table';
 import * as React from 'react';
-import { cn } from '../../lib/utils';
-import { DebouncedInput } from '../ui/debounced-input';
+import { cn } from '@/lib/utils';
+import { DebouncedInput } from '@/components/ui/debounced-input';
 import type { ExtendedColumnFilter } from './types';
 
 interface DataTableRangeFilterProps<TData> extends React.ComponentProps<'div'> {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input } from './input';
+import { Input } from '@/components/ui/input';
 
 export interface DebouncedInputProps
   extends Omit<React.ComponentProps<typeof Input>, 'onChange' | 'value'> {
