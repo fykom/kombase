@@ -1,6 +1,24 @@
-# 🚀 Kombase UI
+# 🚀 Kombase UI (DEPRECATED)
 
-Welcome to **Kombase UI**! 👋 This is the core UI component library of the Kombase ecosystem. Built with React, Tailwind CSS, and a component-driven design philosophy, it's crafted with love, sweat, and sleepless nights to make your developer life a little more peaceful and drama-free. 🧘‍♂️✨
+> [!WARNING]
+> **PENTING**: Package npm `kombase` ini telah didepresiasi (deprecated). Distribusi komponen Kombase kini menggunakan **shadcn Registry**. Silakan gunakan `@kombase` registry namespace untuk menambahkan komponen ke proyek Anda secara langsung.
+>
+> Panduan instalasi baru:
+> 1. Tambahkan registry Kombase di `components.json` Anda:
+>    ```json
+>    {
+>      "registries": {
+>        "@kombase": "https://kombase.komerce.id/r/{name}.json"
+>      }
+>    }
+>    ```
+> 2. Jalankan perintah:
+>    ```bash
+>    bunx shadcn@latest add @kombase/<nama-komponen>
+>    ```
+>
+> Untuk informasi lebih lengkap mengenai migrasi, silakan merujuk ke **[kombase.komerce.id](https://kombase.komerce.id)**.
+
 
 ## 📦 Installation
 
