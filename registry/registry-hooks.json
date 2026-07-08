@@ -1,0 +1,80 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "kombase-hooks",
+  "items": [
+    {
+      "name": "use-as-ref",
+      "type": "registry:hook",
+      "registryDependencies": ["@kombase/use-isomorphic-layout-effect"],
+      "files": [
+        {
+          "path": "registry/hooks/use-as-ref.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-as-ref.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-callback-ref",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/hooks/use-callback-ref.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-callback-ref.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-data-table",
+      "type": "registry:hook",
+      "dependencies": ["@tanstack/react-table"],
+      "registryDependencies": [
+        "@kombase/data-table-config",
+        "@kombase/data-table-types",
+        "@kombase/lib-data-table"
+      ],
+      "files": [
+        {
+          "path": "registry/hooks/use-data-table.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-data-table.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-debounced-callback",
+      "type": "registry:hook",
+      "registryDependencies": ["@kombase/use-callback-ref"],
+      "files": [
+        {
+          "path": "registry/hooks/use-debounced-callback.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-debounced-callback.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-isomorphic-layout-effect",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-isomorphic-layout-effect.ts"
+        }
+      ]
+    },
+    {
+      "name": "use-lazy-ref",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/hooks/use-lazy-ref.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-lazy-ref.ts"
+        }
+      ]
+    }
+  ]
+}

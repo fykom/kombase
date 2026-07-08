@@ -1,0 +1,78 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "kombase-lib",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "component-refs",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "registry/lib/component-refs.ts",
+          "type": "registry:lib",
+          "target": "@lib/component-refs.ts"
+        }
+      ]
+    },
+    {
+      "name": "lib-data-table",
+      "type": "registry:lib",
+      "dependencies": ["@tanstack/react-table"],
+      "registryDependencies": ["@kombase/data-table-config", "@kombase/data-table-types"],
+      "files": [
+        {
+          "path": "registry/lib/data-table.ts",
+          "type": "registry:lib",
+          "target": "@lib/data-table.ts"
+        }
+      ]
+    },
+    {
+      "name": "lib-date",
+      "type": "registry:lib",
+      "dependencies": ["dayjs", "react-day-picker"],
+      "files": [
+        {
+          "path": "registry/lib/date.ts",
+          "type": "registry:lib",
+          "target": "@lib/date.ts"
+        }
+      ]
+    },
+    {
+      "name": "lib-pagination",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "registry/lib/pagination.ts",
+          "type": "registry:lib",
+          "target": "@lib/pagination.ts"
+        }
+      ]
+    },
+    {
+      "name": "filter-helper",
+      "type": "registry:lib",
+      "dependencies": ["dayjs"],
+      "registryDependencies": ["@kombase/data-table-types"],
+      "files": [
+        {
+          "path": "registry/lib/filter-helper.ts",
+          "type": "registry:lib",
+          "target": "@lib/filter-helper.ts"
+        }
+      ]
+    }
+  ]
+}

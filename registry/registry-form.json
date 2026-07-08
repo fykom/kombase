@@ -1,0 +1,127 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "kombase-form",
+  "items": [
+    {
+      "name": "form-date-picker",
+      "type": "registry:component",
+      "dependencies": ["dayjs"],
+      "registryDependencies": ["calendar", "form", "label", "popover"],
+      "files": [
+        {
+          "path": "registry/form/form-date-picker.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-date-picker.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-input",
+      "type": "registry:component",
+      "registryDependencies": ["form", "input", "label"],
+      "files": [
+        {
+          "path": "registry/form/form-input.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-input-group",
+      "type": "registry:component",
+      "registryDependencies": ["form", "input-group", "label"],
+      "files": [
+        {
+          "path": "registry/form/form-input-group.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-input-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-password",
+      "type": "registry:component",
+      "registryDependencies": ["form", "label", "@kombase/password-input"],
+      "files": [
+        {
+          "path": "registry/form/form-password.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-password.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-phone-input",
+      "type": "registry:component",
+      "registryDependencies": ["form", "label", "@kombase/phone-input"],
+      "files": [
+        {
+          "path": "registry/form/form-phone-input.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-phone-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-pick",
+      "type": "registry:component",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "files": [
+        {
+          "path": "registry/form/form-pick.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-pick.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-radio",
+      "type": "registry:component",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "files": [
+        {
+          "path": "registry/form/form-radio.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-radio.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-search-select",
+      "type": "registry:component",
+      "registryDependencies": ["combobox", "form", "label"],
+      "files": [
+        {
+          "path": "registry/form/form-search-select.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-search-select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-textarea",
+      "type": "registry:component",
+      "registryDependencies": ["form", "label", "textarea"],
+      "files": [
+        {
+          "path": "registry/form/form-textarea.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-upload",
+      "type": "registry:component",
+      "registryDependencies": ["form", "label", "@kombase/file-upload"],
+      "files": [
+        {
+          "path": "registry/form/form-upload.tsx",
+          "type": "registry:component",
+          "target": "@components/form/form-upload.tsx"
+        }
+      ]
+    }
+  ]
+}
