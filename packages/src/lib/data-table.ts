@@ -24,7 +24,7 @@ export function getCommonPinningStyles<TData>({
   const isSticky = isPinned || (isHeader && stickyHeader);
 
   return {
-    background: 'var(--background)',
+    backgroundColor: 'inherit',
     boxShadow: withBorder
       ? isLastLeftPinnedColumn
         ? '-4px 0 4px -4px var(--border) inset'

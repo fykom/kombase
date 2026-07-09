@@ -21,6 +21,7 @@ export default function ConfirmDialogExample() {
         }}
         onOpenChange={setOpenDelete}
         open={openDelete}
+        showCloseButton
         title="Delete Product"
       />
 
