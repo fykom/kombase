@@ -1,5 +1,11 @@
 # Kombase
 
+## 2.0.2
+
+### Patch Changes
+
+- feat: add close button to confirm dialog and improve data table styling and focus states
+
 ## 2.0.1
 
 ### Patch Changes
