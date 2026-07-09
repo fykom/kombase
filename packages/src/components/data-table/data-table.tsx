@@ -82,7 +82,7 @@ export function DataTable<TData>({
           ref={tableRef}
           wrapperClassname={cn(stickyHeader && 'max-h-[600px] overflow-y-auto', wrapperClassname)}
         >
-          <TableHeader className="sticky top-0 z-10 bg-background">
+          <TableHeader className="sticky top-0 z-10 bg-muted">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
@@ -126,7 +126,11 @@ export function DataTable<TData>({
               </TableRow>
             ) : table.getRowModel()?.rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow data-state={row.getIsSelected() && 'selected'} key={row.id}>
+                <TableRow
+                  className="bg-background hover:bg-muted/20"
+                  data-state={row.getIsSelected() && 'selected'}
+                  key={row.id}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       className={cn(
