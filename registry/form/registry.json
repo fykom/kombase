@@ -1,0 +1,147 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "dependencies": ["dayjs"],
+      "description": "Date picker with calendar popup, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-date-picker.tsx",
+          "target": "@components/form/form-date-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-date-picker",
+      "registryDependencies": ["calendar", "form", "label", "popover"],
+      "title": "Form Date Picker",
+      "type": "registry:component"
+    },
+    {
+      "description": "Text input with label and validation, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-input.tsx",
+          "target": "@components/form/form-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-input",
+      "registryDependencies": ["form", "input", "label"],
+      "title": "Form Input",
+      "type": "registry:component"
+    },
+    {
+      "description": "Input group with prefix/suffix addons, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-input-group.tsx",
+          "target": "@components/form/form-input-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-input-group",
+      "registryDependencies": ["form", "@kombase/input-group", "label"],
+      "title": "Form Input Group",
+      "type": "registry:component"
+    },
+    {
+      "description": "Password input with show/hide toggle, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-password.tsx",
+          "target": "@components/form/form-password.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-password",
+      "registryDependencies": ["form", "label", "@kombase/password-input"],
+      "title": "Form Password",
+      "type": "registry:component"
+    },
+    {
+      "description": "International phone number input with country select, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-phone-input.tsx",
+          "target": "@components/form/form-phone-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-phone-input",
+      "registryDependencies": ["form", "label", "@kombase/phone-input"],
+      "title": "Form Phone Input",
+      "type": "registry:component"
+    },
+    {
+      "description": "Card-style single selection input, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-pick.tsx",
+          "target": "@components/form/form-pick.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-pick",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "title": "Form Pick",
+      "type": "registry:component"
+    },
+    {
+      "description": "Radio button group with label and layout options, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-radio.tsx",
+          "target": "@components/form/form-radio.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-radio",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "title": "Form Radio",
+      "type": "registry:component"
+    },
+    {
+      "description": "Searchable combobox select with async data support, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-search-select.tsx",
+          "target": "@components/form/form-search-select.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-search-select",
+      "registryDependencies": ["combobox", "form", "label"],
+      "title": "Form Search Select",
+      "type": "registry:component"
+    },
+    {
+      "description": "Multi-line text area with character count and validation, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-textarea.tsx",
+          "target": "@components/form/form-textarea.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-textarea",
+      "registryDependencies": ["form", "label", "textarea"],
+      "title": "Form Textarea",
+      "type": "registry:component"
+    },
+    {
+      "description": "File upload with drag-and-drop and progress tracking, integrated with react-hook-form.",
+      "files": [
+        {
+          "path": "form-upload.tsx",
+          "target": "@components/form/form-upload.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-upload",
+      "registryDependencies": ["form", "label", "@kombase/file-upload"],
+      "title": "Form Upload",
+      "type": "registry:component"
+    }
+  ],
+  "name": "kombase-form"
+}

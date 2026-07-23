@@ -1,5 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { goeyToast } from 'goey-toast';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 import {
   Stepper,
   StepperContent,
@@ -13,10 +16,7 @@ import {
   StepperSeparator,
   StepperTitle,
   StepperTrigger,
-} from 'kombase';
-import * as React from 'react';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
+} from '@/components/stepper';
 import { Button } from '@/components/ui/button';
 import {
   Form,

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirm-dialog",
+  "title": "Confirm Dialog",
+  "description": "A confirmation modal with customizable actions and descriptions.",
+  "registryDependencies": [
+    "alert-dialog",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/components/confirm-dialog.tsx",
+      "content": "import { XIcon } from 'lucide-react';\nimport {\n  AlertDialog,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n} from '@/components/ui/alert-dialog';\nimport { Button } from '@/components/ui/button';\nimport { cn } from '@/lib/utils';\n\ntype ConfirmDialogProps = {\n  open: boolean;\n  onOpenChange: (open: boolean) => void;\n  onClose?: () => void;\n  title: React.ReactNode;\n  disabled?: boolean;\n  desc: React.JSX.Element | string;\n  cancelBtnText?: string;\n  confirmText?: React.ReactNode;\n  destructive?: boolean;\n  isLoading?: boolean;\n  className?: string;\n  children?: React.ReactNode;\n  showCloseButton?: boolean;\n} & (\n  | { footer: React.ReactNode | null; form?: undefined; handleConfirm?: undefined }\n  | { footer?: undefined; form: string; handleConfirm?: undefined }\n  | { footer?: undefined; form?: undefined; handleConfirm: () => void }\n);\n\nexport function ConfirmDialog(props: ConfirmDialogProps) {\n  const {\n    open,\n    onOpenChange,\n    onClose,\n    title,\n    desc,\n    children,\n    className,\n    confirmText,\n    cancelBtnText,\n    destructive,\n    isLoading,\n    disabled = false,\n    form,\n    handleConfirm,\n    footer,\n    showCloseButton = false,\n    ...actions\n  } = props;\n\n  const handleOpenChange = (newOpen: boolean) => {\n    onOpenChange(newOpen);\n    if (!newOpen) {\n      onClose?.();\n    }\n  };\n\n  return (\n    <AlertDialog onOpenChange={handleOpenChange} open={open} {...actions}>\n      <AlertDialogContent className={cn(className)}>\n        {showCloseButton && (\n          <AlertDialogCancel\n            className=\"absolute right-4 top-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground border-none p-0 h-auto w-auto bg-transparent hover:bg-transparent hover:text-accent-foreground shadow-none\"\n            data-slot=\"alert-dialog-close\"\n            onClick={() => handleOpenChange(false)}\n          >\n            <XIcon />\n            <span className=\"sr-only\">Close</span>\n          </AlertDialogCancel>\n        )}\n        <AlertDialogHeader className=\"text-start\">\n          <AlertDialogTitle>{title}</AlertDialogTitle>\n          <AlertDialogDescription asChild>\n            <div>{desc}</div>\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        {children}\n        {footer !== null && (\n          <AlertDialogFooter>\n            {footer !== undefined ? (\n              footer\n            ) : (\n              <>\n                <AlertDialogCancel disabled={isLoading}>\n                  {cancelBtnText ?? 'Cancel'}\n                </AlertDialogCancel>\n                <Button\n                  disabled={disabled || isLoading}\n                  form={form}\n                  onClick={handleConfirm}\n                  type={form ? 'submit' : 'button'}\n                  variant={destructive ? 'destructive' : 'default'}\n                >\n                  {confirmText ?? 'Continue'}\n                </Button>\n              </>\n            )}\n          </AlertDialogFooter>\n        )}\n      </AlertDialogContent>\n    </AlertDialog>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/confirm-dialog.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

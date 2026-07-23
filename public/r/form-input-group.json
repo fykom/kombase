@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import type { Control, FieldPath, FieldValues } from 'react-hook-form';\r\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\r\nimport {\r\n  InputGroup,\r\n  InputGroupAddon,\r\n  InputGroupInput,\r\n  InputGroupText,\r\n} from '@/components/ui/input-group';\r\nimport { Label } from '@/components/ui/label';\r\nimport { cn } from '@/lib/utils';\r\n\r\ntype FormInputGroupProps<TFieldValues extends FieldValues> = {\r\n  control: Control<TFieldValues>;\r\n  name: FieldPath<TFieldValues>;\r\n  label?: string | React.ReactNode;\r\n  addon?: React.ReactNode;\r\n  inputGroupProps?: React.ComponentProps<typeof InputGroupInput>;\r\n  layout?: 'vertical' | 'horizontal';\r\n  className?: string;\r\n  labelClassName?: string;\r\n};\r\n\r\nexport function FormInputGroup<TFieldValues extends FieldValues>({\r\n  control,\r\n  name,\r\n  label,\r\n  addon,\r\n  inputGroupProps,\r\n  layout = 'vertical',\r\n  className,\r\n  labelClassName,\r\n}: FormInputGroupProps<TFieldValues>) {\r\n  return (\r\n    <FormField\r\n      control={control}\r\n      name={name}\r\n      render={({ field }) => (\r\n        <FormItem\r\n          className={cn(\r\n            layout === 'horizontal'\r\n              ? 'flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 space-y-0'\r\n              : 'space-y-2',\r\n            className,\r\n          )}\r\n        >\r\n          {label && (\r\n            <Label\r\n              className={cn(layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0', labelClassName)}\r\n              htmlFor={field.name}\r\n            >\r\n              {label}\r\n            </Label>\r\n          )}\r\n          <div className=\"flex-1 w-full space-y-1.5\">\r\n            <FormControl>\r\n              <InputGroup>\r\n                <InputGroupInput id={field.name} {...field} {...inputGroupProps} />\r\n                {addon && (\r\n                  <InputGroupAddon>\r\n                    <InputGroupText>{addon}</InputGroupText>\r\n                  </InputGroupAddon>\r\n                )}\r\n              </InputGroup>\r\n            </FormControl>\r\n            <FormMessage />\r\n          </div>\r\n        </FormItem>\r\n      )}\r\n    />\r\n  );\r\n}\r\n",
+      "path": "registry/form/form-input-group.tsx",
+      "target": "@components/form/form-input-group.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "name": "form-input-group",
+  "registryDependencies": ["form", "input-group", "label"],
+  "type": "registry:component"
+}

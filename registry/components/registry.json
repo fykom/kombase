@@ -1,0 +1,441 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "description": "Configuration constants and translations for data table components.",
+      "files": [
+        {
+          "path": "data-table/data-table-config.ts",
+          "target": "@components/data-table/data-table-config.ts",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-config",
+      "title": "Data Table Config",
+      "type": "registry:component"
+    },
+    {
+      "description": "TypeScript type definitions for data table column filters and options.",
+      "files": [
+        {
+          "path": "data-table/types.ts",
+          "target": "@components/data-table/types.ts",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-types",
+      "registryDependencies": ["@kombase/data-table-config"],
+      "title": "Data Table Types",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "description": "Pagination controls with page size selector for data tables.",
+      "files": [
+        {
+          "path": "data-table/data-table-pagination.tsx",
+          "target": "@components/data-table/data-table-pagination.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-pagination",
+      "registryDependencies": ["button", "select", "@kombase/lib-pagination", "@kombase/utils"],
+      "title": "Data Table Pagination",
+      "type": "registry:component"
+    },
+    {
+      "description": "Min/max range filter with debounced inputs for numeric columns.",
+      "files": [
+        {
+          "path": "data-table/data-table-range-filter.tsx",
+          "target": "@components/data-table/data-table-range-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-range-filter",
+      "registryDependencies": ["@kombase/debounced-input"],
+      "title": "Data Table Range Filter",
+      "type": "registry:component"
+    },
+    {
+      "description": "Loading skeleton placeholder for data tables.",
+      "files": [
+        {
+          "path": "data-table/data-table-skeleton.tsx",
+          "target": "@components/data-table/data-table-skeleton.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-skeleton",
+      "registryDependencies": ["skeleton", "table"],
+      "title": "Data Table Skeleton",
+      "type": "registry:component"
+    },
+    {
+      "description": "Date range filter with calendar presets for data table columns.",
+      "files": [
+        {
+          "path": "data-table/data-table-date-filter.tsx",
+          "target": "@components/data-table/data-table-date-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-date-filter",
+      "registryDependencies": ["button", "calendar", "popover", "separator", "@kombase/lib-date"],
+      "title": "Data Table Date Filter",
+      "type": "registry:component"
+    },
+    {
+      "description": "Multi-select faceted filter with search for categorical columns.",
+      "files": [
+        {
+          "path": "data-table/data-table-faceted-filter.tsx",
+          "target": "@components/data-table/data-table-faceted-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-faceted-filter",
+      "registryDependencies": ["badge", "button", "command", "popover", "separator"],
+      "title": "Data Table Faceted Filter",
+      "type": "registry:component"
+    },
+    {
+      "description": "Numeric range filter with slider input for data table columns.",
+      "files": [
+        {
+          "path": "data-table/data-table-slider-filter.tsx",
+          "target": "@components/data-table/data-table-slider-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-slider-filter",
+      "registryDependencies": ["button", "input", "label", "popover", "separator", "slider"],
+      "title": "Data Table Slider Filter",
+      "type": "registry:component"
+    },
+    {
+      "description": "Column visibility toggle menu for data tables.",
+      "files": [
+        {
+          "path": "data-table/data-table-view-options.tsx",
+          "target": "@components/data-table/data-table-view-options.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-view-options",
+      "registryDependencies": ["button", "command", "popover"],
+      "title": "Data Table View Options",
+      "type": "registry:component"
+    },
+    {
+      "description": "Toolbar with search, filters, and view options for data tables.",
+      "files": [
+        {
+          "path": "data-table/data-table-toolbar.tsx",
+          "target": "@components/data-table/data-table-toolbar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-toolbar",
+      "registryDependencies": [
+        "button",
+        "@kombase/debounced-input",
+        "@kombase/data-table-date-filter",
+        "@kombase/data-table-faceted-filter",
+        "@kombase/data-table-slider-filter",
+        "@kombase/data-table-view-options"
+      ],
+      "title": "Data Table Toolbar",
+      "type": "registry:component"
+    },
+    {
+      "description": "Action bar for batch operations on selected table rows.",
+      "files": [
+        {
+          "path": "data-table/data-table-bulk-action.tsx",
+          "target": "@components/data-table/data-table-bulk-action.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-bulk-action",
+      "registryDependencies": ["badge", "button", "separator", "tooltip"],
+      "title": "Data Table Bulk Action",
+      "type": "registry:component"
+    },
+    {
+      "description": "Sortable column header with dropdown menu for data tables.",
+      "files": [
+        {
+          "path": "data-table/data-table-column-header.tsx",
+          "target": "@components/data-table/data-table-column-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-column-header",
+      "registryDependencies": ["dropdown-menu"],
+      "title": "Data Table Column Header",
+      "type": "registry:component"
+    },
+    {
+      "description": "Advanced multi-column filter panel with custom operators and debounced input.",
+      "files": [
+        {
+          "path": "data-table/data-table-advance-filter.tsx",
+          "target": "@components/data-table/data-table-advance-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-advance-filter",
+      "registryDependencies": [
+        "@kombase/lib-data-table",
+        "badge",
+        "button",
+        "calendar",
+        "command",
+        "popover",
+        "select",
+        "@kombase/data-table-config",
+        "@kombase/data-table-date-filter",
+        "@kombase/data-table-range-filter"
+      ],
+      "title": "Data Table Advanced Filter",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "description": "Full-featured data table with sorting, filtering, pagination, and row selection powered by TanStack Table.",
+      "files": [
+        {
+          "path": "data-table/data-table.tsx",
+          "target": "@components/data-table/data-table.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table",
+      "registryDependencies": [
+        "table",
+        "@kombase/data-table-config",
+        "@kombase/data-table-types",
+        "@kombase/data-table-pagination",
+        "@kombase/data-table-toolbar",
+        "@kombase/data-table-advance-filter",
+        "@kombase/data-table-bulk-action",
+        "@kombase/data-table-column-header",
+        "@kombase/data-table-skeleton",
+        "@kombase/lib-data-table",
+        "@kombase/use-data-table"
+      ],
+      "title": "Data Table",
+      "type": "registry:component"
+    },
+    {
+      "description": "A fixed bottom bar for contextual actions with animated entrance.",
+      "files": [
+        {
+          "path": "action-bar.tsx",
+          "target": "@components/action-bar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "action-bar",
+      "registryDependencies": [
+        "button",
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Action Bar",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-avatar"],
+      "description": "Grouped avatar display with overflow counter and RTL support.",
+      "files": [
+        {
+          "path": "avatar-group.tsx",
+          "target": "@components/avatar-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "avatar-group",
+      "title": "Avatar Group",
+      "type": "registry:component"
+    },
+    {
+      "description": "A confirmation modal with customizable actions and descriptions.",
+      "files": [
+        {
+          "path": "confirm-dialog.tsx",
+          "target": "@components/confirm-dialog.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "confirm-dialog",
+      "registryDependencies": ["alert-dialog", "button"],
+      "title": "Confirm Dialog",
+      "type": "registry:component"
+    },
+    {
+      "description": "Truncated text with tooltip or popover for viewing full content.",
+      "files": [
+        {
+          "path": "long-text.tsx",
+          "target": "@components/long-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "long-text",
+      "registryDependencies": ["popover", "tooltip"],
+      "title": "Long Text",
+      "type": "registry:component"
+    },
+    {
+      "description": "International phone number input with country code selector and flag icons.",
+      "files": [
+        {
+          "path": "phone-input.tsx",
+          "target": "@components/phone-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "phone-input",
+      "registryDependencies": [
+        "command",
+        "input",
+        "popover",
+        "@kombase/component-refs",
+        "@kombase/visually-hidden-input",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Phone Input",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-direction"],
+      "description": "Customizable star rating component with keyboard navigation and form integration.",
+      "files": [
+        {
+          "path": "rating.tsx",
+          "target": "@components/rating.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "rating",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/visually-hidden-input",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Rating",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-direction"],
+      "description": "Multi-step progress indicator with vertical layout and form validation support.",
+      "files": [
+        {
+          "path": "stepper.tsx",
+          "target": "@components/stepper.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "stepper",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Stepper",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-direction", "class-variance-authority"],
+      "description": "Chronological event timeline with alternate positioning and horizontal layout.",
+      "files": [
+        {
+          "path": "timeline.tsx",
+          "target": "@components/timeline.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "timeline",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Timeline",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@floating-ui/react-dom", "@radix-ui/react-direction"],
+      "description": "Step-by-step onboarding tour with spotlight highlighting and floating UI.",
+      "files": [
+        {
+          "path": "tour.tsx",
+          "target": "@components/tour.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "tour",
+      "registryDependencies": [
+        "button",
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Tour",
+      "type": "registry:component"
+    },
+    {
+      "description": "An invisible input for form integration with custom controls.",
+      "files": [
+        {
+          "path": "visually-hidden-input.tsx",
+          "target": "@components/visually-hidden-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "visually-hidden-input",
+      "title": "Visually Hidden Input",
+      "type": "registry:component"
+    },
+    {
+      "description": "A password field with show/hide toggle button.",
+      "files": [
+        {
+          "path": "password-input.tsx",
+          "target": "@components/password-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "password-input",
+      "registryDependencies": ["input", "@kombase/utils"],
+      "title": "Password Input",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["lucide-react"],
+      "description": "A form-integrated select dropdown with loading state support.",
+      "files": [
+        {
+          "path": "select-dropdown.tsx",
+          "target": "@components/select-dropdown.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "select-dropdown",
+      "registryDependencies": ["form", "select", "@kombase/utils"],
+      "title": "Select Dropdown",
+      "type": "registry:component"
+    }
+  ],
+  "name": "kombase-components"
+}

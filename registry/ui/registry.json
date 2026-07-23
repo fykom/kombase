@@ -1,0 +1,433 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "dependencies": ["@radix-ui/react-alert-dialog"],
+      "description": "A modal dialog for critical actions that requires user acknowledgment.",
+      "files": [
+        {
+          "path": "alert-dialog.tsx",
+          "target": "@ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "alert-dialog",
+      "registryDependencies": ["button"],
+      "title": "Alert Dialog",
+      "type": "registry:ui"
+    },
+    {
+      "description": "Displays a callout for important information with variant styles.",
+      "files": [
+        {
+          "path": "alert.tsx",
+          "target": "@ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "alert",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Alert",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-avatar"],
+      "description": "An image element with a fallback for user profile pictures.",
+      "files": [
+        {
+          "path": "avatar.tsx",
+          "target": "@ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "avatar",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Avatar",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["class-variance-authority"],
+      "description": "A small status descriptor with multiple visual variants.",
+      "files": [
+        {
+          "path": "badge.tsx",
+          "target": "@ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "badge",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Badge",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "description": "An interactive button with multiple size and variant options.",
+      "files": [
+        {
+          "path": "button.tsx",
+          "target": "@ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "button",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Button",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["react-day-picker", "dayjs"],
+      "description": "A date picker calendar with range selection, presets, and RTL support.",
+      "files": [
+        {
+          "path": "calendar.tsx",
+          "target": "@ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "calendar",
+      "registryDependencies": ["button", "@kombase/utils"],
+      "title": "Calendar",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-checkbox"],
+      "description": "A control for boolean input with indeterminate state support.",
+      "files": [
+        {
+          "path": "checkbox.tsx",
+          "target": "@ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "checkbox",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Checkbox",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-collapsible"],
+      "description": "An interactive component that expands and collapses content.",
+      "files": [
+        {
+          "path": "collapsible.tsx",
+          "target": "@ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "collapsible",
+      "title": "Collapsible",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["cmdk"],
+      "description": "A searchable select input with command palette integration.",
+      "files": [
+        {
+          "path": "combobox.tsx",
+          "target": "@ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "combobox",
+      "registryDependencies": ["popover", "@kombase/utils"],
+      "title": "Combobox",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["cmdk"],
+      "description": "A command palette for searchable actions and navigation.",
+      "files": [
+        {
+          "path": "command.tsx",
+          "target": "@ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "command",
+      "registryDependencies": ["dialog", "@kombase/utils"],
+      "title": "Command",
+      "type": "registry:ui"
+    },
+    {
+      "description": "An input that delays onChange calls to reduce unnecessary re-renders.",
+      "files": [
+        {
+          "path": "debounced-input.tsx",
+          "target": "@ui/debounced-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "debounced-input",
+      "registryDependencies": ["input"],
+      "title": "Debounced Input",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-dialog"],
+      "description": "A modal overlay for focused content or forms.",
+      "files": [
+        {
+          "path": "dialog.tsx",
+          "target": "@ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "dialog",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Dialog",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "description": "A contextual menu triggered by a button click.",
+      "files": [
+        {
+          "path": "dropdown-menu.tsx",
+          "target": "@ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "dropdown-menu",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Dropdown Menu",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"],
+      "description": "A drag-and-drop file upload component with validation, progress tracking, and paste support.",
+      "files": [
+        {
+          "path": "file-upload.tsx",
+          "target": "@ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "file-upload",
+      "registryDependencies": ["@kombase/utils", "@kombase/use-as-ref", "@kombase/use-lazy-ref"],
+      "title": "File Upload",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-form", "@radix-ui/react-label", "react-hook-form"],
+      "description": "Form primitives with react-hook-form integration and validation messages.",
+      "files": [
+        {
+          "path": "form.tsx",
+          "target": "@ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "form",
+      "registryDependencies": ["label", "@kombase/utils"],
+      "title": "Form",
+      "type": "registry:ui"
+    },
+    {
+      "description": "An input with prefix/suffix addons and action buttons.",
+      "files": [
+        {
+          "path": "input-group.tsx",
+          "target": "@ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "input-group",
+      "registryDependencies": ["button", "input", "textarea", "@kombase/utils"],
+      "title": "Input Group",
+      "type": "registry:ui"
+    },
+    {
+      "description": "A styled text input field.",
+      "files": [
+        {
+          "path": "input.tsx",
+          "target": "@ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "input",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Input",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-label"],
+      "description": "An accessible label for form controls.",
+      "files": [
+        {
+          "path": "label.tsx",
+          "target": "@ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "label",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Label",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-popover"],
+      "description": "A floating panel anchored to a trigger element.",
+      "files": [
+        {
+          "path": "popover.tsx",
+          "target": "@ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "popover",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Popover",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-radio-group"],
+      "description": "A set of radio buttons for single-option selection.",
+      "files": [
+        {
+          "path": "radio-group.tsx",
+          "target": "@ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "radio-group",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Radio Group",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-select"],
+      "description": "A dropdown select input with search and grouping.",
+      "files": [
+        {
+          "path": "select.tsx",
+          "target": "@ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "select",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Select",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-separator"],
+      "description": "A visual divider between content sections.",
+      "files": [
+        {
+          "path": "separator.tsx",
+          "target": "@ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "separator",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Separator",
+      "type": "registry:ui"
+    },
+    {
+      "description": "A placeholder loading indicator.",
+      "files": [
+        {
+          "path": "skeleton.tsx",
+          "target": "@ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "skeleton",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Skeleton",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-slider"],
+      "description": "A range input for selecting numeric values.",
+      "files": [
+        {
+          "path": "slider.tsx",
+          "target": "@ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "slider",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Slider",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-switch"],
+      "description": "A toggle for binary on/off states.",
+      "files": [
+        {
+          "path": "switch.tsx",
+          "target": "@ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "switch",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Switch",
+      "type": "registry:ui"
+    },
+    {
+      "description": "A styled HTML table with header, body, and footer.",
+      "files": [
+        {
+          "path": "table.tsx",
+          "target": "@ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "table",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Table",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-tabs"],
+      "description": "A tabbed navigation component for switching between views.",
+      "files": [
+        {
+          "path": "tabs.tsx",
+          "target": "@ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "tabs",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Tabs",
+      "type": "registry:ui"
+    },
+    {
+      "description": "A multi-line text input field.",
+      "files": [
+        {
+          "path": "textarea.tsx",
+          "target": "@ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "textarea",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Textarea",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "description": "A popup that displays information on hover or focus.",
+      "files": [
+        {
+          "path": "tooltip.tsx",
+          "target": "@ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "tooltip",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Tooltip",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "kombase-ui"
+}

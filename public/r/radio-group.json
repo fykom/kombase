@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@radix-ui/react-radio-group"],
+  "files": [
+    {
+      "content": "'use client';\r\n\r\nimport * as RadioGroupPrimitive from '@radix-ui/react-radio-group';\r\nimport { CircleIcon } from 'lucide-react';\r\nimport * as React from 'react';\r\n\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst RadioGroup = React.forwardRef<\r\n  React.ComponentRef<typeof RadioGroupPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <RadioGroupPrimitive.Root\r\n      className={cn('grid gap-3', className)}\r\n      data-slot=\"radio-group\"\r\n      ref={ref}\r\n      {...props}\r\n    />\r\n  );\r\n});\r\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\r\n\r\nconst RadioGroupItem = React.forwardRef<\r\n  React.ComponentRef<typeof RadioGroupPrimitive.Item>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <RadioGroupPrimitive.Item\r\n      className={cn(\r\n        'aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40',\r\n        className,\r\n      )}\r\n      data-slot=\"radio-group-item\"\r\n      ref={ref}\r\n      {...props}\r\n    >\r\n      <RadioGroupPrimitive.Indicator\r\n        className=\"relative flex items-center justify-center\"\r\n        data-slot=\"radio-group-indicator\"\r\n      >\r\n        <CircleIcon className=\"absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-primary\" />\r\n      </RadioGroupPrimitive.Indicator>\r\n    </RadioGroupPrimitive.Item>\r\n  );\r\n});\r\nRadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;\r\n\r\nexport { RadioGroup, RadioGroupItem };\r\n",
+      "path": "registry/ui/radio-group.tsx",
+      "target": "@ui/radio-group.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "radio-group",
+  "registryDependencies": ["@kombase/utils"],
+  "type": "registry:ui"
+}

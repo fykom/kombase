@@ -1,6 +1,9 @@
 'use client';
 
 import { goeyToast } from 'goey-toast';
+import { Upload, X } from 'lucide-react';
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
 import {
   FileUpload,
   FileUploadDropzone,
@@ -11,10 +14,7 @@ import {
   FileUploadItemProgress,
   FileUploadList,
   FileUploadTrigger,
-} from 'kombase';
-import { Upload, X } from 'lucide-react';
-import * as React from 'react';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/file-upload';
 
 export default function FileUploadFillProgressDemo() {
   const [files, setFiles] = React.useState<File[]>([]);

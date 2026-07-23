@@ -3,12 +3,6 @@ import dayjs from 'dayjs';
 import { Calendar as CalendarIcon, Check, ChevronsUpDown, ListFilter, Trash2 } from 'lucide-react';
 import * as React from 'react';
 import type { DateRange } from 'react-day-picker';
-import {
-  getDefaultFilterOperator,
-  getFilterOperators,
-  getValidFilters,
-} from '@/lib/data-table';
-import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -30,6 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { getDefaultFilterOperator, getFilterOperators, getValidFilters } from '@/lib/data-table';
+import { cn } from '@/lib/utils';
 import { dataTableConfig } from './data-table-config';
 import { getIsDateRange, parseAsDate, parseColumnFilterValue } from './data-table-date-filter';
 import { DataTableRangeFilter } from './data-table-range-filter';

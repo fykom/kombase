@@ -11,7 +11,7 @@ description: A lightweight, highly customizable UI component library with out-of
 
 ## Installation
 
-Follow these steps to integrate `kombase` into your project:
+Follow these steps to add `kombase` components to your project:
 
 <Steps>
 <Step>
@@ -22,28 +22,29 @@ Ensure you have installed and configured [Shadcn UI](https://ui.shadcn.com/docs/
 </Step>
 
 <Step>
-### Install kombase & Peer Dependencies
+### Add Components
 
-To keep the bundle size lightweight and avoid dependency version conflicts in your host application, `kombase` requires a few peer dependencies.
+Install any kombase component directly from the registry:
 
-Run the following command using your preferred package manager:
+```bash
+# Menggunakan alias (jika registry telah dikonfigurasi)
+npx shadcn@latest add @kombase/<component-name>
 
-```package-install
-kombase react-hook-form react-day-picker @tanstack/react-table
+# Atau menggunakan URL langsung
+npx shadcn@latest add https://kombase.komerce.id/r/<component-name>.json
 ```
 
-</Step>
+For example, to add the Data Table:
 
-<Step>
-### Import Styles
+```bash
+# Menggunakan alias
+npx shadcn@latest add @kombase/data-table
 
-Import the `kombase` stylesheet inside your global CSS file (e.g., `app.css` or `globals.css`):
-
-```css
-@import "kombase/styles";
+# Atau menggunakan URL langsung
+npx shadcn@latest add https://kombase.komerce.id/r/data-table.json
 ```
 
-This tells Tailwind CSS v4 to scan the compiled bundle of `kombase` and generate the matching style utility classes according to your theme.
+All dependencies (npm packages and other kombase components) are resolved and installed automatically.
 
 </Step>
 </Steps>

@@ -1,5 +1,5 @@
-import { Rating, RatingItem } from 'kombase';
 import { Heart, Star } from 'lucide-react';
+import { Rating, RatingItem } from '@/components/rating';
 import { cn } from '@/lib/utils';
 
 const themes = [

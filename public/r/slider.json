@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@radix-ui/react-slider"],
+  "files": [
+    {
+      "content": "'use client';\r\n\r\nimport * as SliderPrimitive from '@radix-ui/react-slider';\r\nimport * as React from 'react';\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst Slider = React.forwardRef<\r\n  React.ComponentRef<typeof SliderPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\r\n>(({ className, defaultValue, value, min = 0, max = 100, ...props }, ref) => {\r\n  const _values = React.useMemo(\r\n    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),\r\n    [value, defaultValue, min, max],\r\n  );\r\n\r\n  return (\r\n    <SliderPrimitive.Root\r\n      className={cn(\r\n        'relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',\r\n        className,\r\n      )}\r\n      data-slot=\"slider\"\r\n      defaultValue={defaultValue}\r\n      max={max}\r\n      min={min}\r\n      ref={ref}\r\n      value={value}\r\n      {...props}\r\n    >\r\n      <SliderPrimitive.Track\r\n        className={cn(\r\n          'relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5',\r\n        )}\r\n        data-slot=\"slider-track\"\r\n      >\r\n        <SliderPrimitive.Range\r\n          className={cn(\r\n            'absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',\r\n          )}\r\n          data-slot=\"slider-range\"\r\n        />\r\n      </SliderPrimitive.Track>\r\n      {Array.from({ length: _values.length }, (_, index) => (\r\n        <SliderPrimitive.Thumb\r\n          className=\"block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring/50 transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50\"\r\n          data-slot=\"slider-thumb\"\r\n          key={index}\r\n        />\r\n      ))}\r\n    </SliderPrimitive.Root>\r\n  );\r\n});\r\nSlider.displayName = SliderPrimitive.Root.displayName;\r\n\r\nexport { Slider };\r\n",
+      "path": "registry/ui/slider.tsx",
+      "target": "@ui/slider.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "slider",
+  "registryDependencies": ["@kombase/utils"],
+  "type": "registry:ui"
+}

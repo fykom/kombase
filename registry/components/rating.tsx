@@ -4,12 +4,12 @@ import * as DirectionPrimitive from '@radix-ui/react-direction';
 import * as SlotPrimitive from '@radix-ui/react-slot';
 import { Star } from 'lucide-react';
 import * as React from 'react';
+import { VisuallyHiddenInput } from '@/components/visually-hidden-input';
 import { useAsRef } from '@/hooks/use-as-ref';
 import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect';
 import { useLazyRef } from '@/hooks/use-lazy-ref';
 import { useComposedRefs } from '@/lib/component-refs';
 import { cn } from '@/lib/utils';
-import { VisuallyHiddenInput } from '@/components/visually-hidden-input';
 
 type Direction = 'ltr' | 'rtl';
 type Orientation = 'horizontal' | 'vertical';

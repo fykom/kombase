@@ -1,4 +1,4 @@
-import { PhoneInput, PhoneInputCountrySelect, PhoneInputField } from 'kombase';
+import { PhoneInput, PhoneInputCountrySelect, PhoneInputField } from '@/components/phone-input';
 
 export default function PhoneInputDemo() {
   return (

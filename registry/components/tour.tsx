@@ -15,10 +15,10 @@ import * as SlotPrimitive from '@radix-ui/react-slot';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { useAsRef } from '@/components/hooks/use-as-ref';
-import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';
-import { useLazyRef } from '@/components/hooks/use-lazy-ref';
 import { Button } from '@/components/ui/button';
+import { useAsRef } from '@/hooks/use-as-ref';
+import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect';
+import { useLazyRef } from '@/hooks/use-lazy-ref';
 import { useComposedRefs } from '@/lib/component-refs';
 import { cn } from '@/lib/utils';
 

@@ -1,0 +1,1023 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "homepage": "https://kombase.komerce.id",
+  "items": [
+    {
+      "dependencies": ["@radix-ui/react-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/ui/alert-dialog.tsx",
+          "target": "@ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "alert-dialog",
+      "registryDependencies": ["button"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/alert.tsx",
+          "target": "@ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "alert",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-avatar"],
+      "files": [
+        {
+          "path": "registry/ui/avatar.tsx",
+          "target": "@ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "avatar",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/ui/badge.tsx",
+          "target": "@ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "badge",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/ui/button.tsx",
+          "target": "@ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "button",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["react-day-picker", "dayjs"],
+      "files": [
+        {
+          "path": "registry/ui/calendar.tsx",
+          "target": "@ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "calendar",
+      "registryDependencies": ["button", "@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-checkbox"],
+      "files": [
+        {
+          "path": "registry/ui/checkbox.tsx",
+          "target": "@ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "checkbox",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-collapsible"],
+      "files": [
+        {
+          "path": "registry/ui/collapsible.tsx",
+          "target": "@ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "collapsible",
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["cmdk"],
+      "files": [
+        {
+          "path": "registry/ui/combobox.tsx",
+          "target": "@ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "combobox",
+      "registryDependencies": ["popover", "@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["cmdk"],
+      "files": [
+        {
+          "path": "registry/ui/command.tsx",
+          "target": "@ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "command",
+      "registryDependencies": ["dialog", "@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/debounced-input.tsx",
+          "target": "@ui/debounced-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "debounced-input",
+      "registryDependencies": ["input"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-dialog"],
+      "files": [
+        {
+          "path": "registry/ui/dialog.tsx",
+          "target": "@ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "dialog",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/ui/dropdown-menu.tsx",
+          "target": "@ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "dropdown-menu",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/ui/file-upload.tsx",
+          "target": "@ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "file-upload",
+      "registryDependencies": ["@kombase/utils", "@kombase/use-as-ref", "@kombase/use-lazy-ref"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-form", "@radix-ui/react-label", "react-hook-form"],
+      "files": [
+        {
+          "path": "registry/ui/form.tsx",
+          "target": "@ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "form",
+      "registryDependencies": ["label", "@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/input-group.tsx",
+          "target": "@ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "input-group",
+      "registryDependencies": ["button", "input", "textarea", "@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/input.tsx",
+          "target": "@ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "input",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-label"],
+      "files": [
+        {
+          "path": "registry/ui/label.tsx",
+          "target": "@ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "label",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-popover"],
+      "files": [
+        {
+          "path": "registry/ui/popover.tsx",
+          "target": "@ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "popover",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-radio-group"],
+      "files": [
+        {
+          "path": "registry/ui/radio-group.tsx",
+          "target": "@ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "radio-group",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-select"],
+      "files": [
+        {
+          "path": "registry/ui/select.tsx",
+          "target": "@ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "select",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-separator"],
+      "files": [
+        {
+          "path": "registry/ui/separator.tsx",
+          "target": "@ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "separator",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/skeleton.tsx",
+          "target": "@ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "skeleton",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-slider"],
+      "files": [
+        {
+          "path": "registry/ui/slider.tsx",
+          "target": "@ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "slider",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-switch"],
+      "files": [
+        {
+          "path": "registry/ui/switch.tsx",
+          "target": "@ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "switch",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/table.tsx",
+          "target": "@ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "table",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-tabs"],
+      "files": [
+        {
+          "path": "registry/ui/tabs.tsx",
+          "target": "@ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "tabs",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/ui/textarea.tsx",
+          "target": "@ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "textarea",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "files": [
+        {
+          "path": "registry/ui/tooltip.tsx",
+          "target": "@ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "name": "tooltip",
+      "registryDependencies": ["@kombase/utils"],
+      "type": "registry:ui"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/hooks/use-as-ref.ts",
+          "target": "@hooks/use-as-ref.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-as-ref",
+      "registryDependencies": ["@kombase/use-isomorphic-layout-effect"],
+      "type": "registry:hook"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/hooks/use-callback-ref.ts",
+          "target": "@hooks/use-callback-ref.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-callback-ref",
+      "type": "registry:hook"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "files": [
+        {
+          "path": "registry/hooks/use-data-table.ts",
+          "target": "@hooks/use-data-table.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-data-table",
+      "registryDependencies": [
+        "@kombase/data-table-config",
+        "@kombase/data-table-types",
+        "@kombase/lib-data-table"
+      ],
+      "type": "registry:hook"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/hooks/use-debounced-callback.ts",
+          "target": "@hooks/use-debounced-callback.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-debounced-callback",
+      "registryDependencies": ["@kombase/use-callback-ref"],
+      "type": "registry:hook"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/hooks/use-isomorphic-layout-effect.ts",
+          "target": "@hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-isomorphic-layout-effect",
+      "type": "registry:hook"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/hooks/use-lazy-ref.ts",
+          "target": "@hooks/use-lazy-ref.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-lazy-ref",
+      "type": "registry:hook"
+    },
+    {
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/lib/utils.ts",
+          "target": "@lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "utils",
+      "type": "registry:lib"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/lib/component-refs.ts",
+          "target": "@lib/component-refs.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "component-refs",
+      "type": "registry:lib"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "files": [
+        {
+          "path": "registry/lib/data-table.ts",
+          "target": "@lib/data-table.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "lib-data-table",
+      "registryDependencies": ["@kombase/data-table-config", "@kombase/data-table-types"],
+      "type": "registry:lib"
+    },
+    {
+      "dependencies": ["dayjs", "react-day-picker"],
+      "files": [
+        {
+          "path": "registry/lib/date.ts",
+          "target": "@lib/date.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "lib-date",
+      "type": "registry:lib"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/lib/pagination.ts",
+          "target": "@lib/pagination.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "lib-pagination",
+      "type": "registry:lib"
+    },
+    {
+      "dependencies": ["dayjs"],
+      "files": [
+        {
+          "path": "registry/lib/filter-helper.ts",
+          "target": "@lib/filter-helper.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "filter-helper",
+      "registryDependencies": ["@kombase/data-table-types"],
+      "type": "registry:lib"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-config.ts",
+          "target": "@components/data-table/data-table-config.ts",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-config",
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/types.ts",
+          "target": "@components/data-table/types.ts",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-types",
+      "registryDependencies": ["@kombase/data-table-config"],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-pagination.tsx",
+          "target": "@components/data-table/data-table-pagination.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-pagination",
+      "registryDependencies": ["button", "select", "@kombase/lib-pagination", "@kombase/utils"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-range-filter.tsx",
+          "target": "@components/data-table/data-table-range-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-range-filter",
+      "registryDependencies": ["debounced-input"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-skeleton.tsx",
+          "target": "@components/data-table/data-table-skeleton.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-skeleton",
+      "registryDependencies": ["skeleton", "table"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-date-filter.tsx",
+          "target": "@components/data-table/data-table-date-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-date-filter",
+      "registryDependencies": ["button", "calendar", "popover", "separator", "@kombase/lib-date"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-faceted-filter.tsx",
+          "target": "@components/data-table/data-table-faceted-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-faceted-filter",
+      "registryDependencies": ["badge", "button", "command", "popover", "separator"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-slider-filter.tsx",
+          "target": "@components/data-table/data-table-slider-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-slider-filter",
+      "registryDependencies": ["button", "input", "label", "popover", "separator", "slider"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-view-options.tsx",
+          "target": "@components/data-table/data-table-view-options.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-view-options",
+      "registryDependencies": ["button", "command", "popover"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-toolbar.tsx",
+          "target": "@components/data-table/data-table-toolbar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-toolbar",
+      "registryDependencies": [
+        "button",
+        "debounced-input",
+        "@kombase/data-table-date-filter",
+        "@kombase/data-table-faceted-filter",
+        "@kombase/data-table-slider-filter",
+        "@kombase/data-table-view-options"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-bulk-action.tsx",
+          "target": "@components/data-table/data-table-bulk-action.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-bulk-action",
+      "registryDependencies": ["badge", "button", "separator", "tooltip"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-column-header.tsx",
+          "target": "@components/data-table/data-table-column-header.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-column-header",
+      "registryDependencies": ["dropdown-menu"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-advance-filter.tsx",
+          "target": "@components/data-table/data-table-advance-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-advance-filter",
+      "registryDependencies": [
+        "@kombase/lib-data-table",
+        "badge",
+        "button",
+        "calendar",
+        "command",
+        "popover",
+        "select",
+        "@kombase/data-table-config",
+        "@kombase/data-table-date-filter",
+        "@kombase/data-table-range-filter"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table.tsx",
+          "target": "@components/data-table/data-table.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table",
+      "registryDependencies": [
+        "table",
+        "@kombase/data-table-config",
+        "@kombase/data-table-types",
+        "@kombase/data-table-pagination",
+        "@kombase/data-table-toolbar",
+        "@kombase/data-table-advance-filter",
+        "@kombase/data-table-bulk-action",
+        "@kombase/data-table-column-header",
+        "@kombase/data-table-skeleton",
+        "@kombase/lib-data-table",
+        "@kombase/use-data-table"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/action-bar.tsx",
+          "target": "@components/action-bar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "action-bar",
+      "registryDependencies": [
+        "button",
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-avatar"],
+      "files": [
+        {
+          "path": "registry/components/avatar-group.tsx",
+          "target": "@components/avatar-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "avatar-group",
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/confirm-dialog.tsx",
+          "target": "@components/confirm-dialog.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "confirm-dialog",
+      "registryDependencies": ["alert-dialog", "button"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/long-text.tsx",
+          "target": "@components/long-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "long-text",
+      "registryDependencies": ["popover", "tooltip"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/phone-input.tsx",
+          "target": "@components/phone-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "phone-input",
+      "registryDependencies": [
+        "command",
+        "input",
+        "popover",
+        "@kombase/component-refs",
+        "@kombase/visually-hidden-input",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-direction"],
+      "files": [
+        {
+          "path": "registry/components/rating.tsx",
+          "target": "@components/rating.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "rating",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/visually-hidden-input",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-direction"],
+      "files": [
+        {
+          "path": "registry/components/stepper.tsx",
+          "target": "@components/stepper.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "stepper",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@radix-ui/react-direction", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/components/timeline.tsx",
+          "target": "@components/timeline.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "timeline",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@floating-ui/react-dom", "@radix-ui/react-direction"],
+      "files": [
+        {
+          "path": "registry/components/tour.tsx",
+          "target": "@components/tour.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "tour",
+      "registryDependencies": [
+        "button",
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/visually-hidden-input.tsx",
+          "target": "@components/visually-hidden-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "visually-hidden-input",
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/password-input.tsx",
+          "target": "@components/password-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "password-input",
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/components/select-dropdown.tsx",
+          "target": "@components/select-dropdown.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "select-dropdown",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["dayjs"],
+      "files": [
+        {
+          "path": "registry/form/form-date-picker.tsx",
+          "target": "@components/form/form-date-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-date-picker",
+      "registryDependencies": ["calendar", "form", "label", "popover"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-input.tsx",
+          "target": "@components/form/form-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-input",
+      "registryDependencies": ["form", "input", "label"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-input-group.tsx",
+          "target": "@components/form/form-input-group.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-input-group",
+      "registryDependencies": ["form", "input-group", "label"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-password.tsx",
+          "target": "@components/form/form-password.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-password",
+      "registryDependencies": ["form", "label", "@kombase/password-input"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-phone-input.tsx",
+          "target": "@components/form/form-phone-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-phone-input",
+      "registryDependencies": ["form", "label", "@kombase/phone-input"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-pick.tsx",
+          "target": "@components/form/form-pick.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-pick",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-radio.tsx",
+          "target": "@components/form/form-radio.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-radio",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-search-select.tsx",
+          "target": "@components/form/form-search-select.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-search-select",
+      "registryDependencies": ["combobox", "form", "label"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-textarea.tsx",
+          "target": "@components/form/form-textarea.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-textarea",
+      "registryDependencies": ["form", "label", "textarea"],
+      "type": "registry:component"
+    },
+    {
+      "files": [
+        {
+          "path": "registry/form/form-upload.tsx",
+          "target": "@components/form/form-upload.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "form-upload",
+      "registryDependencies": ["form", "label", "@kombase/file-upload"],
+      "type": "registry:component"
+    }
+  ],
+  "name": "kombase"
+}

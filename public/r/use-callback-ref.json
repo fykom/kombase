@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import * as React from 'react';\r\n\r\n/**\r\n * @see https://github.com/radix-ui/primitives/blob/main/packages/react/use-callback-ref/src/useCallbackRef.tsx\r\n */\r\n\r\n/**\r\n * A custom hook that converts a callback to a ref to avoid triggering re-renders when passed as a\r\n * prop or avoid re-executing effects when passed as a dependency\r\n */\r\nfunction useCallbackRef<T extends (...args: never[]) => unknown>(callback: T | undefined): T {\r\n  const callbackRef = React.useRef(callback);\r\n\r\n  React.useEffect(() => {\r\n    callbackRef.current = callback;\r\n  });\r\n\r\n  // https://github.com/facebook/react/issues/19240\r\n  return React.useMemo(() => ((...args) => callbackRef.current?.(...args)) as T, []);\r\n}\r\n\r\nexport { useCallbackRef };\r\n",
+      "path": "registry/hooks/use-callback-ref.ts",
+      "target": "@hooks/use-callback-ref.ts",
+      "type": "registry:hook"
+    }
+  ],
+  "name": "use-callback-ref",
+  "type": "registry:hook"
+}

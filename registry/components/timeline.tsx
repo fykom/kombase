@@ -4,8 +4,8 @@ import * as DirectionPrimitive from '@radix-ui/react-direction';
 import * as SlotPrimitive from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@/components/hooks/use-isomorphic-layout-effect';
-import { useLazyRef } from '@/components/hooks/use-lazy-ref';
+import { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect';
+import { useLazyRef } from '@/hooks/use-lazy-ref';
 import { useComposedRefs } from '@/lib/component-refs';
 import { cn } from '@/lib/utils';
 

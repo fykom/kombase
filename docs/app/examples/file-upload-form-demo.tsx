@@ -2,6 +2,12 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { goeyToast } from 'goey-toast';
+import { CloudUpload, X } from 'lucide-react';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+import { FormUpload } from '@/components/form/form-upload';
+import { Button } from '@/components/ui/button';
 import {
   FileUploadDropzone,
   FileUploadItem,
@@ -10,13 +16,7 @@ import {
   FileUploadItemPreview,
   FileUploadList,
   FileUploadTrigger,
-  FormUpload,
-} from 'kombase';
-import { CloudUpload, X } from 'lucide-react';
-import * as React from 'react';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/file-upload';
 import { Form, FormDescription } from '@/components/ui/form';
 
 const formSchema = z.object({

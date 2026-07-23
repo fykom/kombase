@@ -11,9 +11,9 @@ import {
 } from 'lucide-react';
 import { Direction as DirectionPrimitive, Slot as SlotPrimitive } from 'radix-ui';
 import * as React from 'react';
-import { cn } from '@/lib/utils';
 import { useAsRef } from '@/hooks/use-as-ref';
 import { useLazyRef } from '@/hooks/use-lazy-ref';
+import { cn } from '@/lib/utils';
 
 const ROOT_NAME = 'FileUpload';
 const DROPZONE_NAME = 'FileUploadDropzone';

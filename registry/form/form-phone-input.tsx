@@ -1,10 +1,6 @@
 import type React from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
-import {
-  PhoneInput,
-  PhoneInputCountrySelect,
-  PhoneInputField,
-} from '@/components/dynamic/phone-input';
+import { PhoneInput, PhoneInputCountrySelect, PhoneInputField } from '@/components/phone-input';
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
