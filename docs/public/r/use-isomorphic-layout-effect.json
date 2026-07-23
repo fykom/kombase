@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "use-isomorphic-layout-effect",
-  "title": "useIsomorphicLayoutEffect",
   "description": "SSR-safe wrapper around useLayoutEffect that falls back to useEffect on the server.",
   "files": [
     {
-      "path": "registry/hooks/use-isomorphic-layout-effect.ts",
       "content": "import * as React from 'react';\n\nconst useIsomorphicLayoutEffect =\n  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;\n\nexport { useIsomorphicLayoutEffect };\n",
-      "type": "registry:hook",
-      "target": "@hooks/use-isomorphic-layout-effect.ts"
+      "path": "registry/hooks/use-isomorphic-layout-effect.ts",
+      "target": "@hooks/use-isomorphic-layout-effect.ts",
+      "type": "registry:hook"
     }
   ],
+  "name": "use-isomorphic-layout-effect",
+  "title": "useIsomorphicLayoutEffect",
   "type": "registry:hook"
 }

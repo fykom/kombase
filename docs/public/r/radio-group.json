@@ -1,21 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "radio-group",
-  "title": "Radio Group",
+  "dependencies": ["@radix-ui/react-radio-group"],
   "description": "A set of radio buttons for single-option selection.",
-  "dependencies": [
-    "@radix-ui/react-radio-group"
-  ],
-  "registryDependencies": [
-    "@kombase/utils"
-  ],
   "files": [
     {
-      "path": "registry/ui/radio-group.tsx",
       "content": "'use client';\n\nimport * as RadioGroupPrimitive from '@radix-ui/react-radio-group';\nimport { CircleIcon } from 'lucide-react';\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\nconst RadioGroup = React.forwardRef<\n  React.ComponentRef<typeof RadioGroupPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\n>(({ className, ...props }, ref) => {\n  return (\n    <RadioGroupPrimitive.Root\n      className={cn('grid gap-3', className)}\n      data-slot=\"radio-group\"\n      ref={ref}\n      {...props}\n    />\n  );\n});\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\n\nconst RadioGroupItem = React.forwardRef<\n  React.ComponentRef<typeof RadioGroupPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>\n>(({ className, ...props }, ref) => {\n  return (\n    <RadioGroupPrimitive.Item\n      className={cn(\n        'aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:aria-invalid:ring-destructive/40',\n        className,\n      )}\n      data-slot=\"radio-group-item\"\n      ref={ref}\n      {...props}\n    >\n      <RadioGroupPrimitive.Indicator\n        className=\"relative flex items-center justify-center\"\n        data-slot=\"radio-group-indicator\"\n      >\n        <CircleIcon className=\"absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-primary\" />\n      </RadioGroupPrimitive.Indicator>\n    </RadioGroupPrimitive.Item>\n  );\n});\nRadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;\n\nexport { RadioGroup, RadioGroupItem };\n",
-      "type": "registry:ui",
-      "target": "@ui/radio-group.tsx"
+      "path": "registry/ui/radio-group.tsx",
+      "target": "@ui/radio-group.tsx",
+      "type": "registry:ui"
     }
   ],
+  "name": "radio-group",
+  "registryDependencies": ["@kombase/utils"],
+  "title": "Radio Group",
   "type": "registry:ui"
 }

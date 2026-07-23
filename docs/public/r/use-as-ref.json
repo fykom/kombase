@@ -1,18 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "use-as-ref",
-  "title": "useAsRef",
   "description": "Keeps a mutable ref synchronized with the latest value using layout effect.",
-  "registryDependencies": [
-    "@kombase/use-isomorphic-layout-effect"
-  ],
   "files": [
     {
-      "path": "registry/hooks/use-as-ref.ts",
       "content": "import * as React from 'react';\n\nimport { useIsomorphicLayoutEffect } from '@/hooks/use-isomorphic-layout-effect';\n\nfunction useAsRef<T>(props: T) {\n  const ref = React.useRef<T>(props);\n\n  useIsomorphicLayoutEffect(() => {\n    ref.current = props;\n  });\n\n  return ref;\n}\n\nexport { useAsRef };\n",
-      "type": "registry:hook",
-      "target": "@hooks/use-as-ref.ts"
+      "path": "registry/hooks/use-as-ref.ts",
+      "target": "@hooks/use-as-ref.ts",
+      "type": "registry:hook"
     }
   ],
+  "name": "use-as-ref",
+  "registryDependencies": ["@kombase/use-isomorphic-layout-effect"],
+  "title": "useAsRef",
   "type": "registry:hook"
 }

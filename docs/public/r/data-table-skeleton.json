@@ -1,19 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "data-table-skeleton",
-  "title": "Data Table Skeleton",
   "description": "Loading skeleton placeholder for data tables.",
-  "registryDependencies": [
-    "skeleton",
-    "table"
-  ],
   "files": [
     {
-      "path": "registry/components/data-table/data-table-skeleton.tsx",
       "content": "import { Skeleton } from '@/components/ui/skeleton';\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from '@/components/ui/table';\nimport { cn } from '@/lib/utils';\n\ninterface DataTableSkeletonProps extends React.ComponentProps<'div'> {\n  columnCount: number;\n  rowCount?: number;\n  filterCount?: number;\n  cellWidths?: string[];\n  withViewOptions?: boolean;\n  withPagination?: boolean;\n  shrinkZero?: boolean;\n}\n\nexport function DataTableSkeleton({\n  columnCount,\n  rowCount = 10,\n  filterCount = 0,\n  cellWidths = ['auto'],\n  withViewOptions = true,\n  withPagination = true,\n  shrinkZero = false,\n  className,\n  ...props\n}: DataTableSkeletonProps) {\n  const cozyCellWidths = Array.from(\n    { length: columnCount },\n    (_, index) => cellWidths[index % cellWidths.length] ?? 'auto',\n  );\n\n  return (\n    <div className={cn('flex w-full flex-col gap-2.5 overflow-auto', className)} {...props}>\n      <div className=\"flex w-full items-center justify-between gap-2 overflow-auto p-1\">\n        <div className=\"flex flex-1 items-center gap-2\">\n          {filterCount > 0\n            ? Array.from({ length: filterCount }).map((_, i) => (\n                <Skeleton className=\"h-7 w-18 border-dashed\" key={i} />\n              ))\n            : null}\n        </div>\n        {withViewOptions ? <Skeleton className=\"ml-auto hidden h-7 w-18 lg:flex\" /> : null}\n      </div>\n      <div className=\"rounded-md border\">\n        <Table>\n          <TableHeader>\n            {Array.from({ length: 1 }).map((_, i) => (\n              <TableRow className=\"hover:bg-transparent\" key={i}>\n                {Array.from({ length: columnCount }).map((_, j) => (\n                  <TableHead\n                    key={j}\n                    style={{\n                      minWidth: shrinkZero ? cozyCellWidths[j] : 'auto',\n                      width: cozyCellWidths[j],\n                    }}\n                  >\n                    <Skeleton className=\"h-6 w-full\" />\n                  </TableHead>\n                ))}\n              </TableRow>\n            ))}\n          </TableHeader>\n          <TableBody>\n            {Array.from({ length: rowCount }).map((_, i) => (\n              <TableRow className=\"hover:bg-transparent\" key={i}>\n                {Array.from({ length: columnCount }).map((_, j) => (\n                  <TableCell\n                    key={j}\n                    style={{\n                      minWidth: shrinkZero ? cozyCellWidths[j] : 'auto',\n                      width: cozyCellWidths[j],\n                    }}\n                  >\n                    <Skeleton className=\"h-6 w-full\" />\n                  </TableCell>\n                ))}\n              </TableRow>\n            ))}\n          </TableBody>\n        </Table>\n      </div>\n      {withPagination ? (\n        <div className=\"flex w-full items-center justify-between gap-4 overflow-auto p-1 sm:gap-8\">\n          <Skeleton className=\"h-7 w-40 shrink-0\" />\n          <div className=\"flex items-center gap-4 sm:gap-6 lg:gap-8\">\n            <div className=\"flex items-center gap-2\">\n              <Skeleton className=\"h-7 w-24\" />\n              <Skeleton className=\"h-7 w-18\" />\n            </div>\n            <div className=\"flex items-center justify-center font-medium text-sm\">\n              <Skeleton className=\"h-7 w-20\" />\n            </div>\n            <div className=\"flex items-center gap-2\">\n              <Skeleton className=\"hidden size-7 lg:block\" />\n              <Skeleton className=\"size-7\" />\n              <Skeleton className=\"size-7\" />\n              <Skeleton className=\"hidden size-7 lg:block\" />\n            </div>\n          </div>\n        </div>\n      ) : null}\n    </div>\n  );\n}\n",
-      "type": "registry:component",
-      "target": "@components/data-table/data-table-skeleton.tsx"
+      "path": "registry/components/data-table/data-table-skeleton.tsx",
+      "target": "@components/data-table/data-table-skeleton.tsx",
+      "type": "registry:component"
     }
   ],
+  "name": "data-table-skeleton",
+  "registryDependencies": ["skeleton", "table"],
+  "title": "Data Table Skeleton",
   "type": "registry:component"
 }

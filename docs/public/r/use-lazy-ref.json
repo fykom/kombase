@@ -1,15 +1,15 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "use-lazy-ref",
-  "title": "useLazyRef",
   "description": "Creates a ref that is lazily initialized on first access.",
   "files": [
     {
-      "path": "registry/hooks/use-lazy-ref.ts",
       "content": "import * as React from 'react';\n\nfunction useLazyRef<T>(fn: () => T) {\n  const ref = React.useRef<T | null>(null);\n\n  if (ref.current === null) {\n    ref.current = fn();\n  }\n\n  return ref as React.RefObject<T>;\n}\n\nexport { useLazyRef };\n",
-      "type": "registry:hook",
-      "target": "@hooks/use-lazy-ref.ts"
+      "path": "registry/hooks/use-lazy-ref.ts",
+      "target": "@hooks/use-lazy-ref.ts",
+      "type": "registry:hook"
     }
   ],
+  "name": "use-lazy-ref",
+  "title": "useLazyRef",
   "type": "registry:hook"
 }

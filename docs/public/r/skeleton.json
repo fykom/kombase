@@ -1,18 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "skeleton",
-  "title": "Skeleton",
   "description": "A placeholder loading indicator.",
-  "registryDependencies": [
-    "@kombase/utils"
-  ],
   "files": [
     {
-      "path": "registry/ui/skeleton.tsx",
       "content": "'use client';\n\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst Skeleton = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(\n  ({ className, ...props }, ref) => {\n    return (\n      <div\n        className={cn('animate-pulse rounded-md bg-accent', className)}\n        data-slot=\"skeleton\"\n        ref={ref}\n        {...props}\n      />\n    );\n  },\n);\nSkeleton.displayName = 'Skeleton';\n\nexport { Skeleton };\n",
-      "type": "registry:ui",
-      "target": "@ui/skeleton.tsx"
+      "path": "registry/ui/skeleton.tsx",
+      "target": "@ui/skeleton.tsx",
+      "type": "registry:ui"
     }
   ],
+  "name": "skeleton",
+  "registryDependencies": ["@kombase/utils"],
+  "title": "Skeleton",
   "type": "registry:ui"
 }

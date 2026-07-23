@@ -1,907 +1,740 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "kombase",
   "homepage": "https://kombase.komerce.id",
   "items": [
     {
-      "name": "alert-dialog",
-      "title": "Alert Dialog",
+      "dependencies": ["@radix-ui/react-alert-dialog"],
       "description": "A modal dialog for critical actions that requires user acknowledgment.",
-      "dependencies": [
-        "@radix-ui/react-alert-dialog"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
       "files": [
         {
           "path": "registry/ui/alert-dialog.tsx",
-          "type": "registry:ui",
-          "target": "@ui/alert-dialog.tsx"
+          "target": "@ui/alert-dialog.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "alert-dialog",
+      "registryDependencies": ["button"],
+      "title": "Alert Dialog",
       "type": "registry:ui"
     },
     {
-      "name": "alert",
-      "title": "Alert",
       "description": "Displays a callout for important information with variant styles.",
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/alert.tsx",
-          "type": "registry:ui",
-          "target": "@ui/alert.tsx"
+          "target": "@ui/alert.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "alert",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Alert",
       "type": "registry:ui"
     },
     {
-      "name": "avatar",
-      "title": "Avatar",
+      "dependencies": ["@radix-ui/react-avatar"],
       "description": "An image element with a fallback for user profile pictures.",
-      "dependencies": [
-        "@radix-ui/react-avatar"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/avatar.tsx",
-          "type": "registry:ui",
-          "target": "@ui/avatar.tsx"
+          "target": "@ui/avatar.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "avatar",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Avatar",
       "type": "registry:ui"
     },
     {
-      "name": "badge",
-      "title": "Badge",
+      "dependencies": ["class-variance-authority"],
       "description": "A small status descriptor with multiple visual variants.",
-      "dependencies": [
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/badge.tsx",
-          "type": "registry:ui",
-          "target": "@ui/badge.tsx"
+          "target": "@ui/badge.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "badge",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Badge",
       "type": "registry:ui"
     },
     {
-      "name": "button",
-      "title": "Button",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
       "description": "An interactive button with multiple size and variant options.",
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/button.tsx",
-          "type": "registry:ui",
-          "target": "@ui/button.tsx"
+          "target": "@ui/button.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "button",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Button",
       "type": "registry:ui"
     },
     {
-      "name": "calendar",
-      "title": "Calendar",
+      "dependencies": ["react-day-picker", "dayjs"],
       "description": "A date picker calendar with range selection, presets, and RTL support.",
-      "dependencies": [
-        "react-day-picker",
-        "dayjs"
-      ],
-      "registryDependencies": [
-        "button",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/calendar.tsx",
-          "type": "registry:ui",
-          "target": "@ui/calendar.tsx"
+          "target": "@ui/calendar.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "calendar",
+      "registryDependencies": ["button", "@kombase/utils"],
+      "title": "Calendar",
       "type": "registry:ui"
     },
     {
-      "name": "checkbox",
-      "title": "Checkbox",
+      "dependencies": ["@radix-ui/react-checkbox"],
       "description": "A control for boolean input with indeterminate state support.",
-      "dependencies": [
-        "@radix-ui/react-checkbox"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/checkbox.tsx",
-          "type": "registry:ui",
-          "target": "@ui/checkbox.tsx"
+          "target": "@ui/checkbox.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "checkbox",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Checkbox",
       "type": "registry:ui"
     },
     {
-      "name": "collapsible",
-      "title": "Collapsible",
+      "dependencies": ["@radix-ui/react-collapsible"],
       "description": "An interactive component that expands and collapses content.",
-      "dependencies": [
-        "@radix-ui/react-collapsible"
-      ],
       "files": [
         {
           "path": "registry/ui/collapsible.tsx",
-          "type": "registry:ui",
-          "target": "@ui/collapsible.tsx"
+          "target": "@ui/collapsible.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "collapsible",
+      "title": "Collapsible",
       "type": "registry:ui"
     },
     {
-      "name": "combobox",
-      "title": "Combobox",
+      "dependencies": ["cmdk"],
       "description": "A searchable select input with command palette integration.",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "popover",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/combobox.tsx",
-          "type": "registry:ui",
-          "target": "@ui/combobox.tsx"
+          "target": "@ui/combobox.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "combobox",
+      "registryDependencies": ["popover", "@kombase/utils"],
+      "title": "Combobox",
       "type": "registry:ui"
     },
     {
-      "name": "command",
-      "title": "Command",
+      "dependencies": ["cmdk"],
       "description": "A command palette for searchable actions and navigation.",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "dialog",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/command.tsx",
-          "type": "registry:ui",
-          "target": "@ui/command.tsx"
+          "target": "@ui/command.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "command",
+      "registryDependencies": ["dialog", "@kombase/utils"],
+      "title": "Command",
       "type": "registry:ui"
     },
     {
-      "name": "debounced-input",
-      "title": "Debounced Input",
       "description": "An input that delays onChange calls to reduce unnecessary re-renders.",
-      "registryDependencies": [
-        "input"
-      ],
       "files": [
         {
           "path": "registry/ui/debounced-input.tsx",
-          "type": "registry:ui",
-          "target": "@ui/debounced-input.tsx"
+          "target": "@ui/debounced-input.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "debounced-input",
+      "registryDependencies": ["input"],
+      "title": "Debounced Input",
       "type": "registry:ui"
     },
     {
-      "name": "dialog",
-      "title": "Dialog",
+      "dependencies": ["@radix-ui/react-dialog"],
       "description": "A modal overlay for focused content or forms.",
-      "dependencies": [
-        "@radix-ui/react-dialog"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/dialog.tsx",
-          "type": "registry:ui",
-          "target": "@ui/dialog.tsx"
+          "target": "@ui/dialog.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "dialog",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Dialog",
       "type": "registry:ui"
     },
     {
-      "name": "dropdown-menu",
-      "title": "Dropdown Menu",
+      "dependencies": ["@radix-ui/react-dropdown-menu"],
       "description": "A contextual menu triggered by a button click.",
-      "dependencies": [
-        "@radix-ui/react-dropdown-menu"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/dropdown-menu.tsx",
-          "type": "registry:ui",
-          "target": "@ui/dropdown-menu.tsx"
+          "target": "@ui/dropdown-menu.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "dropdown-menu",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Dropdown Menu",
       "type": "registry:ui"
     },
     {
-      "name": "file-upload",
-      "title": "File Upload",
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"],
       "description": "A drag-and-drop file upload component with validation, progress tracking, and paste support.",
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "@kombase/utils",
-        "@kombase/use-as-ref",
-        "@kombase/use-lazy-ref"
-      ],
       "files": [
         {
           "path": "registry/ui/file-upload.tsx",
-          "type": "registry:ui",
-          "target": "@ui/file-upload.tsx"
+          "target": "@ui/file-upload.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "file-upload",
+      "registryDependencies": ["@kombase/utils", "@kombase/use-as-ref", "@kombase/use-lazy-ref"],
+      "title": "File Upload",
       "type": "registry:ui"
     },
     {
-      "name": "form",
-      "title": "Form",
+      "dependencies": ["@radix-ui/react-form", "@radix-ui/react-label", "react-hook-form"],
       "description": "Form primitives with react-hook-form integration and validation messages.",
-      "dependencies": [
-        "@radix-ui/react-form",
-        "@radix-ui/react-label",
-        "react-hook-form"
-      ],
-      "registryDependencies": [
-        "label",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/form.tsx",
-          "type": "registry:ui",
-          "target": "@ui/form.tsx"
+          "target": "@ui/form.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "form",
+      "registryDependencies": ["label", "@kombase/utils"],
+      "title": "Form",
       "type": "registry:ui"
     },
     {
-      "name": "input-group",
-      "title": "Input Group",
       "description": "An input with prefix/suffix addons and action buttons.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "textarea",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/input-group.tsx",
-          "type": "registry:ui",
-          "target": "@ui/input-group.tsx"
+          "target": "@ui/input-group.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "input-group",
+      "registryDependencies": ["button", "input", "textarea", "@kombase/utils"],
+      "title": "Input Group",
       "type": "registry:ui"
     },
     {
-      "name": "input",
-      "title": "Input",
       "description": "A styled text input field.",
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/input.tsx",
-          "type": "registry:ui",
-          "target": "@ui/input.tsx"
+          "target": "@ui/input.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "input",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Input",
       "type": "registry:ui"
     },
     {
-      "name": "label",
-      "title": "Label",
+      "dependencies": ["@radix-ui/react-label"],
       "description": "An accessible label for form controls.",
-      "dependencies": [
-        "@radix-ui/react-label"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/label.tsx",
-          "type": "registry:ui",
-          "target": "@ui/label.tsx"
+          "target": "@ui/label.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "label",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Label",
       "type": "registry:ui"
     },
     {
-      "name": "popover",
-      "title": "Popover",
+      "dependencies": ["@radix-ui/react-popover"],
       "description": "A floating panel anchored to a trigger element.",
-      "dependencies": [
-        "@radix-ui/react-popover"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/popover.tsx",
-          "type": "registry:ui",
-          "target": "@ui/popover.tsx"
+          "target": "@ui/popover.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "popover",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Popover",
       "type": "registry:ui"
     },
     {
-      "name": "radio-group",
-      "title": "Radio Group",
+      "dependencies": ["@radix-ui/react-radio-group"],
       "description": "A set of radio buttons for single-option selection.",
-      "dependencies": [
-        "@radix-ui/react-radio-group"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/radio-group.tsx",
-          "type": "registry:ui",
-          "target": "@ui/radio-group.tsx"
+          "target": "@ui/radio-group.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "radio-group",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Radio Group",
       "type": "registry:ui"
     },
     {
-      "name": "select",
-      "title": "Select",
+      "dependencies": ["@radix-ui/react-select"],
       "description": "A dropdown select input with search and grouping.",
-      "dependencies": [
-        "@radix-ui/react-select"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/select.tsx",
-          "type": "registry:ui",
-          "target": "@ui/select.tsx"
+          "target": "@ui/select.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "select",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Select",
       "type": "registry:ui"
     },
     {
-      "name": "separator",
-      "title": "Separator",
+      "dependencies": ["@radix-ui/react-separator"],
       "description": "A visual divider between content sections.",
-      "dependencies": [
-        "@radix-ui/react-separator"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/separator.tsx",
-          "type": "registry:ui",
-          "target": "@ui/separator.tsx"
+          "target": "@ui/separator.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "separator",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Separator",
       "type": "registry:ui"
     },
     {
-      "name": "skeleton",
-      "title": "Skeleton",
       "description": "A placeholder loading indicator.",
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/skeleton.tsx",
-          "type": "registry:ui",
-          "target": "@ui/skeleton.tsx"
+          "target": "@ui/skeleton.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "skeleton",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Skeleton",
       "type": "registry:ui"
     },
     {
-      "name": "slider",
-      "title": "Slider",
+      "dependencies": ["@radix-ui/react-slider"],
       "description": "A range input for selecting numeric values.",
-      "dependencies": [
-        "@radix-ui/react-slider"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/slider.tsx",
-          "type": "registry:ui",
-          "target": "@ui/slider.tsx"
+          "target": "@ui/slider.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "slider",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Slider",
       "type": "registry:ui"
     },
     {
-      "name": "switch",
-      "title": "Switch",
+      "dependencies": ["@radix-ui/react-switch"],
       "description": "A toggle for binary on/off states.",
-      "dependencies": [
-        "@radix-ui/react-switch"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/switch.tsx",
-          "type": "registry:ui",
-          "target": "@ui/switch.tsx"
+          "target": "@ui/switch.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "switch",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Switch",
       "type": "registry:ui"
     },
     {
-      "name": "table",
-      "title": "Table",
       "description": "A styled HTML table with header, body, and footer.",
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/table.tsx",
-          "type": "registry:ui",
-          "target": "@ui/table.tsx"
+          "target": "@ui/table.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "table",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Table",
       "type": "registry:ui"
     },
     {
-      "name": "tabs",
-      "title": "Tabs",
+      "dependencies": ["@radix-ui/react-tabs"],
       "description": "A tabbed navigation component for switching between views.",
-      "dependencies": [
-        "@radix-ui/react-tabs"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/tabs.tsx",
-          "type": "registry:ui",
-          "target": "@ui/tabs.tsx"
+          "target": "@ui/tabs.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "tabs",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Tabs",
       "type": "registry:ui"
     },
     {
-      "name": "textarea",
-      "title": "Textarea",
       "description": "A multi-line text input field.",
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/textarea.tsx",
-          "type": "registry:ui",
-          "target": "@ui/textarea.tsx"
+          "target": "@ui/textarea.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "textarea",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Textarea",
       "type": "registry:ui"
     },
     {
-      "name": "tooltip",
-      "title": "Tooltip",
+      "dependencies": ["@radix-ui/react-tooltip"],
       "description": "A popup that displays information on hover or focus.",
-      "dependencies": [
-        "@radix-ui/react-tooltip"
-      ],
-      "registryDependencies": [
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/ui/tooltip.tsx",
-          "type": "registry:ui",
-          "target": "@ui/tooltip.tsx"
+          "target": "@ui/tooltip.tsx",
+          "type": "registry:ui"
         }
       ],
+      "name": "tooltip",
+      "registryDependencies": ["@kombase/utils"],
+      "title": "Tooltip",
       "type": "registry:ui"
     },
     {
-      "name": "use-as-ref",
-      "title": "useAsRef",
       "description": "Keeps a mutable ref synchronized with the latest value using layout effect.",
-      "registryDependencies": [
-        "@kombase/use-isomorphic-layout-effect"
-      ],
       "files": [
         {
           "path": "registry/hooks/use-as-ref.ts",
-          "type": "registry:hook",
-          "target": "@hooks/use-as-ref.ts"
+          "target": "@hooks/use-as-ref.ts",
+          "type": "registry:hook"
         }
       ],
+      "name": "use-as-ref",
+      "registryDependencies": ["@kombase/use-isomorphic-layout-effect"],
+      "title": "useAsRef",
       "type": "registry:hook"
     },
     {
-      "name": "use-callback-ref",
-      "title": "useCallbackRef",
       "description": "Creates a stable callback ref that always calls the latest function.",
       "files": [
         {
           "path": "registry/hooks/use-callback-ref.ts",
-          "type": "registry:hook",
-          "target": "@hooks/use-callback-ref.ts"
+          "target": "@hooks/use-callback-ref.ts",
+          "type": "registry:hook"
         }
       ],
+      "name": "use-callback-ref",
+      "title": "useCallbackRef",
       "type": "registry:hook"
     },
     {
-      "name": "use-data-table",
-      "title": "useDataTable",
+      "dependencies": ["@tanstack/react-table"],
       "description": "Hook for managing data table state, filtering, sorting, and pagination with TanStack Table.",
-      "dependencies": [
-        "@tanstack/react-table"
+      "files": [
+        {
+          "path": "registry/hooks/use-data-table.ts",
+          "target": "@hooks/use-data-table.ts",
+          "type": "registry:hook"
+        }
       ],
+      "name": "use-data-table",
       "registryDependencies": [
         "@kombase/data-table-config",
         "@kombase/data-table-types",
         "@kombase/lib-data-table"
       ],
-      "files": [
-        {
-          "path": "registry/hooks/use-data-table.ts",
-          "type": "registry:hook",
-          "target": "@hooks/use-data-table.ts"
-        }
-      ],
+      "title": "useDataTable",
       "type": "registry:hook"
     },
     {
-      "name": "use-debounced-callback",
-      "title": "useDebouncedCallback",
       "description": "Returns a debounced version of a callback function with configurable delay.",
-      "registryDependencies": [
-        "@kombase/use-callback-ref"
-      ],
       "files": [
         {
           "path": "registry/hooks/use-debounced-callback.ts",
-          "type": "registry:hook",
-          "target": "@hooks/use-debounced-callback.ts"
+          "target": "@hooks/use-debounced-callback.ts",
+          "type": "registry:hook"
         }
       ],
+      "name": "use-debounced-callback",
+      "registryDependencies": ["@kombase/use-callback-ref"],
+      "title": "useDebouncedCallback",
       "type": "registry:hook"
     },
     {
-      "name": "use-isomorphic-layout-effect",
-      "title": "useIsomorphicLayoutEffect",
       "description": "SSR-safe wrapper around useLayoutEffect that falls back to useEffect on the server.",
       "files": [
         {
           "path": "registry/hooks/use-isomorphic-layout-effect.ts",
-          "type": "registry:hook",
-          "target": "@hooks/use-isomorphic-layout-effect.ts"
+          "target": "@hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
         }
       ],
+      "name": "use-isomorphic-layout-effect",
+      "title": "useIsomorphicLayoutEffect",
       "type": "registry:hook"
     },
     {
-      "name": "use-lazy-ref",
-      "title": "useLazyRef",
       "description": "Creates a ref that is lazily initialized on first access.",
       "files": [
         {
           "path": "registry/hooks/use-lazy-ref.ts",
-          "type": "registry:hook",
-          "target": "@hooks/use-lazy-ref.ts"
+          "target": "@hooks/use-lazy-ref.ts",
+          "type": "registry:hook"
         }
       ],
+      "name": "use-lazy-ref",
+      "title": "useLazyRef",
       "type": "registry:hook"
     },
     {
-      "name": "utils",
-      "title": "Utilities",
+      "dependencies": ["clsx", "tailwind-merge"],
       "description": "Core utility function (cn) for merging Tailwind CSS classes.",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
       "files": [
         {
           "path": "registry/lib/utils.ts",
-          "type": "registry:lib",
-          "target": "@lib/utils.ts"
+          "target": "@lib/utils.ts",
+          "type": "registry:lib"
         }
       ],
+      "name": "utils",
+      "title": "Utilities",
       "type": "registry:lib"
     },
     {
-      "name": "component-refs",
-      "title": "Component Refs",
       "description": "Ref composition utilities for combining multiple React refs.",
       "files": [
         {
           "path": "registry/lib/component-refs.ts",
-          "type": "registry:lib",
-          "target": "@lib/component-refs.ts"
+          "target": "@lib/component-refs.ts",
+          "type": "registry:lib"
         }
       ],
+      "name": "component-refs",
+      "title": "Component Refs",
       "type": "registry:lib"
     },
     {
-      "name": "lib-data-table",
-      "title": "Data Table Helpers",
+      "dependencies": ["@tanstack/react-table"],
       "description": "Helper functions for data table filter validation and parsing.",
-      "dependencies": [
-        "@tanstack/react-table"
-      ],
-      "registryDependencies": [
-        "@kombase/data-table-config",
-        "@kombase/data-table-types"
-      ],
       "files": [
         {
           "path": "registry/lib/data-table.ts",
-          "type": "registry:lib",
-          "target": "@lib/data-table.ts"
+          "target": "@lib/data-table.ts",
+          "type": "registry:lib"
         }
       ],
+      "name": "lib-data-table",
+      "registryDependencies": ["@kombase/data-table-config", "@kombase/data-table-types"],
+      "title": "Data Table Helpers",
       "type": "registry:lib"
     },
     {
-      "name": "lib-date",
-      "title": "Date Helpers",
+      "dependencies": ["dayjs", "react-day-picker"],
       "description": "Date formatting and range utilities using dayjs and react-day-picker.",
-      "dependencies": [
-        "dayjs",
-        "react-day-picker"
-      ],
       "files": [
         {
           "path": "registry/lib/date.ts",
-          "type": "registry:lib",
-          "target": "@lib/date.ts"
+          "target": "@lib/date.ts",
+          "type": "registry:lib"
         }
       ],
+      "name": "lib-date",
+      "title": "Date Helpers",
       "type": "registry:lib"
     },
     {
-      "name": "lib-pagination",
-      "title": "Pagination Helpers",
       "description": "Pagination range calculation utilities for data table pagination.",
       "files": [
         {
           "path": "registry/lib/pagination.ts",
-          "type": "registry:lib",
-          "target": "@lib/pagination.ts"
+          "target": "@lib/pagination.ts",
+          "type": "registry:lib"
         }
       ],
+      "name": "lib-pagination",
+      "title": "Pagination Helpers",
       "type": "registry:lib"
     },
     {
-      "name": "filter-helper",
-      "title": "Filter Helper",
+      "dependencies": ["dayjs"],
       "description": "Serializes data table filters to backend query parameters with multiple format styles.",
-      "dependencies": [
-        "dayjs"
-      ],
-      "registryDependencies": [
-        "@kombase/data-table-types"
-      ],
       "files": [
         {
           "path": "registry/lib/filter-helper.ts",
-          "type": "registry:lib",
-          "target": "@lib/filter-helper.ts"
+          "target": "@lib/filter-helper.ts",
+          "type": "registry:lib"
         }
       ],
+      "name": "filter-helper",
+      "registryDependencies": ["@kombase/data-table-types"],
+      "title": "Filter Helper",
       "type": "registry:lib"
     },
     {
-      "name": "data-table-config",
-      "title": "Data Table Config",
       "description": "Configuration constants and translations for data table components.",
       "files": [
         {
           "path": "registry/components/data-table/data-table-config.ts",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-config.ts"
+          "target": "@components/data-table/data-table-config.ts",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-config",
+      "title": "Data Table Config",
       "type": "registry:component"
     },
     {
-      "name": "data-table-types",
-      "title": "Data Table Types",
       "description": "TypeScript type definitions for data table column filters and options.",
-      "registryDependencies": [
-        "@kombase/data-table-config"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/types.ts",
-          "type": "registry:component",
-          "target": "@components/data-table/types.ts"
+          "target": "@components/data-table/types.ts",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-types",
+      "registryDependencies": ["@kombase/data-table-config"],
+      "title": "Data Table Types",
       "type": "registry:component"
     },
     {
-      "name": "data-table-pagination",
-      "title": "Data Table Pagination",
+      "dependencies": ["@tanstack/react-table"],
       "description": "Pagination controls with page size selector for data tables.",
-      "dependencies": [
-        "@tanstack/react-table"
-      ],
-      "registryDependencies": [
-        "button",
-        "select",
-        "@kombase/lib-pagination",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-pagination.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-pagination.tsx"
+          "target": "@components/data-table/data-table-pagination.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-pagination",
+      "registryDependencies": ["button", "select", "@kombase/lib-pagination", "@kombase/utils"],
+      "title": "Data Table Pagination",
       "type": "registry:component"
     },
     {
-      "name": "data-table-range-filter",
-      "title": "Data Table Range Filter",
       "description": "Min/max range filter with debounced inputs for numeric columns.",
-      "registryDependencies": [
-        "@kombase/debounced-input"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-range-filter.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-range-filter.tsx"
+          "target": "@components/data-table/data-table-range-filter.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-range-filter",
+      "registryDependencies": ["@kombase/debounced-input"],
+      "title": "Data Table Range Filter",
       "type": "registry:component"
     },
     {
-      "name": "data-table-skeleton",
-      "title": "Data Table Skeleton",
       "description": "Loading skeleton placeholder for data tables.",
-      "registryDependencies": [
-        "skeleton",
-        "table"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-skeleton.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-skeleton.tsx"
+          "target": "@components/data-table/data-table-skeleton.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-skeleton",
+      "registryDependencies": ["skeleton", "table"],
+      "title": "Data Table Skeleton",
       "type": "registry:component"
     },
     {
-      "name": "data-table-date-filter",
-      "title": "Data Table Date Filter",
       "description": "Date range filter with calendar presets for data table columns.",
-      "registryDependencies": [
-        "button",
-        "calendar",
-        "popover",
-        "separator",
-        "@kombase/lib-date"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-date-filter.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-date-filter.tsx"
+          "target": "@components/data-table/data-table-date-filter.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-date-filter",
+      "registryDependencies": ["button", "calendar", "popover", "separator", "@kombase/lib-date"],
+      "title": "Data Table Date Filter",
       "type": "registry:component"
     },
     {
-      "name": "data-table-faceted-filter",
-      "title": "Data Table Faceted Filter",
       "description": "Multi-select faceted filter with search for categorical columns.",
-      "registryDependencies": [
-        "badge",
-        "button",
-        "command",
-        "popover",
-        "separator"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-faceted-filter.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-faceted-filter.tsx"
+          "target": "@components/data-table/data-table-faceted-filter.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-faceted-filter",
+      "registryDependencies": ["badge", "button", "command", "popover", "separator"],
+      "title": "Data Table Faceted Filter",
       "type": "registry:component"
     },
     {
-      "name": "data-table-slider-filter",
-      "title": "Data Table Slider Filter",
       "description": "Numeric range filter with slider input for data table columns.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "popover",
-        "separator",
-        "slider"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-slider-filter.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-slider-filter.tsx"
+          "target": "@components/data-table/data-table-slider-filter.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-slider-filter",
+      "registryDependencies": ["button", "input", "label", "popover", "separator", "slider"],
+      "title": "Data Table Slider Filter",
       "type": "registry:component"
     },
     {
-      "name": "data-table-view-options",
-      "title": "Data Table View Options",
       "description": "Column visibility toggle menu for data tables.",
-      "registryDependencies": [
-        "button",
-        "command",
-        "popover"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-view-options.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-view-options.tsx"
+          "target": "@components/data-table/data-table-view-options.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-view-options",
+      "registryDependencies": ["button", "command", "popover"],
+      "title": "Data Table View Options",
       "type": "registry:component"
     },
     {
-      "name": "data-table-toolbar",
-      "title": "Data Table Toolbar",
       "description": "Toolbar with search, filters, and view options for data tables.",
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-toolbar.tsx",
+          "target": "@components/data-table/data-table-toolbar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-toolbar",
       "registryDependencies": [
         "button",
         "@kombase/debounced-input",
@@ -910,54 +743,47 @@
         "@kombase/data-table-slider-filter",
         "@kombase/data-table-view-options"
       ],
-      "files": [
-        {
-          "path": "registry/components/data-table/data-table-toolbar.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-toolbar.tsx"
-        }
-      ],
+      "title": "Data Table Toolbar",
       "type": "registry:component"
     },
     {
-      "name": "data-table-bulk-action",
-      "title": "Data Table Bulk Action",
       "description": "Action bar for batch operations on selected table rows.",
-      "registryDependencies": [
-        "badge",
-        "button",
-        "separator",
-        "tooltip"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-bulk-action.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-bulk-action.tsx"
+          "target": "@components/data-table/data-table-bulk-action.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-bulk-action",
+      "registryDependencies": ["badge", "button", "separator", "tooltip"],
+      "title": "Data Table Bulk Action",
       "type": "registry:component"
     },
     {
-      "name": "data-table-column-header",
-      "title": "Data Table Column Header",
       "description": "Sortable column header with dropdown menu for data tables.",
-      "registryDependencies": [
-        "dropdown-menu"
-      ],
       "files": [
         {
           "path": "registry/components/data-table/data-table-column-header.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-column-header.tsx"
+          "target": "@components/data-table/data-table-column-header.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "data-table-column-header",
+      "registryDependencies": ["dropdown-menu"],
+      "title": "Data Table Column Header",
       "type": "registry:component"
     },
     {
-      "name": "data-table-advance-filter",
-      "title": "Data Table Advanced Filter",
       "description": "Advanced multi-column filter panel with custom operators and debounced input.",
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table-advance-filter.tsx",
+          "target": "@components/data-table/data-table-advance-filter.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "data-table-advance-filter",
       "registryDependencies": [
         "@kombase/lib-data-table",
         "badge",
@@ -970,22 +796,20 @@
         "@kombase/data-table-date-filter",
         "@kombase/data-table-range-filter"
       ],
-      "files": [
-        {
-          "path": "registry/components/data-table/data-table-advance-filter.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table-advance-filter.tsx"
-        }
-      ],
+      "title": "Data Table Advanced Filter",
       "type": "registry:component"
     },
     {
-      "name": "data-table",
-      "title": "Data Table",
+      "dependencies": ["@tanstack/react-table"],
       "description": "Full-featured data table with sorting, filtering, pagination, and row selection powered by TanStack Table.",
-      "dependencies": [
-        "@tanstack/react-table"
+      "files": [
+        {
+          "path": "registry/components/data-table/data-table.tsx",
+          "target": "@components/data-table/data-table.tsx",
+          "type": "registry:component"
+        }
       ],
+      "name": "data-table",
       "registryDependencies": [
         "table",
         "@kombase/data-table-config",
@@ -999,88 +823,80 @@
         "@kombase/lib-data-table",
         "@kombase/use-data-table"
       ],
-      "files": [
-        {
-          "path": "registry/components/data-table/data-table.tsx",
-          "type": "registry:component",
-          "target": "@components/data-table/data-table.tsx"
-        }
-      ],
+      "title": "Data Table",
       "type": "registry:component"
     },
     {
-      "name": "action-bar",
-      "title": "Action Bar",
       "description": "A fixed bottom bar for contextual actions with animated entrance.",
+      "files": [
+        {
+          "path": "registry/components/action-bar.tsx",
+          "target": "@components/action-bar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "action-bar",
       "registryDependencies": [
         "button",
         "@kombase/component-refs",
         "@kombase/use-as-ref",
         "@kombase/use-isomorphic-layout-effect"
       ],
-      "files": [
-        {
-          "path": "registry/components/action-bar.tsx",
-          "type": "registry:component",
-          "target": "@components/action-bar.tsx"
-        }
-      ],
+      "title": "Action Bar",
       "type": "registry:component"
     },
     {
-      "name": "avatar-group",
-      "title": "Avatar Group",
+      "dependencies": ["@radix-ui/react-avatar"],
       "description": "Grouped avatar display with overflow counter and RTL support.",
-      "dependencies": [
-        "@radix-ui/react-avatar"
-      ],
       "files": [
         {
           "path": "registry/components/avatar-group.tsx",
-          "type": "registry:component",
-          "target": "@components/avatar-group.tsx"
+          "target": "@components/avatar-group.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "avatar-group",
+      "title": "Avatar Group",
       "type": "registry:component"
     },
     {
-      "name": "confirm-dialog",
-      "title": "Confirm Dialog",
       "description": "A confirmation modal with customizable actions and descriptions.",
-      "registryDependencies": [
-        "alert-dialog",
-        "button"
-      ],
       "files": [
         {
           "path": "registry/components/confirm-dialog.tsx",
-          "type": "registry:component",
-          "target": "@components/confirm-dialog.tsx"
+          "target": "@components/confirm-dialog.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "confirm-dialog",
+      "registryDependencies": ["alert-dialog", "button"],
+      "title": "Confirm Dialog",
       "type": "registry:component"
     },
     {
-      "name": "long-text",
-      "title": "Long Text",
       "description": "Truncated text with tooltip or popover for viewing full content.",
-      "registryDependencies": [
-        "popover",
-        "tooltip"
-      ],
       "files": [
         {
           "path": "registry/components/long-text.tsx",
-          "type": "registry:component",
-          "target": "@components/long-text.tsx"
+          "target": "@components/long-text.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "long-text",
+      "registryDependencies": ["popover", "tooltip"],
+      "title": "Long Text",
       "type": "registry:component"
     },
     {
-      "name": "phone-input",
-      "title": "Phone Input",
       "description": "International phone number input with country code selector and flag icons.",
+      "files": [
+        {
+          "path": "registry/components/phone-input.tsx",
+          "target": "@components/phone-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "phone-input",
       "registryDependencies": [
         "command",
         "input",
@@ -1091,22 +907,20 @@
         "@kombase/use-callback-ref",
         "@kombase/use-isomorphic-layout-effect"
       ],
-      "files": [
-        {
-          "path": "registry/components/phone-input.tsx",
-          "type": "registry:component",
-          "target": "@components/phone-input.tsx"
-        }
-      ],
+      "title": "Phone Input",
       "type": "registry:component"
     },
     {
-      "name": "rating",
-      "title": "Rating",
+      "dependencies": ["@radix-ui/react-direction"],
       "description": "Customizable star rating component with keyboard navigation and form integration.",
-      "dependencies": [
-        "@radix-ui/react-direction"
+      "files": [
+        {
+          "path": "registry/components/rating.tsx",
+          "target": "@components/rating.tsx",
+          "type": "registry:component"
+        }
       ],
+      "name": "rating",
       "registryDependencies": [
         "@kombase/component-refs",
         "@kombase/visually-hidden-input",
@@ -1114,68 +928,60 @@
         "@kombase/use-callback-ref",
         "@kombase/use-isomorphic-layout-effect"
       ],
-      "files": [
-        {
-          "path": "registry/components/rating.tsx",
-          "type": "registry:component",
-          "target": "@components/rating.tsx"
-        }
-      ],
+      "title": "Rating",
       "type": "registry:component"
     },
     {
-      "name": "stepper",
-      "title": "Stepper",
+      "dependencies": ["@radix-ui/react-direction"],
       "description": "Multi-step progress indicator with vertical layout and form validation support.",
-      "dependencies": [
-        "@radix-ui/react-direction"
-      ],
-      "registryDependencies": [
-        "@kombase/component-refs",
-        "@kombase/use-as-ref",
-        "@kombase/use-callback-ref",
-        "@kombase/use-isomorphic-layout-effect"
-      ],
       "files": [
         {
           "path": "registry/components/stepper.tsx",
-          "type": "registry:component",
-          "target": "@components/stepper.tsx"
+          "target": "@components/stepper.tsx",
+          "type": "registry:component"
         }
       ],
-      "type": "registry:component"
-    },
-    {
-      "name": "timeline",
-      "title": "Timeline",
-      "description": "Chronological event timeline with alternate positioning and horizontal layout.",
-      "dependencies": [
-        "@radix-ui/react-direction",
-        "class-variance-authority"
-      ],
+      "name": "stepper",
       "registryDependencies": [
         "@kombase/component-refs",
         "@kombase/use-as-ref",
         "@kombase/use-callback-ref",
         "@kombase/use-isomorphic-layout-effect"
       ],
-      "files": [
-        {
-          "path": "registry/components/timeline.tsx",
-          "type": "registry:component",
-          "target": "@components/timeline.tsx"
-        }
-      ],
+      "title": "Stepper",
       "type": "registry:component"
     },
     {
-      "name": "tour",
-      "title": "Tour",
-      "description": "Step-by-step onboarding tour with spotlight highlighting and floating UI.",
-      "dependencies": [
-        "@floating-ui/react-dom",
-        "@radix-ui/react-direction"
+      "dependencies": ["@radix-ui/react-direction", "class-variance-authority"],
+      "description": "Chronological event timeline with alternate positioning and horizontal layout.",
+      "files": [
+        {
+          "path": "registry/components/timeline.tsx",
+          "target": "@components/timeline.tsx",
+          "type": "registry:component"
+        }
       ],
+      "name": "timeline",
+      "registryDependencies": [
+        "@kombase/component-refs",
+        "@kombase/use-as-ref",
+        "@kombase/use-callback-ref",
+        "@kombase/use-isomorphic-layout-effect"
+      ],
+      "title": "Timeline",
+      "type": "registry:component"
+    },
+    {
+      "dependencies": ["@floating-ui/react-dom", "@radix-ui/react-direction"],
+      "description": "Step-by-step onboarding tour with spotlight highlighting and floating UI.",
+      "files": [
+        {
+          "path": "registry/components/tour.tsx",
+          "target": "@components/tour.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "name": "tour",
       "registryDependencies": [
         "button",
         "@kombase/component-refs",
@@ -1183,249 +989,192 @@
         "@kombase/use-callback-ref",
         "@kombase/use-isomorphic-layout-effect"
       ],
-      "files": [
-        {
-          "path": "registry/components/tour.tsx",
-          "type": "registry:component",
-          "target": "@components/tour.tsx"
-        }
-      ],
+      "title": "Tour",
       "type": "registry:component"
     },
     {
-      "name": "visually-hidden-input",
-      "title": "Visually Hidden Input",
       "description": "An invisible input for form integration with custom controls.",
       "files": [
         {
           "path": "registry/components/visually-hidden-input.tsx",
-          "type": "registry:component",
-          "target": "@components/visually-hidden-input.tsx"
+          "target": "@components/visually-hidden-input.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "visually-hidden-input",
+      "title": "Visually Hidden Input",
       "type": "registry:component"
     },
     {
-      "name": "password-input",
-      "title": "Password Input",
       "description": "A password field with show/hide toggle button.",
-      "registryDependencies": [
-        "input",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/components/password-input.tsx",
-          "type": "registry:component",
-          "target": "@components/password-input.tsx"
+          "target": "@components/password-input.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "password-input",
+      "registryDependencies": ["input", "@kombase/utils"],
+      "title": "Password Input",
       "type": "registry:component"
     },
     {
-      "name": "select-dropdown",
-      "title": "Select Dropdown",
+      "dependencies": ["lucide-react"],
       "description": "A form-integrated select dropdown with loading state support.",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "form",
-        "select",
-        "@kombase/utils"
-      ],
       "files": [
         {
           "path": "registry/components/select-dropdown.tsx",
-          "type": "registry:component",
-          "target": "@components/select-dropdown.tsx"
+          "target": "@components/select-dropdown.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "select-dropdown",
+      "registryDependencies": ["form", "select", "@kombase/utils"],
+      "title": "Select Dropdown",
       "type": "registry:component"
     },
     {
-      "name": "form-date-picker",
-      "title": "Form Date Picker",
+      "dependencies": ["dayjs"],
       "description": "Date picker with calendar popup, integrated with react-hook-form.",
-      "dependencies": [
-        "dayjs"
-      ],
-      "registryDependencies": [
-        "calendar",
-        "form",
-        "label",
-        "popover"
-      ],
       "files": [
         {
           "path": "registry/form/form-date-picker.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-date-picker.tsx"
+          "target": "@components/form/form-date-picker.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-date-picker",
+      "registryDependencies": ["calendar", "form", "label", "popover"],
+      "title": "Form Date Picker",
       "type": "registry:component"
     },
     {
-      "name": "form-input",
-      "title": "Form Input",
       "description": "Text input with label and validation, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "input",
-        "label"
-      ],
       "files": [
         {
           "path": "registry/form/form-input.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-input.tsx"
+          "target": "@components/form/form-input.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-input",
+      "registryDependencies": ["form", "input", "label"],
+      "title": "Form Input",
       "type": "registry:component"
     },
     {
-      "name": "form-input-group",
-      "title": "Form Input Group",
       "description": "Input group with prefix/suffix addons, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "@kombase/input-group",
-        "label"
-      ],
       "files": [
         {
           "path": "registry/form/form-input-group.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-input-group.tsx"
+          "target": "@components/form/form-input-group.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-input-group",
+      "registryDependencies": ["form", "@kombase/input-group", "label"],
+      "title": "Form Input Group",
       "type": "registry:component"
     },
     {
-      "name": "form-password",
-      "title": "Form Password",
       "description": "Password input with show/hide toggle, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "label",
-        "@kombase/password-input"
-      ],
       "files": [
         {
           "path": "registry/form/form-password.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-password.tsx"
+          "target": "@components/form/form-password.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-password",
+      "registryDependencies": ["form", "label", "@kombase/password-input"],
+      "title": "Form Password",
       "type": "registry:component"
     },
     {
-      "name": "form-phone-input",
-      "title": "Form Phone Input",
       "description": "International phone number input with country select, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "label",
-        "@kombase/phone-input"
-      ],
       "files": [
         {
           "path": "registry/form/form-phone-input.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-phone-input.tsx"
+          "target": "@components/form/form-phone-input.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-phone-input",
+      "registryDependencies": ["form", "label", "@kombase/phone-input"],
+      "title": "Form Phone Input",
       "type": "registry:component"
     },
     {
-      "name": "form-pick",
-      "title": "Form Pick",
       "description": "Card-style single selection input, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "label",
-        "radio-group"
-      ],
       "files": [
         {
           "path": "registry/form/form-pick.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-pick.tsx"
+          "target": "@components/form/form-pick.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-pick",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "title": "Form Pick",
       "type": "registry:component"
     },
     {
-      "name": "form-radio",
-      "title": "Form Radio",
       "description": "Radio button group with label and layout options, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "label",
-        "radio-group"
-      ],
       "files": [
         {
           "path": "registry/form/form-radio.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-radio.tsx"
+          "target": "@components/form/form-radio.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-radio",
+      "registryDependencies": ["form", "label", "radio-group"],
+      "title": "Form Radio",
       "type": "registry:component"
     },
     {
-      "name": "form-search-select",
-      "title": "Form Search Select",
       "description": "Searchable combobox select with async data support, integrated with react-hook-form.",
-      "registryDependencies": [
-        "combobox",
-        "form",
-        "label"
-      ],
       "files": [
         {
           "path": "registry/form/form-search-select.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-search-select.tsx"
+          "target": "@components/form/form-search-select.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-search-select",
+      "registryDependencies": ["combobox", "form", "label"],
+      "title": "Form Search Select",
       "type": "registry:component"
     },
     {
-      "name": "form-textarea",
-      "title": "Form Textarea",
       "description": "Multi-line text area with character count and validation, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "label",
-        "textarea"
-      ],
       "files": [
         {
           "path": "registry/form/form-textarea.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-textarea.tsx"
+          "target": "@components/form/form-textarea.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-textarea",
+      "registryDependencies": ["form", "label", "textarea"],
+      "title": "Form Textarea",
       "type": "registry:component"
     },
     {
-      "name": "form-upload",
-      "title": "Form Upload",
       "description": "File upload with drag-and-drop and progress tracking, integrated with react-hook-form.",
-      "registryDependencies": [
-        "form",
-        "label",
-        "@kombase/file-upload"
-      ],
       "files": [
         {
           "path": "registry/form/form-upload.tsx",
-          "type": "registry:component",
-          "target": "@components/form/form-upload.tsx"
+          "target": "@components/form/form-upload.tsx",
+          "type": "registry:component"
         }
       ],
+      "name": "form-upload",
+      "registryDependencies": ["form", "label", "@kombase/file-upload"],
+      "title": "Form Upload",
       "type": "registry:component"
     }
-  ]
+  ],
+  "name": "kombase"
 }

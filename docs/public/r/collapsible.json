@@ -1,18 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "collapsible",
-  "title": "Collapsible",
+  "dependencies": ["@radix-ui/react-collapsible"],
   "description": "An interactive component that expands and collapses content.",
-  "dependencies": [
-    "@radix-ui/react-collapsible"
-  ],
   "files": [
     {
-      "path": "registry/ui/collapsible.tsx",
       "content": "'use client';\n\nimport * as CollapsiblePrimitive from '@radix-ui/react-collapsible';\nimport * as React from 'react';\nimport { useEffect, useState } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport const Collapsible = CollapsiblePrimitive.Root;\n\nexport const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger;\n\nexport const CollapsibleContent = React.forwardRef<\n  React.ComponentRef<typeof CollapsiblePrimitive.CollapsibleContent>,\n  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.CollapsibleContent>\n>(({ children, className, ...props }, ref) => {\n  const [mounted, setMounted] = useState(false);\n\n  useEffect(() => {\n    setMounted(true);\n  }, []);\n\n  return (\n    <CollapsiblePrimitive.CollapsibleContent\n      className={cn(\n        'overflow-hidden',\n        mounted &&\n          'data-[state=closed]:animate-fd-collapsible-up data-[state=open]:animate-fd-collapsible-down',\n        className,\n      )}\n      ref={ref}\n      {...props}\n    >\n      {children}\n    </CollapsiblePrimitive.CollapsibleContent>\n  );\n});\nCollapsibleContent.displayName = 'CollapsibleContent';\n\nexport type CollapsibleProps = CollapsiblePrimitive.CollapsibleProps;\nexport type CollapsibleContentProps = CollapsiblePrimitive.CollapsibleContentProps;\nexport type CollapsibleTriggerProps = CollapsiblePrimitive.CollapsibleTriggerProps;\n",
-      "type": "registry:ui",
-      "target": "@ui/collapsible.tsx"
+      "path": "registry/ui/collapsible.tsx",
+      "target": "@ui/collapsible.tsx",
+      "type": "registry:ui"
     }
   ],
+  "name": "collapsible",
+  "title": "Collapsible",
   "type": "registry:ui"
 }

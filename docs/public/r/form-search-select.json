@@ -1,20 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "form-search-select",
-  "title": "Form Search Select",
   "description": "Searchable combobox select with async data support, integrated with react-hook-form.",
-  "registryDependencies": [
-    "combobox",
-    "form",
-    "label"
-  ],
   "files": [
     {
-      "path": "registry/form/form-search-select.tsx",
       "content": "import type React from 'react';\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\nimport { Combobox, useComboboxAnchor } from '@/components/ui/combobox';\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\nimport { Label } from '@/components/ui/label';\nimport { cn } from '@/lib/utils';\n\ntype FormSearchSelectProps<TFieldValues extends FieldValues> = {\n  control: Control<TFieldValues>;\n  name: FieldPath<TFieldValues>;\n  multiple?: boolean;\n  label?: string | React.ReactNode;\n  comboboxProps?: Omit<\n    React.ComponentProps<typeof Combobox>,\n    'value' | 'onValueChange' | 'multiple' | 'defaultValue'\n  >;\n  render: (props: { anchor: ReturnType<typeof useComboboxAnchor> }) => React.ReactNode;\n  layout?: 'vertical' | 'horizontal';\n  className?: string;\n  labelClassName?: string;\n};\n\nexport function FormSearchSelect<TFieldValues extends FieldValues>({\n  control,\n  name,\n  render,\n  label,\n  comboboxProps,\n  layout = 'vertical',\n  className,\n  labelClassName,\n  multiple = false,\n}: FormSearchSelectProps<TFieldValues>) {\n  const anchor = useComboboxAnchor();\n\n  return (\n    <FormField\n      control={control}\n      name={name}\n      render={({ field }) => (\n        <FormItem\n          className={cn(\n            layout === 'horizontal'\n              ? 'flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 space-y-0'\n              : 'space-y-2',\n            className,\n          )}\n        >\n          {label && (\n            <Label\n              className={cn(layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0', labelClassName)}\n              htmlFor={field.name}\n            >\n              {label}\n            </Label>\n          )}\n\n          <div className=\"flex-1 w-full space-y-1.5\">\n            <FormControl>\n              <Combobox\n                id={field.name}\n                multiple={multiple}\n                onValueChange={field.onChange}\n                value={field.value}\n                {...comboboxProps}\n              >\n                {render({ anchor })}\n              </Combobox>\n            </FormControl>\n\n            <FormMessage />\n          </div>\n        </FormItem>\n      )}\n    />\n  );\n}\n",
-      "type": "registry:component",
-      "target": "@components/form/form-search-select.tsx"
+      "path": "registry/form/form-search-select.tsx",
+      "target": "@components/form/form-search-select.tsx",
+      "type": "registry:component"
     }
   ],
+  "name": "form-search-select",
+  "registryDependencies": ["combobox", "form", "label"],
+  "title": "Form Search Select",
   "type": "registry:component"
 }

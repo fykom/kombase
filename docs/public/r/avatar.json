@@ -1,21 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "avatar",
-  "title": "Avatar",
+  "dependencies": ["@radix-ui/react-avatar"],
   "description": "An image element with a fallback for user profile pictures.",
-  "dependencies": [
-    "@radix-ui/react-avatar"
-  ],
-  "registryDependencies": [
-    "@kombase/utils"
-  ],
   "files": [
     {
-      "path": "registry/ui/avatar.tsx",
       "content": "'use client';\n\nimport * as AvatarPrimitive from '@radix-ui/react-avatar';\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\nconst Avatar = React.forwardRef<\n  React.ComponentRef<typeof AvatarPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> & {\n    size?: 'default' | 'sm' | 'lg';\n  }\n>(({ className, size = 'default', ...props }, ref) => (\n  <AvatarPrimitive.Root\n    className={cn(\n      'group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6',\n      className,\n    )}\n    data-size={size}\n    data-slot=\"avatar\"\n    ref={ref}\n    {...props}\n  />\n));\nAvatar.displayName = AvatarPrimitive.Root.displayName;\n\nconst AvatarImage = React.forwardRef<\n  React.ComponentRef<typeof AvatarPrimitive.Image>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Image\n    className={cn('aspect-square size-full', className)}\n    data-slot=\"avatar-image\"\n    ref={ref}\n    {...props}\n  />\n));\nAvatarImage.displayName = AvatarPrimitive.Image.displayName;\n\nconst AvatarFallback = React.forwardRef<\n  React.ComponentRef<typeof AvatarPrimitive.Fallback>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Fallback\n    className={cn(\n      'flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs',\n      className,\n    )}\n    data-slot=\"avatar-fallback\"\n    ref={ref}\n    {...props}\n  />\n));\nAvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;\n\nconst AvatarBadge = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<'span'>>(\n  ({ className, ...props }, ref) => (\n    <span\n      className={cn(\n        'absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground ring-2 ring-background select-none',\n        'group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden',\n        'group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2',\n        'group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2',\n        className,\n      )}\n      data-slot=\"avatar-badge\"\n      ref={ref}\n      {...props}\n    />\n  ),\n);\nAvatarBadge.displayName = 'AvatarBadge';\n\nconst AvatarGroup = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(\n  ({ className, ...props }, ref) => (\n    <div\n      className={cn(\n        'group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background',\n        className,\n      )}\n      data-slot=\"avatar-group\"\n      ref={ref}\n      {...props}\n    />\n  ),\n);\nAvatarGroup.displayName = 'AvatarGroup';\n\nconst AvatarGroupCount = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(\n  ({ className, ...props }, ref) => (\n    <div\n      className={cn(\n        'relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3',\n        className,\n      )}\n      data-slot=\"avatar-group-count\"\n      ref={ref}\n      {...props}\n    />\n  ),\n);\nAvatarGroupCount.displayName = 'AvatarGroupCount';\n\nexport { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage };\n",
-      "type": "registry:ui",
-      "target": "@ui/avatar.tsx"
+      "path": "registry/ui/avatar.tsx",
+      "target": "@ui/avatar.tsx",
+      "type": "registry:ui"
     }
   ],
+  "name": "avatar",
+  "registryDependencies": ["@kombase/utils"],
+  "title": "Avatar",
   "type": "registry:ui"
 }

@@ -1,20 +1,16 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "form-textarea",
-  "title": "Form Textarea",
   "description": "Multi-line text area with character count and validation, integrated with react-hook-form.",
-  "registryDependencies": [
-    "form",
-    "label",
-    "textarea"
-  ],
   "files": [
     {
-      "path": "registry/form/form-textarea.tsx",
       "content": "import type React from 'react';\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\nimport { Label } from '@/components/ui/label';\nimport { Textarea } from '@/components/ui/textarea';\nimport { cn } from '@/lib/utils';\n\ntype FormTextareaProps<TFieldValues extends FieldValues> = {\n  control: Control<TFieldValues>;\n  name: FieldPath<TFieldValues>;\n  label?: string | React.ReactNode;\n  showCharacterCount?: boolean;\n  maxLength?: number;\n  textareaProps?: Omit<React.ComponentProps<typeof Textarea>, 'value' | 'onChange'>;\n  layout?: 'vertical' | 'horizontal';\n  className?: string;\n  labelClassName?: string;\n};\n\nexport function FormTextarea<TFieldValues extends FieldValues>({\n  control,\n  name,\n  label,\n  showCharacterCount = false,\n  maxLength,\n  textareaProps,\n  layout = 'vertical',\n  className,\n  labelClassName,\n}: FormTextareaProps<TFieldValues>) {\n  return (\n    <FormField\n      control={control}\n      name={name}\n      render={({ field }) => {\n        const currentLength = field.value?.length || 0;\n        const isExceeded = maxLength !== undefined && currentLength > maxLength;\n\n        return (\n          <FormItem\n            className={cn(\n              layout === 'horizontal'\n                ? 'flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 space-y-0'\n                : 'space-y-2',\n              className,\n            )}\n          >\n            {label && (\n              <Label\n                className={cn(\n                  layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0 sm:pt-2',\n                  labelClassName,\n                )}\n                htmlFor={field.name}\n              >\n                {label}\n              </Label>\n            )}\n            <div className=\"flex-1 w-full space-y-1.5\">\n              <FormControl>\n                <Textarea\n                  id={field.name}\n                  {...field}\n                  {...textareaProps}\n                  maxLength={maxLength}\n                  value={field.value || ''}\n                />\n              </FormControl>\n              {showCharacterCount && (\n                <div\n                  className={cn(\n                    'text-xs text-right',\n                    isExceeded ? 'text-destructive' : 'text-muted-foreground',\n                  )}\n                >\n                  {maxLength !== undefined ? `${currentLength}/${maxLength}` : currentLength}\n                </div>\n              )}\n              <FormMessage />\n            </div>\n          </FormItem>\n        );\n      }}\n    />\n  );\n}\n",
-      "type": "registry:component",
-      "target": "@components/form/form-textarea.tsx"
+      "path": "registry/form/form-textarea.tsx",
+      "target": "@components/form/form-textarea.tsx",
+      "type": "registry:component"
     }
   ],
+  "name": "form-textarea",
+  "registryDependencies": ["form", "label", "textarea"],
+  "title": "Form Textarea",
   "type": "registry:component"
 }

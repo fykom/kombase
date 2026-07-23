@@ -1,21 +1,17 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "tabs",
-  "title": "Tabs",
+  "dependencies": ["@radix-ui/react-tabs"],
   "description": "A tabbed navigation component for switching between views.",
-  "dependencies": [
-    "@radix-ui/react-tabs"
-  ],
-  "registryDependencies": [
-    "@kombase/utils"
-  ],
   "files": [
     {
-      "path": "registry/ui/tabs.tsx",
       "content": "'use client';\n\nimport * as TabsPrimitive from '@radix-ui/react-tabs';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\nconst Tabs = React.forwardRef<\n  React.ComponentRef<typeof TabsPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>\n>(({ className, orientation = 'horizontal', ...props }, ref) => (\n  <TabsPrimitive.Root\n    className={cn('group/tabs flex gap-2 data-[orientation=horizontal]:flex-col', className)}\n    data-orientation={orientation}\n    data-slot=\"tabs\"\n    orientation={orientation}\n    ref={ref}\n    {...props}\n  />\n));\nTabs.displayName = TabsPrimitive.Root.displayName;\n\nconst tabsListVariants = cva(\n  'group/tabs-list inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground data-[variant=line]:rounded-none group-data-[orientation=horizontal]/tabs:h-9 group-data-[orientation=vertical]/tabs:h-fit group-data-[orientation=vertical]/tabs:flex-col',\n  {\n    defaultVariants: {\n      variant: 'default',\n    },\n    variants: {\n      variant: {\n        default: 'bg-muted',\n        line: 'gap-1 bg-transparent',\n      },\n    },\n  },\n);\n\nconst TabsList = React.forwardRef<\n  React.ComponentRef<typeof TabsPrimitive.List>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>\n>(({ className, variant = 'default', ...props }, ref) => (\n  <TabsPrimitive.List\n    className={cn(tabsListVariants({ variant }), className)}\n    data-slot=\"tabs-list\"\n    data-variant={variant}\n    ref={ref}\n    {...props}\n  />\n));\nTabsList.displayName = TabsPrimitive.List.displayName;\n\nconst TabsTrigger = React.forwardRef<\n  React.ComponentRef<typeof TabsPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>\n>(({ className, ...props }, ref) => (\n  <TabsPrimitive.Trigger\n    className={cn(\n      \"relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-transparent px-2 py-1 font-medium text-foreground/60 text-sm transition-all hover:text-foreground focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start group-data-[variant=default]/tabs-list:data-[state=active]:shadow-sm group-data-[variant=line]/tabs-list:data-[state=active]:shadow-none dark:text-muted-foreground dark:hover:text-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0\",\n      'group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:border-transparent dark:group-data-[variant=line]/tabs-list:data-[state=active]:bg-transparent',\n      'data-[state=active]:bg-background data-[state=active]:text-foreground dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 dark:data-[state=active]:text-foreground',\n      'after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=vertical]/tabs:after:inset-y-0 group-data-[orientation=vertical]/tabs:after:-right-1 group-data-[orientation=horizontal]/tabs:after:-bottom-1.25 group-data-[orientation=horizontal]/tabs:after:h-0.5 group-data-[orientation=vertical]/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-[state=active]:after:opacity-100',\n      className,\n    )}\n    data-slot=\"tabs-trigger\"\n    ref={ref}\n    {...props}\n  />\n));\nTabsTrigger.displayName = TabsPrimitive.Trigger.displayName;\n\nconst TabsContent = React.forwardRef<\n  React.ComponentRef<typeof TabsPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>\n>(({ className, ...props }, ref) => (\n  <TabsPrimitive.Content\n    className={cn('flex-1 outline-none', className)}\n    data-slot=\"tabs-content\"\n    ref={ref}\n    {...props}\n  />\n));\nTabsContent.displayName = TabsPrimitive.Content.displayName;\n\nexport { Tabs, TabsContent, TabsList, TabsTrigger, tabsListVariants };\n",
-      "type": "registry:ui",
-      "target": "@ui/tabs.tsx"
+      "path": "registry/ui/tabs.tsx",
+      "target": "@ui/tabs.tsx",
+      "type": "registry:ui"
     }
   ],
+  "name": "tabs",
+  "registryDependencies": ["@kombase/utils"],
+  "title": "Tabs",
   "type": "registry:ui"
 }
