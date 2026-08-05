@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "'use client';\r\n\r\nimport * as React from 'react';\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst Skeleton = React.forwardRef<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>(\r\n  ({ className, ...props }, ref) => {\r\n    return (\r\n      <div\r\n        className={cn('animate-pulse rounded-md bg-accent', className)}\r\n        data-slot=\"skeleton\"\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    );\r\n  },\r\n);\r\nSkeleton.displayName = 'Skeleton';\r\n\r\nexport { Skeleton };\r\n",
+      "path": "registry/ui/skeleton.tsx",
+      "target": "@ui/skeleton.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "skeleton",
+  "registryDependencies": ["@kombase/utils"],
+  "type": "registry:ui"
+}

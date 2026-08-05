@@ -1,5 +1,5 @@
-import { Rating, RatingItem } from 'kombase';
 import * as React from 'react';
+import { Rating, RatingItem } from '@/components/rating';
 import { Button } from '@/components/ui/button';
 
 export default function RatingControlledDemo() {

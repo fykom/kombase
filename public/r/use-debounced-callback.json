@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import * as React from 'react';\r\n\r\nimport { useCallbackRef } from '@/hooks/use-callback-ref';\r\n\r\nexport function useDebouncedCallback<T extends (...args: never[]) => unknown>(\r\n  callback: T,\r\n  delay: number,\r\n) {\r\n  const handleCallback = useCallbackRef(callback);\r\n  const debounceTimerRef = React.useRef(0);\r\n  React.useEffect(() => () => window.clearTimeout(debounceTimerRef.current), []);\r\n\r\n  const setValue = React.useCallback(\r\n    (...args: Parameters<T>) => {\r\n      window.clearTimeout(debounceTimerRef.current);\r\n      debounceTimerRef.current = window.setTimeout(() => handleCallback(...args), delay);\r\n    },\r\n    [handleCallback, delay],\r\n  );\r\n\r\n  return setValue;\r\n}\r\n",
+      "path": "registry/hooks/use-debounced-callback.ts",
+      "target": "@hooks/use-debounced-callback.ts",
+      "type": "registry:hook"
+    }
+  ],
+  "name": "use-debounced-callback",
+  "registryDependencies": ["@kombase/use-callback-ref"],
+  "type": "registry:hook"
+}

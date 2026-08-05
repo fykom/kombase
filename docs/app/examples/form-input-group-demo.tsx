@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { goeyToast } from 'goey-toast';
-import { FormInputGroup } from 'kombase';
 import { Link2Icon } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { FormInputGroup } from '@/components/form/form-input-group';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 

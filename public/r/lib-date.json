@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["dayjs", "react-day-picker"],
+  "files": [
+    {
+      "content": "import dayjs from 'dayjs';\r\nimport type { DateRange } from 'react-day-picker';\r\n\r\nexport function getTimezone() {\r\n  return Intl.DateTimeFormat().resolvedOptions().timeZone;\r\n}\r\n\r\ntype DateRangeParams = {\r\n  start_date?: string;\r\n  end_date?: string;\r\n};\r\n\r\n/**\r\n * Convert `DateRange` (react-day-picker) to a format string\r\n * that meets API requirements (default: `yyyy-MM-dd`).\r\n *\r\n * @param range - A DateRange object containing `from` and `to` (optional).\r\n * @param formatStr - The date format (default: `yyyy-MM-dd`).\r\n *\r\n * @returns An object containing:\r\n * - `start_date` → the format string resulting from `range.from`\r\n * - `end_date` → the format string resulting from `range.to`\r\n *\r\n * @remarks\r\n * - Will return `{}` if `range` is undefined\r\n * - Field will be `undefined` if `from` / `to` is not provided\r\n * - Safe to spread directly to object query parameters\r\n */\r\nexport const mapDateRangeToParams = (\r\n  range?: DateRange,\r\n  formatStr: string = 'yyyy-MM-dd',\r\n): DateRangeParams => {\r\n  if (!range) return {};\r\n\r\n  return {\r\n    end_date: range.to ? dayjs(range.to).format(formatStr) : undefined,\r\n    start_date: range.from ? dayjs(range.from).format(formatStr) : undefined,\r\n  };\r\n};\r\n\r\nexport function formatDateFilterTable(\r\n  date: Date | string | number | undefined,\r\n  opts: Intl.DateTimeFormatOptions = {},\r\n) {\r\n  if (!date) return '';\r\n\r\n  try {\r\n    return new Intl.DateTimeFormat('en-US', {\r\n      day: opts.day ?? 'numeric',\r\n      month: opts.month ?? 'long',\r\n      year: opts.year ?? 'numeric',\r\n      ...opts,\r\n    }).format(new Date(date));\r\n  } catch (_err) {\r\n    return '';\r\n  }\r\n}\r\n",
+      "path": "registry/lib/date.ts",
+      "target": "@lib/date.ts",
+      "type": "registry:lib"
+    }
+  ],
+  "name": "lib-date",
+  "type": "registry:lib"
+}

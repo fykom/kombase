@@ -1,20 +1,18 @@
 import type { ColumnDef } from '@tanstack/react-table';
 import dayjs from 'dayjs';
-import {
-  DataTable,
-  DataTableAdvanceFilter,
-  DataTableColumnHeader,
-  DataTablePagination,
-  DataTableToolbar,
-  idIDTranslations,
-  LongText,
-  useDataTable,
-} from 'kombase';
 import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';
+import { DataTable } from '@/components/data-table/data-table';
+import { DataTableAdvanceFilter } from '@/components/data-table/data-table-advance-filter';
+import { DataTableColumnHeader } from '@/components/data-table/data-table-column-header';
+import { idIDTranslations } from '@/components/data-table/data-table-config';
+import { DataTablePagination } from '@/components/data-table/data-table-pagination';
+import { DataTableToolbar } from '@/components/data-table/data-table-toolbar';
+import { LongText } from '@/components/long-text';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useDataTable } from '@/hooks/use-data-table';
 import { cn } from '@/lib/utils';
 import { BulkActions } from './bulk-actions';
 import { callTypes, roles } from './data/data';

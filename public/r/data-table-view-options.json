@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import type { Table } from '@tanstack/react-table';\r\nimport { Check, Settings2 } from 'lucide-react';\r\nimport * as React from 'react';\r\nimport { Button } from '@/components/ui/button';\r\nimport {\r\n  Command,\r\n  CommandEmpty,\r\n  CommandGroup,\r\n  CommandInput,\r\n  CommandItem,\r\n  CommandList,\r\n} from '@/components/ui/command';\r\nimport { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';\r\nimport { cn } from '@/lib/utils';\r\n\r\ninterface DataTableViewOptionsProps<TData> extends React.ComponentProps<typeof PopoverContent> {\r\n  table: Table<TData>;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport function DataTableViewOptions<TData>({\r\n  table,\r\n  disabled,\r\n  ...props\r\n}: DataTableViewOptionsProps<TData>) {\r\n  const columns = React.useMemo(\r\n    () =>\r\n      table\r\n        .getAllColumns()\r\n        .filter((column) => typeof column.accessorFn !== 'undefined' && column.getCanHide()),\r\n    [table, table.options.columns],\r\n  );\r\n\r\n  return (\r\n    <Popover>\r\n      <PopoverTrigger asChild>\r\n        <Button\r\n          aria-label=\"Toggle columns\"\r\n          className=\"ml-auto h-8 lg:flex\"\r\n          disabled={disabled}\r\n          role=\"combobox\"\r\n          size=\"sm\"\r\n          variant=\"outline\"\r\n        >\r\n          <Settings2 className=\"text-muted-foreground\" />\r\n          View\r\n        </Button>\r\n      </PopoverTrigger>\r\n      <PopoverContent className=\"w-44 p-0\" {...props}>\r\n        <Command>\r\n          <CommandInput placeholder=\"Search columns...\" />\r\n          <CommandList>\r\n            <CommandEmpty>No columns found.</CommandEmpty>\r\n            <CommandGroup>\r\n              {columns.map((column) => (\r\n                <CommandItem\r\n                  key={column.id}\r\n                  onSelect={() => column.toggleVisibility(!column.getIsVisible())}\r\n                >\r\n                  <span className=\"truncate\">{column.columnDef.meta?.label ?? column.id}</span>\r\n                  <Check\r\n                    className={cn(\r\n                      'ml-auto size-4 shrink-0',\r\n                      column.getIsVisible() ? 'opacity-100' : 'opacity-0',\r\n                    )}\r\n                  />\r\n                </CommandItem>\r\n              ))}\r\n            </CommandGroup>\r\n          </CommandList>\r\n        </Command>\r\n      </PopoverContent>\r\n    </Popover>\r\n  );\r\n}\r\n",
+      "path": "registry/components/data-table/data-table-view-options.tsx",
+      "target": "@components/data-table/data-table-view-options.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "name": "data-table-view-options",
+  "registryDependencies": ["button", "command", "popover"],
+  "type": "registry:component"
+}

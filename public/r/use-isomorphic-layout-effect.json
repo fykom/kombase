@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import * as React from 'react';\r\n\r\nconst useIsomorphicLayoutEffect =\r\n  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;\r\n\r\nexport { useIsomorphicLayoutEffect };\r\n",
+      "path": "registry/hooks/use-isomorphic-layout-effect.ts",
+      "target": "@hooks/use-isomorphic-layout-effect.ts",
+      "type": "registry:hook"
+    }
+  ],
+  "name": "use-isomorphic-layout-effect",
+  "type": "registry:hook"
+}

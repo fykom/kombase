@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { goeyToast } from 'goey-toast';
-import { FormSearchSelect } from 'kombase';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { FormSearchSelect } from '@/components/form/form-search-select';
 import { Button } from '@/components/ui/button';
 import {
   ComboboxChip,

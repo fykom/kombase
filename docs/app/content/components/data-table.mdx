@@ -7,6 +7,12 @@ links:
   api: /docs/components/radix/data-table#api-reference
 ---
 
+## Installation
+
+```bash
+npx shadcn@latest add @kombase/data-table
+```
+
 <ComponentTabs name="table-demo" align="start" className="p-4" />
 
 Reference the [TanStack Table Column Definitions Guide](https://tanstack.com/table/latest/docs/guide/column-defs#column-definitions-guide) for detailed column definition guide.
@@ -29,12 +35,10 @@ Reference the [TanStack Table Column Definitions Guide](https://tanstack.com/tab
 Import all components and combine them:
 
 ```tsx
-import {
-  DataTable,
-  DataTableToolbar,
-  DataTableAdvanceFilter,
-  useDataTable
-} from "kombase";
+import { DataTable } from "@/components/data-table/data-table";
+import { DataTableAdvanceFilter } from "@/components/data-table/data-table-advance-filter";
+import { DataTableToolbar } from "@/components/data-table/data-table-toolbar";
+import { useDataTable } from "@/hooks/use-data-table";
 
 const { table } = useDataTable({
   data,
@@ -75,7 +79,7 @@ const { table } = useDataTable({
 
     ```tsx
     import { Text, CalendarIcon, DollarSign } from "lucide-react";
-    import { DataTableColumnHeader } from "kombase";
+    import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 
     const columns = React.useMemo(() => [
       {
@@ -105,7 +109,7 @@ const { table } = useDataTable({
     Initialize the table state using the `useDataTable` hook:
 
     ```tsx
-    import { useDataTable } from "kombase";
+    import { useDataTable } from "@/hooks/use-data-table";
 
     function TableDemo() {
       const { table } = useDataTable({
@@ -133,7 +137,8 @@ const { table } = useDataTable({
     Pass the table instance to the `DataTable`, and `DataTableToolbar` components:
 
     ```tsx
-    import { DataTable, DataTableToolbar } from "kombase";
+    import { DataTable } from "@/components/data-table/data-table";
+    import { DataTableToolbar } from "@/components/data-table/data-table-toolbar";
 
     function DataTableDemo() {
       return (
@@ -208,7 +213,7 @@ The `useDataTable` hook acts as an intelligent wrapper around `useReactTable` fr
 ### Import
 
 ```ts
-import { useDataTable } from "kombase";
+import { useDataTable } from "@/hooks/use-data-table";
 ```
 
 ### Usage
@@ -219,7 +224,9 @@ First, define your columns. Use the `meta` property to configure filter behavior
 
 ```tsx
 import { useMemo, useState } from "react";
-import { useDataTable, DataTable, DataTableColumnHeader } from "kombase";
+import { DataTable } from "@/components/data-table/data-table";
+import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
+import { useDataTable } from "@/hooks/use-data-table";
 import type { ColumnDef } from "@tanstack/react-table";
 
 function useInvoiceColumns(): ColumnDef<Invoice>[] {
@@ -296,7 +303,8 @@ If you don't provide `page`, `perPage`, or `onPageChange`, the hook will manage 
 ```tsx
 import * as React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { DataTable, useDataTable } from "kombase";
+import { DataTable } from "@/components/data-table/data-table";
+import { useDataTable } from "@/hooks/use-data-table";
 
 function InfiniteScrollTable() {
   const {
@@ -368,7 +376,10 @@ Here is a complete step-by-step walkthrough for React Router v7 / Remix:
 ```tsx
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { DataTable, DataTableToolbar, DataTablePagination, useDataTable } from "kombase";
+import { DataTable } from "@/components/data-table/data-table";
+import { DataTablePagination } from "@/components/data-table/data-table-pagination";
+import { DataTableToolbar } from "@/components/data-table/data-table-toolbar";
+import { useDataTable } from "@/hooks/use-data-table";
 
 function InvoicesTable() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -479,7 +490,7 @@ Instead of writing manual mapper functions for every column, the built-in `resol
 ##### Import
 
 ```ts
-import { resolveFiltersToFlatParams, mapDateFilterToParams } from "kombase";
+import { resolveFiltersToFlatParams, mapDateFilterToParams } from "@/lib/filter-helper";
 ```
 
 ##### Configuration Options
@@ -663,7 +674,7 @@ meta: {
 #### Skeleton Usage
 
 ```tsx
-import { DataTableSkeleton } from "kombase";
+import { DataTableSkeleton } from "@/components/data-table/data-table-skeleton";
 
 function MyTableSkeleton() {
   return (
@@ -683,7 +694,7 @@ The recommended pattern when using frameworks like Next.js or React Router v7 wi
 
 ```tsx
 import { Suspense } from "react";
-import { DataTableSkeleton } from "kombase";
+import { DataTableSkeleton } from "@/components/data-table/data-table-skeleton";
 
 function Page() {
   return (

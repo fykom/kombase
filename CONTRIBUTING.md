@@ -53,6 +53,30 @@ A new file will be created in the `.changeset` directory. Commit this file with 
    - For components: `pnpm dev:kombase`
    - For documentation: `pnpm dev:docs`
 
+## Source Code Location
+
+All component source code lives in the `registry/` directory, organized by category:
+
+- `registry/ui/` — UI primitives (button, input, dialog, etc.)
+- `registry/components/` — Complex components (data-table, tour, stepper, etc.)
+- `registry/form/` — Form wrappers with react-hook-form integration
+- `registry/hooks/` — Custom React hooks
+- `registry/lib/` — Utility functions and helpers
+
+**This is the single source of truth.** When editing components, always edit files in `registry/`, not `packages/src/`.
+
+The `packages/src/` directory is maintained temporarily for npm backward compatibility and will be removed after full registry cutover.
+
+### Building the Registry
+
+To build the registry output (generates JSON files for shadcn CLI):
+
+```bash
+pnpm build:registry
+```
+
+Output is written to `docs/public/r/`.
+
 ## Documentation
 
 Our documentation is built with [Fumadocs](https://fumadocs.dev/). If you are updating components, please also update the corresponding documentation in the `docs` package.

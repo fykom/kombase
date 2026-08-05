@@ -1,0 +1,12 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "homepage": "https://kombase.komerce.id",
+  "include": [
+    "registry/ui/registry.json",
+    "registry/hooks/registry.json",
+    "registry/lib/registry.json",
+    "registry/components/registry.json",
+    "registry/form/registry.json"
+  ],
+  "name": "kombase"
+}

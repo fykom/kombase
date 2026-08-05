@@ -1,6 +1,6 @@
-import type { PhoneInput as PI } from 'kombase';
 import type { ReactNode } from 'react';
 import type { Control } from 'react-hook-form';
+import type { PhoneInput as PI } from '@/components/phone-input';
 import type { Popover, PopoverTrigger } from '@/components/ui/popover';
 
 /**

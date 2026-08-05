@@ -1,3 +1,4 @@
+import { Database, Palette, Search } from 'lucide-react';
 import {
   Timeline,
   TimelineConnector,
@@ -8,8 +9,7 @@ import {
   TimelineItem,
   TimelineTime,
   TimelineTitle,
-} from 'kombase';
-import { Database, Palette, Search } from 'lucide-react';
+} from '@/components/timeline';
 
 const timelineItems = [
   {

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "debounced-input",
+  "title": "Debounced Input",
+  "description": "An input that delays onChange calls to reduce unnecessary re-renders.",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/debounced-input.tsx",
+      "content": "import * as React from 'react';\nimport { Input } from '@/components/ui/input';\n\nexport interface DebouncedInputProps\n  extends Omit<React.ComponentProps<typeof Input>, 'onChange' | 'value'> {\n  value: string | number;\n  onChange: (value: string | number) => void;\n  debounce?: number;\n}\n\nexport function DebouncedInput({\n  value: initialValue,\n  onChange,\n  debounce = 300,\n  ...props\n}: DebouncedInputProps) {\n  const [value, setValue] = React.useState(initialValue);\n\n  const onChangeRef = React.useRef(onChange);\n  React.useEffect(() => {\n    onChangeRef.current = onChange;\n  }, [onChange]);\n\n  React.useEffect(() => {\n    setValue(initialValue);\n  }, [initialValue]);\n\n  React.useEffect(() => {\n    const timeout = setTimeout(() => {\n      onChangeRef.current(value);\n    }, debounce);\n\n    return () => clearTimeout(timeout);\n  }, [value, debounce]);\n\n  return <Input {...props} onChange={(e) => setValue(e.target.value)} value={value} />;\n}\n",
+      "type": "registry:ui",
+      "target": "@ui/debounced-input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@radix-ui/react-label"],
+  "files": [
+    {
+      "content": "'use client';\r\n\r\nimport * as LabelPrimitive from '@radix-ui/react-label';\r\nimport * as React from 'react';\r\n\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst Label = React.forwardRef<\r\n  React.ComponentRef<typeof LabelPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <LabelPrimitive.Root\r\n    className={cn(\r\n      'flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50',\r\n      className,\r\n    )}\r\n    data-slot=\"label\"\r\n    ref={ref}\r\n    {...props}\r\n  />\r\n));\r\nLabel.displayName = LabelPrimitive.Root.displayName;\r\n\r\nexport { Label };\r\n",
+      "path": "registry/ui/label.tsx",
+      "target": "@ui/label.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "label",
+  "registryDependencies": ["@kombase/utils"],
+  "type": "registry:ui"
+}

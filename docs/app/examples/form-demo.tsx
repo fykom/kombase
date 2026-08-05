@@ -1,9 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormInput, FormInputGroup, FormInputPassword, FormPick } from 'kombase';
 import { Link2Icon, SparklesIcon, ZapIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { FormInput } from '@/components/form/form-input';
+import { FormInputGroup } from '@/components/form/form-input-group';
+import { FormInputPassword } from '@/components/form/form-password';
+import { FormPick } from '@/components/form/form-pick';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 

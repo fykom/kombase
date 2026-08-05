@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import type React from 'react';\r\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\r\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\r\nimport { Input } from '@/components/ui/input';\r\nimport { Label } from '@/components/ui/label';\r\nimport { cn } from '@/lib/utils';\r\n\r\ntype FormInputProps<TFieldValues extends FieldValues> = {\r\n  control: Control<TFieldValues>;\r\n  name: FieldPath<TFieldValues>;\r\n  label?: string | React.ReactNode;\r\n  inputProps?: React.ComponentProps<typeof Input>;\r\n  layout?: 'vertical' | 'horizontal';\r\n  className?: string;\r\n  labelClassName?: string;\r\n  prefix?: React.ReactNode;\r\n  suffix?: React.ReactNode;\r\n};\r\n\r\nexport function FormInput<TFieldValues extends FieldValues>({\r\n  control,\r\n  name,\r\n  label,\r\n  inputProps,\r\n  layout = 'vertical',\r\n  className,\r\n  labelClassName,\r\n  prefix,\r\n  suffix,\r\n}: FormInputProps<TFieldValues>) {\r\n  return (\r\n    <FormField\r\n      control={control}\r\n      name={name}\r\n      render={({ field }) => (\r\n        <FormItem\r\n          className={cn(\r\n            layout === 'horizontal'\r\n              ? 'flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 space-y-0'\r\n              : 'space-y-2',\r\n            className,\r\n          )}\r\n        >\r\n          {label && (\r\n            <Label\r\n              className={cn(layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0', labelClassName)}\r\n              htmlFor={field.name}\r\n            >\r\n              {label}\r\n            </Label>\r\n          )}\r\n          <div className=\"flex-1 w-full space-y-1.5\">\r\n            <FormControl>\r\n              <div className=\"flex w-full overflow-hidden rounded-md border border-input bg-background\">\r\n                {prefix && (\r\n                  <div className=\"flex items-center border-r text-muted-foreground\">{prefix}</div>\r\n                )}\r\n\r\n                <Input\r\n                  id={field.name}\r\n                  {...field}\r\n                  {...inputProps}\r\n                  className={cn('border-0 shadow-none focus-visible:ring-0', inputProps?.className)}\r\n                />\r\n\r\n                {suffix && (\r\n                  <div className=\"flex items-center border-l text-muted-foreground\">{suffix}</div>\r\n                )}\r\n              </div>\r\n            </FormControl>\r\n            <FormMessage />\r\n          </div>\r\n        </FormItem>\r\n      )}\r\n    />\r\n  );\r\n}\r\n",
+      "path": "registry/form/form-input.tsx",
+      "target": "@components/form/form-input.tsx",
+      "type": "registry:component"
+    }
+  ],
+  "name": "form-input",
+  "registryDependencies": ["form", "input", "label"],
+  "type": "registry:component"
+}

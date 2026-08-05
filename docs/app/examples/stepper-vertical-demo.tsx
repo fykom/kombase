@@ -8,7 +8,7 @@ import {
   StepperSeparator,
   StepperTitle,
   StepperTrigger,
-} from 'kombase';
+} from '@/components/stepper';
 
 const steps = [
   {

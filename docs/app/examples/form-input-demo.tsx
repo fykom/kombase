@@ -1,9 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { goeyToast } from 'goey-toast';
-import { FormInput } from 'kombase';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { FormInput } from '@/components/form/form-input';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 

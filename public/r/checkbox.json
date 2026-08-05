@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "dependencies": ["@radix-ui/react-checkbox"],
+  "files": [
+    {
+      "content": "'use client';\r\n\r\nimport * as CheckboxPrimitive from '@radix-ui/react-checkbox';\r\nimport { CheckIcon } from 'lucide-react';\r\nimport * as React from 'react';\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst Checkbox = React.forwardRef<\r\n  React.ComponentRef<typeof CheckboxPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>\r\n>(({ className, ...props }, ref) => {\r\n  return (\r\n    <CheckboxPrimitive.Root\r\n      className={cn(\r\n        'peer size-4 shrink-0 rounded-lg border border-input shadow-xs transition-shadow outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:bg-input/30 dark:aria-invalid:ring-destructive/40 dark:data-[state=checked]:bg-primary',\r\n        className,\r\n      )}\r\n      data-slot=\"checkbox\"\r\n      ref={ref}\r\n      {...props}\r\n    >\r\n      <CheckboxPrimitive.Indicator\r\n        className=\"flex items-center justify-center text-current transition-none\"\r\n        data-slot=\"checkbox-indicator\"\r\n      >\r\n        <CheckIcon className=\"size-3.5\" />\r\n      </CheckboxPrimitive.Indicator>\r\n    </CheckboxPrimitive.Root>\r\n  );\r\n});\r\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\r\n\r\nexport { Checkbox };\r\n",
+      "path": "registry/ui/checkbox.tsx",
+      "target": "@ui/checkbox.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "checkbox",
+  "registryDependencies": ["@kombase/utils"],
+  "type": "registry:ui"
+}

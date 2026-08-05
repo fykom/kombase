@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "files": [
+    {
+      "content": "import * as React from 'react';\r\nimport { Input } from '@/components/ui/input';\r\n\r\nexport interface DebouncedInputProps\r\n  extends Omit<React.ComponentProps<typeof Input>, 'onChange' | 'value'> {\r\n  value: string | number;\r\n  onChange: (value: string | number) => void;\r\n  debounce?: number;\r\n}\r\n\r\nexport function DebouncedInput({\r\n  value: initialValue,\r\n  onChange,\r\n  debounce = 300,\r\n  ...props\r\n}: DebouncedInputProps) {\r\n  const [value, setValue] = React.useState(initialValue);\r\n\r\n  const onChangeRef = React.useRef(onChange);\r\n  React.useEffect(() => {\r\n    onChangeRef.current = onChange;\r\n  }, [onChange]);\r\n\r\n  React.useEffect(() => {\r\n    setValue(initialValue);\r\n  }, [initialValue]);\r\n\r\n  React.useEffect(() => {\r\n    const timeout = setTimeout(() => {\r\n      onChangeRef.current(value);\r\n    }, debounce);\r\n\r\n    return () => clearTimeout(timeout);\r\n  }, [value, debounce]);\r\n\r\n  return <Input {...props} onChange={(e) => setValue(e.target.value)} value={value} />;\r\n}\r\n",
+      "path": "registry/ui/debounced-input.tsx",
+      "target": "@ui/debounced-input.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "name": "debounced-input",
+  "registryDependencies": ["input"],
+  "type": "registry:ui"
+}
