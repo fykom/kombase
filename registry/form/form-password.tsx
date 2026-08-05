@@ -2,7 +2,6 @@ import type React from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { PasswordInput } from '@/components/password-input';
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import type { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
@@ -10,7 +9,7 @@ type FormInputPasswordProps<T extends FieldValues> = {
   control: Control<T>;
   name: FieldPath<T>;
   label?: string | React.ReactNode;
-  inputProps?: React.ComponentProps<typeof Input>;
+  inputProps?: React.ComponentProps<typeof PasswordInput>;
   layout?: 'vertical' | 'horizontal';
   className?: string;
   labelClassName?: string;

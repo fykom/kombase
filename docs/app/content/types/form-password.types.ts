@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
-import type { Input } from '@/components/ui/input';
+import type { PasswordInput } from '@/components/password-input';
 
 /**
  * Props accepted by the `FormInputPassword` component.
@@ -24,12 +24,12 @@ export interface FormInputPassword<TFieldValues extends FieldValues> {
   label?: string | ReactNode;
 
   /**
-   * Props forwarded directly to the underlying `<Input>` element.
+   * Props forwarded directly to the underlying `<PasswordInput>` element.
    * RHF field props (`value`, `onChange`, `onBlur`, `ref`) are already
    * spread by the component — use this for native attributes like
    * `placeholder`, `disabled`, `autoComplete`, etc.
    */
-  inputProps?: React.ComponentProps<typeof Input>;
+  inputProps?: React.ComponentProps<typeof PasswordInput>;
 
   /**
    * Layout orientation of the form item.

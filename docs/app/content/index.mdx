@@ -22,6 +22,53 @@ Ensure you have installed and configured [Shadcn UI](https://ui.shadcn.com/docs/
 </Step>
 
 <Step>
+### Configure Registry (Recommended)
+
+To install components using the `@kombase/` alias/prefix, configure the registry in your project.
+
+#### Option A: Edit `components.json` (Recommended)
+Add the `"registries"` block at the root level of your `components.json` file:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+> **Note:** The registry URL template must end with `{name}.json` to satisfy shadcn CLI v4 schema validation.
+
+#### Option B: Edit `package.json`
+Alternatively, you can define the registry under the `"registries"` key at the root level of your `package.json`:
+
+```json
+{
+  "name": "your-project",
+  "dependencies": { ... },
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+</Step>
+
+<Step>
 ### Add Components
 
 Install any kombase component directly from the registry:

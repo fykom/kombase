@@ -1,16 +1,20 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-upload",
+  "title": "Form Upload",
   "description": "File upload with drag-and-drop and progress tracking, integrated with react-hook-form.",
+  "registryDependencies": [
+    "form",
+    "label",
+    "@kombase/file-upload"
+  ],
   "files": [
     {
-      "content": "import type React from 'react';\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\nimport { FileUpload, type FileUploadProps } from '@/components/ui/file-upload';\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\nimport { Label } from '@/components/ui/label';\nimport { cn } from '@/lib/utils';\n\ntype FormUploadProps<TFieldValues extends FieldValues> = {\n  control: Control<TFieldValues>;\n  name: FieldPath<TFieldValues>;\n  label?: string | React.ReactNode;\n  uploadProps?: Omit<FileUploadProps, 'value' | 'onValueChange' | 'children'>;\n  layout?: 'vertical' | 'horizontal';\n  className?: string;\n  labelClassName?: string;\n  children?: React.ReactNode;\n};\n\nexport function FormUpload<TFieldValues extends FieldValues>({\n  control,\n  name,\n  label,\n  uploadProps,\n  layout = 'vertical',\n  className,\n  labelClassName,\n  children,\n}: FormUploadProps<TFieldValues>) {\n  return (\n    <FormField\n      control={control}\n      name={name}\n      render={({ field }) => (\n        <FormItem\n          className={cn(\n            layout === 'horizontal'\n              ? 'flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 space-y-0'\n              : 'space-y-2',\n            className,\n          )}\n        >\n          {label && (\n            <Label\n              className={cn(\n                layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0 sm:pt-2',\n                labelClassName,\n              )}\n              htmlFor={field.name}\n            >\n              {label}\n            </Label>\n          )}\n          <div className=\"flex-1 w-full space-y-1.5\">\n            <FormControl>\n              <FileUpload\n                disabled={field.disabled}\n                id={field.name}\n                onValueChange={field.onChange}\n                value={field.value}\n                {...uploadProps}\n              >\n                {children}\n              </FileUpload>\n            </FormControl>\n            <FormMessage />\n          </div>\n        </FormItem>\n      )}\n    />\n  );\n}\n",
       "path": "registry/form/form-upload.tsx",
-      "target": "@components/form/form-upload.tsx",
-      "type": "registry:component"
+      "content": "import type React from 'react';\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\nimport { FileUpload, type FileUploadProps } from '@/components/ui/file-upload';\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\nimport { Label } from '@/components/ui/label';\nimport { cn } from '@/lib/utils';\n\ntype FormUploadProps<TFieldValues extends FieldValues> = {\n  control: Control<TFieldValues>;\n  name: FieldPath<TFieldValues>;\n  label?: string | React.ReactNode;\n  uploadProps?: Omit<FileUploadProps, 'value' | 'onValueChange' | 'children'>;\n  layout?: 'vertical' | 'horizontal';\n  className?: string;\n  labelClassName?: string;\n  children?: React.ReactNode;\n};\n\nexport function FormUpload<TFieldValues extends FieldValues>({\n  control,\n  name,\n  label,\n  uploadProps,\n  layout = 'vertical',\n  className,\n  labelClassName,\n  children,\n}: FormUploadProps<TFieldValues>) {\n  return (\n    <FormField\n      control={control}\n      name={name}\n      render={({ field }) => (\n        <FormItem\n          className={cn(\n            layout === 'horizontal'\n              ? 'flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 space-y-0'\n              : 'space-y-2',\n            className,\n          )}\n        >\n          {label && (\n            <Label\n              className={cn(\n                layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0 sm:pt-2',\n                labelClassName,\n              )}\n              htmlFor={field.name}\n            >\n              {label}\n            </Label>\n          )}\n          <div className=\"flex-1 w-full space-y-1.5\">\n            <FormControl>\n              <FileUpload\n                disabled={field.disabled}\n                id={field.name}\n                onValueChange={field.onChange}\n                value={field.value}\n                {...uploadProps}\n              >\n                {children}\n              </FileUpload>\n            </FormControl>\n            <FormMessage />\n          </div>\n        </FormItem>\n      )}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/form/form-upload.tsx"
     }
   ],
-  "name": "form-upload",
-  "registryDependencies": ["form", "label", "@kombase/file-upload"],
-  "title": "Form Upload",
   "type": "registry:component"
 }

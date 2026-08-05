@@ -1,17 +1,21 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@radix-ui/react-separator"],
+  "name": "separator",
+  "title": "Separator",
   "description": "A visual divider between content sections.",
+  "dependencies": [
+    "@radix-ui/react-separator"
+  ],
+  "registryDependencies": [
+    "@kombase/utils"
+  ],
   "files": [
     {
-      "content": "'use client';\n\nimport * as SeparatorPrimitive from '@radix-ui/react-separator';\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst Separator = React.forwardRef<\n  React.ComponentRef<typeof SeparatorPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>\n>(({ className, orientation = 'horizontal', decorative = true, ...props }, ref) => (\n  <SeparatorPrimitive.Root\n    className={cn(\n      'shrink-0 bg-border',\n      orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',\n      className,\n    )}\n    decorative={decorative}\n    orientation={orientation}\n    ref={ref}\n    {...props}\n  />\n));\nSeparator.displayName = SeparatorPrimitive.Root.displayName;\n\nexport { Separator };\n",
       "path": "registry/ui/separator.tsx",
-      "target": "@ui/separator.tsx",
-      "type": "registry:ui"
+      "content": "'use client';\n\nimport * as SeparatorPrimitive from '@radix-ui/react-separator';\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst Separator = React.forwardRef<\n  React.ComponentRef<typeof SeparatorPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>\n>(({ className, orientation = 'horizontal', decorative = true, ...props }, ref) => (\n  <SeparatorPrimitive.Root\n    className={cn(\n      'shrink-0 bg-border',\n      orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',\n      className,\n    )}\n    decorative={decorative}\n    orientation={orientation}\n    ref={ref}\n    {...props}\n  />\n));\nSeparator.displayName = SeparatorPrimitive.Root.displayName;\n\nexport { Separator };\n",
+      "type": "registry:ui",
+      "target": "@ui/separator.tsx"
     }
   ],
-  "name": "separator",
-  "registryDependencies": ["@kombase/utils"],
-  "title": "Separator",
   "type": "registry:ui"
 }

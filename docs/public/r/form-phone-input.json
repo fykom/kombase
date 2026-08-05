@@ -1,16 +1,20 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-phone-input",
+  "title": "Form Phone Input",
   "description": "International phone number input with country select, integrated with react-hook-form.",
+  "registryDependencies": [
+    "form",
+    "label",
+    "@kombase/phone-input"
+  ],
   "files": [
     {
-      "content": "import type React from 'react';\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\nimport { PhoneInput, PhoneInputCountrySelect, PhoneInputField } from '@/components/phone-input';\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\nimport { Label } from '@/components/ui/label';\nimport { cn } from '@/lib/utils';\n\ntype FormPhoneInputProps<TFieldValues extends FieldValues> = {\n  control: Control<TFieldValues>;\n  name: FieldPath<TFieldValues>;\n  label?: string | React.ReactNode;\n  phoneInputProps?: Omit<\n    React.ComponentProps<typeof PhoneInput>,\n    keyof React.ComponentProps<'div'>\n  >;\n  phoneInputCountrySelectProps?: React.ComponentProps<typeof PhoneInputCountrySelect>;\n  layout?: 'vertical' | 'horizontal';\n  className?: string;\n  labelClassName?: string;\n  isVisibleCountrySelect?: boolean;\n};\n\nexport function FormPhoneInput<TFieldValues extends FieldValues>({\n  control,\n  name,\n  label,\n  phoneInputProps,\n  phoneInputCountrySelectProps,\n  layout = 'vertical',\n  className,\n  labelClassName,\n  isVisibleCountrySelect = true,\n}: FormPhoneInputProps<TFieldValues>) {\n  return (\n    <FormField\n      control={control}\n      name={name}\n      render={({ field }) => (\n        <FormItem\n          className={cn(\n            layout === 'horizontal'\n              ? 'flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 space-y-0'\n              : 'space-y-2',\n            className,\n          )}\n        >\n          {label && (\n            <Label\n              className={cn(layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0', labelClassName)}\n              htmlFor={field.name}\n            >\n              {label}\n            </Label>\n          )}\n          <div className=\"flex-1 w-full space-y-1.5\">\n            <FormControl>\n              <PhoneInput {...phoneInputProps}>\n                {isVisibleCountrySelect && (\n                  <PhoneInputCountrySelect {...phoneInputCountrySelectProps} />\n                )}\n                <PhoneInputField id={field.name} {...field} />\n              </PhoneInput>\n            </FormControl>\n            <FormMessage />\n          </div>\n        </FormItem>\n      )}\n    />\n  );\n}\n",
       "path": "registry/form/form-phone-input.tsx",
-      "target": "@components/form/form-phone-input.tsx",
-      "type": "registry:component"
+      "content": "import type React from 'react';\nimport type { Control, FieldPath, FieldValues } from 'react-hook-form';\nimport { PhoneInput, PhoneInputCountrySelect, PhoneInputField } from '@/components/phone-input';\nimport { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';\nimport { Label } from '@/components/ui/label';\nimport { cn } from '@/lib/utils';\n\ntype FormPhoneInputProps<TFieldValues extends FieldValues> = {\n  control: Control<TFieldValues>;\n  name: FieldPath<TFieldValues>;\n  label?: string | React.ReactNode;\n  phoneInputProps?: Omit<\n    React.ComponentProps<typeof PhoneInput>,\n    keyof React.ComponentProps<'div'>\n  >;\n  phoneInputCountrySelectProps?: React.ComponentProps<typeof PhoneInputCountrySelect>;\n  layout?: 'vertical' | 'horizontal';\n  className?: string;\n  labelClassName?: string;\n  isVisibleCountrySelect?: boolean;\n};\n\nexport function FormPhoneInput<TFieldValues extends FieldValues>({\n  control,\n  name,\n  label,\n  phoneInputProps,\n  phoneInputCountrySelectProps,\n  layout = 'vertical',\n  className,\n  labelClassName,\n  isVisibleCountrySelect = true,\n}: FormPhoneInputProps<TFieldValues>) {\n  return (\n    <FormField\n      control={control}\n      name={name}\n      render={({ field }) => (\n        <FormItem\n          className={cn(\n            layout === 'horizontal'\n              ? 'flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 space-y-0'\n              : 'space-y-2',\n            className,\n          )}\n        >\n          {label && (\n            <Label\n              className={cn(layout === 'horizontal' && 'sm:w-1/3 sm:shrink-0', labelClassName)}\n              htmlFor={field.name}\n            >\n              {label}\n            </Label>\n          )}\n          <div className=\"flex-1 w-full space-y-1.5\">\n            <FormControl>\n              <PhoneInput {...phoneInputProps}>\n                {isVisibleCountrySelect && (\n                  <PhoneInputCountrySelect {...phoneInputCountrySelectProps} />\n                )}\n                <PhoneInputField id={field.name} {...field} />\n              </PhoneInput>\n            </FormControl>\n            <FormMessage />\n          </div>\n        </FormItem>\n      )}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/form/form-phone-input.tsx"
     }
   ],
-  "name": "form-phone-input",
-  "registryDependencies": ["form", "label", "@kombase/phone-input"],
-  "title": "Form Phone Input",
   "type": "registry:component"
 }

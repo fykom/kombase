@@ -1,17 +1,21 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "dependencies": ["@radix-ui/react-slider"],
+  "name": "slider",
+  "title": "Slider",
   "description": "A range input for selecting numeric values.",
+  "dependencies": [
+    "@radix-ui/react-slider"
+  ],
+  "registryDependencies": [
+    "@kombase/utils"
+  ],
   "files": [
     {
-      "content": "'use client';\n\nimport * as SliderPrimitive from '@radix-ui/react-slider';\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst Slider = React.forwardRef<\n  React.ComponentRef<typeof SliderPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\n>(({ className, defaultValue, value, min = 0, max = 100, ...props }, ref) => {\n  const _values = React.useMemo(\n    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),\n    [value, defaultValue, min, max],\n  );\n\n  return (\n    <SliderPrimitive.Root\n      className={cn(\n        'relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',\n        className,\n      )}\n      data-slot=\"slider\"\n      defaultValue={defaultValue}\n      max={max}\n      min={min}\n      ref={ref}\n      value={value}\n      {...props}\n    >\n      <SliderPrimitive.Track\n        className={cn(\n          'relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5',\n        )}\n        data-slot=\"slider-track\"\n      >\n        <SliderPrimitive.Range\n          className={cn(\n            'absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',\n          )}\n          data-slot=\"slider-range\"\n        />\n      </SliderPrimitive.Track>\n      {Array.from({ length: _values.length }, (_, index) => (\n        <SliderPrimitive.Thumb\n          className=\"block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring/50 transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50\"\n          data-slot=\"slider-thumb\"\n          key={index}\n        />\n      ))}\n    </SliderPrimitive.Root>\n  );\n});\nSlider.displayName = SliderPrimitive.Root.displayName;\n\nexport { Slider };\n",
       "path": "registry/ui/slider.tsx",
-      "target": "@ui/slider.tsx",
-      "type": "registry:ui"
+      "content": "'use client';\n\nimport * as SliderPrimitive from '@radix-ui/react-slider';\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst Slider = React.forwardRef<\n  React.ComponentRef<typeof SliderPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\n>(({ className, defaultValue, value, min = 0, max = 100, ...props }, ref) => {\n  const _values = React.useMemo(\n    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),\n    [value, defaultValue, min, max],\n  );\n\n  return (\n    <SliderPrimitive.Root\n      className={cn(\n        'relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',\n        className,\n      )}\n      data-slot=\"slider\"\n      defaultValue={defaultValue}\n      max={max}\n      min={min}\n      ref={ref}\n      value={value}\n      {...props}\n    >\n      <SliderPrimitive.Track\n        className={cn(\n          'relative grow overflow-hidden rounded-full bg-muted data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5',\n        )}\n        data-slot=\"slider-track\"\n      >\n        <SliderPrimitive.Range\n          className={cn(\n            'absolute bg-primary data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',\n          )}\n          data-slot=\"slider-range\"\n        />\n      </SliderPrimitive.Track>\n      {Array.from({ length: _values.length }, (_, index) => (\n        <SliderPrimitive.Thumb\n          className=\"block size-4 shrink-0 rounded-full border border-primary bg-white shadow-sm ring-ring/50 transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50\"\n          data-slot=\"slider-thumb\"\n          key={index}\n        />\n      ))}\n    </SliderPrimitive.Root>\n  );\n});\nSlider.displayName = SliderPrimitive.Root.displayName;\n\nexport { Slider };\n",
+      "type": "registry:ui",
+      "target": "@ui/slider.tsx"
     }
   ],
-  "name": "slider",
-  "registryDependencies": ["@kombase/utils"],
-  "title": "Slider",
   "type": "registry:ui"
 }
