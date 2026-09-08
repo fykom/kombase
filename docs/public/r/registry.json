@@ -11,7 +11,7 @@
         "@radix-ui/react-alert-dialog"
       ],
       "registryDependencies": [
-        "button"
+        "@kombase/button"
       ],
       "files": [
         {
@@ -105,7 +105,7 @@
         "dayjs"
       ],
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/utils"
       ],
       "files": [
@@ -160,7 +160,7 @@
         "cmdk"
       ],
       "registryDependencies": [
-        "popover",
+        "@kombase/popover",
         "@kombase/utils"
       ],
       "files": [
@@ -180,7 +180,7 @@
         "cmdk"
       ],
       "registryDependencies": [
-        "dialog",
+        "@kombase/dialog",
         "@kombase/utils"
       ],
       "files": [
@@ -197,7 +197,7 @@
       "title": "Debounced Input",
       "description": "An input that delays onChange calls to reduce unnecessary re-renders.",
       "registryDependencies": [
-        "input"
+        "@kombase/input"
       ],
       "files": [
         {
@@ -278,7 +278,7 @@
         "react-hook-form"
       ],
       "registryDependencies": [
-        "label",
+        "@kombase/label",
         "@kombase/utils"
       ],
       "files": [
@@ -295,9 +295,9 @@
       "title": "Input Group",
       "description": "An input with prefix/suffix addons and action buttons.",
       "registryDependencies": [
-        "button",
-        "input",
-        "textarea",
+        "@kombase/button",
+        "@kombase/input",
+        "@kombase/textarea",
         "@kombase/utils"
       ],
       "files": [
@@ -772,8 +772,8 @@
         "@tanstack/react-table"
       ],
       "registryDependencies": [
-        "button",
-        "select",
+        "@kombase/button",
+        "@kombase/select",
         "@kombase/lib-pagination",
         "@kombase/utils"
       ],
@@ -807,8 +807,8 @@
       "title": "Data Table Skeleton",
       "description": "Loading skeleton placeholder for data tables.",
       "registryDependencies": [
-        "skeleton",
-        "table"
+        "@kombase/skeleton",
+        "@kombase/table"
       ],
       "files": [
         {
@@ -824,10 +824,10 @@
       "title": "Data Table Date Filter",
       "description": "Date range filter with calendar presets for data table columns.",
       "registryDependencies": [
-        "button",
-        "calendar",
-        "popover",
-        "separator",
+        "@kombase/button",
+        "@kombase/calendar",
+        "@kombase/popover",
+        "@kombase/separator",
         "@kombase/lib-date"
       ],
       "files": [
@@ -844,11 +844,11 @@
       "title": "Data Table Faceted Filter",
       "description": "Multi-select faceted filter with search for categorical columns.",
       "registryDependencies": [
-        "badge",
-        "button",
-        "command",
-        "popover",
-        "separator"
+        "@kombase/badge",
+        "@kombase/button",
+        "@kombase/command",
+        "@kombase/popover",
+        "@kombase/separator"
       ],
       "files": [
         {
@@ -864,12 +864,12 @@
       "title": "Data Table Slider Filter",
       "description": "Numeric range filter with slider input for data table columns.",
       "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "popover",
-        "separator",
-        "slider"
+        "@kombase/button",
+        "@kombase/input",
+        "@kombase/label",
+        "@kombase/popover",
+        "@kombase/separator",
+        "@kombase/slider"
       ],
       "files": [
         {
@@ -885,9 +885,9 @@
       "title": "Data Table View Options",
       "description": "Column visibility toggle menu for data tables.",
       "registryDependencies": [
-        "button",
-        "command",
-        "popover"
+        "@kombase/button",
+        "@kombase/command",
+        "@kombase/popover"
       ],
       "files": [
         {
@@ -903,7 +903,7 @@
       "title": "Data Table Toolbar",
       "description": "Toolbar with search, filters, and view options for data tables.",
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/debounced-input",
         "@kombase/data-table-date-filter",
         "@kombase/data-table-faceted-filter",
@@ -924,10 +924,10 @@
       "title": "Data Table Bulk Action",
       "description": "Action bar for batch operations on selected table rows.",
       "registryDependencies": [
-        "badge",
-        "button",
-        "separator",
-        "tooltip"
+        "@kombase/badge",
+        "@kombase/button",
+        "@kombase/separator",
+        "@kombase/tooltip"
       ],
       "files": [
         {
@@ -943,7 +943,7 @@
       "title": "Data Table Column Header",
       "description": "Sortable column header with dropdown menu for data tables.",
       "registryDependencies": [
-        "dropdown-menu"
+        "@kombase/dropdown-menu"
       ],
       "files": [
         {
@@ -960,12 +960,12 @@
       "description": "Advanced multi-column filter panel with custom operators and debounced input.",
       "registryDependencies": [
         "@kombase/lib-data-table",
-        "badge",
-        "button",
-        "calendar",
-        "command",
-        "popover",
-        "select",
+        "@kombase/badge",
+        "@kombase/button",
+        "@kombase/calendar",
+        "@kombase/command",
+        "@kombase/popover",
+        "@kombase/select",
         "@kombase/data-table-config",
         "@kombase/data-table-date-filter",
         "@kombase/data-table-range-filter"
@@ -987,7 +987,7 @@
         "@tanstack/react-table"
       ],
       "registryDependencies": [
-        "table",
+        "@kombase/table",
         "@kombase/data-table-config",
         "@kombase/data-table-types",
         "@kombase/data-table-pagination",
@@ -1016,7 +1016,7 @@
         "@radix-ui/react-direction"
       ],
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/component-refs",
         "@kombase/use-as-ref",
         "@kombase/use-isomorphic-layout-effect"
@@ -1051,8 +1051,8 @@
       "title": "Confirm Dialog",
       "description": "A confirmation modal with customizable actions and descriptions.",
       "registryDependencies": [
-        "alert-dialog",
-        "button"
+        "@kombase/alert-dialog",
+        "@kombase/button"
       ],
       "files": [
         {
@@ -1068,8 +1068,8 @@
       "title": "Long Text",
       "description": "Truncated text with tooltip or popover for viewing full content.",
       "registryDependencies": [
-        "popover",
-        "tooltip"
+        "@kombase/popover",
+        "@kombase/tooltip"
       ],
       "files": [
         {
@@ -1085,9 +1085,9 @@
       "title": "Phone Input",
       "description": "International phone number input with country code selector and flag icons.",
       "registryDependencies": [
-        "command",
-        "input",
-        "popover",
+        "@kombase/command",
+        "@kombase/input",
+        "@kombase/popover",
         "@kombase/component-refs",
         "@kombase/visually-hidden-input",
         "@kombase/use-as-ref",
@@ -1180,7 +1180,7 @@
         "@radix-ui/react-direction"
       ],
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/component-refs",
         "@kombase/use-as-ref",
         "@kombase/use-callback-ref",
@@ -1216,7 +1216,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/utils"
       ],
       "files": [
@@ -1236,8 +1236,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "form",
-        "select",
+        "@kombase/form",
+        "@kombase/select",
         "@kombase/utils"
       ],
       "files": [
@@ -1257,10 +1257,10 @@
         "dayjs"
       ],
       "registryDependencies": [
-        "calendar",
-        "form",
-        "label",
-        "popover"
+        "@kombase/calendar",
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/popover"
       ],
       "files": [
         {
@@ -1276,9 +1276,9 @@
       "title": "Form Input",
       "description": "Text input with label and validation, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "input",
-        "label"
+        "@kombase/form",
+        "@kombase/input",
+        "@kombase/label"
       ],
       "files": [
         {
@@ -1294,9 +1294,9 @@
       "title": "Form Input Group",
       "description": "Input group with prefix/suffix addons, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
+        "@kombase/form",
         "@kombase/input-group",
-        "label"
+        "@kombase/label"
       ],
       "files": [
         {
@@ -1312,8 +1312,8 @@
       "title": "Form Password",
       "description": "Password input with show/hide toggle, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "label",
+        "@kombase/form",
+        "@kombase/label",
         "@kombase/password-input"
       ],
       "files": [
@@ -1330,8 +1330,8 @@
       "title": "Form Phone Input",
       "description": "International phone number input with country select, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "label",
+        "@kombase/form",
+        "@kombase/label",
         "@kombase/phone-input"
       ],
       "files": [
@@ -1348,9 +1348,9 @@
       "title": "Form Pick",
       "description": "Card-style single selection input, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "label",
-        "radio-group"
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/radio-group"
       ],
       "files": [
         {
@@ -1366,9 +1366,9 @@
       "title": "Form Radio",
       "description": "Radio button group with label and layout options, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "label",
-        "radio-group"
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/radio-group"
       ],
       "files": [
         {
@@ -1384,9 +1384,9 @@
       "title": "Form Search Select",
       "description": "Searchable combobox select with async data support, integrated with react-hook-form.",
       "registryDependencies": [
-        "combobox",
-        "form",
-        "label"
+        "@kombase/combobox",
+        "@kombase/form",
+        "@kombase/label"
       ],
       "files": [
         {
@@ -1402,9 +1402,9 @@
       "title": "Form Textarea",
       "description": "Multi-line text area with character count and validation, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "label",
-        "textarea"
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/textarea"
       ],
       "files": [
         {
@@ -1420,8 +1420,8 @@
       "title": "Form Upload",
       "description": "File upload with drag-and-drop and progress tracking, integrated with react-hook-form.",
       "registryDependencies": [
-        "form",
-        "label",
+        "@kombase/form",
+        "@kombase/label",
         "@kombase/file-upload"
       ],
       "files": [

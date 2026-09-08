@@ -4,9 +4,9 @@
   "title": "Form Textarea",
   "description": "Multi-line text area with character count and validation, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
-    "label",
-    "textarea"
+    "@kombase/form",
+    "@kombase/label",
+    "@kombase/textarea"
   ],
   "files": [
     {

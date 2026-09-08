@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "items": [
     {
-      "dependencies": ["dayjs"],
+      "dependencies": [
+        "dayjs"
+      ],
       "description": "Date picker with calendar popup, integrated with react-hook-form.",
       "files": [
         {
@@ -12,7 +14,12 @@
         }
       ],
       "name": "form-date-picker",
-      "registryDependencies": ["calendar", "form", "label", "popover"],
+      "registryDependencies": [
+        "@kombase/calendar",
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/popover"
+      ],
       "title": "Form Date Picker",
       "type": "registry:component"
     },
@@ -26,7 +33,11 @@
         }
       ],
       "name": "form-input",
-      "registryDependencies": ["form", "input", "label"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/input",
+        "@kombase/label"
+      ],
       "title": "Form Input",
       "type": "registry:component"
     },
@@ -40,7 +51,11 @@
         }
       ],
       "name": "form-input-group",
-      "registryDependencies": ["form", "@kombase/input-group", "label"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/input-group",
+        "@kombase/label"
+      ],
       "title": "Form Input Group",
       "type": "registry:component"
     },
@@ -54,7 +69,11 @@
         }
       ],
       "name": "form-password",
-      "registryDependencies": ["form", "label", "@kombase/password-input"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/password-input"
+      ],
       "title": "Form Password",
       "type": "registry:component"
     },
@@ -68,7 +87,11 @@
         }
       ],
       "name": "form-phone-input",
-      "registryDependencies": ["form", "label", "@kombase/phone-input"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/phone-input"
+      ],
       "title": "Form Phone Input",
       "type": "registry:component"
     },
@@ -82,7 +105,11 @@
         }
       ],
       "name": "form-pick",
-      "registryDependencies": ["form", "label", "radio-group"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/radio-group"
+      ],
       "title": "Form Pick",
       "type": "registry:component"
     },
@@ -96,7 +123,11 @@
         }
       ],
       "name": "form-radio",
-      "registryDependencies": ["form", "label", "radio-group"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/radio-group"
+      ],
       "title": "Form Radio",
       "type": "registry:component"
     },
@@ -110,7 +141,11 @@
         }
       ],
       "name": "form-search-select",
-      "registryDependencies": ["combobox", "form", "label"],
+      "registryDependencies": [
+        "@kombase/combobox",
+        "@kombase/form",
+        "@kombase/label"
+      ],
       "title": "Form Search Select",
       "type": "registry:component"
     },
@@ -124,7 +159,11 @@
         }
       ],
       "name": "form-textarea",
-      "registryDependencies": ["form", "label", "textarea"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/textarea"
+      ],
       "title": "Form Textarea",
       "type": "registry:component"
     },
@@ -138,7 +177,11 @@
         }
       ],
       "name": "form-upload",
-      "registryDependencies": ["form", "label", "@kombase/file-upload"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/label",
+        "@kombase/file-upload"
+      ],
       "title": "Form Upload",
       "type": "registry:component"
     }

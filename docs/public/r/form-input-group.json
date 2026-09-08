@@ -4,9 +4,9 @@
   "title": "Form Input Group",
   "description": "Input group with prefix/suffix addons, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
+    "@kombase/form",
     "@kombase/input-group",
-    "label"
+    "@kombase/label"
   ],
   "files": [
     {

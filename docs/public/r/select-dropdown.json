@@ -7,8 +7,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "form",
-    "select",
+    "@kombase/form",
+    "@kombase/select",
     "@kombase/utils"
   ],
   "files": [

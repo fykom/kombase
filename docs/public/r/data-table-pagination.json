@@ -7,8 +7,8 @@
     "@tanstack/react-table"
   ],
   "registryDependencies": [
-    "button",
-    "select",
+    "@kombase/button",
+    "@kombase/select",
     "@kombase/lib-pagination",
     "@kombase/utils"
   ],

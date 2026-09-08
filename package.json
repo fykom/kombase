@@ -15,7 +15,8 @@
     "format": "biome check --write",
     "format:check": "biome check",
     "lint:check": "biome lint .",
-    "changelog:mdx": "node scripts/generate-mdx-changelog.mjs"
+    "changelog:mdx": "node scripts/generate-mdx-changelog.mjs",
+    "create:component": "node scripts/create-component.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",

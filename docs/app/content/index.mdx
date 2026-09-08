@@ -74,20 +74,20 @@ Alternatively, you can define the registry under the `"registries"` key at the r
 Install any kombase component directly from the registry:
 
 ```bash
-# Menggunakan alias (jika registry telah dikonfigurasi)
+# Using registry alias (if configured)
 npx shadcn@latest add @kombase/<component-name>
 
-# Atau menggunakan URL langsung
+# Or using direct URL
 npx shadcn@latest add https://kombase.komerce.id/r/<component-name>.json
 ```
 
 For example, to add the Data Table:
 
 ```bash
-# Menggunakan alias
+# Using registry alias
 npx shadcn@latest add @kombase/data-table
 
-# Atau menggunakan URL langsung
+# Or using direct URL
 npx shadcn@latest add https://kombase.komerce.id/r/data-table.json
 ```
 
@@ -95,3 +95,67 @@ All dependencies (npm packages and other kombase components) are resolved and in
 
 </Step>
 </Steps>
+
+---
+
+## Manual Installation
+
+If you prefer to manually copy components into your project or do not use the `shadcn CLI`:
+
+<Steps>
+<Step>
+### Install Core Utility Dependencies
+
+Install the core styling and utility dependencies required by all `kombase` components:
+
+```bash
+pnpm add clsx tailwind-merge class-variance-authority lucide-react
+```
+
+</Step>
+
+<Step>
+### Create Utility Helper (`lib/utils.ts`)
+
+Create a utility file at `src/lib/utils.ts` (or `@/lib/utils`) to merge Tailwind CSS classes:
+
+```ts
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Step>
+
+<Step>
+### Install Component-Specific Dependencies
+
+Depending on the component you wish to use, install the required packages:
+
+- **UI Primitives & Radix UI**: Install the corresponding `@radix-ui/react-*` package (e.g. `@radix-ui/react-dialog`, `@radix-ui/react-select`, `@radix-ui/react-popover`).
+- **Form Components**: Install `react-hook-form`, `@hookform/resolvers`, and `zod`.
+- **Data Table**: Install `@tanstack/react-table`.
+
+</Step>
+
+<Step>
+### Copy Component Source Code
+
+Copy the required primitive UI components (from `registry/ui/`) and target components directly into your project's `components/` directory.
+
+Alternatively, you can fetch the raw component file definition directly from the live registry endpoint:
+`https://kombase.komerce.id/r/<component-name>.json`
+
+</Step>
+</Steps>
+
+---
+
+## Need Help?
+
+If you encounter any issues during installation or integration, check our [Troubleshooting & FAQ Guide](/docs/troubleshooting) for common solutions.
+
+

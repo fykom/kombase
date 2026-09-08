@@ -19,7 +19,8 @@
       "!**/dist",
       "!**/build",
       "!**/.source",
-      "!**/.react-router"
+      "!**/.react-router",
+      "!**/docs/public/r"
     ]
   },
   "formatter": {

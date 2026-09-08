@@ -4,7 +4,7 @@
   "title": "Debounced Input",
   "description": "An input that delays onChange calls to reduce unnecessary re-renders.",
   "registryDependencies": [
-    "input"
+    "@kombase/input"
   ],
   "files": [
     {

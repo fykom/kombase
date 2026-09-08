@@ -4,8 +4,8 @@
   "title": "Long Text",
   "description": "Truncated text with tooltip or popover for viewing full content.",
   "registryDependencies": [
-    "popover",
-    "tooltip"
+    "@kombase/popover",
+    "@kombase/tooltip"
   ],
   "files": [
     {

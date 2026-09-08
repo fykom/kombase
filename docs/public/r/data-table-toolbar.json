@@ -4,7 +4,7 @@
   "title": "Data Table Toolbar",
   "description": "Toolbar with search, filters, and view options for data tables.",
   "registryDependencies": [
-    "button",
+    "@kombase/button",
     "@kombase/debounced-input",
     "@kombase/data-table-date-filter",
     "@kombase/data-table-faceted-filter",

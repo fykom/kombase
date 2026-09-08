@@ -4,7 +4,7 @@
   "title": "Data Table Column Header",
   "description": "Sortable column header with dropdown menu for data tables.",
   "registryDependencies": [
-    "dropdown-menu"
+    "@kombase/dropdown-menu"
   ],
   "files": [
     {

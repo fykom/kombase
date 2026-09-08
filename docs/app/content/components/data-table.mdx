@@ -9,9 +9,43 @@ links:
 
 ## Installation
 
+### CLI
+
 ```bash
 npx shadcn@latest add @kombase/data-table
 ```
+
+### Manual
+
+<Steps>
+<Step>
+#### Install Prerequisites
+
+Ensure you have installed the required primitive UI components into your project:
+
+```bash
+npx shadcn@latest add @kombase/table @kombase/button @kombase/input @kombase/dropdown-menu @kombase/popover @kombase/select
+```
+</Step>
+
+<Step>
+#### Install Dependencies
+
+```bash
+pnpm add @tanstack/react-table lucide-react
+```
+</Step>
+
+<Step>
+#### Copy Source Code
+
+Copy the data table components from `registry/components/data-table/` into your project under `@/components/data-table/`.
+
+Alternatively, fetch the raw schema directly from:
+`https://kombase.komerce.id/r/data-table.json`
+</Step>
+</Steps>
+
 
 <ComponentTabs name="table-demo" align="start" className="p-4" />
 

@@ -4,11 +4,11 @@
   "title": "Data Table Faceted Filter",
   "description": "Multi-select faceted filter with search for categorical columns.",
   "registryDependencies": [
-    "badge",
-    "button",
-    "command",
-    "popover",
-    "separator"
+    "@kombase/badge",
+    "@kombase/button",
+    "@kombase/command",
+    "@kombase/popover",
+    "@kombase/separator"
   ],
   "files": [
     {

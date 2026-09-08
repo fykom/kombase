@@ -35,14 +35,4 @@ export const docsOptions: Omit<DocsLayoutProps, 'tree'> = {
   ...baseOptions,
   links: [githubLink],
   sidebar: { defaultOpenLevel: 1 },
-  // tabs: [
-  //   {
-  //     title: 'Components',
-  //     description: 'Hello World!',
-  //     // active for `/docs/components` and sub routes like `/docs/components/button`
-  //     url: '/docs/components',
-  //     // optionally, you can specify a set of urls which activates the item
-  //     // urls: new Set(['/docs/test', '/docs/components']),
-  //   },
-  // ],
 };

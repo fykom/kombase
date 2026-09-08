@@ -4,9 +4,9 @@
   "title": "Data Table View Options",
   "description": "Column visibility toggle menu for data tables.",
   "registryDependencies": [
-    "button",
-    "command",
-    "popover"
+    "@kombase/button",
+    "@kombase/command",
+    "@kombase/popover"
   ],
   "files": [
     {

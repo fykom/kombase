@@ -7,7 +7,7 @@
     "cmdk"
   ],
   "registryDependencies": [
-    "popover",
+    "@kombase/popover",
     "@kombase/utils"
   ],
   "files": [

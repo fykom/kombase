@@ -8,7 +8,7 @@
     "@radix-ui/react-direction"
   ],
   "registryDependencies": [
-    "button",
+    "@kombase/button",
     "@kombase/component-refs",
     "@kombase/use-as-ref",
     "@kombase/use-callback-ref",

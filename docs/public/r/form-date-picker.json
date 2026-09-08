@@ -7,10 +7,10 @@
     "dayjs"
   ],
   "registryDependencies": [
-    "calendar",
-    "form",
-    "label",
-    "popover"
+    "@kombase/calendar",
+    "@kombase/form",
+    "@kombase/label",
+    "@kombase/popover"
   ],
   "files": [
     {

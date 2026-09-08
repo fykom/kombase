@@ -9,7 +9,7 @@
     "react-hook-form"
   ],
   "registryDependencies": [
-    "label",
+    "@kombase/label",
     "@kombase/utils"
   ],
   "files": [

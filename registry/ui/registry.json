@@ -2,7 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "items": [
     {
-      "dependencies": ["@radix-ui/react-alert-dialog"],
+      "dependencies": [
+        "@radix-ui/react-alert-dialog"
+      ],
       "description": "A modal dialog for critical actions that requires user acknowledgment.",
       "files": [
         {
@@ -12,7 +14,9 @@
         }
       ],
       "name": "alert-dialog",
-      "registryDependencies": ["button"],
+      "registryDependencies": [
+        "@kombase/button"
+      ],
       "title": "Alert Dialog",
       "type": "registry:ui"
     },
@@ -26,12 +30,16 @@
         }
       ],
       "name": "alert",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Alert",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-avatar"],
+      "dependencies": [
+        "@radix-ui/react-avatar"
+      ],
       "description": "An image element with a fallback for user profile pictures.",
       "files": [
         {
@@ -41,12 +49,16 @@
         }
       ],
       "name": "avatar",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Avatar",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "description": "A small status descriptor with multiple visual variants.",
       "files": [
         {
@@ -56,12 +68,17 @@
         }
       ],
       "name": "badge",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Badge",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "description": "An interactive button with multiple size and variant options.",
       "files": [
         {
@@ -71,12 +88,17 @@
         }
       ],
       "name": "button",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Button",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["react-day-picker", "dayjs"],
+      "dependencies": [
+        "react-day-picker",
+        "dayjs"
+      ],
       "description": "A date picker calendar with range selection, presets, and RTL support.",
       "files": [
         {
@@ -86,12 +108,17 @@
         }
       ],
       "name": "calendar",
-      "registryDependencies": ["button", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/utils"
+      ],
       "title": "Calendar",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-checkbox"],
+      "dependencies": [
+        "@radix-ui/react-checkbox"
+      ],
       "description": "A control for boolean input with indeterminate state support.",
       "files": [
         {
@@ -101,12 +128,16 @@
         }
       ],
       "name": "checkbox",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Checkbox",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-collapsible"],
+      "dependencies": [
+        "@radix-ui/react-collapsible"
+      ],
       "description": "An interactive component that expands and collapses content.",
       "files": [
         {
@@ -120,7 +151,9 @@
       "type": "registry:ui"
     },
     {
-      "dependencies": ["cmdk"],
+      "dependencies": [
+        "cmdk"
+      ],
       "description": "A searchable select input with command palette integration.",
       "files": [
         {
@@ -130,12 +163,17 @@
         }
       ],
       "name": "combobox",
-      "registryDependencies": ["popover", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/popover",
+        "@kombase/utils"
+      ],
       "title": "Combobox",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["cmdk"],
+      "dependencies": [
+        "cmdk"
+      ],
       "description": "A command palette for searchable actions and navigation.",
       "files": [
         {
@@ -145,7 +183,10 @@
         }
       ],
       "name": "command",
-      "registryDependencies": ["dialog", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/dialog",
+        "@kombase/utils"
+      ],
       "title": "Command",
       "type": "registry:ui"
     },
@@ -159,12 +200,16 @@
         }
       ],
       "name": "debounced-input",
-      "registryDependencies": ["input"],
+      "registryDependencies": [
+        "@kombase/input"
+      ],
       "title": "Debounced Input",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-dialog"],
+      "dependencies": [
+        "@radix-ui/react-dialog"
+      ],
       "description": "A modal overlay for focused content or forms.",
       "files": [
         {
@@ -174,12 +219,16 @@
         }
       ],
       "name": "dialog",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Dialog",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu"
+      ],
       "description": "A contextual menu triggered by a button click.",
       "files": [
         {
@@ -189,12 +238,17 @@
         }
       ],
       "name": "dropdown-menu",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Dropdown Menu",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-slot", "lucide-react"],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "lucide-react"
+      ],
       "description": "A drag-and-drop file upload component with validation, progress tracking, and paste support.",
       "files": [
         {
@@ -204,12 +258,20 @@
         }
       ],
       "name": "file-upload",
-      "registryDependencies": ["@kombase/utils", "@kombase/use-as-ref", "@kombase/use-lazy-ref"],
+      "registryDependencies": [
+        "@kombase/utils",
+        "@kombase/use-as-ref",
+        "@kombase/use-lazy-ref"
+      ],
       "title": "File Upload",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-form", "@radix-ui/react-label", "react-hook-form"],
+      "dependencies": [
+        "@radix-ui/react-form",
+        "@radix-ui/react-label",
+        "react-hook-form"
+      ],
       "description": "Form primitives with react-hook-form integration and validation messages.",
       "files": [
         {
@@ -219,7 +281,10 @@
         }
       ],
       "name": "form",
-      "registryDependencies": ["label", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/label",
+        "@kombase/utils"
+      ],
       "title": "Form",
       "type": "registry:ui"
     },
@@ -233,7 +298,12 @@
         }
       ],
       "name": "input-group",
-      "registryDependencies": ["button", "input", "textarea", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/input",
+        "@kombase/textarea",
+        "@kombase/utils"
+      ],
       "title": "Input Group",
       "type": "registry:ui"
     },
@@ -247,12 +317,16 @@
         }
       ],
       "name": "input",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Input",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-label"],
+      "dependencies": [
+        "@radix-ui/react-label"
+      ],
       "description": "An accessible label for form controls.",
       "files": [
         {
@@ -262,12 +336,16 @@
         }
       ],
       "name": "label",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Label",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-popover"],
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
       "description": "A floating panel anchored to a trigger element.",
       "files": [
         {
@@ -277,12 +355,16 @@
         }
       ],
       "name": "popover",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Popover",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-radio-group"],
+      "dependencies": [
+        "@radix-ui/react-radio-group"
+      ],
       "description": "A set of radio buttons for single-option selection.",
       "files": [
         {
@@ -292,12 +374,16 @@
         }
       ],
       "name": "radio-group",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Radio Group",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-select"],
+      "dependencies": [
+        "@radix-ui/react-select"
+      ],
       "description": "A dropdown select input with search and grouping.",
       "files": [
         {
@@ -307,12 +393,16 @@
         }
       ],
       "name": "select",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Select",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-separator"],
+      "dependencies": [
+        "@radix-ui/react-separator"
+      ],
       "description": "A visual divider between content sections.",
       "files": [
         {
@@ -322,7 +412,9 @@
         }
       ],
       "name": "separator",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Separator",
       "type": "registry:ui"
     },
@@ -336,12 +428,16 @@
         }
       ],
       "name": "skeleton",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Skeleton",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-slider"],
+      "dependencies": [
+        "@radix-ui/react-slider"
+      ],
       "description": "A range input for selecting numeric values.",
       "files": [
         {
@@ -351,12 +447,16 @@
         }
       ],
       "name": "slider",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Slider",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-switch"],
+      "dependencies": [
+        "@radix-ui/react-switch"
+      ],
       "description": "A toggle for binary on/off states.",
       "files": [
         {
@@ -366,7 +466,9 @@
         }
       ],
       "name": "switch",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Switch",
       "type": "registry:ui"
     },
@@ -380,12 +482,16 @@
         }
       ],
       "name": "table",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Table",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-tabs"],
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
       "description": "A tabbed navigation component for switching between views.",
       "files": [
         {
@@ -395,7 +501,9 @@
         }
       ],
       "name": "tabs",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Tabs",
       "type": "registry:ui"
     },
@@ -409,12 +517,16 @@
         }
       ],
       "name": "textarea",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Textarea",
       "type": "registry:ui"
     },
     {
-      "dependencies": ["@radix-ui/react-tooltip"],
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
       "description": "A popup that displays information on hover or focus.",
       "files": [
         {
@@ -424,7 +536,9 @@
         }
       ],
       "name": "tooltip",
-      "registryDependencies": ["@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/utils"
+      ],
       "title": "Tooltip",
       "type": "registry:ui"
     }

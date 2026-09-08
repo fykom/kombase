@@ -1,14 +1,18 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "debounced-input",
+  "title": "Debounced Input",
+  "description": "An input that delays onChange calls to reduce unnecessary re-renders.",
+  "registryDependencies": [
+    "@kombase/input"
+  ],
   "files": [
     {
-      "content": "import * as React from 'react';\r\nimport { Input } from '@/components/ui/input';\r\n\r\nexport interface DebouncedInputProps\r\n  extends Omit<React.ComponentProps<typeof Input>, 'onChange' | 'value'> {\r\n  value: string | number;\r\n  onChange: (value: string | number) => void;\r\n  debounce?: number;\r\n}\r\n\r\nexport function DebouncedInput({\r\n  value: initialValue,\r\n  onChange,\r\n  debounce = 300,\r\n  ...props\r\n}: DebouncedInputProps) {\r\n  const [value, setValue] = React.useState(initialValue);\r\n\r\n  const onChangeRef = React.useRef(onChange);\r\n  React.useEffect(() => {\r\n    onChangeRef.current = onChange;\r\n  }, [onChange]);\r\n\r\n  React.useEffect(() => {\r\n    setValue(initialValue);\r\n  }, [initialValue]);\r\n\r\n  React.useEffect(() => {\r\n    const timeout = setTimeout(() => {\r\n      onChangeRef.current(value);\r\n    }, debounce);\r\n\r\n    return () => clearTimeout(timeout);\r\n  }, [value, debounce]);\r\n\r\n  return <Input {...props} onChange={(e) => setValue(e.target.value)} value={value} />;\r\n}\r\n",
       "path": "registry/ui/debounced-input.tsx",
-      "target": "@ui/debounced-input.tsx",
-      "type": "registry:ui"
+      "content": "import * as React from 'react';\nimport { Input } from '@/components/ui/input';\n\nexport interface DebouncedInputProps\n  extends Omit<React.ComponentProps<typeof Input>, 'onChange' | 'value'> {\n  value: string | number;\n  onChange: (value: string | number) => void;\n  debounce?: number;\n}\n\nexport function DebouncedInput({\n  value: initialValue,\n  onChange,\n  debounce = 300,\n  ...props\n}: DebouncedInputProps) {\n  const [value, setValue] = React.useState(initialValue);\n\n  const onChangeRef = React.useRef(onChange);\n  React.useEffect(() => {\n    onChangeRef.current = onChange;\n  }, [onChange]);\n\n  React.useEffect(() => {\n    setValue(initialValue);\n  }, [initialValue]);\n\n  React.useEffect(() => {\n    const timeout = setTimeout(() => {\n      onChangeRef.current(value);\n    }, debounce);\n\n    return () => clearTimeout(timeout);\n  }, [value, debounce]);\n\n  return <Input {...props} onChange={(e) => setValue(e.target.value)} value={value} />;\n}\n",
+      "type": "registry:ui",
+      "target": "@ui/debounced-input.tsx"
     }
   ],
-  "name": "debounced-input",
-  "registryDependencies": ["input"],
   "type": "registry:ui"
 }

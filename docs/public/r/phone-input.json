@@ -4,9 +4,9 @@
   "title": "Phone Input",
   "description": "International phone number input with country code selector and flag icons.",
   "registryDependencies": [
-    "command",
-    "input",
-    "popover",
+    "@kombase/command",
+    "@kombase/input",
+    "@kombase/popover",
     "@kombase/component-refs",
     "@kombase/visually-hidden-input",
     "@kombase/use-as-ref",

@@ -4,9 +4,9 @@
   "title": "Form Input",
   "description": "Text input with label and validation, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
-    "input",
-    "label"
+    "@kombase/form",
+    "@kombase/input",
+    "@kombase/label"
   ],
   "files": [
     {

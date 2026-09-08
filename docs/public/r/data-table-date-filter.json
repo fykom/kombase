@@ -4,10 +4,10 @@
   "title": "Data Table Date Filter",
   "description": "Date range filter with calendar presets for data table columns.",
   "registryDependencies": [
-    "button",
-    "calendar",
-    "popover",
-    "separator",
+    "@kombase/button",
+    "@kombase/calendar",
+    "@kombase/popover",
+    "@kombase/separator",
     "@kombase/lib-date"
   ],
   "files": [

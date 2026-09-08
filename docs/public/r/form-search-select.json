@@ -4,9 +4,9 @@
   "title": "Form Search Select",
   "description": "Searchable combobox select with async data support, integrated with react-hook-form.",
   "registryDependencies": [
-    "combobox",
-    "form",
-    "label"
+    "@kombase/combobox",
+    "@kombase/form",
+    "@kombase/label"
   ],
   "files": [
     {

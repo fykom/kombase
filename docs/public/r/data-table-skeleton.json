@@ -4,8 +4,8 @@
   "title": "Data Table Skeleton",
   "description": "Loading skeleton placeholder for data tables.",
   "registryDependencies": [
-    "skeleton",
-    "table"
+    "@kombase/skeleton",
+    "@kombase/table"
   ],
   "files": [
     {

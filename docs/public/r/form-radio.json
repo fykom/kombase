@@ -4,9 +4,9 @@
   "title": "Form Radio",
   "description": "Radio button group with label and layout options, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
-    "label",
-    "radio-group"
+    "@kombase/form",
+    "@kombase/label",
+    "@kombase/radio-group"
   ],
   "files": [
     {

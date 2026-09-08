@@ -4,9 +4,9 @@
   "title": "Input Group",
   "description": "An input with prefix/suffix addons and action buttons.",
   "registryDependencies": [
-    "button",
-    "input",
-    "textarea",
+    "@kombase/button",
+    "@kombase/input",
+    "@kombase/textarea",
     "@kombase/utils"
   ],
   "files": [

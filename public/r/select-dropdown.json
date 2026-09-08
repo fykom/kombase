@@ -1,13 +1,23 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-dropdown",
+  "title": "Select Dropdown",
+  "description": "A form-integrated select dropdown with loading state support.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@kombase/form",
+    "@kombase/select",
+    "@kombase/utils"
+  ],
   "files": [
     {
-      "content": "import { Loader } from 'lucide-react';\r\nimport { FormControl } from '@/components/ui/form';\r\nimport {\r\n  Select,\r\n  SelectContent,\r\n  SelectItem,\r\n  SelectTrigger,\r\n  SelectValue,\r\n} from '@/components/ui/select';\r\nimport { cn } from '@/lib/utils';\r\n\r\ntype SelectDropdownProps = {\r\n  onValueChange?: (value: string) => void;\r\n  defaultValue: string | undefined;\r\n  placeholder?: string;\r\n  isPending?: boolean;\r\n  items: { label: string; value: string }[] | undefined;\r\n  disabled?: boolean;\r\n  className?: string;\r\n  isControlled?: boolean;\r\n};\r\n\r\nexport function SelectDropdown({\r\n  defaultValue,\r\n  onValueChange,\r\n  isPending,\r\n  items,\r\n  placeholder,\r\n  disabled,\r\n  className = '',\r\n  isControlled = false,\r\n}: SelectDropdownProps) {\r\n  const defaultState = isControlled\r\n    ? { onValueChange, value: defaultValue }\r\n    : { defaultValue, onValueChange };\r\n  return (\r\n    <Select {...defaultState}>\r\n      <FormControl>\r\n        <SelectTrigger className={cn(className)} disabled={disabled}>\r\n          <SelectValue placeholder={placeholder ?? 'Select'} />\r\n        </SelectTrigger>\r\n      </FormControl>\r\n      <SelectContent>\r\n        {isPending ? (\r\n          <SelectItem className=\"h-14\" disabled value=\"loading\">\r\n            <div className=\"flex items-center justify-center gap-2\">\r\n              <Loader className=\"h-5 w-5 animate-spin\" />\r\n              {'  '}\r\n              Loading...\r\n            </div>\r\n          </SelectItem>\r\n        ) : (\r\n          items?.map(({ label, value }) => (\r\n            <SelectItem key={value} value={value}>\r\n              {label}\r\n            </SelectItem>\r\n          ))\r\n        )}\r\n      </SelectContent>\r\n    </Select>\r\n  );\r\n}\r\n",
       "path": "registry/components/select-dropdown.tsx",
-      "target": "@components/select-dropdown.tsx",
-      "type": "registry:component"
+      "content": "import { Loader } from 'lucide-react';\nimport { FormControl } from '@/components/ui/form';\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from '@/components/ui/select';\nimport { cn } from '@/lib/utils';\n\ntype SelectDropdownProps = {\n  onValueChange?: (value: string) => void;\n  defaultValue: string | undefined;\n  placeholder?: string;\n  isPending?: boolean;\n  items: { label: string; value: string }[] | undefined;\n  disabled?: boolean;\n  className?: string;\n  isControlled?: boolean;\n};\n\nexport function SelectDropdown({\n  defaultValue,\n  onValueChange,\n  isPending,\n  items,\n  placeholder,\n  disabled,\n  className = '',\n  isControlled = false,\n}: SelectDropdownProps) {\n  const defaultState = isControlled\n    ? { onValueChange, value: defaultValue }\n    : { defaultValue, onValueChange };\n  return (\n    <Select {...defaultState}>\n      <FormControl>\n        <SelectTrigger className={cn(className)} disabled={disabled}>\n          <SelectValue placeholder={placeholder ?? 'Select'} />\n        </SelectTrigger>\n      </FormControl>\n      <SelectContent>\n        {isPending ? (\n          <SelectItem className=\"h-14\" disabled value=\"loading\">\n            <div className=\"flex items-center justify-center gap-2\">\n              <Loader className=\"h-5 w-5 animate-spin\" />\n              {'  '}\n              Loading...\n            </div>\n          </SelectItem>\n        ) : (\n          items?.map(({ label, value }) => (\n            <SelectItem key={value} value={value}>\n              {label}\n            </SelectItem>\n          ))\n        )}\n      </SelectContent>\n    </Select>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/select-dropdown.tsx"
     }
   ],
-  "name": "select-dropdown",
   "type": "registry:component"
 }

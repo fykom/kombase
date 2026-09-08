@@ -4,8 +4,8 @@
   "title": "Form Upload",
   "description": "File upload with drag-and-drop and progress tracking, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
-    "label",
+    "@kombase/form",
+    "@kombase/label",
     "@kombase/file-upload"
   ],
   "files": [

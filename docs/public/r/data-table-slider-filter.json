@@ -4,12 +4,12 @@
   "title": "Data Table Slider Filter",
   "description": "Numeric range filter with slider input for data table columns.",
   "registryDependencies": [
-    "button",
-    "input",
-    "label",
-    "popover",
-    "separator",
-    "slider"
+    "@kombase/button",
+    "@kombase/input",
+    "@kombase/label",
+    "@kombase/popover",
+    "@kombase/separator",
+    "@kombase/slider"
   ],
   "files": [
     {

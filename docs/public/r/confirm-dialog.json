@@ -4,8 +4,8 @@
   "title": "Confirm Dialog",
   "description": "A confirmation modal with customizable actions and descriptions.",
   "registryDependencies": [
-    "alert-dialog",
-    "button"
+    "@kombase/alert-dialog",
+    "@kombase/button"
   ],
   "files": [
     {

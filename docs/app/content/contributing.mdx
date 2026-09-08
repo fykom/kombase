@@ -1,10 +1,13 @@
-# Contributing to Kombase
+---
+title: Contributing Guide
+description: Standardized contribution workflow, environment setup, and step-by-step component creation guide for engineers.
+---
 
 Thank you for your interest in contributing to Kombase! To maintain high code quality, consistency, and automated release workflows, we follow a standardized contribution process.
 
 ---
 
-## 🛠️ Prerequisites & Tools
+## Prerequisites & Tools
 
 Make sure you have the following installed on your environment before getting started:
 
@@ -16,7 +19,7 @@ Make sure you have the following installed on your environment before getting st
 
 ---
 
-## 🚀 Getting Started & Local Development
+## Getting Started & Local Development
 
 ### 1. Clone & Install
 
@@ -41,7 +44,7 @@ pnpm install
 
 ---
 
-## 📂 Project Architecture & Single Source of Truth
+## Project Architecture & Single Source of Truth
 
 All component source code lives in the `registry/` directory, organized by category:
 
@@ -64,7 +67,7 @@ kombase/
 └── pnpm-workspace.yaml     # Monorepo workspace configuration
 ```
 
-### 🔄 Architecture & Data Flow Diagram
+### Architecture & Data Flow Diagram
 
 ```mermaid
 flowchart TD
@@ -97,15 +100,17 @@ flowchart TD
     URL_FETCH --> CLI_CMD
 ```
 
-> ⚠️ **CRITICAL RULE**: Always write and edit component source code inside `registry/`. Do **NOT** edit files in `packages/src/` directly (which is maintained only for legacy backward compatibility).
+> **CRITICAL RULE**: Always write and edit component source code inside `registry/`. Do **NOT** edit files in `packages/src/` directly (which is maintained only for legacy backward compatibility).
 
 ---
 
-## 📋 Step-by-Step Guide for Adding or Modifying Components
+## Step-by-Step Guide for Adding or Modifying Components
 
 Follow these steps sequentially whenever you add a new component, hook, utility, or feature:
 
-### Step 1: Create Component Source Code (`registry/`)
+<Steps>
+<Step>
+### Create Component Source Code (`registry/`)
 
 Select the appropriate category folder under `registry/`:
 - UI Primitive: `registry/ui/<component-name>.tsx`
@@ -119,7 +124,10 @@ Select the appropriate category folder under `registry/`:
 - Always use the `cn()` helper from `@/lib/utils` (or `@kombase/utils`) for Tailwind CSS class merging.
 - Define proper TypeScript interfaces/types for component props.
 
-### Step 2: Register in Category Manifest (`registry/<category>/registry.json`)
+</Step>
+
+<Step>
+### Register in Category Manifest (`registry/<category>/registry.json`)
 
 Every component must be registered in its category manifest (e.g. `registry/ui/registry.json`, `registry/components/registry.json`, `registry/form/registry.json`).
 
@@ -149,7 +157,10 @@ Add a new item entry matching the Shadcn registry schema:
 - `files.path`: File path relative to the category directory.
 - `files.target`: Target import path alias in user projects (e.g., `@ui/my-component.tsx`, `@components/my-component.tsx`, `@form/my-component.tsx`).
 
-### Step 3: Verify Registry Build
+</Step>
+
+<Step>
+### Verify Registry Build
 
 Compile the registry output to ensure the CLI schema is valid and output files are generated:
 
@@ -159,7 +170,10 @@ pnpm build:registry
 
 Verify that `docs/public/r/my-component.json` is generated without any CLI errors.
 
-### Step 4: Create Interactive Demo Example (`docs/app/examples/`)
+</Step>
+
+<Step>
+### Create Interactive Demo Example (`docs/app/examples/`)
 
 Create an interactive demo file at `docs/app/examples/my-component-demo.tsx`:
 
@@ -175,7 +189,10 @@ export default function MyComponentDemo() {
 }
 ```
 
-### Step 5: Add Documentation Page MDX (`docs/app/content/`)
+</Step>
+
+<Step>
+### Add Documentation Page MDX (`docs/app/content/`)
 
 Create an MDX documentation page in `docs/app/content/components/my-component.mdx` (or `docs/app/content/form/` for form components):
 
@@ -191,9 +208,20 @@ description: A short description of the component functionality.
 
 ## Installation
 
+### CLI
+
 ```bash
 npx shadcn@latest add @kombase/my-component
 ```
+
+### Manual
+
+1. Install dependencies:
+```bash
+pnpm add @radix-ui/react-dialog
+```
+
+2. Copy source code into `@/components/ui/my-component.tsx`.
 
 ## Usage
 
@@ -206,7 +234,10 @@ export function Example() {
 ```
 ```
 
-### Step 6: Validate Code Quality & Build
+</Step>
+
+<Step>
+### Validate Code Quality & Build
 
 Run the full validation suite to verify code formatting, Biome linting, and documentation build:
 
@@ -216,7 +247,10 @@ pnpm validate
 
 Fix any linter warnings or TypeScript errors before proceeding.
 
-### Step 7: Create a Changeset
+</Step>
+
+<Step>
+### Create a Changeset
 
 Before submitting a Pull Request, you **must** create a changeset if your changes alter the public API, add new features, or fix bugs:
 
@@ -232,7 +266,10 @@ pnpm changeset
 
 A new `.md` file will be created under `.changeset/`. Commit this file along with your PR.
 
-### Step 8: Commit using Conventional Commits
+</Step>
+
+<Step>
+### Commit using Conventional Commits
 
 We enforce Conventional Commits. Commit messages must follow this structure:
 
@@ -246,9 +283,12 @@ We enforce Conventional Commits. Commit messages must follow this structure:
 - `fix(components): fix accessibility issue in confirm-dialog`
 - `docs: add manual installation steps to index page`
 
+</Step>
+</Steps>
+
 ---
 
-## 📜 Pull Request Checklist
+## Pull Request Checklist
 
 Before opening a PR, ensure:
 - [ ] Code is located in `registry/` (not `packages/src/`).

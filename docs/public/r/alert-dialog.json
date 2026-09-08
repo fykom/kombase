@@ -7,7 +7,7 @@
     "@radix-ui/react-alert-dialog"
   ],
   "registryDependencies": [
-    "button"
+    "@kombase/button"
   ],
   "files": [
     {

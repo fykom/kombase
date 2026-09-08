@@ -4,8 +4,8 @@
   "title": "Form Phone Input",
   "description": "International phone number input with country select, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
-    "label",
+    "@kombase/form",
+    "@kombase/label",
     "@kombase/phone-input"
   ],
   "files": [

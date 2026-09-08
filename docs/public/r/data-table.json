@@ -7,7 +7,7 @@
     "@tanstack/react-table"
   ],
   "registryDependencies": [
-    "table",
+    "@kombase/table",
     "@kombase/data-table-config",
     "@kombase/data-table-types",
     "@kombase/data-table-pagination",

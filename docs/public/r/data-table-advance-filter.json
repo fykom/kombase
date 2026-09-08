@@ -5,12 +5,12 @@
   "description": "Advanced multi-column filter panel with custom operators and debounced input.",
   "registryDependencies": [
     "@kombase/lib-data-table",
-    "badge",
-    "button",
-    "calendar",
-    "command",
-    "popover",
-    "select",
+    "@kombase/badge",
+    "@kombase/button",
+    "@kombase/calendar",
+    "@kombase/command",
+    "@kombase/popover",
+    "@kombase/select",
     "@kombase/data-table-config",
     "@kombase/data-table-date-filter",
     "@kombase/data-table-range-filter"

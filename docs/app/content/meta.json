@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "index",
+    "contributing",
+    "troubleshooting",
+    "---Components---",
+    "components",
+    "---Form Components---",
+    "form",
+    "---Releases---",
+    "changelog"
+  ]
+}

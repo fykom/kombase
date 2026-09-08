@@ -4,9 +4,9 @@
   "title": "Form Pick",
   "description": "Card-style single selection input, integrated with react-hook-form.",
   "registryDependencies": [
-    "form",
-    "label",
-    "radio-group"
+    "@kombase/form",
+    "@kombase/label",
+    "@kombase/radio-group"
   ],
   "files": [
     {

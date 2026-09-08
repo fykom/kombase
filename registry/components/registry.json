@@ -24,12 +24,16 @@
         }
       ],
       "name": "data-table-types",
-      "registryDependencies": ["@kombase/data-table-config"],
+      "registryDependencies": [
+        "@kombase/data-table-config"
+      ],
       "title": "Data Table Types",
       "type": "registry:component"
     },
     {
-      "dependencies": ["@tanstack/react-table"],
+      "dependencies": [
+        "@tanstack/react-table"
+      ],
       "description": "Pagination controls with page size selector for data tables.",
       "files": [
         {
@@ -39,7 +43,12 @@
         }
       ],
       "name": "data-table-pagination",
-      "registryDependencies": ["button", "select", "@kombase/lib-pagination", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/select",
+        "@kombase/lib-pagination",
+        "@kombase/utils"
+      ],
       "title": "Data Table Pagination",
       "type": "registry:component"
     },
@@ -53,7 +62,9 @@
         }
       ],
       "name": "data-table-range-filter",
-      "registryDependencies": ["@kombase/debounced-input"],
+      "registryDependencies": [
+        "@kombase/debounced-input"
+      ],
       "title": "Data Table Range Filter",
       "type": "registry:component"
     },
@@ -67,7 +78,10 @@
         }
       ],
       "name": "data-table-skeleton",
-      "registryDependencies": ["skeleton", "table"],
+      "registryDependencies": [
+        "@kombase/skeleton",
+        "@kombase/table"
+      ],
       "title": "Data Table Skeleton",
       "type": "registry:component"
     },
@@ -81,7 +95,13 @@
         }
       ],
       "name": "data-table-date-filter",
-      "registryDependencies": ["button", "calendar", "popover", "separator", "@kombase/lib-date"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/calendar",
+        "@kombase/popover",
+        "@kombase/separator",
+        "@kombase/lib-date"
+      ],
       "title": "Data Table Date Filter",
       "type": "registry:component"
     },
@@ -95,7 +115,13 @@
         }
       ],
       "name": "data-table-faceted-filter",
-      "registryDependencies": ["badge", "button", "command", "popover", "separator"],
+      "registryDependencies": [
+        "@kombase/badge",
+        "@kombase/button",
+        "@kombase/command",
+        "@kombase/popover",
+        "@kombase/separator"
+      ],
       "title": "Data Table Faceted Filter",
       "type": "registry:component"
     },
@@ -109,7 +135,14 @@
         }
       ],
       "name": "data-table-slider-filter",
-      "registryDependencies": ["button", "input", "label", "popover", "separator", "slider"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/input",
+        "@kombase/label",
+        "@kombase/popover",
+        "@kombase/separator",
+        "@kombase/slider"
+      ],
       "title": "Data Table Slider Filter",
       "type": "registry:component"
     },
@@ -123,7 +156,11 @@
         }
       ],
       "name": "data-table-view-options",
-      "registryDependencies": ["button", "command", "popover"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/command",
+        "@kombase/popover"
+      ],
       "title": "Data Table View Options",
       "type": "registry:component"
     },
@@ -138,7 +175,7 @@
       ],
       "name": "data-table-toolbar",
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/debounced-input",
         "@kombase/data-table-date-filter",
         "@kombase/data-table-faceted-filter",
@@ -158,7 +195,12 @@
         }
       ],
       "name": "data-table-bulk-action",
-      "registryDependencies": ["badge", "button", "separator", "tooltip"],
+      "registryDependencies": [
+        "@kombase/badge",
+        "@kombase/button",
+        "@kombase/separator",
+        "@kombase/tooltip"
+      ],
       "title": "Data Table Bulk Action",
       "type": "registry:component"
     },
@@ -172,7 +214,9 @@
         }
       ],
       "name": "data-table-column-header",
-      "registryDependencies": ["dropdown-menu"],
+      "registryDependencies": [
+        "@kombase/dropdown-menu"
+      ],
       "title": "Data Table Column Header",
       "type": "registry:component"
     },
@@ -188,12 +232,12 @@
       "name": "data-table-advance-filter",
       "registryDependencies": [
         "@kombase/lib-data-table",
-        "badge",
-        "button",
-        "calendar",
-        "command",
-        "popover",
-        "select",
+        "@kombase/badge",
+        "@kombase/button",
+        "@kombase/calendar",
+        "@kombase/command",
+        "@kombase/popover",
+        "@kombase/select",
         "@kombase/data-table-config",
         "@kombase/data-table-date-filter",
         "@kombase/data-table-range-filter"
@@ -202,7 +246,9 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@tanstack/react-table"],
+      "dependencies": [
+        "@tanstack/react-table"
+      ],
       "description": "Full-featured data table with sorting, filtering, pagination, and row selection powered by TanStack Table.",
       "files": [
         {
@@ -213,7 +259,7 @@
       ],
       "name": "data-table",
       "registryDependencies": [
-        "table",
+        "@kombase/table",
         "@kombase/data-table-config",
         "@kombase/data-table-types",
         "@kombase/data-table-pagination",
@@ -229,7 +275,9 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@radix-ui/react-direction"],
+      "dependencies": [
+        "@radix-ui/react-direction"
+      ],
       "description": "A fixed bottom bar for contextual actions with animated entrance.",
       "files": [
         {
@@ -240,7 +288,7 @@
       ],
       "name": "action-bar",
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/component-refs",
         "@kombase/use-as-ref",
         "@kombase/use-isomorphic-layout-effect"
@@ -249,7 +297,9 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@radix-ui/react-avatar"],
+      "dependencies": [
+        "@radix-ui/react-avatar"
+      ],
       "description": "Grouped avatar display with overflow counter and RTL support.",
       "files": [
         {
@@ -272,7 +322,10 @@
         }
       ],
       "name": "confirm-dialog",
-      "registryDependencies": ["alert-dialog", "button"],
+      "registryDependencies": [
+        "@kombase/alert-dialog",
+        "@kombase/button"
+      ],
       "title": "Confirm Dialog",
       "type": "registry:component"
     },
@@ -286,7 +339,10 @@
         }
       ],
       "name": "long-text",
-      "registryDependencies": ["popover", "tooltip"],
+      "registryDependencies": [
+        "@kombase/popover",
+        "@kombase/tooltip"
+      ],
       "title": "Long Text",
       "type": "registry:component"
     },
@@ -301,9 +357,9 @@
       ],
       "name": "phone-input",
       "registryDependencies": [
-        "command",
-        "input",
-        "popover",
+        "@kombase/command",
+        "@kombase/input",
+        "@kombase/popover",
         "@kombase/component-refs",
         "@kombase/visually-hidden-input",
         "@kombase/use-as-ref",
@@ -314,7 +370,9 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@radix-ui/react-direction"],
+      "dependencies": [
+        "@radix-ui/react-direction"
+      ],
       "description": "Customizable star rating component with keyboard navigation and form integration.",
       "files": [
         {
@@ -335,7 +393,9 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@radix-ui/react-direction"],
+      "dependencies": [
+        "@radix-ui/react-direction"
+      ],
       "description": "Multi-step progress indicator with vertical layout and form validation support.",
       "files": [
         {
@@ -355,7 +415,10 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@radix-ui/react-direction", "class-variance-authority"],
+      "dependencies": [
+        "@radix-ui/react-direction",
+        "class-variance-authority"
+      ],
       "description": "Chronological event timeline with alternate positioning and horizontal layout.",
       "files": [
         {
@@ -375,7 +438,10 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["@floating-ui/react-dom", "@radix-ui/react-direction"],
+      "dependencies": [
+        "@floating-ui/react-dom",
+        "@radix-ui/react-direction"
+      ],
       "description": "Step-by-step onboarding tour with spotlight highlighting and floating UI.",
       "files": [
         {
@@ -386,7 +452,7 @@
       ],
       "name": "tour",
       "registryDependencies": [
-        "button",
+        "@kombase/button",
         "@kombase/component-refs",
         "@kombase/use-as-ref",
         "@kombase/use-callback-ref",
@@ -409,7 +475,9 @@
       "type": "registry:component"
     },
     {
-      "dependencies": ["lucide-react"],
+      "dependencies": [
+        "lucide-react"
+      ],
       "description": "A password field with show/hide toggle button.",
       "files": [
         {
@@ -419,12 +487,17 @@
         }
       ],
       "name": "password-input",
-      "registryDependencies": ["button", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/button",
+        "@kombase/utils"
+      ],
       "title": "Password Input",
       "type": "registry:component"
     },
     {
-      "dependencies": ["lucide-react"],
+      "dependencies": [
+        "lucide-react"
+      ],
       "description": "A form-integrated select dropdown with loading state support.",
       "files": [
         {
@@ -434,7 +507,11 @@
         }
       ],
       "name": "select-dropdown",
-      "registryDependencies": ["form", "select", "@kombase/utils"],
+      "registryDependencies": [
+        "@kombase/form",
+        "@kombase/select",
+        "@kombase/utils"
+      ],
       "title": "Select Dropdown",
       "type": "registry:component"
     }
