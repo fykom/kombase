@@ -11,7 +11,7 @@ description: A lightweight, highly customizable UI component library with out-of
 
 ## Installation
 
-Follow these steps to integrate `kombase` into your project:
+Follow these steps to add `kombase` components to your project:
 
 <Steps>
 <Step>
@@ -22,28 +22,140 @@ Ensure you have installed and configured [Shadcn UI](https://ui.shadcn.com/docs/
 </Step>
 
 <Step>
-### Install kombase & Peer Dependencies
+### Configure Registry (Recommended)
 
-To keep the bundle size lightweight and avoid dependency version conflicts in your host application, `kombase` requires a few peer dependencies.
+To install components using the `@kombase/` alias/prefix, configure the registry in your project.
 
-Run the following command using your preferred package manager:
+#### Option A: Edit `components.json` (Recommended)
+Add the `"registries"` block at the root level of your `components.json` file:
 
-```package-install
-kombase react-hook-form react-day-picker @tanstack/react-table
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+> **Note:** The registry URL template must end with `{name}.json` to satisfy shadcn CLI v4 schema validation.
+
+#### Option B: Edit `package.json`
+Alternatively, you can define the registry under the `"registries"` key at the root level of your `package.json`:
+
+```json
+{
+  "name": "your-project",
+  "dependencies": { ... },
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
 ```
 
 </Step>
 
 <Step>
-### Import Styles
+### Add Components
 
-Import the `kombase` stylesheet inside your global CSS file (e.g., `app.css` or `globals.css`):
+Install any kombase component directly from the registry:
 
-```css
-@import "kombase/styles";
+```bash
+# Using registry alias (if configured)
+npx shadcn@latest add @kombase/<component-name>
+
+# Or using direct URL
+npx shadcn@latest add https://kombase.komerce.id/r/<component-name>.json
 ```
 
-This tells Tailwind CSS v4 to scan the compiled bundle of `kombase` and generate the matching style utility classes according to your theme.
+For example, to add the Data Table:
+
+```bash
+# Using registry alias
+npx shadcn@latest add @kombase/data-table
+
+# Or using direct URL
+npx shadcn@latest add https://kombase.komerce.id/r/data-table.json
+```
+
+All dependencies (npm packages and other kombase components) are resolved and installed automatically.
 
 </Step>
 </Steps>
+
+---
+
+## Manual Installation
+
+If you prefer to manually copy components into your project or do not use the `shadcn CLI`:
+
+<Steps>
+<Step>
+### Install Core Utility Dependencies
+
+Install the core styling and utility dependencies required by all `kombase` components:
+
+```bash
+pnpm add clsx tailwind-merge class-variance-authority lucide-react
+```
+
+</Step>
+
+<Step>
+### Create Utility Helper (`lib/utils.ts`)
+
+Create a utility file at `src/lib/utils.ts` (or `@/lib/utils`) to merge Tailwind CSS classes:
+
+```ts
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Step>
+
+<Step>
+### Install Component-Specific Dependencies
+
+Depending on the component you wish to use, install the required packages:
+
+- **UI Primitives & Radix UI**: Install the corresponding `@radix-ui/react-*` package (e.g. `@radix-ui/react-dialog`, `@radix-ui/react-select`, `@radix-ui/react-popover`).
+- **Form Components**: Install `react-hook-form`, `@hookform/resolvers`, and `zod`.
+- **Data Table**: Install `@tanstack/react-table`.
+
+</Step>
+
+<Step>
+### Copy Component Source Code
+
+Copy the required primitive UI components (from `registry/ui/`) and target components directly into your project's `components/` directory.
+
+Alternatively, you can fetch the raw component file definition directly from the live registry endpoint:
+`https://kombase.komerce.id/r/<component-name>.json`
+
+</Step>
+</Steps>
+
+---
+
+## Need Help?
+
+If you encounter any issues during installation or integration, check our [Troubleshooting & FAQ Guide](/docs/troubleshooting) for common solutions.
+
+

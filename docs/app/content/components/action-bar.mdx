@@ -4,6 +4,46 @@ description: A floating toolbar that appears conditionally, typically used for b
 preview: false
 ---
 
+## Installation
+
+### CLI
+
+```bash
+npx shadcn@latest add @kombase/action-bar
+```
+
+### Manual
+
+<Steps>
+<Step>
+#### Install Prerequisites
+
+Ensure you have installed the `button` UI component into your project:
+
+```bash
+npx shadcn@latest add @kombase/button
+```
+</Step>
+
+<Step>
+#### Install Dependencies
+
+```bash
+pnpm add @radix-ui/react-direction @radix-ui/react-slot
+```
+</Step>
+
+<Step>
+#### Copy Source Code
+
+Copy the source code from `registry/components/action-bar.tsx` into your project at `@/components/action-bar.tsx`.
+
+Alternatively, fetch raw code from:
+`https://kombase.komerce.id/r/action-bar.json`
+</Step>
+</Steps>
+
+
 <ComponentTabs name="action-bar-demo" align="center" className="p-4" />
 
 ## Overview
@@ -20,7 +60,7 @@ import {
   ActionBarItem,
   ActionBarSelection,
   ActionBarSeparator,
-} from "kombase";
+} from "@/components/action-bar";
 ```
 
 ## Anatomy

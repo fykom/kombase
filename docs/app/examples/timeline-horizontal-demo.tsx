@@ -8,7 +8,7 @@ import {
   TimelineItem,
   TimelineTime,
   TimelineTitle,
-} from 'kombase';
+} from '@/components/timeline';
 
 const timelineItems = [
   {

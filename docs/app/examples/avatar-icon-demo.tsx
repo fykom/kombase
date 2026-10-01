@@ -1,5 +1,5 @@
-import { AvatarGroup } from 'kombase';
 import { Cloud, Compass, Flame, Leaf, Music, Rocket, ShieldCheck, Sparkles } from 'lucide-react';
+import { AvatarGroup } from '@/components/avatar-group';
 
 const iconData = [
   { color: 'bg-cyan-500', icon: Rocket },

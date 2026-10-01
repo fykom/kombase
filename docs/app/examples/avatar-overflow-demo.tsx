@@ -1,4 +1,4 @@
-import { AvatarGroup } from 'kombase';
+import { AvatarGroup } from '@/components/avatar-group';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const avatars = [

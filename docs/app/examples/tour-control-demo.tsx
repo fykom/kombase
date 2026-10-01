@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Tour,
   TourArrow,
@@ -12,8 +13,7 @@ import {
   TourStep,
   TourStepCounter,
   TourTitle,
-} from 'kombase';
-import * as React from 'react';
+} from '@/components/tour';
 import { Button } from '@/components/ui/button';
 
 export default function TourControlDemo() {

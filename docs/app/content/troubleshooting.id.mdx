@@ -1,0 +1,115 @@
+---
+title: Troubleshooting & FAQ
+description: Solusi dan panduan penanganan masalah umum saat menguji, menginstal, dan mengintegrasikan komponen Kombase.
+---
+
+## Kendala Umum & Solusi (Frequently Asked Questions)
+
+Berikut adalah daftar kendala yang sering ditemui oleh pengembang beserta solusi langkah demi langkahnya:
+
+---
+
+### 1. Perintah `npx shadcn add @kombase/<component>` Gagal atau Error 404
+
+**Gejala:**
+```text
+Error: Failed to fetch registry item from https://kombase.komerce.id/r/<component>.json
+```
+
+**Penyebab:**
+- Registri `@kombase` belum didefinisikan dalam `components.json` atau `package.json` Anda.
+- URL template registri tidak diakhiri dengan `{name}.json`.
+
+**Solusi:**
+Pastikan blok `"registries"` pada file `components.json` di proyek Anda sudah sesuai dengan format berikut:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+---
+
+### 2. Error Import Alias TypeScript (`Cannot find module '@/lib/utils'`)
+
+**Gejala:**
+```text
+Cannot find module '@/lib/utils' or its corresponding type declarations.
+```
+
+**Penyebab:**
+Komponen Kombase menggunakan helper `cn()` yang di-import dari `@/lib/utils` atau `@kombase/utils`.
+
+**Solusi:**
+1. Pastikan Anda telah membuat helper `cn()` di file `src/lib/utils.ts` (atau `lib/utils.ts`):
+   ```ts
+   import { type ClassValue, clsx } from 'clsx';
+   import { twMerge } from 'tailwind-merge';
+
+   export function cn(...inputs: ClassValue[]) {
+     return twMerge(clsx(inputs));
+   }
+   ```
+2. Pastikan file `tsconfig.json` proyek Anda telah mengonfigurasi path alias `@/*`:
+   ```json
+   {
+     "compilerOptions": {
+       "baseUrl": ".",
+       "paths": {
+         "@/*": ["./src/*"]
+       }
+     }
+   }
+   ```
+
+---
+
+### 3. Tampilan Styling Komponen Rusak (Tailwind CSS v4 vs v3)
+
+**Gejala:**
+Komponen muncul tanpa style / warna Tailwind tidak keluar.
+
+**Penyebab:**
+Kombase dibangun berbasis **Tailwind CSS v4**.
+
+**Solusi:**
+- Jika menggunakan **Tailwind CSS v4**, pastikan file CSS utama Anda (misal `src/index.css`) mengimpor Tailwind secara langsung:
+  ```css
+  @import "tailwindcss";
+  ```
+- Jika proyek Anda menggunakan **Tailwind CSS v3**, pastikan file `tailwind.config.js` menyertakan path folder komponen Kombase dalam konfigurasi `content`:
+  ```js
+  module.exports = {
+    content: [
+      './src/**/*.{ts,tsx}',
+      './components/**/*.{ts,tsx}'
+    ],
+  }
+  ```
+
+---
+
+### 4. Komponen Baru Tidak Muncul di Dokumen atau CLI Registri Gagal (Untuk Kontributor)
+
+**Gejala:**
+Setelah menambahkan komponen di folder `registry/`, file JSON di `docs/public/r/` tidak ter-update atau dokumen error.
+
+**Penyebab:**
+Lupa mengompilasi registri Shadcn.
+
+**Solusi:**
+Jalankan perintah berikut di terminal root monorepo:
+```bash
+pnpm build:registry
+```
+Pastikan file `docs/public/r/<nama-komponen>.json` terbentuk tanpa ada error TypeScript atau schema.
+
+---
+
+### 5. Aturan Penting Kontribusi
+
+> ⚠️ **PENTING**: Selalu tulis dan edit kode komponen di dalam folder `registry/`. **Jangan pernah** mengedit langsung kode di folder `packages/src/` karena folder tersebut hanya dipertahankan untuk backward compatibility.

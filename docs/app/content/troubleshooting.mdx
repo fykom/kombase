@@ -1,0 +1,115 @@
+---
+title: Troubleshooting & FAQ
+description: Solutions and troubleshooting guide for common issues when testing, installing, and integrating Kombase components.
+---
+
+## Frequently Asked Questions (FAQ) & Common Issues
+
+Below is a curated list of issues frequently encountered during integration and component development, along with step-by-step solutions:
+
+---
+
+### 1. `npx shadcn add @kombase/<component>` Fails or Returns 404 Error
+
+**Symptom:**
+```text
+Error: Failed to fetch registry item from https://kombase.komerce.id/r/<component>.json
+```
+
+**Cause:**
+- The `@kombase` registry alias is not defined in your project's `components.json` or `package.json`.
+- The registry URL template does not end with `{name}.json`.
+
+**Solution:**
+Ensure the `"registries"` configuration block in your `components.json` matches the following format:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+---
+
+### 2. TypeScript Import Alias Error (`Cannot find module '@/lib/utils'`)
+
+**Symptom:**
+```text
+Cannot find module '@/lib/utils' or its corresponding type declarations.
+```
+
+**Cause:**
+Kombase components rely on the `cn()` helper imported from `@/lib/utils` or `@kombase/utils`.
+
+**Solution:**
+1. Ensure you have created the `cn()` utility in your project at `src/lib/utils.ts` (or `lib/utils.ts`):
+   ```ts
+   import { type ClassValue, clsx } from 'clsx';
+   import { twMerge } from 'tailwind-merge';
+
+   export function cn(...inputs: ClassValue[]) {
+     return twMerge(clsx(inputs));
+   }
+   ```
+2. Verify that your project's `tsconfig.json` configures the `@/*` path alias correctly:
+   ```json
+   {
+     "compilerOptions": {
+       "baseUrl": ".",
+       "paths": {
+         "@/*": ["./src/*"]
+       }
+     }
+   }
+   ```
+
+---
+
+### 3. Unstyled / Broken Component Styles (Tailwind CSS v4 vs v3)
+
+**Symptom:**
+Components render without styles or Tailwind color utilities do not take effect.
+
+**Cause:**
+Kombase is built on top of **Tailwind CSS v4**.
+
+**Solution:**
+- If your project uses **Tailwind CSS v4**, ensure your main CSS file (e.g. `src/index.css`) imports Tailwind directly:
+  ```css
+  @import "tailwindcss";
+  ```
+- If your project uses **Tailwind CSS v3**, ensure your `tailwind.config.js` includes Kombase component directory paths in the `content` array:
+  ```js
+  module.exports = {
+    content: [
+      './src/**/*.{ts,tsx}',
+      './components/**/*.{ts,tsx}'
+    ],
+  }
+  ```
+
+---
+
+### 4. New Component Does Not Appear in Registry or Build Error (For Contributors)
+
+**Symptom:**
+After adding a component in `registry/`, the JSON file in `docs/public/r/` is not generated or CLI endpoints return errors.
+
+**Cause:**
+The Shadcn registry build command was omitted.
+
+**Solution:**
+Run the build script from the monorepo root:
+```bash
+pnpm build:registry
+```
+Verify that `docs/public/r/<component-name>.json` is compiled cleanly without CLI errors.
+
+---
+
+### 5. Critical Rule for Contributors
+
+> ⚠️ **CRITICAL RULE**: Always write and edit component source code inside `registry/`. Do **NOT** edit files in `packages/src/` directly (which is maintained only for legacy backward compatibility).

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "title": "Tooltip",
+  "description": "A popup that displays information on hover or focus.",
+  "dependencies": [
+    "@radix-ui/react-tooltip"
+  ],
+  "registryDependencies": [
+    "@kombase/utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ui/tooltip.tsx",
+      "content": "'use client';\n\nimport * as TooltipPrimitive from '@radix-ui/react-tooltip';\nimport * as React from 'react';\n\nimport { cn } from '@/lib/utils';\n\nconst TooltipProvider = ({\n  delayDuration = 0,\n  ...props\n}: React.ComponentProps<typeof TooltipPrimitive.Provider>) => (\n  <TooltipPrimitive.Provider\n    data-slot=\"tooltip-provider\"\n    delayDuration={delayDuration}\n    {...props}\n  />\n);\nTooltipProvider.displayName = 'TooltipProvider';\n\nconst Tooltip = ({ ...props }: React.ComponentProps<typeof TooltipPrimitive.Root>) => (\n  <TooltipPrimitive.Root data-slot=\"tooltip\" {...props} />\n);\nTooltip.displayName = 'Tooltip';\n\nconst TooltipTrigger = React.forwardRef<\n  React.ComponentRef<typeof TooltipPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>\n>((props, ref) => <TooltipPrimitive.Trigger data-slot=\"tooltip-trigger\" ref={ref} {...props} />);\nTooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName;\n\nconst TooltipContent = React.forwardRef<\n  React.ComponentRef<typeof TooltipPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\n>(({ className, sideOffset = 0, children, ...props }, ref) => (\n  <TooltipPrimitive.Portal>\n    <TooltipPrimitive.Content\n      className={cn(\n        'z-50 w-fit origin-(--radix-tooltip-content-transform-origin) animate-in rounded-md bg-foreground px-3 py-1.5 text-xs text-balance text-background fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',\n        className,\n      )}\n      data-slot=\"tooltip-content\"\n      ref={ref}\n      sideOffset={sideOffset}\n      {...props}\n    >\n      {children}\n      <TooltipPrimitive.Arrow className=\"z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px] bg-foreground fill-foreground\" />\n    </TooltipPrimitive.Content>\n  </TooltipPrimitive.Portal>\n));\nTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };\n",
+      "type": "registry:ui",
+      "target": "@ui/tooltip.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

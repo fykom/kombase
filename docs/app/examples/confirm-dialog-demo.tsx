@@ -1,5 +1,5 @@
-import { ConfirmDialog } from 'kombase';
 import { useState } from 'react';
+import { ConfirmDialog } from '@/components/confirm-dialog';
 import { Button } from '@/components/ui/button';
 
 export default function ConfirmDialogExample() {

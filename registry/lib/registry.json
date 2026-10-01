@@ -1,0 +1,90 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "dependencies": ["clsx", "tailwind-merge"],
+      "description": "Core utility function (cn) for merging Tailwind CSS classes.",
+      "files": [
+        {
+          "path": "utils.ts",
+          "target": "@lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "utils",
+      "title": "Utilities",
+      "type": "registry:lib"
+    },
+    {
+      "description": "Ref composition utilities for combining multiple React refs.",
+      "files": [
+        {
+          "path": "component-refs.ts",
+          "target": "@lib/component-refs.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "component-refs",
+      "title": "Component Refs",
+      "type": "registry:lib"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "description": "Helper functions for data table filter validation and parsing.",
+      "files": [
+        {
+          "path": "data-table.ts",
+          "target": "@lib/data-table.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "lib-data-table",
+      "registryDependencies": ["@kombase/data-table-config", "@kombase/data-table-types"],
+      "title": "Data Table Helpers",
+      "type": "registry:lib"
+    },
+    {
+      "dependencies": ["dayjs", "react-day-picker"],
+      "description": "Date formatting and range utilities using dayjs and react-day-picker.",
+      "files": [
+        {
+          "path": "date.ts",
+          "target": "@lib/date.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "lib-date",
+      "title": "Date Helpers",
+      "type": "registry:lib"
+    },
+    {
+      "description": "Pagination range calculation utilities for data table pagination.",
+      "files": [
+        {
+          "path": "pagination.ts",
+          "target": "@lib/pagination.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "lib-pagination",
+      "title": "Pagination Helpers",
+      "type": "registry:lib"
+    },
+    {
+      "dependencies": ["dayjs"],
+      "description": "Serializes data table filters to backend query parameters with multiple format styles.",
+      "files": [
+        {
+          "path": "filter-helper.ts",
+          "target": "@lib/filter-helper.ts",
+          "type": "registry:lib"
+        }
+      ],
+      "name": "filter-helper",
+      "registryDependencies": ["@kombase/data-table-types"],
+      "title": "Filter Helper",
+      "type": "registry:lib"
+    }
+  ],
+  "name": "kombase-lib"
+}

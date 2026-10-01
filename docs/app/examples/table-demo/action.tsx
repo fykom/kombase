@@ -1,3 +1,5 @@
+import { Copy, Trash2, X } from 'lucide-react';
+import * as React from 'react';
 import {
   ActionBar,
   ActionBarClose,
@@ -5,9 +7,7 @@ import {
   ActionBarItem,
   ActionBarSelection,
   ActionBarSeparator,
-} from 'kombase';
-import { Copy, Trash2, X } from 'lucide-react';
-import * as React from 'react';
+} from '@/components/action-bar';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';

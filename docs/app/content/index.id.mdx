@@ -1,0 +1,159 @@
+---
+title: Pengenalan
+description: Pustaka komponen UI yang ringan, mudah disesuaikan, dan terintegrasi dengan validasi formulir serta tabel data.
+---
+
+## Gambaran Umum
+
+`kombase` adalah pustaka UI terpusat yang dirancang untuk konsistensi dan reusabilitas di berbagai proyek frontend. Dibangun di atas Radix UI primitives, Tailwind CSS v4, `react-hook-form`, dan `@tanstack/react-table`, Kombase memberikan fondasi yang kuat untuk membangun dashboard yang kompleks dan indah.
+
+---
+
+## Panduan Instalasi
+
+Ikuti langkah-langkah berikut untuk menambahkan komponen `kombase` ke dalam proyek Anda:
+
+<Steps>
+<Step>
+### Install Shadcn UI
+
+Pastikan Anda telah memasang dan mengonfigurasi [Shadcn UI](https://ui.shadcn.com/docs/installation) pada proyek Anda. `kombase` menggunakan standar Tailwind dan konvensi komponen yang selaras dengan arsitektur Shadcn.
+
+</Step>
+
+<Step>
+### Konfigurasi Registri (Direkomendasikan)
+
+Untuk menginstal komponen menggunakan alias/prefiks `@kombase/`, konfigurasi registri pada proyek Anda.
+
+#### Opsi A: Edit `components.json` (Direkomendasikan)
+Tambahkan blok `"registries"` pada tingkat akar file `components.json` Anda:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  },
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+> **Catatan:** Template URL registri harus diakhiri dengan `{name}.json` untuk memenuhi validasi skema shadcn CLI v4.
+
+#### Opsi B: Edit `package.json`
+Sebagai alternatif, Anda dapat mendefinisikan registri di bawah kunci `"registries"` pada file `package.json` Anda:
+
+```json
+{
+  "name": "proyek-anda",
+  "dependencies": { ... },
+  "registries": {
+    "@kombase": "https://kombase.komerce.id/r/{name}.json"
+  }
+}
+```
+
+</Step>
+
+<Step>
+### Tambahkan Komponen
+
+Instal komponen kombase secara langsung dari registri:
+
+```bash
+# Menggunakan alias registri (jika sudah dikonfigurasi)
+npx shadcn@latest add @kombase/<component-name>
+
+# Atau menggunakan URL langsung
+npx shadcn@latest add https://kombase.komerce.id/r/<component-name>.json
+```
+
+Sebagai contoh, untuk menambahkan Data Table:
+
+```bash
+# Menggunakan alias
+npx shadcn@latest add @kombase/data-table
+
+# Atau menggunakan URL langsung
+npx shadcn@latest add https://kombase.komerce.id/r/data-table.json
+```
+
+Semua dependensi (paket npm dan komponen kombase pendukung) akan di-resolve dan dipasang secara otomatis.
+
+</Step>
+</Steps>
+
+---
+
+## Instalasi Manual
+
+Jika Anda lebih memilih menyalin kode komponen secara manual ke proyek Anda tanpa `shadcn CLI`:
+
+<Steps>
+<Step>
+### Pasang Dependensi Utilitas Utama
+
+Pasang dependensi styling dan utilitas inti yang dibutuhkan oleh semua komponen `kombase`:
+
+```bash
+pnpm add clsx tailwind-merge class-variance-authority lucide-react
+```
+
+</Step>
+
+<Step>
+### Buat Helper Utilitas (`lib/utils.ts`)
+
+Buat file utilitas di `src/lib/utils.ts` (atau `@/lib/utils`) untuk menggabungkan class Tailwind CSS:
+
+```ts
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+```
+
+</Step>
+
+<Step>
+### Pasang Dependensi Spesifik Komponen
+
+Tergantung pada komponen yang ingin Anda gunakan, pasang paket yang dibutuhkan:
+
+- **UI Primitives & Radix UI**: Pasang paket `@radix-ui/react-*` terkait (seperti `@radix-ui/react-dialog`, `@radix-ui/react-select`, `@radix-ui/react-popover`).
+- **Komponen Form**: Pasang `react-hook-form`, `@hookform/resolvers`, dan `zod`.
+- **Data Table**: Pasang `@tanstack/react-table`.
+
+</Step>
+
+<Step>
+### Salin Kode Sumber Komponen
+
+Salin komponen UI primitive yang dibutuhkan (dari `registry/ui/`) dan komponen target langsung ke dalam direktori `components/` proyek Anda.
+
+Sebagai alternatif, Anda dapat mengunduh definisi file komponen langsung dari endpoint registri:
+`https://kombase.komerce.id/r/<component-name>.json`
+
+</Step>
+</Steps>
+
+---
+
+## Butuh Bantuan?
+
+Jika Anda mengalami kendala saat instalasi atau integrasi, silakan baca [Panduan Troubleshooting & FAQ](/docs/troubleshooting) untuk penanganan masalah umum.

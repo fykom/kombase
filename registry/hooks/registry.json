@@ -1,0 +1,92 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "description": "Keeps a mutable ref synchronized with the latest value using layout effect.",
+      "files": [
+        {
+          "path": "use-as-ref.ts",
+          "target": "@hooks/use-as-ref.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-as-ref",
+      "registryDependencies": ["@kombase/use-isomorphic-layout-effect"],
+      "title": "useAsRef",
+      "type": "registry:hook"
+    },
+    {
+      "description": "Creates a stable callback ref that always calls the latest function.",
+      "files": [
+        {
+          "path": "use-callback-ref.ts",
+          "target": "@hooks/use-callback-ref.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-callback-ref",
+      "title": "useCallbackRef",
+      "type": "registry:hook"
+    },
+    {
+      "dependencies": ["@tanstack/react-table"],
+      "description": "Hook for managing data table state, filtering, sorting, and pagination with TanStack Table.",
+      "files": [
+        {
+          "path": "use-data-table.ts",
+          "target": "@hooks/use-data-table.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-data-table",
+      "registryDependencies": [
+        "@kombase/data-table-config",
+        "@kombase/data-table-types",
+        "@kombase/lib-data-table"
+      ],
+      "title": "useDataTable",
+      "type": "registry:hook"
+    },
+    {
+      "description": "Returns a debounced version of a callback function with configurable delay.",
+      "files": [
+        {
+          "path": "use-debounced-callback.ts",
+          "target": "@hooks/use-debounced-callback.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-debounced-callback",
+      "registryDependencies": ["@kombase/use-callback-ref"],
+      "title": "useDebouncedCallback",
+      "type": "registry:hook"
+    },
+    {
+      "description": "SSR-safe wrapper around useLayoutEffect that falls back to useEffect on the server.",
+      "files": [
+        {
+          "path": "use-isomorphic-layout-effect.ts",
+          "target": "@hooks/use-isomorphic-layout-effect.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-isomorphic-layout-effect",
+      "title": "useIsomorphicLayoutEffect",
+      "type": "registry:hook"
+    },
+    {
+      "description": "Creates a ref that is lazily initialized on first access.",
+      "files": [
+        {
+          "path": "use-lazy-ref.ts",
+          "target": "@hooks/use-lazy-ref.ts",
+          "type": "registry:hook"
+        }
+      ],
+      "name": "use-lazy-ref",
+      "title": "useLazyRef",
+      "type": "registry:hook"
+    }
+  ],
+  "name": "kombase-hooks"
+}

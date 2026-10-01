@@ -1,4 +1,4 @@
-import { LongText } from 'kombase';
+import { LongText } from '@/components/long-text';
 
 export default function ExamplePage() {
   return (

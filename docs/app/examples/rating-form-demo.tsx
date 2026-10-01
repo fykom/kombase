@@ -1,9 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { gooeyToast } from 'goey-toast';
-import { Rating, RatingItem } from 'kombase';
 import { Heart } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { Rating, RatingItem } from '@/components/rating';
 import { Button } from '@/components/ui/button';
 import {
   Form,

@@ -4,6 +4,46 @@ description: wraps FileUpload to integrate file selection and validation with re
 preview: false
 ---
 
+## Installation
+
+### CLI
+
+```bash
+npx shadcn@latest add @kombase/form-upload
+```
+
+### Manual
+
+<Steps>
+<Step>
+#### Install Prerequisites
+
+Ensure you have installed the `file-upload`, `form`, and `label` components into your project:
+
+```bash
+npx shadcn@latest add @kombase/file-upload @kombase/form @kombase/label
+```
+</Step>
+
+<Step>
+#### Install Dependencies
+
+```bash
+pnpm add react-hook-form @hookform/resolvers zod lucide-react
+```
+</Step>
+
+<Step>
+#### Copy Source Code
+
+Copy the source code from `registry/form/form-upload.tsx` into your project at `@/components/form/form-upload.tsx`.
+
+Alternatively, fetch raw code from:
+`https://kombase.komerce.id/r/form-upload.json`
+</Step>
+</Steps>
+
+
 ## Examples
 
 ### Form Validation

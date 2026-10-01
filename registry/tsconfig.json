@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "..",
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "module": "esnext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "@/components/*": ["registry/components/*"],
+      "@/components/form/*": ["registry/form/*"],
+      "@/components/ui/*": ["registry/ui/*"],
+      "@/hooks/*": ["registry/hooks/*"],
+      "@/lib/*": ["registry/lib/*"]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2022",
+    "types": ["react"]
+  },
+  "include": ["**/*"]
+}

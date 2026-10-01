@@ -1,3 +1,5 @@
+import { Edit, Share, Trash, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import {
   ActionBar,
   ActionBarClose,
@@ -5,9 +7,7 @@ import {
   ActionBarItem,
   ActionBarSelection,
   ActionBarSeparator,
-} from 'kombase';
-import { Edit, Share, Trash, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+} from '@/components/action-bar';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 
